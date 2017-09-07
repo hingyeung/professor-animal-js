@@ -1,0 +1,275 @@
+[
+  {
+    "name": "Lion",
+    "types": [
+      "vertebrate",
+      "mammal",
+      "big cat",
+      "large",
+      "carnivore",
+      "predator"
+    ],
+    "behaviours": [
+      "hunt in a pack"
+    ],
+    "physical": [
+      "mane"
+    ],
+    "diet": [
+      "zebra",
+      "buffalo",
+      "wildebeest",
+      "giraffes"
+    ]
+  },
+  {
+    "name": "Cheetah",
+    "types": [
+      "vertebrate",
+      "mammal",
+      "big cat",
+      "large",
+      "carnivore",
+      "predator"
+    ],
+    "behaviours": [
+      "climb tree",
+      "run very fast"
+    ],
+    "physical": [
+      "mane"
+    ],
+    "diet": [
+      "zebra",
+      "buffalo",
+      "wildebeest",
+      "giraffes"
+    ]
+  },
+  {
+    "name": "Elephant",
+    "types": [
+      "vertebrate",
+      "mammal",
+      "herbivore",
+      "large"
+    ],
+    "behaviours": [
+      "live-in-group"
+    ],
+    "physical": [
+      "tusks"
+    ],
+    "diet": [
+      "grass",
+      "banana",
+      "peanut"
+    ]
+  },
+  {
+    "name": "Dog",
+    "types": [
+      "vertebrate",
+      "mammal",
+      "carnivore",
+      "pet"
+    ],
+    "behaviours": [
+      "bark"
+    ],
+    "physical": [
+      "tail"
+    ],
+    "diet": [
+      "pet food",
+      "bone"
+    ]
+  },
+  {
+    "name": "Cat",
+    "types": [
+      "vertebrate",
+      "mammal",
+      "pet",
+      "carnivore"
+    ],
+    "behaviours": [
+      "climb tree",
+      "meow"
+    ],
+    "physical": [
+      "tail"
+    ],
+    "diet": [
+      "fish",
+      "pet food"
+    ]
+  },
+  {
+    "name": "Panda",
+    "types": [
+      "vertebrate",
+      "mammal",
+      "herbivore",
+      "large",
+      "cute animal"
+    ],
+    "behaviours": [
+      "climb tree"
+    ],
+    "physical": [
+      "black and white"
+    ],
+    "diet": [
+      "bamboo"
+    ]
+  },
+  {
+    "name": "Tiger",
+    "types": [
+      "vertebrate",
+      "mammal",
+      "carnivore",
+      "large",
+      "big cat",
+      "predator"
+    ],
+    "behaviours": [
+      "swimming"
+    ],
+    "physical": [
+      "black strip"
+    ],
+    "diet": [
+      "deer",
+      "antelope",
+      "large animals"
+    ]
+  },
+  {
+    "name": "Chameleon",
+    "types": [
+      "vertebrate",
+      "reptile",
+      "carnivore",
+      "predator",
+      "cold blooded"
+    ],
+    "behaviours": [
+      "climb tree",
+      "change colour to blend in"
+    ],
+    "physical": [
+      "long tongue",
+      "eyes that can move independently"
+    ],
+    "diet": [
+      "insects"
+    ]
+  },
+  {
+    "name": "Snake",
+    "types": [
+      "vertebrate",
+      "reptile",
+      "carnivore",
+      "predator",
+      "poisonous",
+      "cold blooded"
+    ],
+    "behaviours": [
+      "climb tree",
+      "hibernate"
+    ],
+    "physical": [
+      "no legs"
+    ],
+    "diet": [
+      "insects",
+      "eggs",
+      "small animals"
+    ]
+  },
+  {
+    "name": "Shark",
+    "types": [
+      "vertebrate",
+      "fish",
+      "carnivore",
+      "predator",
+      "large"
+    ],
+    "behaviours": [
+      "smell blood in water"
+    ],
+    "physical": [
+      "sharp teeth"
+    ],
+    "diet": [
+      "fish",
+      "seals"
+    ]
+  },
+  {
+    "name": "Penguin",
+    "types": [
+      "vertebrate",
+      "carnivore",
+      "bird",
+      "predator"
+    ],
+    "behaviours": [
+      "walk in a funny way",
+      "stay on the ground"
+    ],
+    "physical": [
+      "sharp teeth"
+    ],
+    "diet": [
+      "fish"
+    ]
+  },
+  {
+    "name": "Eagle",
+    "types": [
+      "vertebrate",
+      "bird",
+      "bird of prey",
+      "large"
+    ],
+    "behaviours": [
+      "carnivore",
+      "predator",
+      "flying"
+    ],
+    "physical": [
+      "wings",
+      "talon"
+    ],
+    "diet": [
+      "mouse",
+      "rat",
+      "rabbit"
+    ]
+  },
+  {
+    "name": "Hummingbird",
+    "types": [
+      "vertebrate",
+      "bird",
+      "bird of prey",
+      "small"
+    ],
+    "behaviours": [
+      "omnivore",
+      "flying"
+    ],
+    "physical": [
+      "wings"
+    ],
+    "diet": [
+      "nectar",
+      "insect"
+    ]
+  }
+]
