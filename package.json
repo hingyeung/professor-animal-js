@@ -11,7 +11,7 @@
   "scripts": {
     "test": "npm run test-unit",
     "test-unit": "mocha -R spec **/*.spec.js",
-    "package": "rm -rf dist/ && mkdir dist && cp app/*.js dist/ && cp -r node_modules dist/ && cd dist && zip -r lambda.zip *.js node_modules/"
+    "package": "rm -rf dist/ && mkdir dist && cp app/*.js dist/ && cp -r app/data dist/ && cp -r node_modules dist/ && cd dist && zip -r lambda.zip *"
   },
   "author": "",
   "license": "ISC"
