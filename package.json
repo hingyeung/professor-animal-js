@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "aws-sdk": "^2.111.0"
+  },
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^3.5.0"
@@ -11,7 +13,7 @@
   "scripts": {
     "test": "npm run test-unit",
     "test-unit": "mocha -R spec **/*.spec.js",
-    "package": "rm -rf dist/ && mkdir dist && cp app/*.js dist/ && cp -r app/data dist/ && cp -r node_modules dist/ && cd dist && zip -r lambda.zip *"
+    "package": "rm -rf dist/ && mkdir dist && cp app/*.js dist/ && cp app/*.json dist/ && cp -r app/data dist/ && cp -r node_modules dist/ && cd dist && zip -r lambda.zip *"
   },
   "author": "",
   "license": "ISC"
