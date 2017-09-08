@@ -11,7 +11,7 @@ function ApiAiResponse(id, timestamp, lang, responseResult, resultStatus, sessio
         result: responseResult,
         status: resultStatus,
         sessionId: sessionId
-    }
+    };
 }
 
 ApiAiResponse.fromApiAi = function (apiAiResponse) {

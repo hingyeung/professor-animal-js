@@ -22,7 +22,7 @@ function ApiAiResponseResult(source,
         metadata: metadata,
         fulfillment: fulfillment,
         score: score
-    }
+    };
 }
 
 ApiAiResponseResult.fromApiAi = function (result) {

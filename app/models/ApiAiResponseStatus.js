@@ -4,7 +4,7 @@ function ApiAiResponseStatus(code, errorType) {
     return {
         code: code,
         errorType: errorType
-    }
+    };
 }
 
 ApiAiResponseStatus.fromApiAi = function (code, errorType) {
