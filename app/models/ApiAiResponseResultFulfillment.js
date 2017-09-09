@@ -14,7 +14,7 @@ ApiAiResponseResultFulfillment.fromApiAi = function (fulfillment) {
     return new ApiAiResponseResultFulfillment(
         fulfillment.speech,
         _.map(fulfillment.messages, function (message) {
-            return ApiAiResponseResultFulfillmentMessage.fromApiAi(message)
+            return ApiAiResponseResultFulfillmentMessage.fromApiAi(message);
         })
     );
 };

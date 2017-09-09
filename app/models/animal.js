@@ -11,7 +11,7 @@ function Animal(name, behaviours, physical, types, diet) {
         physical: physical,
         types: types,
         diet: diet
-    }
+    };
 }
 
 module.exports = Animal;

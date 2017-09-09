@@ -1,8 +1,9 @@
 'use strict';
 
-const USER_SESSION_TABLE = "AnimalGenieUserSession";
-var AWS = require('aws-sdk');
-var docClient = new AWS.DynamoDB.DocumentClient({});
+const USER_SESSION_TABLE = "AnimalGenieUserSession",
+    AWS = require('aws-sdk'),
+    docClient = new AWS.DynamoDB.DocumentClient({});
+
 AWS.config.loadFromPath('../config.json');
 
 function DbService() {
@@ -17,13 +18,10 @@ DbService.prototype.getSession = function (id, callback) {
             TableName: USER_SESSION_TABLE
         }, function (err, data) {
             if (err) {
-                console.log("I got AN ERROR!");
                 console.error(err);
                 callback(err, null);
             } else {
-                console.log(data);
                 console.dir(data);
-                console.log("I got this from the database!!!");
                 callback(null, data);
             }
         });
