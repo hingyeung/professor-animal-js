@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.111.0"
+    "aws-sdk": "^2.111.0",
+    "lodash.filter": "^4.6.0",
+    "lodash.map": "^4.6.0",
+    "lodash.mapkeys": "^4.6.0",
+    "lodash.sortby": "^4.7.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -24,6 +28,7 @@
   "jshintConfig": {
     "node": true,
     "mocha": true,
-    "esversion": 6
+    "esversion": 6,
+    "expr": true
   }
 }
