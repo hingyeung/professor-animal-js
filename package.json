@@ -18,7 +18,7 @@
     "jshint": "jshint app/**/*.js",
     "test": "npm run test-unit",
     "test-unit": "mocha -R spec **/*.spec.js",
-    "package": "rm -rf dist/ && mkdir dist && cp app/*.js dist/ && cp app/*.json dist/ && cp -r app/data dist/ && cp -r node_modules dist/ && cd dist && zip -r lambda.zip *"
+    "package": "rm -rf dist/ && mkdir dist && cp -r app/* dist/ && cp -R node_modules dist/ && cd dist && zip -r lambda.zip *"
   },
   "author": "",
   "license": "ISC",

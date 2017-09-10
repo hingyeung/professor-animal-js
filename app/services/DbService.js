@@ -4,7 +4,7 @@ const USER_SESSION_TABLE = "AnimalGenieUserSession",
     AWS = require('aws-sdk'),
     docClient = new AWS.DynamoDB.DocumentClient({});
 
-AWS.config.loadFromPath('../config.json');
+AWS.config.loadFromPath('config.json');
 
 function DbService() {
 }
