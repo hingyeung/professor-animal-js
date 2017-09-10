@@ -1,9 +1,10 @@
 'use strict';
 
-function Question(field, possibleValues) {
+function Question(field, possibleValues, chosenValue) {
     return {
         field: field,
-        possibleValues: possibleValues
+        possibleValues: possibleValues,
+        chosenValue: chosenValue
     };
 }
 

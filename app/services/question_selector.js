@@ -1,6 +1,7 @@
 'use strict';
 
 const Question = require('../models/question'),
+    random = require('./random'),
     _ = require('lodash');
 
 let QuestionSelector = {
@@ -14,8 +15,8 @@ function nextQuestion(animals) {
 
     // build a frequency map for the current attribute (e.g. types)
     animals.forEach(function (animal) {
-        _.forEach(["types", "behaviours", "physical", "diet"], function(attributeType) {
-            if (! animal[attributeType]) {
+        _.forEach(["types", "behaviours", "physical", "diet"], function (attributeType) {
+            if (!animal[attributeType]) {
                 return;
             }
             buildAttributeCountMap(attibuteCountMapForAllAnimals, attributeType, animal[attributeType]);
@@ -28,9 +29,9 @@ function nextQuestion(animals) {
     // the resulting map attributesWithLowestFreq should contain a list of [{field, attr}] sorted by frequency
     // field e.g.: diet
     // attr e.g.: grass
-    let attributesWithLowestFreq = _.filter(attributeListSortedByFreq, function(attribute) {
+    let attributesWithLowestFreq = _.filter(attributeListSortedByFreq, function (attribute) {
         return attributeListSortedByFreq[0].freq === attribute.freq;
-    }).map(function(o) {
+    }).map(function (o) {
         return {field: o.field, attr: o.attr, freq: o.freq};
     });
 
@@ -40,12 +41,13 @@ function nextQuestion(animals) {
 function determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFreqFromAllFields) {
     // TODO: what if attributesWithLowestFreq is empty?
     let attributeWithLowestFreq = attributesWithLowestFreqFromAllFields[0];
-    let allAttributesForTheSameField = _.filter(attributesWithLowestFreqFromAllFields, function(o) {
+    let allAttributesForTheSameField = _.filter(attributesWithLowestFreqFromAllFields, function (o) {
         return o.field === attributeWithLowestFreq.field;
-    }).map(function(o) {
+    }).map(function (o) {
         return o.attr;
     });
-    return new Question(attributeWithLowestFreq.field, allAttributesForTheSameField);
+    // return new Question(attributeWithLowestFreq.field, allAttributesForTheSameField, allAttributesForTheSameField[0]);
+    return new Question(attributeWithLowestFreq.field, allAttributesForTheSameField, random.randomItemFromArray(allAttributesForTheSameField));
 }
 
 // attributeCountMap: map to be updated with attribute frequency for each attributeType
@@ -80,7 +82,7 @@ function sortAttributeValueByFreq(attibuteFreqMapForAllAnimals) {
     // map to list
     _.mapKeys(attibuteFreqMapForAllAnimals, function (attributeAndFreqMap, field) {
         // attributeWithFreqList.push({attr: key, freq: value});
-        _.mapKeys(attributeAndFreqMap, function(freq, attribute) {
+        _.mapKeys(attributeAndFreqMap, function (freq, attribute) {
             attributeWithFreqList.push({attr: attribute, freq: freq, field: field});
         });
     });

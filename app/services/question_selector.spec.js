@@ -1,7 +1,11 @@
 'use strict';
-const fs = require('fs');
-
-const QuestionSelector = require('./question_selector'),
+const mockRandom = {
+    randomItemFromArray: function (arr) {
+        return arr[0];
+    }
+};
+const proxyquire = require('proxyquire'),
+    QuestionSelector = proxyquire('./question_selector', {'./random': mockRandom}),
     should = require('chai').should();
 
 let templateAnimals;
@@ -40,6 +44,7 @@ describe('Question selector', function () {
             should.exist(nextQuestion);
             nextQuestion.field.should.equal(fieldToTest);
             nextQuestion.possibleValues.should.deep.equal(["v2", "v4", "v6"]);
+            nextQuestion.chosenValue.should.equal("v2");
         });
     });
 
@@ -50,6 +55,7 @@ describe('Question selector', function () {
             should.exist(nextQuestion);
             nextQuestion.field.should.equal(fieldToTest);
             nextQuestion.possibleValues.should.deep.equal(["v2", "v4", "v6"]);
+            nextQuestion.chosenValue.should.equal("v2");
         });
     });
 
@@ -59,6 +65,7 @@ describe('Question selector', function () {
         should.exist(nextQuestion);
         nextQuestion.field.should.equal("types");
         nextQuestion.possibleValues.should.deep.equal(["t1", "t2", "t3"]);
+        nextQuestion.chosenValue.should.equal("t1");
     });
 });
 
