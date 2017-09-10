@@ -14,7 +14,7 @@ function nextQuestion(animals) {
 
     // build a frequency map for the current attribute (e.g. types)
     animals.forEach(function (animal) {
-        _.forEach(["types", "behaviours", "physical"], function(attributeType) {
+        _.forEach(["types", "behaviours", "physical", "diet"], function(attributeType) {
             if (! animal[attributeType]) {
                 return;
             }

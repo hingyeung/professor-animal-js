@@ -32,32 +32,28 @@ describe('Question selector', function () {
         ];
     });
 
-    it('should return next question about "types" when only distinguish attributes are in "types"', function () {
-        let animals = buildTestAnimals("types");
-        let nextQuestion = QuestionSelector.nextQuestion(animals);
-        nextQuestion.should.not.to.be.null;
-        nextQuestion.field.should.equal("types");
-        nextQuestion.possibleValues.should.deep.equal(["v2", "v4", "v6"]);
+    ["types", "behaviours", "physical", "diet"].forEach(function (fieldToTest) {
+        it(`should return next question about "${fieldToTest}" when the "${fieldToTest}" is the only field all animals have`, function () {
+            let animals = buildTestAnimalsWithOnlyOneField(fieldToTest);
+            let nextQuestion = QuestionSelector.nextQuestion(animals);
+            should.exist(nextQuestion);
+            nextQuestion.field.should.equal(fieldToTest);
+            nextQuestion.possibleValues.should.deep.equal(["v2", "v4", "v6"]);
+        });
     });
 
-    it('should return next question about "behaviours" when only distinguish attributes are in "behaviours"', function () {
-        let animals = buildTestAnimals("behaviours");
-        let nextQuestion = QuestionSelector.nextQuestion(animals);
-        nextQuestion.should.not.to.be.null;
-        nextQuestion.field.should.equal("behaviours");
-        nextQuestion.possibleValues.should.deep.equal(["v2", "v4", "v6"]);
-    });
-
-    it('should return next question about "physical" when only distinguish attributes are in "physical"', function () {
-        let animals = buildTestAnimals("physical");
-        let nextQuestion = QuestionSelector.nextQuestion(animals);
-        nextQuestion.should.not.to.be.null;
-        nextQuestion.field.should.equal("physical");
-        nextQuestion.possibleValues.should.deep.equal(["v2", "v4", "v6"]);
+    ["types", "behaviours", "physical", "diet"].forEach(function (fieldToTest) {
+        it(`should return next question about "${fieldToTest}" when the "${fieldToTest}" is not the only field all animals have`, function () {
+            let animals = buildTestAnimalsWithAllFields(fieldToTest);
+            let nextQuestion = QuestionSelector.nextQuestion(animals);
+            should.exist(nextQuestion);
+            nextQuestion.field.should.equal(fieldToTest);
+            nextQuestion.possibleValues.should.deep.equal(["v2", "v4", "v6"]);
+        });
     });
 });
 
-function buildTestAnimals(field) {
+function buildTestAnimalsWithOnlyOneField(field) {
     return [
         {
             name: "A",
@@ -72,4 +68,21 @@ function buildTestAnimals(field) {
             [field]: ["v5", "v6", "v1"],
         }
     ];
+}
+
+function buildTestAnimalsWithAllFields(fieldToTest) {
+    const DISTINGUISHING_ATTRIBUTES = [["v1", "v2", "v3"], ["v3", "v4", "v5"], ["v5", "v6", "v1"]];
+    let animals = [];
+    ["A", "B", "C"].forEach(function (animalName, idx) {
+        let animal = {};
+        ["types", "diet", "behaviours", "physical"].forEach(function (field) {
+            if (field === fieldToTest) {
+                animal[field] = DISTINGUISHING_ATTRIBUTES[idx];
+            } else {
+                animal[field] = [field+"v1", field+"v2", field+"v2"];
+            }
+        });
+        animals.push(animal);
+    });
+    return animals;
 }
