@@ -1,4 +1,5 @@
 'use strict';
+const fs = require('fs');
 
 const QuestionSelector = require('./question_selector'),
     should = require('chai').should();
@@ -51,7 +52,34 @@ describe('Question selector', function () {
             nextQuestion.possibleValues.should.deep.equal(["v2", "v4", "v6"]);
         });
     });
+
+    it(`should return next question about "types" when all animals have the same attributes`, function () {
+        let animals = buildTestAnimalsWithSameValuesInFields();
+        let nextQuestion = QuestionSelector.nextQuestion(animals);
+        should.exist(nextQuestion);
+        nextQuestion.field.should.equal("types");
+        nextQuestion.possibleValues.should.deep.equal(["t1", "t2", "t3"]);
+    });
 });
+
+function buildTestAnimalsWithSameValuesInFields() {
+    return [
+        {
+            name: "A",
+            types: ["t1", "t2", "t3"],
+            behaviors: ["b1", "b2", "b3"],
+            diet: ["d1", "d2", "d3"],
+            physical: ["p1", "p2", "p3"]
+        },
+        {
+            name: "B",
+            types: ["t1", "t2", "t3"],
+            behaviors: ["b1", "b2", "b3"],
+            diet: ["d1", "d2", "d3"],
+            physical: ["p1", "p2", "p3"]
+        }
+    ];
+}
 
 function buildTestAnimalsWithOnlyOneField(field) {
     return [
@@ -79,7 +107,7 @@ function buildTestAnimalsWithAllFields(fieldToTest) {
             if (field === fieldToTest) {
                 animal[field] = DISTINGUISHING_ATTRIBUTES[idx];
             } else {
-                animal[field] = [field+"v1", field+"v2", field+"v2"];
+                animal[field] = [field + "v1", field + "v2", field + "v2"];
             }
         });
         animals.push(animal);
