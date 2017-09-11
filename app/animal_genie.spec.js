@@ -3,28 +3,90 @@
 const proxyquire = require('proxyquire').noCallThru(),
     should = require('chai').should(),
     UserSession = require('./models/UserSession'),
+    fs = require('fs'),
     sinon = require('sinon');
 
 describe('AnimalGenie', function () {
-    let AnimalGenie, animalGenie, allAnimalsSpy, mockDbService, saveSessionSpy, convertAnimalListToAnimalNameListStub;
+    let mockAnimalRepo, mockDbService, getSessionStub, AnimalGenie, animalGenie, nextQuestionSpy,
+        fullAnimalListFromFile, listOfAnimalsRestoredFromSession, convertAnimalNameListToAnimalListStub,
+        allAnimalsStub, saveSessionSpy, convertAnimalListToAnimalNameListStub, mockQuestionSelector;
 
     beforeEach(function () {
+        fullAnimalListFromFile = JSON.parse(fs.readFileSync('app/data/test-animals.json'));
+        listOfAnimalsRestoredFromSession = [
+            {
+                "name": "Lion",
+                "types": [
+                    "vertebrate",
+                    "mammal",
+                    "big cat",
+                    "large",
+                    "carnivore",
+                    "predator"
+                ],
+                "behaviours": [
+                    "hunt in a pack"
+                ],
+                "physical": [
+                    "mane"
+                ],
+                "diet": [
+                    "zebra",
+                    "buffalo",
+                    "wildebeest",
+                    "giraffes"
+                ]
+            }, {
+                "name": "Eagle",
+                "types": [
+                    "vertebrate",
+                    "bird",
+                    "bird of prey",
+                    "large"
+                ],
+                "behaviours": [
+                    "carnivore",
+                    "predator",
+                    "flying"
+                ],
+                "physical": [
+                    "wings",
+                    "talon"
+                ],
+                "diet": [
+                    "mouse",
+                    "rat",
+                    "rabbit"
+                ]
+            }
+        ];
+        getSessionStub = sinon.stub();
         saveSessionSpy = sinon.spy();
-        mockDbService = function() {
-            return {saveSession: saveSessionSpy};
-        };
-        allAnimalsSpy = sinon.spy();
-        convertAnimalListToAnimalNameListStub = sinon.stub().returns(['name1', 'name2']);
-        const mockAnimalRepo = function () {
-                return {
-                    allAnimals: allAnimalsSpy,
-                    convertAnimalListToAnimalNameList: convertAnimalListToAnimalNameListStub
-                };
+        nextQuestionSpy = sinon.spy();
+        mockDbService = function () {
+            return {
+                saveSession: saveSessionSpy,
+                getSession: getSessionStub.returns(new UserSession("123", ["Lion", "Eagle"]))
             };
+        };
+        allAnimalsStub = sinon.stub();
+        convertAnimalListToAnimalNameListStub = sinon.stub().returns(['name1', 'name2']);
+        convertAnimalNameListToAnimalListStub = sinon.stub().returns(listOfAnimalsRestoredFromSession);
+        mockAnimalRepo = function () {
+            return {
+                allAnimals: allAnimalsStub.returns(fullAnimalListFromFile),
+                convertAnimalListToAnimalNameList: convertAnimalListToAnimalNameListStub,
+                convertAnimalNameListToAnimalList: convertAnimalNameListToAnimalListStub
+            };
+        };
+        mockQuestionSelector = {
+            nextQuestion: nextQuestionSpy
+        };
 
         AnimalGenie = proxyquire('./animal_genie', {
             './services/animal_repo': mockAnimalRepo,
-            './services/DbService': mockDbService
+            './services/DbService': mockDbService,
+            './services/question_selector': mockQuestionSelector
         });
         animalGenie = new AnimalGenie();
     });
@@ -32,20 +94,43 @@ describe('AnimalGenie', function () {
     it('should read all animals from data file when "ReadyToPlay" is in Api.ai contexts', function () {
         let event = {sessionId: "123", result: {contexts: ["ReadyToPlay"]}};
         animalGenie.play(event);
-        allAnimalsSpy.called.should.equal(true);
+        allAnimalsStub.called.should.equal(true);
     });
 
     it('should not read all animals from data file when "ReadyToPlay" is not in Api.ai contexts', function () {
         let event = {sessionId: "123", result: {contexts: []}};
         animalGenie.play(event);
-        allAnimalsSpy.called.should.equal(false);
+        allAnimalsStub.called.should.equal(false);
     });
 
-    it('should create new session in DB when "ReadyToPlay" is in Api.ai contexts', function() {
+    it('should create new session in DB when "ReadyToPlay" is in Api.ai contexts', function () {
         let event = {sessionId: "123", result: {contexts: ["ReadyToPlay"]}};
         animalGenie.play(event);
-        mockDbService().saveSession.calledOnce.should.equal(true);
-        mockDbService().saveSession.calledWith(new UserSession("123",
+        saveSessionSpy.calledOnce.should.equal(true);
+        saveSessionSpy.calledWith(new UserSession("123",
             ["name1", "name2"])).should.equal(true);
+        getSessionStub.called.should.equal(false);
+    });
+
+    it('should get next question with QuestionSelector with full animal list from file when "ReadyToPlay" is in Api.ai contexts', function () {
+        let event = {sessionId: "123", result: {contexts: ["ReadyToPlay"]}};
+        animalGenie.play(event);
+        nextQuestionSpy.calledOnce.should.equal(true);
+        nextQuestionSpy.calledWith(fullAnimalListFromFile).should.equal(true);
+    });
+
+    it('should load existing session in DB when "ReadyToPlay" is not in Api.ai contexts', function () {
+        let event = {sessionId: "123", result: {contexts: []}};
+        animalGenie.play(event);
+        getSessionStub.calledOnce.should.equal(true);
+        getSessionStub.calledWith("123").should.equal(true);
+        saveSessionSpy.called.should.equal(false);
+    });
+
+    it('should get next question with QuestionSelector with animal list restored from session when "ReadyToPlay" is not in Api.ai contexts', function () {
+        let event = {sessionId: "123", result: {contexts: []}};
+        animalGenie.play(event);
+        nextQuestionSpy.calledOnce.should.equal(true);
+        nextQuestionSpy.calledWith(listOfAnimalsRestoredFromSession).should.equal(true);
     });
 });
