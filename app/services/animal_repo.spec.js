@@ -11,4 +11,11 @@ describe('AnimalRepo', function () {
             allAnimals[idx].name.should.equal(name, `Animal ${idx} is not ${name}`);
         });
     });
+
+    it('should convert animal list to animal name list', function() {
+        let animalRepo = new AnimalRepo('app/data/test-animals.json');
+        let allAnimals = animalRepo.allAnimals();
+        animalRepo.convertAnimalListToAnimalNameList(allAnimals).should.deep.equal(
+            ["Lion", "Elephant", "Chameleon", "Shark", "Penguin", "Eagle"]);
+    });
 });

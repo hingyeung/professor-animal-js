@@ -2,8 +2,11 @@
 
 var fs = require('fs'),
     _ = require('lodash'),
+    UserSession = require('./models/UserSession'),
     AnimalRepo = require('./services/animal_repo'),
     DbService = require('./services/DbService');
+
+const animalRepo = new AnimalRepo();
 
 exports.myHandler = function (event, context, callback) {
     // var contents = fs.readFileSync('./data/animals.json', 'utf8');
@@ -24,7 +27,9 @@ exports.myHandler = function (event, context, callback) {
 
     if (_.includes(event.result.contexts, 'ReadyToPlay')) {
         animalsToPlayWith = loadFullAnimalListFromFile();
-        console.dir(animalsToPlayWith);
+        let dbService = new DbService();
+        dbService.saveSession(new UserSession(event.sessionId,
+            animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith)));
     }
 
     // or
@@ -32,5 +37,5 @@ exports.myHandler = function (event, context, callback) {
 };
 
 function loadFullAnimalListFromFile() {
-    return (new AnimalRepo()).allAnimals();
+    return animalRepo.allAnimals();
 }

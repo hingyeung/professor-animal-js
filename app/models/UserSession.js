@@ -1,6 +1,8 @@
 "use strict";
 
-function UserSession(id) {
+function UserSession(id, animalNames) {
     this.id = id;
-    this.animals = ['a', 'b'];
+    this.animalNames = animalNames;
 }
+
+module.exports = UserSession;
