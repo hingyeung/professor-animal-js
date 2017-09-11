@@ -17,7 +17,7 @@
   "scripts": {
     "jshint": "jshint app/**/*.js",
     "test": "npm run test-unit",
-    "test-unit": "mocha -R spec **/*.spec.js",
+    "test-unit": "mocha -R spec './app/**/*.spec.js'",
     "package": "rm -rf dist/ && mkdir dist && cp -r app/* dist/ && cp -R node_modules dist/ && cd dist && zip -r lambda.zip *"
   },
   "author": "",
