@@ -16,10 +16,12 @@ exports.myHandler = function (event, context, callback) {
     // console.dir(context);
 
     let animalGenie = new AnimalGenie();
-    animalGenie.run(event);
+    animalGenie.play(event);
 
     console.dir(event);
     console.log("sessionId" + event.sessionId);
+
+    callback(null, "i think it is working.");
 
     // or
     // callback("some error type");

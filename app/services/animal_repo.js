@@ -1,10 +1,11 @@
 'use strict';
 
 const fs = require('fs'),
+    path = require('path'),
     _ = require('lodash');
 
 function AnimalRepo(datafile) {
-    this.datafile = !datafile ? 'data/animals.json' : datafile;
+    this.datafile = !datafile ? path.join(__dirname, '../data/animals.json') : datafile;
     this.animalsLoadedFromFile = JSON.parse(fs.readFileSync(this.datafile));
 }
 
