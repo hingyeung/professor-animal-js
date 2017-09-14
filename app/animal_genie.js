@@ -2,6 +2,7 @@
 
 let fs = require('fs'),
     _ = require('lodash'),
+    Context = require('./models/context'),
     UserSession = require('./models/UserSession'),
     AnimalRepo = require('./services/animal_repo'),
     QuestionSelector = require('./services/question_selector'),
@@ -24,12 +25,12 @@ AnimalGenie.prototype.play = function (event) {
             animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith));
         dbService.saveSession(userSession);
         nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
-        return ResponseToApiAi.fromQuestion(nextQuestion);
+        return ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]);
     } else {
         dbService.getSession(event.sessionId).then(function (userSession) {
             animalsToPlayWith = animalRepo.convertAnimalNameListToAnimalList(userSession.animalNames);
             nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
-            return ResponseToApiAi.fromQuestion(nextQuestion);
+            return ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]);
         });
     }
 };

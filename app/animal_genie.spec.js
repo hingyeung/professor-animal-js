@@ -4,13 +4,14 @@ const proxyquire = require('proxyquire').noCallThru(),
     should = require('chai').should(),
     UserSession = require('./models/UserSession'),
     sinonPromise = require('sinon-promise'),
+    Question = require('./models/question'),
     fs = require('fs'),
     sinon = require('sinon');
 
 describe('AnimalGenie', function () {
-    let mockAnimalRepo, mockDbService, getSessionStub, AnimalGenie, animalGenie, nextQuestionSpy, mockResponseToApiAi,
+    let mockAnimalRepo, mockDbService, getSessionStub, AnimalGenie, animalGenie, nextQuestionStub, mockResponseToApiAi,
         fullAnimalListFromFile, listOfAnimalsRestoredFromSession, convertAnimalNameListToAnimalListStub,
-        allAnimalsStub, saveSessionSpy, convertAnimalListToAnimalNameListStub, mockQuestionSelector;
+        allAnimalsStub, saveSessionSpy, convertAnimalListToAnimalNameListStub, mockQuestionSelector, nextQuestion;
 
     beforeEach(function () {
         sinonPromise(sinon);
@@ -64,7 +65,8 @@ describe('AnimalGenie', function () {
         ];
         getSessionStub = sinon.promise().resolves(new UserSession("123", ["Lion", "Eagle"]));
         saveSessionSpy = sinon.spy();
-        nextQuestionSpy = sinon.spy();
+        nextQuestion = new Question("types", ["A", "B"], "A");
+        nextQuestionStub = sinon.stub().returns(nextQuestion);
         mockDbService = function () {
             return {
                 saveSession: saveSessionSpy,
@@ -82,7 +84,7 @@ describe('AnimalGenie', function () {
             };
         };
         mockQuestionSelector = {
-            nextQuestion: nextQuestionSpy
+            nextQuestion: nextQuestionStub
         };
         mockResponseToApiAi = {
             fromQuestion: sinon.spy()
@@ -121,8 +123,8 @@ describe('AnimalGenie', function () {
     it('should get next question with QuestionSelector with full animal list from file when Api.ai action is not "startgame"', function () {
         let event = {sessionId: "123", result: {action: "startgame"}};
         animalGenie.play(event);
-        nextQuestionSpy.calledOnce.should.equal(true);
-        nextQuestionSpy.calledWith(fullAnimalListFromFile).should.equal(true);
+        nextQuestionStub.calledOnce.should.equal(true);
+        nextQuestionStub.calledWith(fullAnimalListFromFile).should.equal(true);
     });
 
     it('should load existing session in DB when Api.ai action is not "startgame"', function () {
@@ -136,13 +138,13 @@ describe('AnimalGenie', function () {
     it('should get next question with QuestionSelector with animal list restored from session when Api.ai action is not "startgame"', function () {
         let event = {sessionId: "123", result: {action: ''}};
         animalGenie.play(event);
-        nextQuestionSpy.calledOnce.should.equal(true);
-        nextQuestionSpy.calledWith(listOfAnimalsRestoredFromSession).should.equal(true);
+        nextQuestionStub.calledOnce.should.equal(true);
+        nextQuestionStub.calledWith(listOfAnimalsRestoredFromSession).should.equal(true);
     });
 
     it('should convert next question to Api.ai resposne', function () {
         let event = {sessionId: "123", result: {action: ''}};
         animalGenie.play(event);
-        mockResponseToApiAi.fromQuestion.called.should.equal(true);
+        mockResponseToApiAi.fromQuestion.calledWith(nextQuestion, [{name: "ingame", lifespan: 1}]).should.equal(true);
     });
 });
