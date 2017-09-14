@@ -111,7 +111,7 @@
       "vertebrate",
       "mammal",
       "herbivore",
-      "large",
+      "large animal",
       "cute animal"
     ],
     "behaviours": [
@@ -130,7 +130,7 @@
       "vertebrate",
       "mammal",
       "carnivore",
-      "large",
+      "large animal",
       "big cat",
       "predator"
     ],
@@ -153,7 +153,7 @@
       "reptile",
       "carnivore",
       "predator",
-      "cold blooded"
+      "cold blooded animal"
     ],
     "behaviours": [
       "climb tree",
@@ -174,8 +174,8 @@
       "reptile",
       "carnivore",
       "predator",
-      "poisonous",
-      "cold blooded"
+      "poisonous animal",
+      "cold blooded animal"
     ],
     "behaviours": [
       "climb tree",
@@ -258,7 +258,7 @@
       "vertebrate",
       "bird",
       "bird of prey",
-      "small"
+      "small animal"
     ],
     "behaviours": [
       "omnivore",

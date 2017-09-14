@@ -5,6 +5,7 @@ let fs = require('fs'),
     UserSession = require('./models/UserSession'),
     AnimalRepo = require('./services/animal_repo'),
     QuestionSelector = require('./services/question_selector'),
+    ResponseToApiAi = require('./models/response_to_api_ai'),
     DbService = require('./services/DbService');
 
 const animalRepo = new AnimalRepo();
@@ -17,7 +18,7 @@ AnimalGenie.prototype.play = function (event) {
     let animalsToPlayWith = [], userSession, nextQuestion,
         dbService = new DbService();
 
-    if (_.includes(event.result.contexts, 'ReadyToPlay')) {
+    if (event.result.action === 'startgame') {
         animalsToPlayWith = loadFullAnimalListFromFile();
         userSession = new UserSession(event.sessionId,
             animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith));
@@ -27,6 +28,7 @@ AnimalGenie.prototype.play = function (event) {
         animalsToPlayWith = animalRepo.convertAnimalNameListToAnimalList(userSession.animalNames);
     }
     nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
+    return ResponseToApiAi.fromQuestion(nextQuestion);
 };
 
 function loadFullAnimalListFromFile() {

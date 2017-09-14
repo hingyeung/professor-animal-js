@@ -20,7 +20,8 @@
     "test": "npm run test-unit",
     "test-unit": "mocha -R spec './app/**/*.spec.js'",
     "package": "rm -rf dist/ && mkdir dist && cp -r app/* dist/ && cp -R node_modules dist/ && cd dist && zip -r lambda.zip *",
-    "run-local": "cd app && lambda-local -l index.js -h myHandler -e data/initial_request.js"
+    "run-local-initial": "cd app && lambda-local -l index.js -h myHandler -e data/initial_request.js",
+    "run-local-followup": "cd app && lambda-local -l index.js -h myHandler -e data/followup_request.js"
   },
   "author": "",
   "license": "ISC",

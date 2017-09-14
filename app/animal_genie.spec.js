@@ -7,7 +7,7 @@ const proxyquire = require('proxyquire').noCallThru(),
     sinon = require('sinon');
 
 describe('AnimalGenie', function () {
-    let mockAnimalRepo, mockDbService, getSessionStub, AnimalGenie, animalGenie, nextQuestionSpy,
+    let mockAnimalRepo, mockDbService, getSessionStub, AnimalGenie, animalGenie, nextQuestionSpy, mockResponseToApiAi,
         fullAnimalListFromFile, listOfAnimalsRestoredFromSession, convertAnimalNameListToAnimalListStub,
         allAnimalsStub, saveSessionSpy, convertAnimalListToAnimalNameListStub, mockQuestionSelector;
 
@@ -82,29 +82,33 @@ describe('AnimalGenie', function () {
         mockQuestionSelector = {
             nextQuestion: nextQuestionSpy
         };
+        mockResponseToApiAi = {
+            fromQuestion: sinon.spy()
+        };
 
         AnimalGenie = proxyquire('./animal_genie', {
             './services/animal_repo': mockAnimalRepo,
             './services/DbService': mockDbService,
-            './services/question_selector': mockQuestionSelector
+            './services/question_selector': mockQuestionSelector,
+            './models/response_to_api_ai': mockResponseToApiAi
         });
         animalGenie = new AnimalGenie();
     });
 
-    it('should read all animals from data file when "ReadyToPlay" is in Api.ai contexts', function () {
-        let event = {sessionId: "123", result: {contexts: ["ReadyToPlay"]}};
+    it('should read all animals from data file when Api.ai action is "startgame"', function () {
+        let event = {sessionId: "123", result: {action: "startgame"}};
         animalGenie.play(event);
         allAnimalsStub.called.should.equal(true);
     });
 
-    it('should not read all animals from data file when "ReadyToPlay" is not in Api.ai contexts', function () {
-        let event = {sessionId: "123", result: {contexts: []}};
+    it('should not read all animals from data file Api.ai action is not "startgame"', function () {
+        let event = {sessionId: "123", result: {action: ''}};
         animalGenie.play(event);
         allAnimalsStub.called.should.equal(false);
     });
 
-    it('should create new session in DB when "ReadyToPlay" is in Api.ai contexts', function () {
-        let event = {sessionId: "123", result: {contexts: ["ReadyToPlay"]}};
+    it('should create new session in DB when Api.ai action is "startgame"', function () {
+        let event = {sessionId: "123", result: {action: "startgame"}};
         animalGenie.play(event);
         saveSessionSpy.calledOnce.should.equal(true);
         saveSessionSpy.calledWith(new UserSession("123",
@@ -112,15 +116,15 @@ describe('AnimalGenie', function () {
         getSessionStub.called.should.equal(false);
     });
 
-    it('should get next question with QuestionSelector with full animal list from file when "ReadyToPlay" is in Api.ai contexts', function () {
-        let event = {sessionId: "123", result: {contexts: ["ReadyToPlay"]}};
+    it('should get next question with QuestionSelector with full animal list from file when Api.ai action is not "startgame"', function () {
+        let event = {sessionId: "123", result: {action: "startgame"}};
         animalGenie.play(event);
         nextQuestionSpy.calledOnce.should.equal(true);
         nextQuestionSpy.calledWith(fullAnimalListFromFile).should.equal(true);
     });
 
-    it('should load existing session in DB when "ReadyToPlay" is not in Api.ai contexts', function () {
-        let event = {sessionId: "123", result: {contexts: []}};
+    it('should load existing session in DB when Api.ai action is not "startgame"', function () {
+        let event = {sessionId: "123", result: {action: ''}};
         animalGenie.play(event);
         getSessionStub.calledOnce.should.equal(true);
         getSessionStub.calledWith("123").should.equal(true);
@@ -128,9 +132,14 @@ describe('AnimalGenie', function () {
     });
 
     it('should get next question with QuestionSelector with animal list restored from session when "ReadyToPlay" is not in Api.ai contexts', function () {
-        let event = {sessionId: "123", result: {contexts: []}};
+        let event = {sessionId: "123", result: {action: ''}};
         animalGenie.play(event);
         nextQuestionSpy.calledOnce.should.equal(true);
         nextQuestionSpy.calledWith(listOfAnimalsRestoredFromSession).should.equal(true);
+    });
+    it('should convert next question to Api.ai resposne', function () {
+        let event = {sessionId: "123", result: {action: ''}};
+        animalGenie.play(event);
+        mockResponseToApiAi.fromQuestion.called.should.equal(true);
     });
 });
