@@ -23,12 +23,15 @@ AnimalGenie.prototype.play = function (event) {
         userSession = new UserSession(event.sessionId,
             animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith));
         dbService.saveSession(userSession);
+        nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
+        return ResponseToApiAi.fromQuestion(nextQuestion);
     } else {
-        userSession = dbService.getSession(event.sessionId);
-        animalsToPlayWith = animalRepo.convertAnimalNameListToAnimalList(userSession.animalNames);
+        dbService.getSession(event.sessionId).then(function (userSession) {
+            animalsToPlayWith = animalRepo.convertAnimalNameListToAnimalList(userSession.animalNames);
+            nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
+            return ResponseToApiAi.fromQuestion(nextQuestion);
+        });
     }
-    nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
-    return ResponseToApiAi.fromQuestion(nextQuestion);
 };
 
 function loadFullAnimalListFromFile() {

@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.111.0",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "q": "^1.5.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -13,7 +14,8 @@
     "lambda-local": "^1.4.2",
     "mocha": "^3.5.0",
     "proxyquire": "^1.8.0",
-    "sinon": "^3.2.1"
+    "sinon": "^3.2.1",
+    "sinon-promise": "^0.1.3"
   },
   "scripts": {
     "jshint": "jshint app/**/*.js",

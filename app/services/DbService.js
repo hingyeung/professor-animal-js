@@ -2,6 +2,7 @@
 
 const USER_SESSION_TABLE = "AnimalGenieUserSession",
     AWS = require('aws-sdk'),
+    Q = require('q'),
     path = require('path');
 
 let docClient;
@@ -12,6 +13,7 @@ function DbService() {
 }
 
 DbService.prototype.getSession = function (id, callback) {
+    let deferred = Q.defer();
     docClient.get(
         {
             Key: {
@@ -20,26 +22,31 @@ DbService.prototype.getSession = function (id, callback) {
             TableName: USER_SESSION_TABLE
         }, function (err, data) {
             if (err) {
-                console.error(err);
-                callback(err, null);
+                console.log("error", err);
+                deferred.reject(new Error(err));
             } else {
                 console.dir(data);
-                callback(null, data);
+                deferred.resolve(data);
             }
         });
+    return deferred.promise;
 };
 
 DbService.prototype.saveSession = function (userSession) {
+    let deferred = Q.defer();
     docClient.put({
         TableName: USER_SESSION_TABLE,
         Item: userSession
     }, function (err, data) {
         if (err) {
             console.log("error", err);
+            deferred.reject(new Error(err));
         } else {
             console.log("success", data);
+            deferred.resolve(data);
         }
     });
+    return deferred.promise;
 };
 
 

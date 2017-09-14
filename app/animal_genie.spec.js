@@ -3,6 +3,7 @@
 const proxyquire = require('proxyquire').noCallThru(),
     should = require('chai').should(),
     UserSession = require('./models/UserSession'),
+    sinonPromise = require('sinon-promise'),
     fs = require('fs'),
     sinon = require('sinon');
 
@@ -12,6 +13,7 @@ describe('AnimalGenie', function () {
         allAnimalsStub, saveSessionSpy, convertAnimalListToAnimalNameListStub, mockQuestionSelector;
 
     beforeEach(function () {
+        sinonPromise(sinon);
         fullAnimalListFromFile = JSON.parse(fs.readFileSync('app/data/test-animals.json'));
         listOfAnimalsRestoredFromSession = [
             {
@@ -60,13 +62,13 @@ describe('AnimalGenie', function () {
                 ]
             }
         ];
-        getSessionStub = sinon.stub();
+        getSessionStub = sinon.promise().resolves(new UserSession("123", ["Lion", "Eagle"]));
         saveSessionSpy = sinon.spy();
         nextQuestionSpy = sinon.spy();
         mockDbService = function () {
             return {
                 saveSession: saveSessionSpy,
-                getSession: getSessionStub.returns(new UserSession("123", ["Lion", "Eagle"]))
+                getSession: getSessionStub
             };
         };
         allAnimalsStub = sinon.stub();
@@ -131,12 +133,13 @@ describe('AnimalGenie', function () {
         saveSessionSpy.called.should.equal(false);
     });
 
-    it('should get next question with QuestionSelector with animal list restored from session when "ReadyToPlay" is not in Api.ai contexts', function () {
+    it('should get next question with QuestionSelector with animal list restored from session when Api.ai action is not "startgame"', function () {
         let event = {sessionId: "123", result: {action: ''}};
         animalGenie.play(event);
         nextQuestionSpy.calledOnce.should.equal(true);
         nextQuestionSpy.calledWith(listOfAnimalsRestoredFromSession).should.equal(true);
     });
+
     it('should convert next question to Api.ai resposne', function () {
         let event = {sessionId: "123", result: {action: ''}};
         animalGenie.play(event);
