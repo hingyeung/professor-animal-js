@@ -12,12 +12,12 @@ function DbService() {
     docClient = new AWS.DynamoDB.DocumentClient({});
 }
 
-DbService.prototype.getSession = function (id, callback) {
+DbService.prototype.getSession = function (id) {
     let deferred = Q.defer();
     docClient.get(
         {
             Key: {
-                "id": "123"
+                "id": id
             },
             TableName: USER_SESSION_TABLE
         }, function (err, data) {
@@ -25,8 +25,8 @@ DbService.prototype.getSession = function (id, callback) {
                 console.log("database error", err);
                 deferred.reject(new Error(err));
             } else {
-                console.dir(data);
-                deferred.resolve(data);
+                console.dir(data.Item);
+                deferred.resolve(data.Item);
             }
         });
     return deferred.promise;

@@ -19,7 +19,7 @@ AnimalRepo.prototype.convertAnimalListToAnimalNameList = function (animalList) {
     });
 };
 
-AnimalRepo.prototype.convertAnimalNameListToAnimalList = function(animalNameList) {
+AnimalRepo.prototype.convertAnimalNameListToAnimalList = function (animalNameList) {
     let animalList = [];
     this.animalsLoadedFromFile.forEach(function (animal) {
         if (_.includes(animalNameList, animal.name)) {

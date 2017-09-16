@@ -35,6 +35,7 @@ AnimalGenie.prototype.play = function (event, callback) {
             let answer = event.result.parameters.answer;
             animalsToPlayWith = animalRepo.convertAnimalNameListToAnimalList(userSession.animalNames);
             // filter animalsToPlayWith before determining the next question
+            // TODO userSession.field and userSession.chosenValue are null before inital saveSession() didn't populate them in DB
             animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
             nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
             callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));

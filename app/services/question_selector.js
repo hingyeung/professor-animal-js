@@ -18,7 +18,7 @@ function nextQuestion(animals) {
             if (!animal[attributeType]) {
                 return;
             }
-            buildAttributeCountMap(attibuteCountMapForAllAnimals, attributeType, animal[attributeType]);
+            updateAttributeCountMap(attibuteCountMapForAllAnimals, attributeType, animal[attributeType]);
         });
     });
 
@@ -52,7 +52,7 @@ function determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFre
 // attributeCountMap: map to be updated with attribute frequency for each attributeType
 // attributeType: type of attribute in which values in attributeValueArray belong to
 // attributeValueArray: a list of attribute values of type attributeType
-function buildAttributeCountMap(attributeCountMap, attributeType, attributeValueArray) {
+function updateAttributeCountMap(attributeCountMap, attributeType, attributeValueArray) {
     attributeValueArray.forEach(function (value) {
         let currentFreq = _.get(attributeCountMap, [attributeType, value], 0);
         _.set(attributeCountMap, [attributeType, value], currentFreq + 1);
