@@ -17,8 +17,7 @@ exports.myHandler = function (event, context, callback) {
     console.dir(context);
 
     let animalGenie = new AnimalGenie();
-    let responseToApiAi = animalGenie.play(event);
-    callback(null, responseToApiAi);
+    animalGenie.play(event, callback);
 
     // or
     // callback("some error type");

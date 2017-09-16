@@ -22,7 +22,7 @@ DbService.prototype.getSession = function (id, callback) {
             TableName: USER_SESSION_TABLE
         }, function (err, data) {
             if (err) {
-                console.log("error", err);
+                console.log("database error", err);
                 deferred.reject(new Error(err));
             } else {
                 console.dir(data);
@@ -39,7 +39,7 @@ DbService.prototype.saveSession = function (userSession) {
         Item: userSession
     }, function (err, data) {
         if (err) {
-            console.log("error", err);
+            console.log("database error", err);
             deferred.reject(new Error(err));
         } else {
             console.log("success", data);

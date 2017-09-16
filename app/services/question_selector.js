@@ -10,7 +10,6 @@ let QuestionSelector = {
 
 
 function nextQuestion(animals) {
-    let types = animals.types;
     let attibuteCountMapForAllAnimals = {};
 
     // build a frequency map for the current attribute (e.g. types)
@@ -46,7 +45,7 @@ function determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFre
     }).map(function (o) {
         return o.attr;
     });
-    // return new Question(attributeWithLowestFreq.field, allAttributesForTheSameField, allAttributesForTheSameField[0]);
+
     return new Question(attributeWithLowestFreq.field, allAttributesForTheSameField, random.randomItemFromArray(allAttributesForTheSameField));
 }
 

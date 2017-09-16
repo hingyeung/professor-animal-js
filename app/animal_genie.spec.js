@@ -5,17 +5,20 @@ const proxyquire = require('proxyquire').noCallThru(),
     UserSession = require('./models/UserSession'),
     sinonPromise = require('sinon-promise'),
     Question = require('./models/question'),
+    ResponseToApiAi = require('./models/response_to_api_ai'),
     fs = require('fs'),
     sinon = require('sinon');
 
 describe('AnimalGenie', function () {
     let mockAnimalRepo, mockDbService, getSessionStub, AnimalGenie, animalGenie, nextQuestionStub, mockResponseToApiAi,
         fullAnimalListFromFile, listOfAnimalsRestoredFromSession, convertAnimalNameListToAnimalListStub,
-        allAnimalsStub, saveSessionSpy, convertAnimalListToAnimalNameListStub, mockQuestionSelector, nextQuestion,
-        userSession, filterStub, mockAnimalFilter;
+        allAnimalsStub, saveSessionStub, convertAnimalListToAnimalNameListStub, mockQuestionSelector, nextQuestion,
+        userSession, filterStub, mockAnimalFilter, callbackSpy, responseToApiAi;
 
     beforeEach(function () {
         sinonPromise(sinon);
+        responseToApiAi = ResponseToApiAi.fromQuestion(new Question("question"), []);
+        callbackSpy = sinon.spy();
         userSession = new UserSession("123", ["Lion", "Eagle"]);
         fullAnimalListFromFile = JSON.parse(fs.readFileSync('app/data/test-animals.json'));
         listOfAnimalsRestoredFromSession = [
@@ -66,14 +69,14 @@ describe('AnimalGenie', function () {
             }
         ];
         getSessionStub = sinon.promise().resolves(userSession);
-        saveSessionSpy = sinon.spy();
+        saveSessionStub = sinon.promise().resolves(userSession);
         nextQuestion = new Question("types", ["A", "B"], "A");
         nextQuestionStub = sinon.stub().returns(nextQuestion);
         filterStub = sinon.stub().returns(listOfAnimalsRestoredFromSession);
 
         mockDbService = function () {
             return {
-                saveSession: saveSessionSpy,
+                saveSession: saveSessionStub,
                 getSession: getSessionStub
             };
         };
@@ -91,7 +94,7 @@ describe('AnimalGenie', function () {
             nextQuestion: nextQuestionStub
         };
         mockResponseToApiAi = {
-            fromQuestion: sinon.spy()
+            fromQuestion: sinon.stub().returns(responseToApiAi)
         };
         mockAnimalFilter = {
             filter: filterStub
@@ -107,64 +110,70 @@ describe('AnimalGenie', function () {
         animalGenie = new AnimalGenie();
     });
 
+    it('shouild call callback', function () {
+        let event = createEvent("123", "startgame", "yes");
+        animalGenie.play(event, callbackSpy);
+        callbackSpy.calledWith(null, responseToApiAi).should.equal(true);
+    });
+
     it('should read all animals from data file when Api.ai action is "startgame"', function () {
         let event = createEvent("123", "startgame", "yes");
-        animalGenie.play(event);
+        animalGenie.play(event, callbackSpy);
         allAnimalsStub.called.should.equal(true);
     });
 
     it('should not read all animals from data file Api.ai action is "answer_question', function () {
         let event = createEvent("123", "answer_question", "yes");
-        animalGenie.play(event);
+        animalGenie.play(event, callbackSpy);
         allAnimalsStub.called.should.equal(false);
     });
 
     it('should create new session in DB when Api.ai action is "startgame"', function () {
         let event = createEvent("123", "startgame", "yes");
-        animalGenie.play(event);
-        saveSessionSpy.calledOnce.should.equal(true);
-        saveSessionSpy.calledWith(new UserSession("123",
+        animalGenie.play(event, callbackSpy);
+        saveSessionStub.calledOnce.should.equal(true);
+        saveSessionStub.calledWith(new UserSession("123",
             ["name1", "name2"])).should.equal(true);
         getSessionStub.called.should.equal(false);
     });
 
     it('should get next question with QuestionSelector with full animal list from file when Api.ai action is "startgame"', function () {
         let event = createEvent("123", "startgame", "yes");
-        animalGenie.play(event);
+        animalGenie.play(event, callbackSpy);
         nextQuestionStub.calledOnce.should.equal(true);
         nextQuestionStub.calledWith(fullAnimalListFromFile).should.equal(true);
     });
 
     it('should load existing session in DB when Api.ai action is "answer_question"', function () {
         let event = createEvent("123", "answer_question", "yes");
-        animalGenie.play(event);
+        animalGenie.play(event, callbackSpy);
         getSessionStub.calledOnce.should.equal(true);
         getSessionStub.calledWith("123").should.equal(true);
-        saveSessionSpy.called.should.equal(false);
+        saveSessionStub.called.should.equal(false);
     });
 
     it('should get next question with QuestionSelector with animal list restored from session when Api.ai action is "answer_question"', function () {
         let event = createEvent("123", "answer_question", "yes");
-        animalGenie.play(event);
+        animalGenie.play(event, callbackSpy);
         nextQuestionStub.calledOnce.should.equal(true);
         nextQuestionStub.calledWith(listOfAnimalsRestoredFromSession).should.equal(true);
     });
 
     it('should convert next question to Api.ai resposne', function () {
         let event = createEvent("123", "answer_question", "yes");
-        animalGenie.play(event);
+        animalGenie.play(event, callbackSpy);
         mockResponseToApiAi.fromQuestion.calledWith(nextQuestion, [{name: "ingame", lifespan: 1}]).should.equal(true);
     });
 
     it('should use AnimalFilter to filter out unmatched animal when user answer is "yes"', function () {
         let event = createEvent("123", "answer_question", "yes");
-        animalGenie.play(event);
+        animalGenie.play(event, callbackSpy);
         filterStub.calledWith(listOfAnimalsRestoredFromSession, true, userSession.field, userSession.chosenValue).should.equal(true);
     });
 
     it('should use AnimalFilter to filter out unmatched animal when user answer is "no"', function () {
         let event = createEvent("123", "answer_question", "no");
-        animalGenie.play(event);
+        animalGenie.play(event, callbackSpy);
         filterStub.calledWith(listOfAnimalsRestoredFromSession, false, userSession.field, userSession.chosenValue).should.equal(true);
     });
 });
@@ -173,10 +182,10 @@ function createEvent(sessionId, action, answer) {
     return {
         sessionId: sessionId,
         result: {
-            action: action
-        },
-        parameters: {
-            answer: answer
+            action: action,
+            parameters: {
+                answer: answer
+            }
         }
     };
 }

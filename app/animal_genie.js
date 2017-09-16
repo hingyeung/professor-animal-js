@@ -16,7 +16,7 @@ function AnimalGenie() {
 
 }
 
-AnimalGenie.prototype.play = function (event) {
+AnimalGenie.prototype.play = function (event, callback) {
     let animalsToPlayWith = [], userSession, nextQuestion,
         dbService = new DbService();
 
@@ -24,23 +24,36 @@ AnimalGenie.prototype.play = function (event) {
         animalsToPlayWith = loadFullAnimalListFromFile();
         userSession = new UserSession(event.sessionId,
             animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith));
-        dbService.saveSession(userSession);
-        nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
-        return ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]);
+        dbService.saveSession(userSession).then(function () {
+            nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
+            callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));
+        }).catch(function (err) {
+            callback(err, buildErrorResponseToApiAi(err));
+        }).done();
     } else if (event.result.action === "answer_question") {
         dbService.getSession(event.sessionId).then(function (userSession) {
-            let answer = event.parameters.answer;
+            let answer = event.result.parameters.answer;
             animalsToPlayWith = animalRepo.convertAnimalNameListToAnimalList(userSession.animalNames);
             // filter animalsToPlayWith before determining the next question
             animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
             nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
-            return ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]);
-        });
+            callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));
+        }).catch(function (err) {
+            callback(err, buildErrorResponseToApiAi(err));
+        }).done();
+    } else {
+        callback("Unknown action: " + event.result.action, buildErrorResponseToApiAi(null));
     }
 };
 
 function loadFullAnimalListFromFile() {
     return animalRepo.allAnimals();
+}
+
+// TODO return error and reset the game
+function buildErrorResponseToApiAi(err) {
+    console.log('ERROR', err);
+    return null;
 }
 
 module.exports = AnimalGenie;
