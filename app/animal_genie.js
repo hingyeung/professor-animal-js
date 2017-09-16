@@ -2,6 +2,7 @@
 
 let fs = require('fs'),
     _ = require('lodash'),
+    AnimalFilter = require('./services/animal_filter'),
     Context = require('./models/context'),
     UserSession = require('./models/UserSession'),
     AnimalRepo = require('./services/animal_repo'),
@@ -26,9 +27,12 @@ AnimalGenie.prototype.play = function (event) {
         dbService.saveSession(userSession);
         nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
         return ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]);
-    } else {
+    } else if (event.result.action === "answer_question") {
         dbService.getSession(event.sessionId).then(function (userSession) {
+            let answer = event.parameters.answer;
             animalsToPlayWith = animalRepo.convertAnimalNameListToAnimalList(userSession.animalNames);
+            // filter animalsToPlayWith before determining the next question
+            animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
             nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
             return ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]);
         });

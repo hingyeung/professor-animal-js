@@ -10,9 +10,9 @@ module.exports = {
         "parameters": {
             "city": "Rome",
             "name": "Ana",
-            "answer": "no"
+            "answer": "yes"
         },
-        "contexts": [],
+        "contexts": [{"name": "ingame", "lifespan": 1}],
         "resolvedQuery": "my name is Ana and I live in Rome",
         "source": "agent",
         "score": 1.0,
@@ -27,7 +27,7 @@ module.exports = {
             "speech": "Hi Ana! Nice to meet you!"
         },
         "actionIncomplete": false,
-        "action": "greetings",
+        "action": "answer_question",
         "metadata": {
             "intentId": "9f41ef7c-82fa-42a7-9a30-49a93e2c14d0",
             "webhookForSlotFillingUsed": "false",
