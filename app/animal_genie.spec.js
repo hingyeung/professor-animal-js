@@ -19,7 +19,7 @@ describe('AnimalGenie', function () {
         sinonPromise(sinon);
         responseToApiAi = ResponseToApiAi.fromQuestion(new Question("question"), []);
         callbackSpy = sinon.spy();
-        userSession = new UserSession("123", ["Lion", "Eagle"]);
+        userSession = new UserSession("123", ["Lion", "Eagle"], "types", "A");
         fullAnimalListFromFile = JSON.parse(fs.readFileSync('app/data/test-animals.json'));
         listOfAnimalsRestoredFromSession = [
             {
@@ -133,7 +133,7 @@ describe('AnimalGenie', function () {
         animalGenie.play(event, callbackSpy);
         saveSessionStub.calledOnce.should.equal(true);
         saveSessionStub.calledWith(new UserSession("123",
-            ["name1", "name2"])).should.equal(true);
+            ["name1", "name2"], "types", "A")).should.equal(true);
         getSessionStub.called.should.equal(false);
     });
 
