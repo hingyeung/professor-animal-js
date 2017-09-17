@@ -39,7 +39,8 @@ function nextQuestion(animals) {
 
 function determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFreqFromAllFields) {
     // TODO: what if attributesWithLowestFreq is empty?
-    let attributeWithLowestFreq = attributesWithLowestFreqFromAllFields[0];
+    // let attributeWithLowestFreq = attributesWithLowestFreqFromAllFields[0];
+    let attributeWithLowestFreq = random.randomItemFromArray(attributesWithLowestFreqFromAllFields);
     let allAttributesForTheSameField = _.filter(attributesWithLowestFreqFromAllFields, function (o) {
         return o.field === attributeWithLowestFreq.field;
     }).map(function (o) {

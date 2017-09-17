@@ -106,6 +106,28 @@
     ]
   },
   {
+    "name": "Brown Bear",
+    "types": [
+      "vertebrate",
+      "mammal",
+      "omnivore",
+      "large animal"
+    ],
+    "behaviours": [
+      "hibernate in winter",
+      "live in caves"
+    ],
+    "physical": [
+      "long fur",
+      "sharp claws"
+    ],
+    "diet": [
+      "fish",
+      "fruit",
+      "small animals"
+    ]
+  },
+  {
     "name": "Panda",
     "types": [
       "vertebrate",
@@ -179,7 +201,7 @@
     ],
     "behaviours": [
       "climb tree",
-      "hibernate"
+      "hibernate in winter"
     ],
     "physical": [
       "no legs"
@@ -235,7 +257,7 @@
       "vertebrate",
       "bird",
       "bird of prey",
-      "large"
+      "large bird"
     ],
     "behaviours": [
       "carnivore",

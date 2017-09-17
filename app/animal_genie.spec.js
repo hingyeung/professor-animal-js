@@ -70,7 +70,7 @@ describe('AnimalGenie', function () {
         ];
         getSessionStub = sinon.promise().resolves(userSession);
         saveSessionStub = sinon.promise().resolves(userSession);
-        nextQuestion = new Question("types", ["A", "B"], "A");
+        nextQuestion = new Question("diet", ["A", "B"], "A");
         nextQuestionStub = sinon.stub().returns(nextQuestion);
         filterStub = sinon.stub().returns(listOfAnimalsRestoredFromSession);
 
@@ -133,7 +133,7 @@ describe('AnimalGenie', function () {
         animalGenie.play(event, callbackSpy);
         saveSessionStub.calledOnce.should.equal(true);
         saveSessionStub.calledWith(new UserSession("123",
-            ["name1", "name2"], "types", "A")).should.equal(true);
+            ["name1", "name2"], "diet", "A")).should.equal(true);
         getSessionStub.called.should.equal(false);
     });
 
@@ -149,7 +149,12 @@ describe('AnimalGenie', function () {
         animalGenie.play(event, callbackSpy);
         getSessionStub.calledOnce.should.equal(true);
         getSessionStub.calledWith("123").should.equal(true);
-        saveSessionStub.called.should.equal(false);
+    });
+
+    it('should save updated session to DB when Api.ai action is "answer_question"', function () {
+        let event = createEvent("123", "answer_question", "yes");
+        animalGenie.play(event, callbackSpy);
+        saveSessionStub.calledWith(new UserSession("123", ["name1", "name2"], "diet", "A")).should.equal(true);
     });
 
     it('should get next question with QuestionSelector with animal list restored from session when Api.ai action is "answer_question"', function () {
@@ -159,22 +164,31 @@ describe('AnimalGenie', function () {
         nextQuestionStub.calledWith(listOfAnimalsRestoredFromSession).should.equal(true);
     });
 
-    it('should convert next question to Api.ai resposne', function () {
+    it('should convert next question to Api.ai resposne', function (done) {
         let event = createEvent("123", "answer_question", "yes");
-        animalGenie.play(event, callbackSpy);
-        mockResponseToApiAi.fromQuestion.calledWith(nextQuestion, [{name: "ingame", lifespan: 1}]).should.equal(true);
+        animalGenie.play(event, function () {
+            mockResponseToApiAi.fromQuestion.calledWith(nextQuestion, [{
+                name: "ingame",
+                lifespan: 1
+            }]).should.equal(true);
+            done();
+        });
     });
 
-    it('should use AnimalFilter to filter out unmatched animal when user answer is "yes"', function () {
+    it('should use AnimalFilter to filter out unmatched animal when user answer is "yes"', function (done) {
         let event = createEvent("123", "answer_question", "yes");
-        animalGenie.play(event, callbackSpy);
-        filterStub.calledWith(listOfAnimalsRestoredFromSession, true, userSession.field, userSession.chosenValue).should.equal(true);
+        animalGenie.play(event, function () {
+            filterStub.calledWith(listOfAnimalsRestoredFromSession, true, "types", userSession.chosenValue).should.equal(true);
+            done();
+        });
     });
 
-    it('should use AnimalFilter to filter out unmatched animal when user answer is "no"', function () {
+    it('should use AnimalFilter to filter out unmatched animal when user answer is "no"', function (done) {
         let event = createEvent("123", "answer_question", "no");
-        animalGenie.play(event, callbackSpy);
-        filterStub.calledWith(listOfAnimalsRestoredFromSession, false, userSession.field, userSession.chosenValue).should.equal(true);
+        animalGenie.play(event, function () {
+            filterStub.calledWith(listOfAnimalsRestoredFromSession, false, "types", userSession.chosenValue).should.equal(true);
+            done();
+        });
     });
 });
 

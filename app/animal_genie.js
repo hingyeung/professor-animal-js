@@ -26,30 +26,72 @@ AnimalGenie.prototype.play = function (event, callback) {
         animalsToPlayWith = loadFullAnimalListFromFile();
         nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
         userSession = new UserSession(event.sessionId,
-                    animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith), nextQuestion.field, nextQuestion.chosenValue);
-        dbService.saveSession(userSession).then(function() {
-            console.dir(nextQuestion);
-            callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));
-        }).catch(function(err) {
-            callback(err, buildErrorResponseToApiAi(err));
-        }).done();
-
-    } else if (event.result.action === "answer_question") {
-        dbService.getSession(event.sessionId).then(function (userSession) {
-            let answer = event.result.parameters.answer;
-            animalsToPlayWith = animalRepo.convertAnimalNameListToAnimalList(userSession.animalNames);
-            // filter animalsToPlayWith before determining the next question
-            animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
-            nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
+            animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith), nextQuestion.field, nextQuestion.chosenValue);
+        dbService.saveSession(userSession).then(function () {
             console.dir(nextQuestion);
             callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));
         }).catch(function (err) {
             callback(err, buildErrorResponseToApiAi(err));
         }).done();
+
+    } else if (event.result.action === "answer_question") {
+        loadSession(event.sessionId)
+            .then(getNextQuestion(event))
+            .then(updateSession)
+            .then(responseToClient(callback))
+            .catch(responseErrorToClient(callback))
+            .done();
     } else {
         callback("Unknown action: " + event.result.action, buildErrorResponseToApiAi(null));
     }
 };
+
+function responseErrorToClient(callback) {
+    return function (err) {
+        callback(err, buildErrorResponseToApiAi(err));
+    };
+}
+
+function loadSession(sessionId) {
+    return (new DbService()).getSession(sessionId);
+}
+
+function updateSession(contextForNextRound) {
+    let deferred = Q.defer();
+    let userSession = contextForNextRound.userSession;
+    let nextQuestion = contextForNextRound.nextQuestion;
+    userSession.field = nextQuestion.field;
+    userSession.chosenValue = nextQuestion.chosenValue;
+    userSession.animalNames = animalRepo.convertAnimalListToAnimalNameList(contextForNextRound.animalsForNextRound);
+    (new DbService()).saveSession(userSession)
+        .then(function () {
+            deferred.resolve(nextQuestion);
+        })
+        .catch(function (err) {
+            deferred.reject(err);
+        });
+    return deferred.promise;
+}
+
+function getNextQuestion(event) {
+    return function (userSession) {
+        let answer = event.result.parameters.answer;
+        let animalsToPlayWith = animalRepo.convertAnimalNameListToAnimalList(userSession.animalNames);
+        // filter animalsToPlayWith before determining the next question
+        animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
+        console.log('animals remaining');
+        console.dir(animalsToPlayWith);
+        let nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
+        console.dir(nextQuestion);
+        return {nextQuestion: nextQuestion, userSession: userSession, animalsForNextRound: animalsToPlayWith};
+    };
+}
+
+function responseToClient(callback) {
+    return function (nextQuestion) {
+        callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));
+    };
+}
 
 function loadFullAnimalListFromFile() {
     return animalRepo.allAnimals();
