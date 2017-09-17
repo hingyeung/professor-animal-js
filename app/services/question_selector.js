@@ -9,7 +9,7 @@ let QuestionSelector = {
 };
 
 
-function nextQuestion(animals) {
+function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
     let attibuteCountMapForAllAnimals = {};
 
     // build a frequency map for the current attribute (e.g. types)
@@ -18,12 +18,14 @@ function nextQuestion(animals) {
             if (!animal[attributeType]) {
                 return;
             }
-            updateAttributeCountMap(attibuteCountMapForAllAnimals, attributeType, animal[attributeType]);
+            updateAttributeCountMap(attibuteCountMapForAllAnimals, attributeType, animal[attributeType], fieldAndAttributeValuesToIgnore);
         });
     });
 
     // sort the attribute values by frequency
     let attributeListSortedByFreq = sortAttributeValueByFreq(attibuteCountMapForAllAnimals);
+    console.log('attributeListSortedByFreq ==============>');
+    console.dir(attributeListSortedByFreq);
 
     // the resulting map attributesWithLowestFreq should contain a list of [{field, attr}] sorted by frequency
     // field e.g.: diet
@@ -33,6 +35,8 @@ function nextQuestion(animals) {
     }).map(function (o) {
         return {field: o.field, attr: o.attr, freq: o.freq};
     });
+    console.log('attributesWithLowestFreq =================>');
+    console.dir(attributesWithLowestFreq);
 
     return determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFreq);
 }
@@ -53,10 +57,16 @@ function determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFre
 // attributeCountMap: map to be updated with attribute frequency for each attributeType
 // attributeType: type of attribute in which values in attributeValueArray belong to
 // attributeValueArray: a list of attribute values of type attributeType
-function updateAttributeCountMap(attributeCountMap, attributeType, attributeValueArray) {
+// fieldAndAttributeValuesToIgnore: ignore these field-attributeValue from the result map so they won't be part of the next question
+function updateAttributeCountMap(attributeCountMap, attributeType, attributeValueArray, fieldAndAttributeValuesToIgnore) {
+    console.log('target to ignore:');
+    console.dir(fieldAndAttributeValuesToIgnore);
     attributeValueArray.forEach(function (value) {
-        let currentFreq = _.get(attributeCountMap, [attributeType, value], 0);
-        _.set(attributeCountMap, [attributeType, value], currentFreq + 1);
+        console.log('current value for ignore test:', {field: attributeType, attributeValue: value});
+        if (!_.some(fieldAndAttributeValuesToIgnore, {field: attributeType, attributeValue: value})) {
+            let currentFreq = _.get(attributeCountMap, [attributeType, value], 0);
+            _.set(attributeCountMap, [attributeType, value], currentFreq + 1);
+        }
     });
 }
 
@@ -88,7 +98,7 @@ function sortAttributeValueByFreq(attibuteFreqMapForAllAnimals) {
     });
 
     // sort the list
-    return _.sortBy(attributeWithFreqList, ['freq']);
+    return _.orderBy(attributeWithFreqList, ['freq'], ['desc']);
 }
 
 module.exports = QuestionSelector;

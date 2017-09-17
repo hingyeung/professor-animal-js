@@ -151,10 +151,24 @@ describe('AnimalGenie', function () {
         getSessionStub.calledWith("123").should.equal(true);
     });
 
-    it('should save updated session to DB when Api.ai action is "answer_question"', function () {
+    it('should save updated session to DB with field-attributeValue to ignore in next round when Api.ai action is "answer_question and user answer is "yes"', function () {
         let event = createEvent("123", "answer_question", "yes");
         animalGenie.play(event, callbackSpy);
-        saveSessionStub.calledWith(new UserSession("123", ["name1", "name2"], "diet", "A")).should.equal(true);
+        // the field and chosenValue in the incoming session should be added to the ignore list when the user answer is "yes",
+        // which trigger inclusive filter
+        saveSessionStub.calledWith(
+            new UserSession("123", ["name1", "name2"], "diet", "A", [{field: "types", attributeValue: "A"}])
+        ).should.equal(true);
+    });
+
+    it('should save updated session to DB without field-attributeValue to ignore in next round when Api.ai action is "answer_question" and user answer is "no"', function () {
+        let event = createEvent("123", "answer_question", "no");
+        animalGenie.play(event, callbackSpy);
+        // the field and chosenValue in the incoming session should be added to the ignore list when the user answer is "yes",
+        // which trigger inclusive filter
+        saveSessionStub.calledWith(
+            new UserSession("123", ["name1", "name2"], "diet", "A", [])
+        ).should.equal(true);
     });
 
     it('should get next question with QuestionSelector with animal list restored from session when Api.ai action is "answer_question"', function () {

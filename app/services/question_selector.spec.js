@@ -38,13 +38,13 @@ describe('Question selector', function () {
     });
 
     ["types", "behaviours", "physical", "diet"].forEach(function (fieldToTest) {
-        it(`should return next question about "${fieldToTest}" when the "${fieldToTest}" is the only field all animals have`, function () {
+        it(`should select most popular field and attribute value for next question about "${fieldToTest}" when the "${fieldToTest}" is the only field all animals have`, function () {
             let animals = buildTestAnimalsWithOnlyOneField(fieldToTest);
             let nextQuestion = QuestionSelector.nextQuestion(animals);
             should.exist(nextQuestion);
             nextQuestion.field.should.equal(fieldToTest);
-            nextQuestion.possibleValues.should.deep.equal(["v2", "v4", "v6"]);
-            nextQuestion.chosenValue.should.equal("v2");
+            nextQuestion.possibleValues.should.deep.equal(["v1"]);
+            nextQuestion.chosenValue.should.equal("v1");
         });
     });
 
@@ -54,8 +54,8 @@ describe('Question selector', function () {
             let nextQuestion = QuestionSelector.nextQuestion(animals);
             should.exist(nextQuestion);
             nextQuestion.field.should.equal(fieldToTest);
-            nextQuestion.possibleValues.should.deep.equal(["v2", "v4", "v6"]);
-            nextQuestion.chosenValue.should.equal("v2");
+            nextQuestion.possibleValues.should.deep.equal([fieldToTest + 'v10', fieldToTest + 'v20', fieldToTest + 'v30']);
+            nextQuestion.chosenValue.should.equal(fieldToTest + "v10");
         });
     });
 
@@ -92,29 +92,29 @@ function buildTestAnimalsWithOnlyOneField(field) {
     return [
         {
             name: "A",
-            [field]: ["v1", "v2", "v3"],
+            [field]: ["v1", "v2", "v3", "v8"],
         },
         {
             name: "B",
-            [field]: ["v3", "v4", "v5"],
+            [field]: ["v1", "v3", "v4", "v5"],
         },
         {
             name: "C",
-            [field]: ["v5", "v6", "v1"],
+            [field]: ["v5", "v6", "v7", "v1"],
         }
     ];
 }
 
 function buildTestAnimalsWithAllFields(fieldToTest) {
-    const DISTINGUISHING_ATTRIBUTES = [["v1", "v2", "v3"], ["v3", "v4", "v5"], ["v5", "v6", "v1"]];
+    const DISTINGUISHING_ATTRIBUTES = [["v1", "v2", "v3"], ["v4", "v5", "v6"], ["v7", "v8", "v9"]];
     let animals = [];
     ["A", "B", "C"].forEach(function (animalName, idx) {
         let animal = {};
         ["types", "diet", "behaviours", "physical"].forEach(function (field) {
-            if (field === fieldToTest) {
+            if (field !== fieldToTest) {
                 animal[field] = DISTINGUISHING_ATTRIBUTES[idx];
             } else {
-                animal[field] = [field + "v1", field + "v2", field + "v2"];
+                animal[field] = [field + "v10", field + "v20", field + "v30"];
             }
         });
         animals.push(animal);

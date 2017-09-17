@@ -24,9 +24,9 @@ AnimalGenie.prototype.play = function (event, callback) {
     if (event.result.action === 'startgame') {
         // this is a new game, get the next question using animals from data file.
         animalsToPlayWith = loadFullAnimalListFromFile();
-        nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
+        nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith, []);
         userSession = new UserSession(event.sessionId,
-            animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith), nextQuestion.field, nextQuestion.chosenValue);
+            animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith), nextQuestion.field, nextQuestion.chosenValue, []);
         dbService.saveSession(userSession).then(function () {
             console.dir(nextQuestion);
             callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));
@@ -63,6 +63,7 @@ function updateSession(contextForNextRound) {
     userSession.field = nextQuestion.field;
     userSession.chosenValue = nextQuestion.chosenValue;
     userSession.animalNames = animalRepo.convertAnimalListToAnimalNameList(contextForNextRound.animalsForNextRound);
+    userSession.fieldAndAttributeValuesToIgnore = contextForNextRound.fieldAndAttributeValuesToIgnore;
     (new DbService()).saveSession(userSession)
         .then(function () {
             deferred.resolve(nextQuestion);
@@ -81,9 +82,20 @@ function getNextQuestion(event) {
         animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
         console.log('animals remaining');
         console.dir(animalsToPlayWith);
-        let nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith);
+
+        // if the answer is "yes", the attribute needs to be ignored during the generation of
+        // the next question to avoid infinity loop (always pick the most popular attribute, which
+        // remain the same.
+        let fieldAndAttributeValuesToIgnore = userSession.fieldAndAttributeValuesToIgnore;
+        console.log('------------------------------>>>');
+        console.dir(fieldAndAttributeValuesToIgnore);
+        if (answer === 'yes') {
+            fieldAndAttributeValuesToIgnore.push({field: userSession.field, attributeValue: userSession.chosenValue});
+        }
+
+        let nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith, fieldAndAttributeValuesToIgnore);
         console.dir(nextQuestion);
-        return {nextQuestion: nextQuestion, userSession: userSession, animalsForNextRound: animalsToPlayWith};
+        return {nextQuestion: nextQuestion, userSession: userSession, animalsForNextRound: animalsToPlayWith, fieldAndAttributeValuesToIgnore: fieldAndAttributeValuesToIgnore};
     };
 }
 

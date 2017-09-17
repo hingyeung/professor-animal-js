@@ -19,7 +19,8 @@
       "zebra",
       "buffalo",
       "wildebeest",
-      "giraffes"
+      "giraffes",
+      "antelopes"
     ]
   },
   {
@@ -37,13 +38,11 @@
       "run very fast"
     ],
     "physical": [
-      "mane"
     ],
     "diet": [
-      "zebra",
-      "buffalo",
-      "wildebeest",
-      "giraffes"
+      "gazelles",
+      "impalas",
+      "wildebeest"
     ]
   },
   {
@@ -52,7 +51,7 @@
       "vertebrate",
       "mammal",
       "herbivore",
-      "large"
+      "large animal"
     ],
     "behaviours": [
       "live-in-group"
