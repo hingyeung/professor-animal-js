@@ -1,70 +1,48 @@
 module.exports = {
+    "id": "4f92732b-ad1e-4f3c-a4a3-83678d60f0e5",
+    "timestamp": "2017-09-17T03:36:57.082Z",
     "lang": "en",
-    "status": {
-        "errorType": "success",
-        "code": 200
-    },
-    "timestamp": "2017-02-09T16:06:01.908Z",
-    "sessionId": "1486656220806",
     "result": {
+        "source": "agent",
+        "resolvedQuery": "yes",
+        "action": "answer_question",
+        "actionIncomplete": false,
         "parameters": {
-            "city": "Rome",
-            "name": "Ana",
             "answer": "yes"
         },
-        "contexts": [{"name": "ingame", "lifespan": 1}],
-        "resolvedQuery": "my name is Ana and I live in Rome",
-        "source": "agent",
-        "score": 1.0,
-        "speech": "",
+        "contexts": [
+            {
+                "name": "ingame",
+                "parameters": {
+                    "answer": "yes",
+                    "answer.original": ""
+                },
+                "lifespan": 1
+            }
+        ],
+        "metadata": {
+            "intentId": "0ada71e9-7c0a-4953-afab-2ecbfbbbdb3f",
+            "webhookUsed": "true",
+            "webhookForSlotFillingUsed": "false",
+            "webhookResponseTime": 1092,
+            "intentName": "Answer in-game question - Yes"
+        },
         "fulfillment": {
+            "speech": "Does it have sharp claws?",
+            "source": "samuelli.net",
+            "displayText": "Does it have sharp claws?",
             "messages": [
                 {
-                    "speech": "Hi Ana! Nice to meet you!",
-                    "type": 0
+                    "type": 0,
+                    "speech": "Does it have sharp claws?"
                 }
-            ],
-            "speech": "Hi Ana! Nice to meet you!"
+            ]
         },
-        "actionIncomplete": false,
-        "action": "answer_question",
-        "metadata": {
-            "intentId": "9f41ef7c-82fa-42a7-9a30-49a93e2c14d0",
-            "webhookForSlotFillingUsed": "false",
-            "intentName": "greetings",
-            "webhookUsed": "true"
-        }
+        "score": 1
     },
-    "id": "ab30d214-f4bb-4cdd-ae36-31caac7a6693",
-    "originalRequest": {
-        "source": "google",
-        "data": {
-            "inputs": [
-                {
-                    "raw_inputs": [
-                        {
-                            "query": "my name is Ana and I live in Rome",
-                            "input_type": 2
-                        }
-                    ],
-                    "intent": "assistant.intent.action.TEXT",
-                    "arguments": [
-                        {
-                            "text_value": "my name is Ana and I live in Rome",
-                            "raw_text": "my name is Ana and I live in Rome",
-                            "name": "text"
-                        }
-                    ]
-                }
-            ],
-            "user": {
-                "user_id": "PuQndWs1OMjUYwVJMYqwJv0/KT8satJHAUQGiGPDQ7A="
-            },
-            "conversation": {
-                "conversation_id": "1486656220806",
-                "type": 2,
-                "conversation_token": "[]"
-            }
-        }
-    }
+    "status": {
+        "code": 200,
+        "errorType": "success"
+    },
+    "sessionId": "403f864b-3f12-4987-ad87-0377f2b6f5d4"
 };
