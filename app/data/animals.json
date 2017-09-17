@@ -261,7 +261,7 @@
     "behaviours": [
       "carnivore",
       "predator",
-      "flying"
+      "fly"
     ],
     "physical": [
       "wings",
@@ -279,11 +279,11 @@
       "vertebrate",
       "bird",
       "bird of prey",
-      "small animal"
+      "small animal",
+      "omnivore"
     ],
     "behaviours": [
-      "omnivore",
-      "flying"
+      "fly"
     ],
     "physical": [
       "wings"
@@ -291,6 +291,25 @@
     "diet": [
       "nectar",
       "insect"
+    ]
+  },
+  {
+    "name": "Jellyfish",
+    "types": [
+      "invertebrate",
+      "omnivore",
+      "poisonous animal"
+    ],
+    "behaviours": [
+      "sting",
+      "swim"
+    ],
+    "physical": [
+      "tentacles"
+    ],
+    "diet": [
+      "small plants",
+      "fish eggs"
     ]
   }
 ]

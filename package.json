@@ -20,11 +20,11 @@
   "scripts": {
     "jshint": "jshint app/**/*.js",
     "test": "npm run test-unit",
-    "test-unit": "mocha -R spec './app/**/*.spec.js'",
+    "test-unit": "NODE_ENV=dev mocha -R spec './app/**/*.spec.js'",
     "package": "rm -rf dist/ && mkdir dist && cp -r app/* dist/ && cp -R node_modules dist/ && git log --format='%h' -1 > dist/BUILD && cd dist && zip -r lambda.zip *",
-    "run-local-initial": "cd app && lambda-local -l index.js -h myHandler -e data/initial_request.js",
-    "run-local-followup-yes": "cd app && lambda-local -l index.js -h myHandler -e data/followup_yes_request.js",
-    "run-local-followup-no": "cd app && lambda-local -l index.js -h myHandler -e data/followup_no_request.js"
+    "run-local-initial": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/initial_request.js",
+    "run-local-followup-yes": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_yes_request.js",
+    "run-local-followup-no": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_no_request.js"
   },
   "author": "",
   "license": "ISC",
