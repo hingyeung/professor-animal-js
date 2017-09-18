@@ -23,9 +23,16 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
     });
 
     // sort the attribute values by frequency
+    // resulting list looks like [{field, attr, freq}, {field, attr, freq}]
     let attributeListSortedByFreq = sortAttributeValueByFreq(attibuteCountMapForAllAnimals);
 
-    // the resulting map attributesWithLowestFreq should contain a list of [{field, attr}] sorted by frequency
+    // remove item that has frequency same as the number of animals left because these attributes exist
+    // on all animal and should not be used to form the next question
+    attributeListSortedByFreq = _.filter(attributeListSortedByFreq, function (item) {
+        return item.freq < animals.length;
+    });
+
+    // the resulting map attributesWithLowestFreq should contain a list of [{field, attr, freq}] sorted by frequency
     // field e.g.: diet
     // attr e.g.: grass
     let attributesWithLowestFreq = _.filter(attributeListSortedByFreq, function (attribute) {
@@ -50,7 +57,7 @@ function determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFre
     return new Question(attributeWithLowestFreq.field, allAttributesForTheSameField, random.randomItemFromArray(allAttributesForTheSameField));
 }
 
-// attributeCountMap: map to be updated with attribute frequency for each attributeType
+// attributeCountMap: map to be updated with attribute frequency for each attributeType. e.g. { diet: {banana: 1, nut: 2} }
 // attributeType: type of attribute in which values in attributeValueArray belong to
 // attributeValueArray: a list of attribute values of type attributeType
 // fieldAndAttributeValuesToIgnore: ignore these field-attributeValue from the result map so they won't be part of the next question
