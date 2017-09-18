@@ -22,10 +22,10 @@ DbService.prototype.getSession = function (id) {
             TableName: USER_SESSION_TABLE
         }, function (err, data) {
             if (err) {
-                console.log("database error", err);
+                console.log("getSession error", err);
                 deferred.reject(new Error(err));
             } else {
-                console.dir(data.Item);
+                console.log("getSession success", data.Item);
                 deferred.resolve(data.Item);
             }
         });
@@ -39,10 +39,10 @@ DbService.prototype.saveSession = function (userSession) {
         Item: userSession
     }, function (err, data) {
         if (err) {
-            console.log("database error", err);
+            console.log("saveSession error", err);
             deferred.reject(new Error(err));
         } else {
-            console.log("success", data);
+            console.log("saveSession success", data);
             deferred.resolve(data);
         }
     });

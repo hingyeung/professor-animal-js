@@ -13,7 +13,8 @@ exports.myHandler = function (event, context, callback) {
     //     }
     // });
     console.dir(event.result.action);
-    console.dir(event);
+    console.dir(event.result.contexts);
+    console.dir(event.result.parameters);
     console.dir(context);
 
     let animalGenie = new AnimalGenie();

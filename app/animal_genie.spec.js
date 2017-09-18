@@ -1,23 +1,24 @@
 'use strict';
 
-const proxyquire = require('proxyquire').noCallThru(),
+const proxyquire = require('proxyquire').noPreserveCache(),
     should = require('chai').should(),
     UserSession = require('./models/UserSession'),
     sinonPromise = require('sinon-promise'),
     Question = require('./models/question'),
     ResponseToApiAi = require('./models/response_to_api_ai'),
     fs = require('fs'),
+    Context = require('./models/context'),
+    AnimalRepo = require('./services/animal_repo'),
     sinon = require('sinon');
 
 describe('AnimalGenie', function () {
     let mockAnimalRepo, mockDbService, getSessionStub, AnimalGenie, animalGenie, nextQuestionStub, mockResponseToApiAi,
         fullAnimalListFromFile, listOfAnimalsRestoredFromSession, convertAnimalNameListToAnimalListStub,
-        allAnimalsStub, saveSessionStub, convertAnimalListToAnimalNameListStub, mockQuestionSelector, nextQuestion,
-        userSession, filterStub, mockAnimalFilter, callbackSpy, responseToApiAi;
+        allAnimalsStub, saveSessionStub, mockQuestionSelector, nextQuestion,
+        userSession, filterStub, mockAnimalFilter, callbackSpy, filterBasedQuestion, readyToGuessQuestion;
 
     beforeEach(function () {
         sinonPromise(sinon);
-        responseToApiAi = ResponseToApiAi.fromQuestion(new Question("question"), []);
         callbackSpy = sinon.spy();
         userSession = new UserSession("123", ["Lion", "Eagle"], "types", "A");
         fullAnimalListFromFile = JSON.parse(fs.readFileSync('app/data/test-animals.json'));
@@ -73,6 +74,8 @@ describe('AnimalGenie', function () {
         nextQuestion = new Question("diet", ["A", "B"], "A");
         nextQuestionStub = sinon.stub().returns(nextQuestion);
         filterStub = sinon.stub().returns(listOfAnimalsRestoredFromSession);
+        filterBasedQuestion = {filter_based_question: true};
+        readyToGuessQuestion = {ready_to_guess_question: true};
 
         mockDbService = function () {
             return {
@@ -81,12 +84,11 @@ describe('AnimalGenie', function () {
             };
         };
         allAnimalsStub = sinon.stub();
-        convertAnimalListToAnimalNameListStub = sinon.stub().returns(['name1', 'name2']);
         convertAnimalNameListToAnimalListStub = sinon.stub().returns(listOfAnimalsRestoredFromSession);
         mockAnimalRepo = function () {
             return {
                 allAnimals: allAnimalsStub.returns(fullAnimalListFromFile),
-                convertAnimalListToAnimalNameList: convertAnimalListToAnimalNameListStub,
+                convertAnimalListToAnimalNameList: (new AnimalRepo()).convertAnimalListToAnimalNameList,
                 convertAnimalNameListToAnimalList: convertAnimalNameListToAnimalListStub
             };
         };
@@ -94,26 +96,27 @@ describe('AnimalGenie', function () {
             nextQuestion: nextQuestionStub
         };
         mockResponseToApiAi = {
-            fromQuestion: sinon.stub().returns(responseToApiAi)
+            // fromQuestion: sinon.stub().returns({fakeApiAiResponse: true})
+            fromQuestion: sinon.stub().callsFake(function (question, contextOut) {
+                if (question.questionType === "filter_based_question") {
+                    return filterBasedQuestion;
+                } else {
+                    return readyToGuessQuestion;
+                }
+            })
         };
         mockAnimalFilter = {
             filter: filterStub
         };
 
-        AnimalGenie = proxyquire('./animal_genie', {
-            './services/animal_repo': mockAnimalRepo,
-            './services/DbService': mockDbService,
-            './services/question_selector': mockQuestionSelector,
-            './models/response_to_api_ai': mockResponseToApiAi,
-            './services/animal_filter': mockAnimalFilter
-        });
-        animalGenie = new AnimalGenie();
+        animalGenie = animalGenieWithMocks();
+        // animalGenie = new AnimalGenie();
     });
 
     it('shouild call callback', function () {
         let event = createEvent("123", "startgame", "yes");
         animalGenie.play(event, callbackSpy);
-        callbackSpy.calledWith(null, responseToApiAi).should.equal(true);
+        callbackSpy.calledWith(null, filterBasedQuestion).should.equal(true);
     });
 
     it('should read all animals from data file when Api.ai action is "startgame"', function () {
@@ -133,7 +136,7 @@ describe('AnimalGenie', function () {
         animalGenie.play(event, callbackSpy);
         saveSessionStub.calledOnce.should.equal(true);
         saveSessionStub.calledWith(new UserSession("123",
-            ["name1", "name2"], "diet", "A")).should.equal(true);
+            ["Lion", "Elephant", "Chameleon", "Shark", "Penguin", "Eagle"], "diet", "A")).should.equal(true);
         getSessionStub.called.should.equal(false);
     });
 
@@ -157,17 +160,17 @@ describe('AnimalGenie', function () {
         // the field and chosenValue in the incoming session should be added to the ignore list when the user answer is "yes",
         // which trigger inclusive filter
         saveSessionStub.calledWith(
-            new UserSession("123", ["name1", "name2"], "diet", "A", [{field: "types", attributeValue: "A"}])
+            new UserSession("123", ["Lion", "Eagle"], "diet", "A", [{field: "types", attributeValue: "A"}])
         ).should.equal(true);
     });
 
     it('should save updated session to DB without field-attributeValue to ignore in next round when Api.ai action is "answer_question" and user answer is "no"', function () {
         let event = createEvent("123", "answer_question", "no");
         animalGenie.play(event, callbackSpy);
-        // the field and chosenValue in the incoming session should be added to the ignore list when the user answer is "yes",
+        // the field and chosenValue in the incoming session should not be added to the ignore list when the user answer is "no",
         // which trigger inclusive filter
         saveSessionStub.calledWith(
-            new UserSession("123", ["name1", "name2"], "diet", "A", [])
+            new UserSession("123", ["Lion", "Eagle"], "diet", "A", [])
         ).should.equal(true);
     });
 
@@ -189,10 +192,27 @@ describe('AnimalGenie', function () {
         });
     });
 
+    it('should return "ready-to-guess" question, when only one animal left', function (done) {
+        let event = createEvent("123", "answer_question", "yes");
+
+        // forcing mockAnimalFilter is reloaded with the updated filterStub
+        filterStub = sinon.stub().returns([{name: "correct animal"}]);
+        mockAnimalFilter.filter = filterStub;
+        animalGenie = animalGenieWithMocks();
+
+        animalGenie.play(event, function (err, responseToApiAi) {
+            // callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));
+            should.not.exist(err);
+            responseToApiAi.should.equal(readyToGuessQuestion);
+            // responseToApiAi.contextOut.should.deep.equal([new Context("readytoguess", 1)]);
+            done();
+        });
+    });
+
     it('should use AnimalFilter to filter out unmatched animal when user answer is "yes"', function (done) {
         let event = createEvent("123", "answer_question", "yes");
         animalGenie.play(event, function () {
-            filterStub.calledWith(listOfAnimalsRestoredFromSession, true, "types", userSession.chosenValue).should.equal(true);
+            filterStub.calledWith(listOfAnimalsRestoredFromSession, true, "types", userSession.chosenValue).should.be.true;
             done();
         });
     });
@@ -200,20 +220,30 @@ describe('AnimalGenie', function () {
     it('should use AnimalFilter to filter out unmatched animal when user answer is "no"', function (done) {
         let event = createEvent("123", "answer_question", "no");
         animalGenie.play(event, function () {
-            filterStub.calledWith(listOfAnimalsRestoredFromSession, false, "types", userSession.chosenValue).should.equal(true);
+            filterStub.calledWith(listOfAnimalsRestoredFromSession, false, "types", userSession.chosenValue).should.be.true;
             done();
         });
     });
-});
 
-function createEvent(sessionId, action, answer) {
-    return {
-        sessionId: sessionId,
-        result: {
-            action: action,
-            parameters: {
-                answer: answer
+    function animalGenieWithMocks() {
+        return new (proxyquire('./animal_genie', {
+            './services/animal_repo': mockAnimalRepo,
+            './services/DbService': mockDbService,
+            './services/question_selector': mockQuestionSelector,
+            './models/response_to_api_ai': mockResponseToApiAi,
+            './services/animal_filter': mockAnimalFilter
+        }))();
+    }
+
+    function createEvent(sessionId, action, answer) {
+        return {
+            sessionId: sessionId,
+            result: {
+                action: action,
+                parameters: {
+                    answer: answer
+                }
             }
-        }
-    };
-}
+        };
+    }
+});

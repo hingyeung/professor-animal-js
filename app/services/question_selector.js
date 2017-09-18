@@ -24,8 +24,6 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
 
     // sort the attribute values by frequency
     let attributeListSortedByFreq = sortAttributeValueByFreq(attibuteCountMapForAllAnimals);
-    console.log('attributeListSortedByFreq ==============>');
-    console.dir(attributeListSortedByFreq);
 
     // the resulting map attributesWithLowestFreq should contain a list of [{field, attr}] sorted by frequency
     // field e.g.: diet
@@ -35,8 +33,6 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
     }).map(function (o) {
         return {field: o.field, attr: o.attr, freq: o.freq};
     });
-    console.log('attributesWithLowestFreq =================>');
-    console.dir(attributesWithLowestFreq);
 
     return determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFreq);
 }
@@ -59,10 +55,7 @@ function determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFre
 // attributeValueArray: a list of attribute values of type attributeType
 // fieldAndAttributeValuesToIgnore: ignore these field-attributeValue from the result map so they won't be part of the next question
 function updateAttributeCountMap(attributeCountMap, attributeType, attributeValueArray, fieldAndAttributeValuesToIgnore) {
-    console.log('target to ignore:');
-    console.dir(fieldAndAttributeValuesToIgnore);
     attributeValueArray.forEach(function (value) {
-        console.log('current value for ignore test:', {field: attributeType, attributeValue: value});
         if (!_.some(fieldAndAttributeValuesToIgnore, {field: attributeType, attributeValue: value})) {
             let currentFreq = _.get(attributeCountMap, [attributeType, value], 0);
             _.set(attributeCountMap, [attributeType, value], currentFreq + 1);

@@ -23,4 +23,9 @@ describe('Question', function () {
         let question = new Question("diet", ["A", "B", "C"], "B");
         question.toText().should.equal("Does it eat B?");
     });
+
+    it('should convert ready-to-guess question', function () {
+        let question = new Question(null, null, "correct animal", "ready_to_guess_question");
+        question.toText().should.equal("It is a correct animal. Am I right?");
+    });
 });
