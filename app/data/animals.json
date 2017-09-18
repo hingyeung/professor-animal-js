@@ -241,7 +241,8 @@
     ],
     "behaviours": [
       "walk in a funny way",
-      "stay on the ground"
+      "stay on the ground",
+      "lay eggs"
     ],
     "physical": [
       "sharp teeth"
@@ -310,6 +311,91 @@
     "diet": [
       "small plants",
       "fish eggs"
+    ]
+  },
+  {
+    "name": "Horse",
+    "types": [
+      "vertebrate",
+      "herbivore"
+    ],
+    "behaviours": [
+      "run very fast",
+      "let people ride on it"
+    ],
+    "physical": [
+      "long legs",
+      "mane"
+    ],
+    "diet": [
+      "grass"
+    ]
+  },
+  {
+    "name": "Sea turtle",
+    "types": [
+      "vertebrate",
+      "omnivore",
+      "reptile",
+      "cold-blooded"
+    ],
+    "behaviours": [
+      "swim",
+      "live in the sea",
+      "lay eggs"
+    ],
+    "physical": [
+      "a shell"
+    ],
+    "diet": [
+      "seaweed",
+      "crabs",
+      "jellyfish",
+      "shrimp",
+      "sea grass"
+    ]
+  },
+  {
+    "name": "Polar bear",
+    "types": [
+      "vertebrate",
+      "carnivore",
+      "large animal",
+      "the largest land predator in the world",
+      "predator",
+      "mammal"
+    ],
+    "behaviours": [
+      "swim",
+      "run",
+      "live in Arctic Circle"
+    ],
+    "physical": [
+      "white fur"
+    ],
+    "diet": [
+      "seals"
+    ]
+  },
+  {
+    "name": "Flamingo",
+    "types": [
+      "vertebrate",
+      "bird"
+    ],
+    "behaviours": [
+      "live in a large group",
+      "fly",
+      "stand on one leg"
+    ],
+    "physical": [
+      "long legs",
+      "pink bill",
+      "pink feather"
+    ],
+    "diet": [
+      "insects",
+      "shrimp"
     ]
   }
 ]

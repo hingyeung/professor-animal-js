@@ -7,3 +7,6 @@ aws dynamodb get-item  --endpoint-url http://localhost:8000  --table-name Animal
 ACCESS KEY
 When using DynamoDB in a Lambda, "accessKeyId" and "secretAccessKey" are not required (you can invalid key exception if they are provided). It
 is because Lambda has its own IAM role and that role determines if the Lambda can access DynamoDB or not.
+
+UPLOADING CODE TO LAMBDA
+aws lambda update-function-code --zip-file fileb://./dist/lambda.zip --function-name $LAMBDA_ARN
