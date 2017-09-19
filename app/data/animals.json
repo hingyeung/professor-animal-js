@@ -200,7 +200,8 @@
     ],
     "behaviours": [
       "climb tree",
-      "hibernate in winter"
+      "hibernate in winter",
+      "lay eggs"
     ],
     "physical": [
       "no legs"
@@ -381,6 +382,7 @@
     "name": "Flamingo",
     "types": [
       "vertebrate",
+      "carnivore",
       "bird"
     ],
     "behaviours": [

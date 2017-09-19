@@ -41,12 +41,14 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
         return {field: o.field, attr: o.attr, freq: o.freq};
     });
 
+    if (attributesWithLowestFreq.length === 0) {
+        return new Question(null, null, null, Question.GIVE_UP_MESSAGE);
+    }
+
     return determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFreq);
 }
 
 function determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFreqFromAllFields) {
-    // TODO: what if attributesWithLowestFreq is empty?
-    // let attributeWithLowestFreq = attributesWithLowestFreqFromAllFields[0];
     let attributeWithLowestFreq = random.randomItemFromArray(attributesWithLowestFreqFromAllFields);
     let allAttributesForTheSameField = _.filter(attributesWithLowestFreqFromAllFields, function (o) {
         return o.field === attributeWithLowestFreq.field;

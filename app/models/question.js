@@ -7,6 +7,10 @@ function Question(field, possibleValues, chosenValue, questionType) {
     this.questionType = questionType || "filter_based_question";
 }
 
+Question.FILTER_BASED_QUESTION = "filter_based_question";
+Question.READY_TO_GUESS_QUESTION = "ready_to_guess_question";
+Question.GIVE_UP_MESSAGE = "give_up_message";
+
 Question.prototype.toText = function () {
     switch (this.questionType) {
         case "filter_based_question":
@@ -25,7 +29,10 @@ Question.prototype.toText = function () {
             break;
         case "ready_to_guess_question":
             return `It is a ${this.chosenValue}. Am I right?`;
+        case Question.GIVE_UP_MESSAGE:
+            return "I give up. I don't know which animal you are thinking about.";
     }
+    return "I think I am broken. I don't know what to say.";
 };
 
 module.exports = Question;

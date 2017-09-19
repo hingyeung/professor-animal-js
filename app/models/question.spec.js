@@ -25,7 +25,17 @@ describe('Question', function () {
     });
 
     it('should convert ready-to-guess question', function () {
-        let question = new Question(null, null, "correct animal", "ready_to_guess_question");
+        let question = new Question(null, null, "correct animal", Question.READY_TO_GUESS_QUESTION);
         question.toText().should.equal("It is a correct animal. Am I right?");
+    });
+
+    it('should convert give-up message', function () {
+        let question = new Question(null, null, null, Question.GIVE_UP_MESSAGE);
+        question.toText().should.equal("I give up. I don't know which animal you are thinking about.");
+    });
+
+    it('should return catch-all message', function () {
+        let question = new Question(null, null, null, "blah");
+        question.toText().should.equal("I think I am broken. I don't know what to say.");
     });
 });

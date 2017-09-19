@@ -14,7 +14,7 @@ const proxyquire = require('proxyquire').noPreserveCache(),
 describe('AnimalGenie', function () {
     let mockAnimalRepo, mockDbService, getSessionStub, AnimalGenie, animalGenie, nextQuestionStub, mockResponseToApiAi,
         fullAnimalListFromFile, listOfAnimalsRestoredFromSession, convertAnimalNameListToAnimalListStub,
-        allAnimalsStub, saveSessionStub, mockQuestionSelector, nextQuestion,
+        allAnimalsStub, saveSessionStub, mockQuestionSelector, nextQuestion, giveUpMessage,
         userSession, filterStub, mockAnimalFilter, callbackSpy, filterBasedQuestion, readyToGuessQuestion;
 
     beforeEach(function () {
@@ -74,8 +74,9 @@ describe('AnimalGenie', function () {
         nextQuestion = new Question("diet", ["A", "B"], "A");
         nextQuestionStub = sinon.stub().returns(nextQuestion);
         filterStub = sinon.stub().returns(listOfAnimalsRestoredFromSession);
-        filterBasedQuestion = {filter_based_question: true};
-        readyToGuessQuestion = {ready_to_guess_question: true};
+        filterBasedQuestion = {questionType: Question.FILTER_BASED_QUESTION};
+        readyToGuessQuestion = {questionType: Question.READY_TO_GUESS_QUESTION};
+        giveUpMessage = {questionType: Question.GIVE_UP_MESSAGE};
 
         mockDbService = function () {
             return {
@@ -98,10 +99,12 @@ describe('AnimalGenie', function () {
         mockResponseToApiAi = {
             // fromQuestion: sinon.stub().returns({fakeApiAiResponse: true})
             fromQuestion: sinon.stub().callsFake(function (question, contextOut) {
-                if (question.questionType === "filter_based_question") {
+                if (question.questionType === Question.FILTER_BASED_QUESTION) {
                     return filterBasedQuestion;
-                } else {
+                } else if (question.questionType === Question.READY_TO_GUESS_QUESTION) {
                     return readyToGuessQuestion;
+                } else {
+                    return giveUpMessage;
                 }
             })
         };
@@ -221,6 +224,17 @@ describe('AnimalGenie', function () {
         let event = createEvent("123", "answer_question", "no");
         animalGenie.play(event, function () {
             filterStub.calledWith(listOfAnimalsRestoredFromSession, false, "types", userSession.chosenValue).should.be.true;
+            done();
+        });
+    });
+
+    it('should return give-up api.ai response when it cannot determine the next question to ask and confident guess cannot be made', function (done) {
+        let event = createEvent("123", "answer_question", "no");
+        nextQuestionStub = sinon.stub().returns(new Question(null, null, null, Question.GIVE_UP_MESSAGE));
+        mockQuestionSelector.nextQuestion = nextQuestionStub;
+        animalGenie = animalGenieWithMocks();
+        animalGenie.play(event, function (err, responseToApiAi) {
+            responseToApiAi.should.equals(giveUpMessage);
             done();
         });
     });

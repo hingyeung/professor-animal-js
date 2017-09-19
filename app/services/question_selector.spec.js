@@ -6,6 +6,7 @@ const mockRandom = {
 };
 const proxyquire = require('proxyquire'),
     QuestionSelector = proxyquire('./question_selector', {'./random': mockRandom}),
+    Question = require('../models/question'),
     should = require('chai').should();
 
 describe('Question selector', function () {
@@ -37,14 +38,13 @@ describe('Question selector', function () {
 
     // TODO: this test is broken until question_selector can handle scenario where no animal is left in the list
     // e.g. all animals have same attributes
-    // it('should return next question about "types" when all animals have the same attributes', function () {
-    //     let animals = buildTestAnimalsWithSameValuesInFields();
-    //     let nextQuestion = QuestionSelector.nextQuestion(animals);
-    //     should.exist(nextQuestion);
-    //     nextQuestion.field.should.equal("types");
-    //     nextQuestion.possibleValues.should.deep.equal(["t1", "t2", "t3"]);
-    //     nextQuestion.chosenValue.should.equal("t1");
-    // });
+    it('should return null when next question cannot be determined', function () {
+        // all animals have idential attributes, system cannot determine the next question to ask
+        let animals = buildTestAnimalsWithSameValuesInFields();
+        let nextQuestion = QuestionSelector.nextQuestion(animals);
+        should.exist(nextQuestion);
+        nextQuestion.questionType.should.equal(Question.GIVE_UP_MESSAGE);
+    });
 
     it('should ignore attributes that exists on all animals', function () {
         ["types", "behaviours", "physical", "diet"].forEach(function (fieldToTest) {
