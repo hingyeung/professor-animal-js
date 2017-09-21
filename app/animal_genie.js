@@ -30,7 +30,7 @@ AnimalGenie.prototype.play = function (event, callback) {
             animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith), nextQuestion.field, nextQuestion.chosenValue, []);
         dbService.saveSession(userSession).then(function () {
             console.dir(nextQuestion);
-            callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));
+            callback(null, ResponseToApiAi.fromQuestion(nextQuestion));
         }).catch(function (err) {
             callback(err, buildErrorResponseToApiAi(err));
         }).done();
@@ -115,7 +115,7 @@ function getNextQuestion(event) {
 
 function responseToClient(callback) {
     return function (nextQuestion) {
-        callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));
+        callback(null, ResponseToApiAi.fromQuestion(nextQuestion));
     };
 }
 

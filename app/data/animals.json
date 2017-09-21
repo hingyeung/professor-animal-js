@@ -258,11 +258,11 @@
       "vertebrate",
       "bird",
       "bird of prey",
-      "large bird"
+      "large bird",
+      "carnivore",
+      "predator"
     ],
     "behaviours": [
-      "carnivore",
-      "predator",
       "fly"
     ],
     "physical": [

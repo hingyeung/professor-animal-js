@@ -1,10 +1,14 @@
 'use strict';
 
+const Question = require('./question'),
+    _ = require('lodash'),
+    Context = require('./context');
+
 let ResponseFromApiAi = {
     fromQuestion: fromQuestion
 };
 
-function fromQuestion(question, contextOut) {
+function fromQuestion(question, additionalContextOut) {
     // https://discuss.api.ai/t/webhook-response/786
     // Don't have empty list and object.
     let response = {
@@ -12,8 +16,22 @@ function fromQuestion(question, contextOut) {
         displayText: question.toText(),
         source: "samuelli.net"
     };
-    if (Array.isArray(contextOut) && contextOut.length > 0) {
-        response.contextOut = contextOut;
+
+    let contextOutForQuestion = [];
+    switch (question.questionType) {
+        case Question.FILTER_BASED_QUESTION:
+            contextOutForQuestion.push(new Context("ingame", 1));
+            break;
+        case Question.GIVE_UP_MESSAGE:
+            contextOutForQuestion.push(new Context("giveup", 1));
+            break;
+        case Question.READY_TO_GUESS_QUESTION:
+            contextOutForQuestion.push(new Context("readytoguess", 1));
+            break;
+    }
+
+    if (contextOutForQuestion.length > 0 || (Array.isArray(additionalContextOut) && additionalContextOut.length > 0)) {
+        response.contextOut = _.compact(contextOutForQuestion.concat(additionalContextOut));
     }
     return response;
 }

@@ -187,10 +187,7 @@ describe('AnimalGenie', function () {
     it('should convert next question to Api.ai resposne', function (done) {
         let event = createEvent("123", "answer_question", "yes");
         animalGenie.play(event, function () {
-            mockResponseToApiAi.fromQuestion.calledWith(nextQuestion, [{
-                name: "ingame",
-                lifespan: 1
-            }]).should.equal(true);
+            mockResponseToApiAi.fromQuestion.calledWith(nextQuestion).should.equal(true);
             done();
         });
     });

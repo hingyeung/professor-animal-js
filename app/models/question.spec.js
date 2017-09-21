@@ -34,6 +34,11 @@ describe('Question', function () {
         question.toText().should.equal("I give up. I don't know which animal you are thinking about.");
     });
 
+    it('should use Question.FILTER_BASED_QUESTION as default questionType', function () {
+        let question = new Question(null, null, null);
+        question.questionType.should.equal(Question.FILTER_BASED_QUESTION);
+    });
+
     it('should return catch-all message', function () {
         let question = new Question(null, null, null, "blah");
         question.toText().should.equal("I think I am broken. I don't know what to say.");
