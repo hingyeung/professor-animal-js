@@ -26,11 +26,12 @@ AnimalGenie.prototype.play = function (event, callback) {
         // this is a new game, get the next question using animals from data file.
         animalsToPlayWith = loadFullAnimalListFromFile();
         nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith, []);
+        let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion);
         userSession = new UserSession(event.sessionId,
-            animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith), nextQuestion.field, nextQuestion.chosenValue, []);
+            animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith), nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
         dbService.saveSession(userSession).then(function () {
             console.dir(nextQuestion);
-            callback(null, ResponseToApiAi.fromQuestion(nextQuestion));
+            callback(null, responseToApiAi);
         }).catch(function (err) {
             callback(err, buildErrorResponseToApiAi(err));
         }).done();
@@ -42,10 +43,21 @@ AnimalGenie.prototype.play = function (event, callback) {
             .then(responseToClient(callback))
             .catch(responseErrorToClient(callback))
             .done();
+    } else if (event.result.action === 'answer_question_repeat') {
+        loadSession(event.sessionId)
+            .then(buildResponseToApiAiForRepeatingLastSpeech(event, callback))
+            .done();
     } else {
         callback("Unknown action: " + event.result.action, buildErrorResponseToApiAi(null));
     }
 };
+
+function buildResponseToApiAiForRepeatingLastSpeech(event, callback) {
+    return function(userSession) {
+        callback(null, ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, event));
+    };
+
+}
 
 function responseErrorToClient(callback) {
     return function (err) {
@@ -107,6 +119,7 @@ function getNextQuestion(event) {
             }
 
             nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith, fieldAndAttributeValuesToIgnore);
+            userSession.speech = nextQuestion.toText();
             console.log("Next question to ask: ", nextQuestion.toText());
         }
         return {nextQuestion: nextQuestion, userSession: userSession, animalsForNextRound: animalsToPlayWith, fieldAndAttributeValuesToIgnore: fieldAndAttributeValuesToIgnore};

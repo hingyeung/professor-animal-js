@@ -14,8 +14,10 @@ const proxyquire = require('proxyquire').noPreserveCache(),
 describe('AnimalGenie', function () {
     let mockAnimalRepo, mockDbService, getSessionStub, AnimalGenie, animalGenie, nextQuestionStub, mockResponseToApiAi,
         fullAnimalListFromFile, listOfAnimalsRestoredFromSession, convertAnimalNameListToAnimalListStub,
-        allAnimalsStub, saveSessionStub, mockQuestionSelector, nextQuestion, giveUpMessage,
-        userSession, filterStub, mockAnimalFilter, callbackSpy, filterBasedQuestion, readyToGuessQuestion;
+        allAnimalsStub, saveSessionStub, mockQuestionSelector, nextQuestion, apiAiForGiveUpMessage,
+        apiAiForRepeatingSpeech,
+        userSession, filterStub, mockAnimalFilter, callbackSpy, apiAiResponseForFilterBasedQuestion,
+        apiAiResponseForReadyToGuessQuestion;
 
     beforeEach(function () {
         sinonPromise(sinon);
@@ -74,9 +76,16 @@ describe('AnimalGenie', function () {
         nextQuestion = new Question("diet", ["A", "B"], "A");
         nextQuestionStub = sinon.stub().returns(nextQuestion);
         filterStub = sinon.stub().returns(listOfAnimalsRestoredFromSession);
-        filterBasedQuestion = {questionType: Question.FILTER_BASED_QUESTION};
-        readyToGuessQuestion = {questionType: Question.READY_TO_GUESS_QUESTION};
-        giveUpMessage = {questionType: Question.GIVE_UP_MESSAGE};
+        apiAiResponseForFilterBasedQuestion = {
+            questionType: Question.FILTER_BASED_QUESTION,
+            speech: "filter_based_speech"
+        };
+        apiAiResponseForReadyToGuessQuestion = {
+            questionType: Question.READY_TO_GUESS_QUESTION,
+            speech: "ready_to_guess_speech"
+        };
+        apiAiForGiveUpMessage = {questionType: Question.GIVE_UP_MESSAGE, speech: "give_up_speech"};
+        apiAiForRepeatingSpeech = {speech: "repeating_speech"};
 
         mockDbService = function () {
             return {
@@ -97,16 +106,18 @@ describe('AnimalGenie', function () {
             nextQuestion: nextQuestionStub
         };
         mockResponseToApiAi = {
-            // fromQuestion: sinon.stub().returns({fakeApiAiResponse: true})
             fromQuestion: sinon.stub().callsFake(function (question, contextOut) {
                 if (question.questionType === Question.FILTER_BASED_QUESTION) {
-                    return filterBasedQuestion;
+                    return apiAiResponseForFilterBasedQuestion;
                 } else if (question.questionType === Question.READY_TO_GUESS_QUESTION) {
-                    return readyToGuessQuestion;
+                    return apiAiResponseForReadyToGuessQuestion;
                 } else {
-                    return giveUpMessage;
+                    return apiAiForGiveUpMessage;
                 }
-            })
+            }),
+            repeatSpeechFromUserSesssion: function () {
+                return apiAiForRepeatingSpeech;
+            }
         };
         mockAnimalFilter = {
             filter: filterStub
@@ -119,7 +130,7 @@ describe('AnimalGenie', function () {
     it('shouild call callback', function () {
         let event = createEvent("123", "startgame", "yes");
         animalGenie.play(event, callbackSpy);
-        callbackSpy.calledWith(null, filterBasedQuestion).should.equal(true);
+        callbackSpy.calledWith(null, apiAiResponseForFilterBasedQuestion).should.equal(true);
     });
 
     it('should read all animals from data file when Api.ai action is "startgame"', function () {
@@ -138,8 +149,10 @@ describe('AnimalGenie', function () {
         let event = createEvent("123", "startgame", "yes");
         animalGenie.play(event, callbackSpy);
         saveSessionStub.calledOnce.should.equal(true);
-        saveSessionStub.calledWith(new UserSession("123",
-            ["Lion", "Elephant", "Chameleon", "Shark", "Penguin", "Eagle"], "diet", "A")).should.equal(true);
+        sinon.assert.calledWithExactly(saveSessionStub,
+            new UserSession("123",
+                ["Lion", "Elephant", "Chameleon", "Shark", "Penguin", "Eagle"],
+                "diet", "A", [], "filter_based_speech"));
         getSessionStub.called.should.equal(false);
     });
 
@@ -163,17 +176,20 @@ describe('AnimalGenie', function () {
         // the field and chosenValue in the incoming session should be added to the ignore list when the user answer is "yes",
         // which trigger inclusive filter
         saveSessionStub.calledWith(
-            new UserSession("123", ["Lion", "Eagle"], "diet", "A", [{field: "types", attributeValue: "A"}])
+            new UserSession("123", ["Lion", "Eagle"], "diet", "A", [{
+                field: "types",
+                attributeValue: "A"
+            }], 'Does it eat A?')
         ).should.equal(true);
     });
 
     it('should save updated session to DB without field-attributeValue to ignore in next round when Api.ai action is "answer_question" and user answer is "no"', function () {
-        let event = createEvent("123", "answer_question", "no");
+        let event = createEvent("123", "answer_question", "no", 'speech');
         animalGenie.play(event, callbackSpy);
         // the field and chosenValue in the incoming session should not be added to the ignore list when the user answer is "no",
         // which trigger inclusive filter
         saveSessionStub.calledWith(
-            new UserSession("123", ["Lion", "Eagle"], "diet", "A", [])
+            new UserSession("123", ["Lion", "Eagle"], "diet", "A", [], 'Does it eat A?')
         ).should.equal(true);
     });
 
@@ -203,7 +219,7 @@ describe('AnimalGenie', function () {
         animalGenie.play(event, function (err, responseToApiAi) {
             // callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));
             should.not.exist(err);
-            responseToApiAi.should.equal(readyToGuessQuestion);
+            responseToApiAi.should.equal(apiAiResponseForReadyToGuessQuestion);
             // responseToApiAi.contextOut.should.deep.equal([new Context("readytoguess", 1)]);
             done();
         });
@@ -231,8 +247,30 @@ describe('AnimalGenie', function () {
         mockQuestionSelector.nextQuestion = nextQuestionStub;
         animalGenie = animalGenieWithMocks();
         animalGenie.play(event, function (err, responseToApiAi) {
-            responseToApiAi.should.equals(giveUpMessage);
+            responseToApiAi.should.equals(apiAiForGiveUpMessage);
             done();
+        });
+    });
+
+    it('should repeat the previous question when Api.ai action is "answer_question_repeat" during "startgame" stage', function (done) {
+        let firstEvent = createEvent("123", "startgame", "yes");
+        animalGenie.play(firstEvent, function (err, firstResponseToApiAi) {
+            let secondEvent = createEvent("123", "answer_question_repeat");
+            animalGenie.play(secondEvent, function (err, secondResponseToApiAi) {
+                secondResponseToApiAi.should.equal(apiAiForRepeatingSpeech);
+                done();
+            });
+        });
+    });
+
+    it('should repeat the previous question when Api.ai action is "answer_question_repeat" during "answer_question" stage', function (done) {
+        let firstEvent = createEvent("123", "answer_question", "yes");
+        animalGenie.play(firstEvent, function (err, firstResponseToApiAi) {
+            let secondEvent = createEvent("123", "answer_question_repeat");
+            animalGenie.play(secondEvent, function (err, secondResponseToApiAi) {
+                secondResponseToApiAi.should.equal(apiAiForRepeatingSpeech);
+                done();
+            });
         });
     });
 
@@ -250,6 +288,7 @@ describe('AnimalGenie', function () {
         return {
             sessionId: sessionId,
             result: {
+                contexts: [],
                 action: action,
                 parameters: {
                     answer: answer

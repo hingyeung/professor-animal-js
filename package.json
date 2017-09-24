@@ -24,7 +24,8 @@
     "package": "rm -rf dist/ && mkdir dist && cp -r app/* dist/ && cp -R node_modules dist/ && git log --format='%h' -1 > dist/BUILD && cd dist && zip -r lambda.zip *",
     "run-local-initial": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/initial_request.js",
     "run-local-followup-yes": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_yes_request.js",
-    "run-local-followup-no": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_no_request.js"
+    "run-local-followup-no": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_no_request.js",
+    "run-local-followup-repeat": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_repeat_request.js"
   },
   "author": "",
   "license": "ISC",

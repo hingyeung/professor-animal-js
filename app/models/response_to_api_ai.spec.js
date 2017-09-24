@@ -3,6 +3,7 @@
 const ResponseToApiAi = require('./response_to_api_ai'),
     should = require('chai').should(),
     Context = require('./context'),
+    UserSession = require('../models/UserSession'),
     Question = require('./question');
 
 describe('ResponseFromApiAi', function () {
@@ -32,6 +33,37 @@ describe('ResponseFromApiAi', function () {
         ResponseToApiAi.fromQuestion(question, [new Context("name", 1)]).should.deep.equal(
             buildExpectedContextOut(question, [new Context('ingame', 1), new Context('name', 1)])
         );
+    });
+
+    it('should use speech saved in session when in-context is set', function () {
+        let userSession = new UserSession("123");
+        userSession.speech = 'previous speech';
+        let apiAiEvent = {
+            result: {
+                contexts: []
+            }
+        };
+        ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, apiAiEvent).should.deep.equal({
+            speech: "previous speech",
+            displayText: "previous speech",
+            source: "samuelli.net"
+        });
+    });
+
+    it('should use speech saved in session when in-context is not set', function () {
+        let userSession = new UserSession("123");
+        userSession.speech = 'previous speech';
+        let apiAiEvent = {
+            result: {
+                contexts: [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}]
+            }
+        };
+        ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, apiAiEvent).should.deep.equal({
+            speech: "previous speech",
+            displayText: "previous speech",
+            source: "samuelli.net",
+            contextOut: [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}]
+        });
     });
 });
 

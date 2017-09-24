@@ -5,8 +5,29 @@ const Question = require('./question'),
     Context = require('./context');
 
 let ResponseFromApiAi = {
-    fromQuestion: fromQuestion
+    fromQuestion: fromQuestion,
+    repeatSpeechFromUserSesssion: repeatSpeechFromUserSesssion
 };
+
+function repeatSpeechFromUserSesssion(userSession, apiAiEvent) {
+    let response = {
+        speech: userSession.speech,
+        displayText: userSession.speech,
+        source: "samuelli.net"
+    };
+
+    // copy contextIn to contextOut
+    let contextOut = [];
+    apiAiEvent.result.contexts.forEach(function (context) {
+        contextOut.push(context);
+    });
+
+    if (contextOut.length > 0) {
+        response.contextOut = contextOut;
+    }
+
+    return response;
+}
 
 function fromQuestion(question, additionalContextOut) {
     // https://discuss.api.ai/t/webhook-response/786
