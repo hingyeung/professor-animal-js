@@ -18,14 +18,16 @@
     "sinon-promise": "^0.1.3"
   },
   "scripts": {
+    "clean": "rm -rf dist/",
     "jshint": "jshint app/**/*.js",
     "test": "npm run test-unit",
     "test-unit": "NODE_ENV=dev mocha -R spec './app/**/*.spec.js'",
-    "package": "rm -rf dist/ && mkdir dist && cp -r app/* dist/ && cp -R node_modules dist/ && git log --format='%h' -1 > dist/BUILD && cd dist && zip -r lambda.zip *",
+    "package": "app/scripts/package.sh",
     "run-local-initial": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/initial_request.js",
     "run-local-followup-yes": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_yes_request.js",
     "run-local-followup-no": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_no_request.js",
-    "run-local-followup-repeat": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_repeat_request.js"
+    "run-local-followup-repeat": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_repeat_request.js",
+    "upload-package-to-lambda": "app/scripts/upload_package_to_lambda.sh"
   },
   "author": "",
   "license": "ISC",
