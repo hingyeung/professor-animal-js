@@ -53,7 +53,7 @@ AnimalGenie.prototype.play = function (event, callback) {
 };
 
 function buildResponseToApiAiForRepeatingLastSpeech(event, callback) {
-    return function(userSession) {
+    return function (userSession) {
         callback(null, ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, event));
     };
 
@@ -70,27 +70,27 @@ function loadSession(sessionId) {
 }
 
 function updateSession(contextForNextRound) {
-    let nextQuestion = contextForNextRound.nextQuestion;
-    if (nextQuestion.questionType === "filter_based_question") {
-        let deferred = Q.defer();
-        let userSession = contextForNextRound.userSession;
+    let dbService = new DbService(),
+        deferred = Q.defer(),
+        nextQuestion = contextForNextRound.nextQuestion,
+        userSession = contextForNextRound.userSession;
 
+    if (nextQuestion.questionType === "filter_based_question") {
         userSession.field = nextQuestion.field;
         userSession.chosenValue = nextQuestion.chosenValue;
         userSession.animalNames = animalRepo.convertAnimalListToAnimalNameList(contextForNextRound.animalsForNextRound);
         userSession.fieldAndAttributeValuesToIgnore = contextForNextRound.fieldAndAttributeValuesToIgnore;
-        (new DbService()).saveSession(userSession)
-            .then(function () {
-                deferred.resolve(nextQuestion);
-            })
-            .catch(function (err) {
-                deferred.reject(err);
-            });
-        return deferred.promise;
-    } else {
-        // actual value for the function in the chain, not a promise.
-        return nextQuestion;
     }
+    userSession.speech = nextQuestion.toText();
+
+    dbService.saveSession(userSession)
+        .then(function () {
+            deferred.resolve(nextQuestion);
+        })
+        .catch(function (err) {
+            deferred.reject(err);
+        });
+    return deferred.promise;
 }
 
 function getNextQuestion(event) {
@@ -105,6 +105,7 @@ function getNextQuestion(event) {
         if (animalsToPlayWith.length === 1) {
             fieldAndAttributeValuesToIgnore = [];
             nextQuestion = new Question(null, null, animalsToPlayWith[0].name, "ready_to_guess_question");
+            userSession.speech = nextQuestion.toText();
         } else {
 
             // if the answer is "yes", the attribute needs to be ignored during the generation of
@@ -122,7 +123,12 @@ function getNextQuestion(event) {
             userSession.speech = nextQuestion.toText();
             console.log("Next question to ask: ", nextQuestion.toText());
         }
-        return {nextQuestion: nextQuestion, userSession: userSession, animalsForNextRound: animalsToPlayWith, fieldAndAttributeValuesToIgnore: fieldAndAttributeValuesToIgnore};
+        return {
+            nextQuestion: nextQuestion,
+            userSession: userSession,
+            animalsForNextRound: animalsToPlayWith,
+            fieldAndAttributeValuesToIgnore: fieldAndAttributeValuesToIgnore
+        };
     };
 }
 

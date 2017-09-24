@@ -193,6 +193,20 @@ describe('AnimalGenie', function () {
         ).should.equal(true);
     });
 
+    it('should save updated session when computer is ready to guess the animal', function (done) {
+        let event = createEvent("123", "answer_question", "yes");
+
+        // forcing mockAnimalFilter is reloaded with the updated filterStub
+        filterStub = sinon.stub().returns([{name: "correct animal"}]);
+        mockAnimalFilter.filter = filterStub;
+        animalGenie = animalGenieWithMocks();
+        animalGenie.play(event, function (err, responseToApiAi) {
+            userSession.speech.should.equal("It is a correct animal. Am I right?");
+            sinon.assert.calledWithExactly(saveSessionStub, userSession);
+            done();
+        });
+    });
+
     it('should get next question with QuestionSelector with animal list restored from session when Api.ai action is "answer_question"', function () {
         let event = createEvent("123", "answer_question", "yes");
         animalGenie.play(event, callbackSpy);
@@ -217,10 +231,8 @@ describe('AnimalGenie', function () {
         animalGenie = animalGenieWithMocks();
 
         animalGenie.play(event, function (err, responseToApiAi) {
-            // callback(null, ResponseToApiAi.fromQuestion(nextQuestion, [new Context("ingame", 1)]));
             should.not.exist(err);
             responseToApiAi.should.equal(apiAiResponseForReadyToGuessQuestion);
-            // responseToApiAi.contextOut.should.deep.equal([new Context("readytoguess", 1)]);
             done();
         });
     });
