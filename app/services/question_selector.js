@@ -32,7 +32,7 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
         return item.freq < animals.length;
     });
 
-    get the 1st and 2nd highest frequency, needed for introducing less predictability
+    // get the 1st and 2nd highest frequency, needed for introducing less predictability
     let firstAndSecondMostPopularAttrubuteValues = findTwoAttributeValusWithHighestFrequency(attributeListSortedByFreq);
 
     // the resulting map attributesWithHighestFreq should contain a list of [{field, attr, freq}] sorted by frequency
