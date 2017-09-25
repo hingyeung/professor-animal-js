@@ -15,12 +15,12 @@ describe('Question selector', function () {
     });
 
     ["types", "behaviours", "physical", "diet"].forEach(function (fieldToTest) {
-        it(`should select most popular field and attribute value for next question about "${fieldToTest}" when the "${fieldToTest}" is the only field all animals have`, function () {
+        it(`should select 2 most popular field and attribute values for next question about "${fieldToTest}" when the "${fieldToTest}" is the only field all animals have`, function () {
             let animals = buildTestAnimalsWithOnlyOneField(fieldToTest);
             let nextQuestion = QuestionSelector.nextQuestion(animals);
             should.exist(nextQuestion);
             nextQuestion.field.should.equal(fieldToTest);
-            nextQuestion.possibleValues.should.deep.equal(["v1"]);
+            nextQuestion.possibleValues.should.deep.equal(["v1", "v2"]);
             nextQuestion.chosenValue.should.equal("v1");
         });
     });
@@ -31,7 +31,7 @@ describe('Question selector', function () {
             let nextQuestion = QuestionSelector.nextQuestion(animals);
             should.exist(nextQuestion);
             nextQuestion.field.should.equal(fieldToTest);
-            nextQuestion.possibleValues.should.deep.equal(["v1", "v12"]);
+            nextQuestion.possibleValues.should.deep.equal(["v1", "v2"]);
             nextQuestion.chosenValue.should.equal("v1");
         });
     });
@@ -80,15 +80,19 @@ function buildTestAnimalsWithOnlyOneField(field) {
     return [
         {
             name: "A",
-            [field]: ["v1", "v12", "v13", "v14"],
+            [field]: ["v1", "v2", "v4", "v5"],
         },
         {
             name: "B",
-            [field]: ["v1", "v22", "v23", "v24"],
+            [field]: ["v1", "v2", "v6", "v7"],
         },
         {
             name: "C",
-            [field]: ["v2", "v32", "v34", "v35"],
+            [field]: ["v1", "v3", "v8", "v9"],
+        },
+        {
+            name: "C",
+            [field]: ["v10", "v11", "v12", "v13"],
         }
     ];
 }
@@ -111,9 +115,9 @@ function buildTestAnimalsWithOneCommonAttributeOnAllAnimals(field) {
 }
 
 function buildTestAnimalsWithAllFields(fieldToTest) {
-    const DISTINGUISHING_ATTRIBUTES = [["v1", "v12", "v13"], ["v1", "v12", "v23"], ["v2", "v33", "v34"]];
+    const DISTINGUISHING_ATTRIBUTES = [["v1", "v2", "v100"], ["v1", "v2", "v102"], ["v1", "v103", "v104"], ["v105", "v106", "v107"]];
     let animals = [];
-    ["A", "B", "C"].forEach(function (animalName, idx) {
+    ["A", "B", "C", "D"].forEach(function (animalName, idx) {
         let animal = {};
         ["types", "diet", "behaviours", "physical"].forEach(function (field) {
             if (field === fieldToTest) {

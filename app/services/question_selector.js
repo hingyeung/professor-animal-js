@@ -32,31 +32,56 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
         return item.freq < animals.length;
     });
 
-    // the resulting map attributesWithLowestFreq should contain a list of [{field, attr, freq}] sorted by frequency
+    get the 1st and 2nd highest frequency, needed for introducing less predictability
+    let firstAndSecondMostPopularAttrubuteValues = findTwoAttributeValusWithHighestFrequency(attributeListSortedByFreq);
+
+    // the resulting map attributesWithHighestFreq should contain a list of [{field, attr, freq}] sorted by frequency
     // field e.g.: diet
     // attr e.g.: grass
-    let attributesWithLowestFreq = _.filter(attributeListSortedByFreq, function (attribute) {
-        return attributeListSortedByFreq[0].freq === attribute.freq;
+    let attributesWithHighestFreq = _.filter(attributeListSortedByFreq, function (attribute) {
+        // 1. the first element in the list should have the highest frequency and all elements with
+        //    this frequency will be included in the shortlist.
+        // 2. to make things less predictable, include top 2 frequencies (2 most popular) in the shortlist
+        //
+        // Top frequency and top frequency - 1 is not good enough because there could be a gap between
+        // the top frequency and the 2nd highest frequence (e.g. 1: 10, 2: 3. Including frequency 10 and 9 doesn't
+        // do anything.
+        // return attributeListSortedByFreq[0].freq === attribute.freq || attributeListSortedByFreq[0].freq - 1 === attribute.freq;
+        return _.indexOf(firstAndSecondMostPopularAttrubuteValues, attribute.freq) !== -1;
     }).map(function (o) {
         return {field: o.field, attr: o.attr, freq: o.freq};
     });
 
-    if (attributesWithLowestFreq.length === 0) {
+    if (attributesWithHighestFreq.length === 0) {
         return new Question(null, null, null, Question.GIVE_UP_MESSAGE);
     }
 
-    return determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFreq);
+    return determineNextQuestionFromAttributeHighestFreqMap(attributesWithHighestFreq);
 }
 
-function determineNextQuestionFromAttributeLowestFreqMap(attributesWithLowestFreqFromAllFields) {
-    let attributeWithLowestFreq = random.randomItemFromArray(attributesWithLowestFreqFromAllFields);
-    let allAttributesForTheSameField = _.filter(attributesWithLowestFreqFromAllFields, function (o) {
-        return o.field === attributeWithLowestFreq.field;
+// this function assumes attribteList is already sorted in descending order
+function findTwoAttributeValusWithHighestFrequency(attributeList) {
+    if (attributeList.length === 0) {
+        return attributeList;
+    }
+
+    let freqList = _.map(attributeList, function (item) {
+        return item.freq;
+    });
+
+    freqList = _.uniq(freqList);
+    return [freqList[0], freqList[1]];
+}
+
+function determineNextQuestionFromAttributeHighestFreqMap(attributesWithHighestFreqFromAllFields) {
+    let attributeWithHighestFreq = random.randomItemFromArray(attributesWithHighestFreqFromAllFields);
+    let allAttributesForTheSameField = _.filter(attributesWithHighestFreqFromAllFields, function (o) {
+        return o.field === attributeWithHighestFreq.field;
     }).map(function (o) {
         return o.attr;
     });
 
-    return new Question(attributeWithLowestFreq.field, allAttributesForTheSameField, random.randomItemFromArray(allAttributesForTheSameField));
+    return new Question(attributeWithHighestFreq.field, allAttributesForTheSameField, random.randomItemFromArray(allAttributesForTheSameField));
 }
 
 // attributeCountMap: map to be updated with attribute frequency for each attributeType. e.g. { diet: {banana: 1, nut: 2} }

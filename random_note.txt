@@ -1,3 +1,6 @@
+STARTING LOCAL DYNAMODB
+java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory
+
 CREATE TABLE
 aws dynamodb create-table --endpoint-url http://localhost:8000  --table-name AnimalGenieUserSession --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
 
