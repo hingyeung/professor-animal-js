@@ -7,7 +7,8 @@
       "big cat",
       "large",
       "carnivore",
-      "predator"
+      "predator",
+      "tail"
     ],
     "behaviours": [
       "hunt in a pack"
@@ -31,7 +32,8 @@
       "big cat",
       "large",
       "carnivore",
-      "predator"
+      "predator",
+      "tail"
     ],
     "behaviours": [
       "climb tree",
@@ -51,7 +53,8 @@
       "vertebrate",
       "mammal",
       "herbivore",
-      "large animal"
+      "large animal",
+      "tail"
     ],
     "behaviours": [
       "live in a group"
@@ -132,8 +135,7 @@
       "vertebrate",
       "mammal",
       "herbivore",
-      "large animal",
-      "cute animal"
+      "large animal"
     ],
     "behaviours": [
       "climb tree"
@@ -159,7 +161,8 @@
       "swimming"
     ],
     "physical": [
-      "black strip"
+      "black strip",
+      "tail"
     ],
     "diet": [
       "deer",
@@ -182,7 +185,8 @@
     ],
     "physical": [
       "long tongue",
-      "eyes that can move independently"
+      "eyes that can move independently",
+      "tail"
     ],
     "diet": [
       "insects"
@@ -326,7 +330,8 @@
     ],
     "physical": [
       "long legs",
-      "mane"
+      "mane",
+      "tail"
     ],
     "diet": [
       "grass"
@@ -343,10 +348,10 @@
     "behaviours": [
       "swim",
       "live in the sea",
-      "lay eggs"
+      "lay eggs on beach"
     ],
     "physical": [
-      "a shell"
+      "a hard shell"
     ],
     "diet": [
       "seaweed",
@@ -398,6 +403,73 @@
     "diet": [
       "insects",
       "shrimp"
+    ]
+  },
+  {
+    "name": "Orca",
+    "types": [
+      "predators",
+      "vertebrate",
+      "carnivore",
+      "mammal",
+      "good diver",
+      "hunt in a pack"
+    ],
+    "behaviours": [
+      "live in the sea"
+    ],
+    "physical": [
+      "big tail fin",
+      "blow hole on top of its head",
+      "black and white colour on its body"
+    ],
+    "diet": [
+      "seals",
+      "fish",
+      "sea lions",
+      "penguins",
+      "squid",
+      "sea turtles",
+      "sharks"
+    ]
+  },
+  {
+    "name": "Blue Whale",
+    "types": [
+      "vertebrate",
+      "carnivore",
+      "mammal",
+      "good diver",
+      "largest animal on Earth",
+      "loudest animal on Earth"
+    ],
+    "behaviours": [
+      "live in the sea"
+    ],
+    "physical": [
+      "big tail fin",
+      "no teeth",
+      "blow hole on top of its head"
+    ],
+    "diet": [
+      "krill"
+    ]
+  },
+  {
+    "name": "Butterfly",
+    "types": [
+      "insect"
+    ],
+    "behaviours": [
+      "live as caterpillar when it is young"
+    ],
+    "physical": [
+      "bright and colourful wings",
+      "six legs",
+      "two antenna"
+    ],
+    "diet": [
+      "nectar from flowers"
     ]
   }
 ]
