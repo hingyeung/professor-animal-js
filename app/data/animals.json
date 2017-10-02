@@ -217,7 +217,7 @@
     ]
   },
   {
-    "name": "Shark",
+    "name": "Great White Shark",
     "types": [
       "vertebrate",
       "fish",
@@ -226,14 +226,20 @@
       "large"
     ],
     "behaviours": [
-      "smell blood in water"
+      "smell blood in water",
+      "swim very fast"
     ],
     "physical": [
-      "sharp teeth"
+      "very rough skin",
+      "a body that weights up to 1800 kilogram",
+      "a body that is up to 6 metres long",
+      "sharp teeth up to 6 cm long",
+      "large dorsel fin on its back and stick out of the water"
     ],
     "diet": [
       "fish",
-      "seals"
+      "seals",
+      "sea lions"
     ]
   },
   {
@@ -470,6 +476,110 @@
     ],
     "diet": [
       "nectar from flowers"
+    ]
+  },
+  {
+    "name": "Clownfish",
+    "types": [
+      "fish"
+    ],
+    "behaviours": [
+      "live in anemone",
+      "lays up to 1000 eggs"
+    ],
+    "physical": [
+      "orange and white stripes on its body"
+    ],
+    "diet": [
+      "algae"
+    ]
+  },
+  {
+    "name": "Rhinoceros",
+    "types": [
+      "mammal",
+      "herbivore",
+      "territorial animal"
+    ],
+    "behaviours": [
+      "stay in muddy pools",
+      "charge directly at whatever fightens it"
+    ],
+    "physical": [
+      "giant horns on its nose",
+      "thick, armour-like skin",
+      "has a body that weights up to 2500 kilogram"
+    ],
+    "diet": [
+      "plants",
+      "grass"
+    ]
+  },
+  {
+    "name": "Meerkat",
+    "types": [
+      "mammal",
+      "omnivore"
+    ],
+    "behaviours": [
+      "stand on two legs when looking out for danger",
+      "live in burrows",
+      "live in a big group of up to 50 members"
+    ],
+    "physical": [
+      "long tail",
+      "long, sharp claws for digging"
+    ],
+    "diet": [
+      "insects",
+      "small reptiles",
+      "birds",
+      "eggs",
+      "fruit",
+      "plants"
+    ]
+  },
+  {
+    "name": "Koala",
+    "types": [
+      "marsupial",
+      "mammal",
+      "herbivore"
+    ],
+    "behaviours": [
+      "no tail",
+      "spend most of its time on trees",
+      "sleep up to 18 hours a day",
+      "stay in its mother's pouch for about six months when it is a baby"
+    ],
+    "physical": [
+      "grey fur with a cream-coloured chest",
+      "strong, clawed feet for climbing trees",
+      "a pouch where their newborns live"
+    ],
+    "diet": [
+      "eucalyptus leaves"
+    ]
+  },
+  {
+    "name": "Giraffe",
+    "types": [
+      "mammal",
+      "herbivore",
+      "social animal"
+    ],
+    "behaviours": [
+      "live in Africa",
+      "live in a group"
+    ],
+    "physical": [
+      "long neck",
+      "long tongue",
+      "excellent eyesight"
+    ],
+    "diet": [
+      "plants",
+      "acacia tree"
     ]
   }
 ]
