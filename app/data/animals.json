@@ -155,14 +155,19 @@
       "carnivore",
       "large animal",
       "big cat",
-      "predator"
+      "predator",
+      "solitary animal",
+      "good swimmers",
+      "fast runner"
     ],
     "behaviours": [
-      "swimming"
+      "swim",
+      "roar"
     ],
     "physical": [
       "black strip",
-      "tail"
+      "long tail",
+      "unique pattern of stripes on each animal"
     ],
     "diet": [
       "deer",
@@ -337,7 +342,30 @@
     "physical": [
       "long legs",
       "mane",
-      "tail"
+      "tail",
+      "hooves"
+    ],
+    "diet": [
+      "grass"
+    ]
+  },
+  {
+    "name": "Zebra",
+    "types": [
+      "vertebrate",
+      "herbivore"
+    ],
+    "behaviours": [
+      "live in Africa",
+      "live in a pack",
+      "run very fast"
+    ],
+    "physical": [
+      "long legs",
+      "mane",
+      "tail",
+      "hooves",
+      "black stripes on its body"
     ],
     "diet": [
       "grass"
@@ -464,6 +492,7 @@
   {
     "name": "Butterfly",
     "types": [
+      "invertebrate",
       "insect"
     ],
     "behaviours": [
@@ -481,6 +510,7 @@
   {
     "name": "Clownfish",
     "types": [
+      "vertebrate",
       "fish"
     ],
     "behaviours": [
@@ -499,7 +529,8 @@
     "types": [
       "mammal",
       "herbivore",
-      "territorial animal"
+      "territorial animal",
+      "vertebrate"
     ],
     "behaviours": [
       "stay in muddy pools",
@@ -519,7 +550,8 @@
     "name": "Meerkat",
     "types": [
       "mammal",
-      "omnivore"
+      "omnivore",
+      "vertebrate"
     ],
     "behaviours": [
       "stand on two legs when looking out for danger",
@@ -542,6 +574,7 @@
   {
     "name": "Koala",
     "types": [
+      "vertebrate",
       "marsupial",
       "mammal",
       "herbivore"
@@ -564,6 +597,7 @@
   {
     "name": "Giraffe",
     "types": [
+      "vertebrate",
       "mammal",
       "herbivore",
       "social animal"
@@ -575,7 +609,8 @@
     "physical": [
       "long neck",
       "long tongue",
-      "excellent eyesight"
+      "excellent eyesight",
+      "hooves"
     ],
     "diet": [
       "plants",
