@@ -14,7 +14,7 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
 
     // build a frequency map for the current attribute (e.g. types)
     animals.forEach(function (animal) {
-        _.forEach(["types", "behaviours", "physical", "diet"], function (attributeType) {
+        _.forEach(["types", "behaviours", "physical", "diet", "possible_behaviours", "considerations"], function (attributeType) {
             if (!animal[attributeType]) {
                 return;
             }

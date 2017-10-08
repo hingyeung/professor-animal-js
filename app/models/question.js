@@ -23,6 +23,10 @@ Question.prototype.toText = function () {
                     return `Does it have ${this.chosenValue}?`;
                 case "diet":
                     return `Does it eat ${this.chosenValue}?`;
+                case "possible_behaviours":
+                    return `Can it ${this.chosenValue}?`;
+                case "considerations":
+                    return `Is it considered ${this.chosenValue}?`;
                 default:
                     return "I don't know what to ask!";
             }

@@ -14,7 +14,7 @@ describe('Question selector', function () {
 
     });
 
-    ["types", "behaviours", "physical", "diet"].forEach(function (fieldToTest) {
+    ["types", "behaviours", "physical", "diet", "possible_behaviours", "considerations"].forEach(function (fieldToTest) {
         it(`should select 2 most popular field and attribute values for next question about "${fieldToTest}" when the "${fieldToTest}" is the only field all animals have`, function () {
             let animals = buildTestAnimalsWithOnlyOneField(fieldToTest);
             let nextQuestion = QuestionSelector.nextQuestion(animals);
@@ -25,7 +25,7 @@ describe('Question selector', function () {
         });
     });
 
-    ["types", "behaviours", "physical", "diet"].forEach(function (fieldToTest) {
+    ["types", "behaviours", "physical", "diet", "possible_behaviours", "considerations"].forEach(function (fieldToTest) {
         it(`should return next question about "${fieldToTest}" when the "${fieldToTest}" is not the only field all animals have`, function () {
             let animals = buildTestAnimalsWithAllFields(fieldToTest);
             let nextQuestion = QuestionSelector.nextQuestion(animals);
@@ -47,7 +47,7 @@ describe('Question selector', function () {
     });
 
     it('should ignore attributes that exists on all animals', function () {
-        ["types", "behaviours", "physical", "diet"].forEach(function (fieldToTest) {
+        ["types", "behaviours", "physical", "diet", "possible_behaviours", "considerations"].forEach(function (fieldToTest) {
             let animals = buildTestAnimalsWithOneCommonAttributeOnAllAnimals(fieldToTest);
             let nextQuestion = QuestionSelector.nextQuestion(animals);
             should.exist(nextQuestion);
@@ -119,7 +119,7 @@ function buildTestAnimalsWithAllFields(fieldToTest) {
     let animals = [];
     ["A", "B", "C", "D"].forEach(function (animalName, idx) {
         let animal = {};
-        ["types", "diet", "behaviours", "physical"].forEach(function (field) {
+        ["types", "diet", "behaviours", "physical", "possible_behaviours", "considerations"].forEach(function (field) {
             if (field === fieldToTest) {
                 animal[field] = DISTINGUISHING_ATTRIBUTES[idx];
             } else {

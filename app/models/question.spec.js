@@ -24,6 +24,16 @@ describe('Question', function () {
         question.toText().should.equal("Does it eat B?");
     });
 
+    it('should convert question for field "considerations" to text', function () {
+        let question = new Question("considerations", ["A", "B", "C"], "B");
+        question.toText().should.equal("Is it considered B?");
+    });
+
+    it('should convert question for field "possible_behaviours" to text', function () {
+        let question = new Question("possible_behaviours", ["A", "B", "C"], "B");
+        question.toText().should.equal("Can it B?");
+    });
+
     it('should convert ready-to-guess question', function () {
         let question = new Question(null, null, "correct animal", Question.READY_TO_GUESS_QUESTION);
         question.toText().should.equal("It is a correct animal. Am I right?");

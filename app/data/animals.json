@@ -5,16 +5,20 @@
       "vertebrate",
       "mammal",
       "big cat",
-      "large",
       "carnivore",
       "predator",
-      "tail"
+      "large animal"
     ],
     "behaviours": [
-      "hunt in a pack"
+      "hunt in a group",
+      "live in a group called pride",
+      "roar",
+      "live in Africa",
+      "rest for around 20 hours a day"
     ],
     "physical": [
-      "mane"
+      "mane",
+      "tail"
     ],
     "diet": [
       "zebra",
@@ -30,16 +34,20 @@
       "vertebrate",
       "mammal",
       "big cat",
-      "large",
       "carnivore",
       "predator",
-      "tail"
+      "fastest land animal in the world"
     ],
     "behaviours": [
-      "climb tree",
       "run very fast"
     ],
+    "possible_behaviours": [
+      "run at top speed of 113 km per hour"
+    ],
     "physical": [
+      "tail",
+      "excellent eyesight",
+      "long, black lines which run from the inside of each eye to the mouth"
     ],
     "diet": [
       "gazelles",
@@ -53,19 +61,29 @@
       "vertebrate",
       "mammal",
       "herbivore",
-      "large animal",
-      "tail"
+      "tail",
+      "largest land-living mammal"
     ],
     "behaviours": [
-      "live in a group"
+      "live in a groups called herds",
+      "live in Africa or Asia"
+    ],
+    "possible_behaviours": [
+      "swim"
     ],
     "physical": [
-      "tusks"
+      "tusks",
+      "tail",
+      "long trunk",
+      "large, thin ears"
     ],
     "diet": [
+      "twigs",
+      "leaves",
+      "roots",
       "grass",
-      "banana",
-      "peanut"
+      "small plants",
+      "fruits"
     ]
   },
   {
@@ -165,8 +183,9 @@
       "roar"
     ],
     "physical": [
+      "tail",
       "black strip",
-      "long tail",
+      "tail",
       "unique pattern of stripes on each animal"
     ],
     "diet": [
@@ -228,13 +247,17 @@
       "fish",
       "carnivore",
       "predator",
-      "large"
+      "large animal",
+      "warm-blooded"
     ],
     "behaviours": [
       "smell blood in water",
       "swim very fast"
     ],
     "physical": [
+      "about 300 teeth",
+      "many rows of teeth",
+      "cartilage instead of bone",
       "very rough skin",
       "a body that weights up to 1800 kilogram",
       "a body that is up to 6 metres long",
@@ -347,6 +370,12 @@
     ],
     "diet": [
       "grass"
+    ],
+    "possible_behaviours": [
+      "domesticated"
+    ],
+    "considerations": [
+      "as helpful to humans"
     ]
   },
   {
@@ -357,7 +386,7 @@
     ],
     "behaviours": [
       "live in Africa",
-      "live in a pack",
+      "live in a group",
       "run very fast"
     ],
     "physical": [
@@ -559,7 +588,7 @@
       "live in a big group of up to 50 members"
     ],
     "physical": [
-      "long tail",
+      "tail",
       "long, sharp claws for digging"
     ],
     "diet": [
