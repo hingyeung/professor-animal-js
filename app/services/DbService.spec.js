@@ -5,12 +5,12 @@ const expect = require('chai').expect,
     UserSession = require('../models/UserSession'),
     proxyquire = require('proxyquire');
 
-let mockAws, DbService, getSpy, putSpy;
+let mockAws, DbService, getSpy, putSpy, clock;
 
 describe('DBService', function () {
     before(function () {
         // call arg[1] as callback function with arguments (null, {id:"123"}). e.g. get("id", callback).
-        getSpy = sinon.stub().callsArgWith(1, null, {id:"123"});
+        getSpy = sinon.stub().callsArgWith(1, null, {id: "123"});
         putSpy = sinon.stub().callsArgWith(1, null, {id: "123"});
         mockAws = {
             config: {
@@ -28,6 +28,12 @@ describe('DBService', function () {
         };
 
         DbService = proxyquire('./DbService', {'aws-sdk': mockAws});
+        // fake the time to Epoch time
+        clock = sinon.useFakeTimers();
+    });
+
+    after(function () {
+        clock.restore();
     });
 
     it('saveSession should called put() in dynamodb driver', function (done) {
@@ -35,7 +41,9 @@ describe('DBService', function () {
         // dbService.saveSession({id: "sessionId"}, null);
         // expect(putSpy.called).to.equal(true);
         // done();
-        dbService.saveSession(new UserSession("id", ["A", "B"])).then(function() {
+        let session = new UserSession("id", ["A", "B"]);
+        session.timestamp = new Date();
+        dbService.saveSession(session).then(function () {
             expect(putSpy.calledOnce).to.equal(true);
             done();
         });

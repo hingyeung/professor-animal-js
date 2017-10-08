@@ -6,6 +6,7 @@ function UserSession(id, animalNames, field, chosenValue, fieldAndAttributeValue
     this.field = field;
     this.chosenValue = chosenValue;
     this.fieldAndAttributeValuesToIgnore = fieldAndAttributeValuesToIgnore || [];
+    this.timestamp = undefined;
     // Need to use empty space as DynamoDB doesn't allow empty string
     // https://forums.aws.amazon.com/thread.jspa?threadID=90137
     this.speech = speech || ' ';

@@ -34,6 +34,7 @@ DbService.prototype.getSession = function (id) {
 
 DbService.prototype.saveSession = function (userSession) {
     let deferred = Q.defer();
+    userSession.timestamp = new Date().getTime();
     docClient.put({
         TableName: USER_SESSION_TABLE,
         Item: userSession

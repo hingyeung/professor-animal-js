@@ -4,8 +4,11 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -i
 CREATE TABLE
 aws dynamodb create-table --endpoint-url http://localhost:8000  --table-name AnimalGenieUserSession --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
 
+LIST ALL ITEMS
+aws dynamodb scan  --endpoint-url http://localhost:8000  --table-name AnimalGenieUserSession
+
 GET ITEM
-aws dynamodb get-item  --endpoint-url http://localhost:8000  --table-name AnimalGenieUserSession --key '{"id":{"S":"1486656220806"}}'
+aws dynamodb get-item  --endpoint-url http://localhost:8000  --table-name AnimalGenieUserSession --key '{"id":{"S":"403f864b-3f12-4987-ad87-0377f2b6f5d4"}}'
 
 ACCESS KEY
 When using DynamoDB in a Lambda, "accessKeyId" and "secretAccessKey" are not required (you can invalid key exception if they are provided). It
