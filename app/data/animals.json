@@ -18,7 +18,8 @@
     ],
     "physical": [
       "mane",
-      "tail"
+      "tail",
+      "legs"
     ],
     "diet": [
       "zebra",
@@ -47,7 +48,8 @@
     "physical": [
       "tail",
       "excellent eyesight",
-      "long, black lines which run from the inside of each eye to the mouth"
+      "long, black lines which run from the inside of each eye to the mouth",
+      "legs"
     ],
     "diet": [
       "gazelles",
@@ -75,7 +77,8 @@
       "tusks",
       "tail",
       "long trunk",
-      "large, thin ears"
+      "large, thin ears",
+      "legs"
     ],
     "diet": [
       "twigs",
@@ -98,7 +101,8 @@
       "bark"
     ],
     "physical": [
-      "tail"
+      "tail",
+      "legs"
     ],
     "diet": [
       "pet food",
@@ -118,7 +122,8 @@
       "meow"
     ],
     "physical": [
-      "tail"
+      "tail",
+      "legs"
     ],
     "diet": [
       "fish",
@@ -139,7 +144,8 @@
     ],
     "physical": [
       "long fur",
-      "sharp claws"
+      "sharp claws",
+      "legs"
     ],
     "diet": [
       "fish",
@@ -159,7 +165,8 @@
       "climb tree"
     ],
     "physical": [
-      "black and white"
+      "black and white fur",
+      "legs"
     ],
     "diet": [
       "bamboo"
@@ -174,9 +181,7 @@
       "large animal",
       "big cat",
       "predator",
-      "solitary animal",
-      "good swimmers",
-      "fast runner"
+      "solitary animal"
     ],
     "behaviours": [
       "swim",
@@ -185,13 +190,16 @@
     "physical": [
       "tail",
       "black strip",
-      "tail",
-      "unique pattern of stripes on each animal"
+      "unique pattern of stripes on each animal",
+      "legs"
     ],
     "diet": [
       "deer",
       "antelope",
       "large animals"
+    ],
+    "possible_behaviours": [
+      "swim"
     ]
   },
   {
@@ -205,7 +213,8 @@
     ],
     "behaviours": [
       "climb tree",
-      "change colour to blend in"
+      "change colour to blend in",
+      "legs"
     ],
     "physical": [
       "long tongue",
@@ -223,7 +232,6 @@
       "reptile",
       "carnivore",
       "predator",
-      "poisonous animal",
       "cold blooded animal"
     ],
     "behaviours": [
@@ -232,12 +240,16 @@
       "lay eggs"
     ],
     "physical": [
-      "no legs"
+      "scales",
+      "long body"
     ],
     "diet": [
       "insects",
       "eggs",
       "small animals"
+    ],
+    "possible_behaviours": [
+      "poisonous"
     ]
   },
   {
@@ -271,23 +283,30 @@
     ]
   },
   {
-    "name": "Penguin",
+    "name": "Emperor Penguin",
     "types": [
       "vertebrate",
       "carnivore",
       "bird",
-      "predator"
+      "predator",
+      "good swimmer"
     ],
     "behaviours": [
       "walk in a funny way",
       "stay on the ground",
-      "lay eggs"
+      "lay eggs",
+      "live in Antarctica",
+      "swim"
     ],
     "physical": [
-      "sharp teeth"
+      "wings",
+      "white belly and a black head, back, tail and wings",
+      "legs"
     ],
     "diet": [
-      "fish"
+      "fish",
+      "squid",
+      "krill"
     ]
   },
   {
@@ -305,7 +324,9 @@
     ],
     "physical": [
       "wings",
-      "talon"
+      "talon",
+      "excellent eyesight",
+      "legs"
     ],
     "diet": [
       "mouse",
@@ -318,7 +339,6 @@
     "types": [
       "vertebrate",
       "bird",
-      "bird of prey",
       "small animal",
       "omnivore"
     ],
@@ -326,7 +346,8 @@
       "fly"
     ],
     "physical": [
-      "wings"
+      "wings",
+      "legs"
     ],
     "diet": [
       "nectar",
@@ -337,8 +358,7 @@
     "name": "Jellyfish",
     "types": [
       "invertebrate",
-      "omnivore",
-      "poisonous animal"
+      "omnivore"
     ],
     "behaviours": [
       "sting",
@@ -350,13 +370,17 @@
     "diet": [
       "small plants",
       "fish eggs"
+    ],
+    "possible_behaviours": [
+      "poisonous"
     ]
   },
   {
     "name": "Horse",
     "types": [
       "vertebrate",
-      "herbivore"
+      "herbivore",
+      "large animal"
     ],
     "behaviours": [
       "run very fast",
@@ -382,7 +406,8 @@
     "name": "Zebra",
     "types": [
       "vertebrate",
-      "herbivore"
+      "herbivore",
+      "large animal"
     ],
     "behaviours": [
       "live in Africa",
@@ -414,7 +439,8 @@
       "lay eggs on beach"
     ],
     "physical": [
-      "a hard shell"
+      "a hard shell",
+      "legs"
     ],
     "diet": [
       "seaweed",
@@ -440,7 +466,8 @@
       "live in Arctic Circle"
     ],
     "physical": [
-      "white fur"
+      "white fur",
+      "legs"
     ],
     "diet": [
       "seals"
@@ -476,15 +503,18 @@
       "carnivore",
       "mammal",
       "good diver",
-      "hunt in a pack"
+      "large animal"
     ],
     "behaviours": [
-      "live in the sea"
+      "live in the sea",
+      "hunt in a group",
+      "swim"
     ],
     "physical": [
       "big tail fin",
       "blow hole on top of its head",
-      "black and white colour on its body"
+      "black and white colour on its body",
+      "large dorsel fin on its back and stick out of the water"
     ],
     "diet": [
       "seals",
@@ -540,7 +570,8 @@
     "name": "Clownfish",
     "types": [
       "vertebrate",
-      "fish"
+      "fish",
+      "omnivorous"
     ],
     "behaviours": [
       "live in anemone",
@@ -568,7 +599,8 @@
     "physical": [
       "giant horns on its nose",
       "thick, armour-like skin",
-      "has a body that weights up to 2500 kilogram"
+      "has a body that weights up to 2500 kilogram",
+      "legs"
     ],
     "diet": [
       "plants",
@@ -589,7 +621,8 @@
     ],
     "physical": [
       "tail",
-      "long, sharp claws for digging"
+      "long, sharp claws for digging",
+      "legs"
     ],
     "diet": [
       "insects",
@@ -609,7 +642,6 @@
       "herbivore"
     ],
     "behaviours": [
-      "no tail",
       "spend most of its time on trees",
       "sleep up to 18 hours a day",
       "stay in its mother's pouch for about six months when it is a baby"
@@ -617,10 +649,12 @@
     "physical": [
       "grey fur with a cream-coloured chest",
       "strong, clawed feet for climbing trees",
-      "a pouch where their newborns live"
+      "a pouch where their newborns live",
+      "legs"
     ],
     "diet": [
-      "eucalyptus leaves"
+      "eucalyptus leaves",
+      "plants"
     ]
   },
   {
@@ -629,7 +663,8 @@
       "vertebrate",
       "mammal",
       "herbivore",
-      "social animal"
+      "social animal",
+      "large animal"
     ],
     "behaviours": [
       "live in Africa",
@@ -639,7 +674,9 @@
       "long neck",
       "long tongue",
       "excellent eyesight",
-      "hooves"
+      "hooves",
+      "tail",
+      "legs"
     ],
     "diet": [
       "plants",
