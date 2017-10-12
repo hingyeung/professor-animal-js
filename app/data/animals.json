@@ -18,14 +18,11 @@
     ],
     "physical": [
       "mane",
-      "tail"
+      "tail",
+      "legs"
     ],
     "diet": [
-      "zebra",
-      "buffalo",
-      "wildebeest",
-      "giraffes",
-      "antelopes"
+      "zebra, buffalo, wildebeest, giraffes and antelopes"
     ]
   },
   {
@@ -47,12 +44,11 @@
     "physical": [
       "tail",
       "excellent eyesight",
-      "long, black lines which run from the inside of each eye to the mouth"
+      "long, black lines which run from the inside of each eye to the mouth",
+      "legs"
     ],
     "diet": [
-      "gazelles",
-      "impalas",
-      "wildebeest"
+      "gazelles, impalas and wildebeest"
     ]
   },
   {
@@ -75,15 +71,11 @@
       "tusks",
       "tail",
       "long trunk",
-      "large, thin ears"
+      "large, thin ears",
+      "legs"
     ],
     "diet": [
-      "twigs",
-      "leaves",
-      "roots",
-      "grass",
-      "small plants",
-      "fruits"
+      "grass, leaves, fruits and small plants"
     ]
   },
   {
@@ -98,11 +90,11 @@
       "bark"
     ],
     "physical": [
-      "tail"
+      "tail",
+      "legs"
     ],
     "diet": [
-      "pet food",
-      "bone"
+      "bone and pet food"
     ]
   },
   {
@@ -118,11 +110,11 @@
       "meow"
     ],
     "physical": [
-      "tail"
+      "tail",
+      "legs"
     ],
     "diet": [
-      "fish",
-      "pet food"
+      "fish and pet food"
     ]
   },
   {
@@ -139,12 +131,11 @@
     ],
     "physical": [
       "long fur",
-      "sharp claws"
+      "sharp claws",
+      "legs"
     ],
     "diet": [
-      "fish",
-      "fruit",
-      "small animals"
+      "fruit, fish and small animals"
     ]
   },
   {
@@ -159,7 +150,8 @@
       "climb tree"
     ],
     "physical": [
-      "black and white fur"
+      "black and white fur",
+      "legs"
     ],
     "diet": [
       "bamboo"
@@ -183,12 +175,11 @@
     "physical": [
       "tail",
       "black strip",
-      "unique pattern of stripes on each animal"
+      "unique pattern of stripes on each animal",
+      "legs"
     ],
     "diet": [
-      "deer",
-      "antelope",
-      "large animals"
+      "deer, antelope and other large animals"
     ],
     "possible_behaviours": [
       "swim"
@@ -210,7 +201,8 @@
     "physical": [
       "long tongue",
       "eyes that can move independently",
-      "tail"
+      "tail",
+      "legs"
     ],
     "diet": [
       "insects"
@@ -236,9 +228,7 @@
       "long body"
     ],
     "diet": [
-      "insects",
-      "eggs",
-      "small animals"
+      "insects, eggs and small animals"
     ],
     "possible_behaviours": [
       "poisonous"
@@ -259,6 +249,7 @@
       "swim very fast"
     ],
     "physical": [
+      "fins",
       "about 300 teeth",
       "many rows of teeth",
       "cartilage instead of bone",
@@ -270,8 +261,7 @@
     ],
     "diet": [
       "fish",
-      "seals",
-      "sea lions"
+      "seals and sea lions"
     ]
   },
   {
@@ -292,12 +282,11 @@
     ],
     "physical": [
       "wings",
-      "white belly and a black head, back, tail and wings"
+      "white belly and a black head, back, tail and wings",
+      "legs"
     ],
     "diet": [
-      "fish",
-      "squid",
-      "krill"
+      "fish, squids and krill"
     ]
   },
   {
@@ -316,12 +305,11 @@
     "physical": [
       "wings",
       "talon",
-      "excellent eyesight"
+      "excellent eyesight",
+      "legs"
     ],
     "diet": [
-      "mouse",
-      "rat",
-      "rabbit"
+      "mouse, rat and rabbit"
     ]
   },
   {
@@ -336,29 +324,31 @@
       "fly"
     ],
     "physical": [
-      "wings"
+      "wings",
+      "legs"
     ],
     "diet": [
-      "nectar",
-      "insect"
+      "nectar from flowers and insects"
     ]
   },
   {
     "name": "Jellyfish",
     "types": [
       "invertebrate",
-      "omnivore"
+      "carnivore"
     ],
     "behaviours": [
       "sting",
-      "swim"
+      "swim",
+      "live in the sea",
+      "look like an umbrellas"
     ],
     "physical": [
       "tentacles"
     ],
     "diet": [
-      "small plants",
-      "fish eggs"
+      "plankton",
+      "tiny fish and fish eggs"
     ],
     "possible_behaviours": [
       "poisonous"
@@ -379,7 +369,8 @@
       "long legs",
       "mane",
       "tail",
-      "hooves"
+      "hooves",
+      "legs"
     ],
     "diet": [
       "grass"
@@ -408,7 +399,8 @@
       "mane",
       "tail",
       "hooves",
-      "black stripes on its body"
+      "black stripes on its body",
+      "legs"
     ],
     "diet": [
       "grass"
@@ -428,14 +420,13 @@
       "lay eggs on beach"
     ],
     "physical": [
-      "a hard shell"
+      "a hard shell",
+      "legs"
     ],
     "diet": [
-      "seaweed",
-      "crabs",
       "jellyfish",
-      "shrimp",
-      "sea grass"
+      "crabs and shrimp",
+      "sea grass and seaweed"
     ]
   },
   {
@@ -450,11 +441,11 @@
     ],
     "behaviours": [
       "swim",
-      "run",
       "live in Arctic Circle"
     ],
     "physical": [
-      "white fur"
+      "white fur",
+      "legs"
     ],
     "diet": [
       "seals"
@@ -475,11 +466,11 @@
     "physical": [
       "long legs",
       "pink bill",
-      "pink feather"
+      "pink feather",
+      "legs"
     ],
     "diet": [
-      "insects",
-      "shrimp"
+      "insects and shrimp"
     ]
   },
   {
@@ -498,19 +489,16 @@
       "swim"
     ],
     "physical": [
+      "fins",
       "big tail fin",
-      "blow hole on top of its head",
+      "blowhole on top of its head",
       "black and white colour on its body",
       "large dorsel fin on its back and stick out of the water"
     ],
     "diet": [
-      "seals",
-      "fish",
-      "sea lions",
-      "penguins",
-      "squid",
-      "sea turtles",
-      "sharks"
+      "seals and sea lions",
+      "sharks, squid and other fish",
+      "penguins and sea turtles"
     ]
   },
   {
@@ -527,9 +515,10 @@
       "live in the sea"
     ],
     "physical": [
+      "fins",
       "big tail fin",
       "no teeth",
-      "blow hole on top of its head"
+      "blowhole on top of its head"
     ],
     "diet": [
       "krill"
@@ -542,7 +531,8 @@
       "insect"
     ],
     "behaviours": [
-      "live as caterpillar when it is young"
+      "live as caterpillar when it is young",
+      "fly"
     ],
     "physical": [
       "bright and colourful wings",
@@ -558,7 +548,7 @@
     "types": [
       "vertebrate",
       "fish",
-      "omnivorous"
+      "omnivore"
     ],
     "behaviours": [
       "live in anemone",
@@ -586,11 +576,11 @@
     "physical": [
       "giant horns on its nose",
       "thick, armour-like skin",
-      "has a body that weights up to 2500 kilogram"
+      "has a body that weights up to 2500 kilogram",
+      "legs"
     ],
     "diet": [
-      "plants",
-      "grass"
+      "grass and plants"
     ]
   },
   {
@@ -607,15 +597,11 @@
     ],
     "physical": [
       "tail",
-      "long, sharp claws for digging"
+      "long, sharp claws for digging",
+      "legs"
     ],
     "diet": [
-      "insects",
-      "small reptiles",
-      "birds",
-      "eggs",
-      "fruit",
-      "plants"
+      "many things such as insects, small reptiles, birds, eggs, fruit and plants"
     ]
   },
   {
@@ -634,11 +620,11 @@
     "physical": [
       "grey fur with a cream-coloured chest",
       "strong, clawed feet for climbing trees",
-      "a pouch where their newborns live"
+      "a pouch where their newborns live",
+      "legs"
     ],
     "diet": [
-      "eucalyptus leaves",
-      "plants"
+      "eucalyptus leaves"
     ]
   },
   {
@@ -659,11 +645,11 @@
       "long tongue",
       "excellent eyesight",
       "hooves",
-      "tail"
+      "tail",
+      "legs"
     ],
     "diet": [
-      "plants",
-      "acacia tree"
+      "acacia tree and other plants"
     ]
   },
   {
@@ -678,7 +664,8 @@
     "physical": [
       "tail",
       "large jaw",
-      "many sharp teeth"
+      "many sharp teeth",
+      "legs"
     ],
     "behaviours": [
       "swim",
@@ -686,10 +673,7 @@
       "live in swamps and rivers"
     ],
     "diet": [
-      "fish",
-      "mammals",
-      "birds",
-      "reptiles"
+      "many things including water buffalo, fish, birds and other reptiles"
     ],
     "possible_behaviours": [
       "grow up to 6 metres long",
@@ -711,7 +695,8 @@
     "physical": [
       "tail",
       "pouch on its tummy",
-      "large ear"
+      "large ears",
+      "legs"
     ],
     "behaviours": [
       "hop around using two legs",
@@ -736,7 +721,8 @@
     "physical": [
       "dark hair",
       "long arms",
-      "thumb like humans"
+      "thumbs like humans",
+      "legs"
     ],
     "behaviours": [
       "live in Africa",
@@ -744,13 +730,10 @@
       "climb tree"
     ],
     "diet": [
-      "leaves",
-      "bamboo",
-      "fruits",
-      "plants"
+      "leaves, bamboo and fruits"
     ],
     "possible_behaviours": [
-      "use tool"
+      "use tools"
     ]
   },
   {
@@ -770,13 +753,96 @@
       "tail",
       "short legs",
       "huge mouth",
-      "live in a groups"
+      "live in a groups",
+      "legs"
     ],
     "diet": [
       "grass"
     ],
     "considerations": [
       "as most dangerous animals in Africa"
+    ]
+  },
+  {
+    "name": "Dolphin",
+    "types": [
+      "mammal",
+      "carnivore"
+    ],
+    "behaviours": [
+      "live in the sea",
+      "swim",
+      "live in a group",
+      "use echolocation for finding food",
+      "communicate with each other by clicking and whistling"
+    ],
+    "physical": [
+      "fins",
+      "blowhole on top of its head"
+    ],
+    "diet": [
+      "fish and squid"
+    ],
+    "considerations": [
+      "to be very intelligent",
+      "to be friendly to humans"
+    ],
+    "possible_behaviours": [
+      "jump out of the water"
+    ]
+  },
+  {
+    "name": "Leopard",
+    "types": [
+      "mammal",
+      "carnivore",
+      "predator",
+      "big cat",
+      "nocturnal animal"
+    ],
+    "behaviours": [
+      "live in Africa",
+      "climb tree",
+      "spend a lot of time in trees"
+    ],
+    "physical": [
+      "legs",
+      "rose-like markings patterns called rosettes on their fur"
+    ],
+    "diet": [
+      "deers",
+      "impalas",
+      "gazelles",
+      "fish",
+      "bird"
+    ],
+    "possible_behaviours": [
+      "swim"
+    ]
+  },
+  {
+    "name": "Narwhal",
+    "types": [
+      "mammal",
+      "carnivore"
+    ],
+    "behaviours": [
+      "live in the sea",
+      "live in a group",
+      "live in the cold waters of the Arctic Circle",
+      "swim",
+      "communicate with each other by clicking and whistling"
+    ],
+    "physical": [
+      "fins",
+      "blowhole on top of its head",
+      "long, hornlike tooth sticking out of its head"
+    ],
+    "diet": [
+      "fish and squid"
+    ],
+    "possible_behaviours": [
+      "be referred to as the unicorn of the sea"
     ]
   }
 ]

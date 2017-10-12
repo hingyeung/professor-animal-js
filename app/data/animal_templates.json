@@ -2,12 +2,28 @@
   {
     "name": "Mammal",
     "types": [
-      "mammal"
+      "mammal",
+      "carnivore"
     ],
     "behaviours": [
     ],
     "physical": [
       "legs"
+    ],
+    "diet": [
+    ]
+  },
+  {
+    "name": "Marine Mammal",
+    "types": [
+      "mammal",
+      "carnivore"
+    ],
+    "behaviours": [
+      "swim"
+    ],
+    "physical": [
+      "fins"
     ],
     "diet": [
     ]
@@ -30,7 +46,8 @@
   {
     "name": "Reptile",
     "types": [
-      "reptile"
+      "reptile",
+      "cold blooded"
     ],
     "behaviours": [
     ],
