@@ -18,8 +18,7 @@
     ],
     "physical": [
       "mane",
-      "tail",
-      "legs"
+      "tail"
     ],
     "diet": [
       "zebra",
@@ -48,8 +47,7 @@
     "physical": [
       "tail",
       "excellent eyesight",
-      "long, black lines which run from the inside of each eye to the mouth",
-      "legs"
+      "long, black lines which run from the inside of each eye to the mouth"
     ],
     "diet": [
       "gazelles",
@@ -77,8 +75,7 @@
       "tusks",
       "tail",
       "long trunk",
-      "large, thin ears",
-      "legs"
+      "large, thin ears"
     ],
     "diet": [
       "twigs",
@@ -101,8 +98,7 @@
       "bark"
     ],
     "physical": [
-      "tail",
-      "legs"
+      "tail"
     ],
     "diet": [
       "pet food",
@@ -122,8 +118,7 @@
       "meow"
     ],
     "physical": [
-      "tail",
-      "legs"
+      "tail"
     ],
     "diet": [
       "fish",
@@ -144,8 +139,7 @@
     ],
     "physical": [
       "long fur",
-      "sharp claws",
-      "legs"
+      "sharp claws"
     ],
     "diet": [
       "fish",
@@ -165,8 +159,7 @@
       "climb tree"
     ],
     "physical": [
-      "black and white fur",
-      "legs"
+      "black and white fur"
     ],
     "diet": [
       "bamboo"
@@ -190,8 +183,7 @@
     "physical": [
       "tail",
       "black strip",
-      "unique pattern of stripes on each animal",
-      "legs"
+      "unique pattern of stripes on each animal"
     ],
     "diet": [
       "deer",
@@ -213,8 +205,7 @@
     ],
     "behaviours": [
       "climb tree",
-      "change colour to blend in",
-      "legs"
+      "change colour to blend in"
     ],
     "physical": [
       "long tongue",
@@ -237,7 +228,8 @@
     "behaviours": [
       "climb tree",
       "hibernate in winter",
-      "lay eggs"
+      "lay eggs",
+      "slither across flat surfaces without legs"
     ],
     "physical": [
       "scales",
@@ -300,8 +292,7 @@
     ],
     "physical": [
       "wings",
-      "white belly and a black head, back, tail and wings",
-      "legs"
+      "white belly and a black head, back, tail and wings"
     ],
     "diet": [
       "fish",
@@ -325,8 +316,7 @@
     "physical": [
       "wings",
       "talon",
-      "excellent eyesight",
-      "legs"
+      "excellent eyesight"
     ],
     "diet": [
       "mouse",
@@ -346,8 +336,7 @@
       "fly"
     ],
     "physical": [
-      "wings",
-      "legs"
+      "wings"
     ],
     "diet": [
       "nectar",
@@ -439,8 +428,7 @@
       "lay eggs on beach"
     ],
     "physical": [
-      "a hard shell",
-      "legs"
+      "a hard shell"
     ],
     "diet": [
       "seaweed",
@@ -466,8 +454,7 @@
       "live in Arctic Circle"
     ],
     "physical": [
-      "white fur",
-      "legs"
+      "white fur"
     ],
     "diet": [
       "seals"
@@ -599,8 +586,7 @@
     "physical": [
       "giant horns on its nose",
       "thick, armour-like skin",
-      "has a body that weights up to 2500 kilogram",
-      "legs"
+      "has a body that weights up to 2500 kilogram"
     ],
     "diet": [
       "plants",
@@ -621,8 +607,7 @@
     ],
     "physical": [
       "tail",
-      "long, sharp claws for digging",
-      "legs"
+      "long, sharp claws for digging"
     ],
     "diet": [
       "insects",
@@ -649,8 +634,7 @@
     "physical": [
       "grey fur with a cream-coloured chest",
       "strong, clawed feet for climbing trees",
-      "a pouch where their newborns live",
-      "legs"
+      "a pouch where their newborns live"
     ],
     "diet": [
       "eucalyptus leaves",
@@ -675,12 +659,124 @@
       "long tongue",
       "excellent eyesight",
       "hooves",
-      "tail",
-      "legs"
+      "tail"
     ],
     "diet": [
       "plants",
       "acacia tree"
+    ]
+  },
+  {
+    "name": "Saltwater Crocodile",
+    "types": [
+      "reptile",
+      "cold blooded animal",
+      "predator",
+      "carnivore",
+      "large animal"
+    ],
+    "physical": [
+      "tail",
+      "large jaw",
+      "many sharp teeth"
+    ],
+    "behaviours": [
+      "swim",
+      "lay eggs",
+      "live in swamps and rivers"
+    ],
+    "diet": [
+      "fish",
+      "mammals",
+      "birds",
+      "reptiles"
+    ],
+    "possible_behaviours": [
+      "grow up to 6 metres long",
+      "be found in Australia",
+      "live in freshwater as well as salt water"
+    ],
+    "considerations": [
+      "as dangerous to humans"
+    ]
+  },
+  {
+    "name": "Kangaroo",
+    "types": [
+      "mammal",
+      "herbivore",
+      "large animal",
+      "marsupial"
+    ],
+    "physical": [
+      "tail",
+      "pouch on its tummy",
+      "large ear"
+    ],
+    "behaviours": [
+      "hop around using two legs",
+      "keep its baby in its pouch"
+    ],
+    "diet": [
+      "grass"
+    ],
+    "possible_behaviours": [
+      "jump very high"
+    ]
+  },
+  {
+    "name": "Gorilla",
+    "types": [
+      "mammal",
+      "ape",
+      "herbivore",
+      "a highly intelligent animal",
+      "large animal"
+    ],
+    "physical": [
+      "dark hair",
+      "long arms",
+      "thumb like humans"
+    ],
+    "behaviours": [
+      "live in Africa",
+      "live in forests and swamps",
+      "climb tree"
+    ],
+    "diet": [
+      "leaves",
+      "bamboo",
+      "fruits",
+      "plants"
+    ],
+    "possible_behaviours": [
+      "use tool"
+    ]
+  },
+  {
+    "name": "Hippopotamus",
+    "types": [
+      "mammal",
+      "herbivore",
+      "large animal"
+    ],
+    "behaviours": [
+      "live in Africa",
+      "live in rivers, lakes and swamps",
+      "spend most of their day in rivers and lakes to stay cool",
+      "swim"
+    ],
+    "physical": [
+      "tail",
+      "short legs",
+      "huge mouth",
+      "live in a groups"
+    ],
+    "diet": [
+      "grass"
+    ],
+    "considerations": [
+      "as most dangerous animals in Africa"
     ]
   }
 ]

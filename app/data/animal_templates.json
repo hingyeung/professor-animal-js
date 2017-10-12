@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Mammal",
+    "types": [
+      "mammal"
+    ],
+    "behaviours": [
+    ],
+    "physical": [
+      "legs"
+    ],
+    "diet": [
+    ]
+  },
+  {
+    "name": "Bird",
+    "types": [
+      "bird"
+    ],
+    "behaviours": [
+      "fly"
+    ],
+    "physical": [
+      "legs",
+      "wings"
+    ],
+    "diet": [
+    ]
+  },
+  {
+    "name": "Reptile",
+    "types": [
+      "reptile"
+    ],
+    "behaviours": [
+    ],
+    "physical": [
+      "scale"
+    ],
+    "diet": [
+    ]
+  }
+]
