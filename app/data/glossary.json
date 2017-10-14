@@ -12,7 +12,27 @@
     "definition": "A carnivore is an animal which eats mostly meat."
   },
   {
+    "term": "omnivore",
+    "definition": "An omnivore is an animal that eats both plants and other animals."
+  },
+  {
+    "term": "herbivore",
+    "definition": "A herbivore is an animal that only eats plants."
+  },
+  {
     "term": "mammal",
     "definition": "A mammal is an animal that breathes air, has a backbone, and grows hair at some point during its life. In addition, all female mammals have glands that can produce milk."
+  },
+  {
+    "term": "reptile",
+    "definition": "A reptile is an animal an animal that is cold blood, that lays eggs, and that has a body covered with scales or hard parts. Snake, lizard, turtle, and alligator are all reptiles."
+  },
+  {
+    "term": "cold blood",
+    "definition": "An animal is called cold-blooded if it has a body temperature that is similar to the temperature of the environment."
+  },
+  {
+    "term": "nocturnal",
+    "definition": "Nocturnal animals are awake and active at night and then sleep during the day. Some nocturnal animals can be seen during the day, but most of them spend their whole day resting. Examples of nocturnal animals include bats, skunks, aardvarks, and owls."
   }
 ]

@@ -73,7 +73,7 @@ describe('ResponseFromApiAi', function () {
                 contexts: []
             }
         };
-        ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A", apiAiEvent).should.deep.equal(
+        ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A.", apiAiEvent).should.deep.equal(
             buildExpectedContextOut("<speak>definition for A.<break time=\"1s\"/> Should we continue?</speak>", "definition for A. Should we continue?", null)
         );
     });
@@ -84,7 +84,7 @@ describe('ResponseFromApiAi', function () {
                 contexts: [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}]
             }
         };
-        ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A", apiAiEvent).should.deep.equal(
+        ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A.", apiAiEvent).should.deep.equal(
             buildExpectedContextOut("<speak>definition for A.<break time=\"1s\"/> Should we continue?</speak>", "definition for A. Should we continue?", [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
         );
     });

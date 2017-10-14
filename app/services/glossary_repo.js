@@ -10,7 +10,13 @@ function GlossaryRepo(datafile) {
 }
 
 GlossaryRepo.prototype.getDefinition = function (term) {
-    let matchedGlossary = _.find(this.glossariesLoadedFromFile, { 'term': term });
+    if (!term) {
+        return null;
+    }
+
+    let matchedGlossary = _.find(this.glossariesLoadedFromFile, function(thisGlossaryItem) {
+        return thisGlossaryItem.term.toLowerCase() === term.toLowerCase();
+    });
     return matchedGlossary ? matchedGlossary.definition : null;
 };
 
