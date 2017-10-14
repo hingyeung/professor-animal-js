@@ -10,6 +10,7 @@ let fs = require('fs'),
     QuestionSelector = require('./services/question_selector'),
     ResponseToApiAi = require('./models/response_to_api_ai'),
     Q = require('q'),
+    GlossaryRepo = require('./services/glossary_repo'),
     DbService = require('./services/DbService');
 
 const animalRepo = new AnimalRepo();
@@ -47,16 +48,28 @@ AnimalGenie.prototype.play = function (event, callback) {
         loadSession(event.sessionId)
             .then(buildResponseToApiAiForRepeatingLastSpeech(event, callback))
             .done();
+    } else if (event.result.action === 'answer_question_glossary_enquiry') {
+        buildSpeechForAnsweringGlossaryEnquiry(event, callback);
     } else {
         callback("Unknown action: " + event.result.action, buildErrorResponseToApiAi(null));
     }
 };
 
+function buildSpeechForAnsweringGlossaryEnquiry(event, callback) {
+    let term = event.result.parameters.term,
+        glossaryRepo = new GlossaryRepo();
+    let definition = glossaryRepo.getDefinition(term);
+    if (definition) {
+        callback(null, ResponseToApiAi.answerGlossaryEnquiry(term, definition, event));
+    } else {
+        callback(null, ResponseToApiAi.answerUnknownGlossaryEnquiry(term, definition));
+    }
+}
+
 function buildResponseToApiAiForRepeatingLastSpeech(event, callback) {
     return function (userSession) {
         callback(null, ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, event));
     };
-
 }
 
 function responseErrorToClient(callback) {

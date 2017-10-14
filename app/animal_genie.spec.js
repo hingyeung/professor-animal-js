@@ -15,9 +15,9 @@ describe('AnimalGenie', function () {
     let mockAnimalRepo, mockDbService, getSessionStub, AnimalGenie, animalGenie, nextQuestionStub, mockResponseToApiAi,
         fullAnimalListFromFile, listOfAnimalsRestoredFromSession, convertAnimalNameListToAnimalListStub,
         allAnimalsStub, saveSessionStub, mockQuestionSelector, nextQuestion, apiAiForGiveUpMessage,
-        apiAiForRepeatingSpeech,
+        apiAiForRepeatingSpeech, apiAiForAnswerForGlossaryEnquirySpeech, mockGlossaryRepo,
         userSession, filterStub, mockAnimalFilter, callbackSpy, apiAiResponseForFilterBasedQuestion,
-        apiAiResponseForReadyToGuessQuestion;
+        apiAiResponseForReadyToGuessQuestion, glossaryGetDefinitionStub, apiAiForAnswerForUnknownGlossaryEnquirySpeech;
 
     beforeEach(function () {
         sinonPromise(sinon);
@@ -86,6 +86,8 @@ describe('AnimalGenie', function () {
         };
         apiAiForGiveUpMessage = {questionType: Question.GIVE_UP_MESSAGE, speech: "give_up_speech"};
         apiAiForRepeatingSpeech = {speech: "repeating_speech"};
+        apiAiForAnswerForGlossaryEnquirySpeech = {speech: "glossary_definition."};
+        apiAiForAnswerForUnknownGlossaryEnquirySpeech = {speech: "unknown_glossary_definition"};
 
         mockDbService = function () {
             return {
@@ -100,6 +102,12 @@ describe('AnimalGenie', function () {
                 allAnimals: allAnimalsStub.returns(fullAnimalListFromFile),
                 convertAnimalListToAnimalNameList: (new AnimalRepo()).convertAnimalListToAnimalNameList,
                 convertAnimalNameListToAnimalList: convertAnimalNameListToAnimalListStub
+            };
+        };
+        glossaryGetDefinitionStub = sinon.stub();
+        mockGlossaryRepo = function () {
+            return {
+                getDefinition: glossaryGetDefinitionStub.returns("glossary_definition")
             };
         };
         mockQuestionSelector = {
@@ -117,6 +125,12 @@ describe('AnimalGenie', function () {
             }),
             repeatSpeechFromUserSesssion: function () {
                 return apiAiForRepeatingSpeech;
+            },
+            answerGlossaryEnquiry: function () {
+                return apiAiForAnswerForGlossaryEnquirySpeech;
+            },
+            answerUnknownGlossaryEnquiry: function () {
+                return apiAiForAnswerForUnknownGlossaryEnquirySpeech;
             }
         };
         mockAnimalFilter = {
@@ -286,13 +300,38 @@ describe('AnimalGenie', function () {
         });
     });
 
+    it('should explain definition of a word in glossary during game', function (done) {
+        let event = createEvent("123", "answer_question_glossary_enquiry");
+        animalGenie.play(event, function (err, responseToApiAi) {
+            responseToApiAi.should.equal(apiAiForAnswerForGlossaryEnquirySpeech);
+            done();
+        });
+    });
+
+    it('should response properly when definition of a word is unknown during game', function (done) {
+        let event = createEvent("123", "answer_question_glossary_enquiry");
+        mockGlossaryRepo = function () {
+            return {
+                getDefinition: glossaryGetDefinitionStub.returns(null)
+            };
+        };
+        // force mockGlossaryRepo to use the updated getDefinition()
+        animalGenie = animalGenieWithMocks();
+
+        animalGenie.play(event, function (err, responseToApiAi) {
+            responseToApiAi.should.equal(apiAiForAnswerForUnknownGlossaryEnquirySpeech);
+            done();
+        });
+    });
+
     function animalGenieWithMocks() {
         return new (proxyquire('./animal_genie', {
             './services/animal_repo': mockAnimalRepo,
             './services/DbService': mockDbService,
             './services/question_selector': mockQuestionSelector,
             './models/response_to_api_ai': mockResponseToApiAi,
-            './services/animal_filter': mockAnimalFilter
+            './services/animal_filter': mockAnimalFilter,
+            './services/glossary_repo': mockGlossaryRepo
         }))();
     }
 

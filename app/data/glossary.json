@@ -1,0 +1,14 @@
+[
+  {
+    "term": "vertebrate",
+    "definition": "A vertebrate is an animal with a backbone. Fishes, amphibians, reptiles, birds, and mammals, including humans, are all vertebrates."
+  },
+  {
+    "term": "invertebrate",
+    "definition": "An invertebrate is an animal that does not have a backbone or skeleton inside its body. Insects, spiders, worms, snails, clams, crabs, and squids are some kinds of invertebrates."
+  },
+  {
+    "term": "carnivore",
+    "definition": "A carnivore is an animal which eats mostly meat."
+  }
+]

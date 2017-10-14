@@ -6,25 +6,16 @@ const Question = require('./question'),
 
 let ResponseFromApiAi = {
     fromQuestion: fromQuestion,
-    repeatSpeechFromUserSesssion: repeatSpeechFromUserSesssion
+    repeatSpeechFromUserSesssion: repeatSpeechFromUserSesssion,
+    answerGlossaryEnquiry: answerGlossaryEnquiry,
+    answerUnknownGlossaryEnquiry: answerUnknownGlossaryEnquiry
 };
 
 function repeatSpeechFromUserSesssion(userSession, apiAiEvent) {
-    let response = {
-        speech: userSession.speech,
-        displayText: userSession.speech,
-        source: "samuelli.net"
-    };
+    let response = buildApiAiResponse(userSession.speech, userSession.speech);
 
     // copy contextIn to contextOut
-    let contextOut = [];
-    apiAiEvent.result.contexts.forEach(function (context) {
-        contextOut.push(context);
-    });
-
-    if (contextOut.length > 0) {
-        response.contextOut = contextOut;
-    }
+    copyInContextToOutContext(response, apiAiEvent);
 
     return response;
 }
@@ -32,11 +23,7 @@ function repeatSpeechFromUserSesssion(userSession, apiAiEvent) {
 function fromQuestion(question, additionalContextOut) {
     // https://discuss.api.ai/t/webhook-response/786
     // Don't have empty list and object.
-    let response = {
-        speech: question.toText(),
-        displayText: question.toText(),
-        source: "samuelli.net"
-    };
+    let response = buildApiAiResponse(question.toText(), question.toText());
 
     let contextOutForQuestion = [];
     switch (question.questionType) {
@@ -55,6 +42,48 @@ function fromQuestion(question, additionalContextOut) {
         response.contextOut = _.compact(contextOutForQuestion.concat(additionalContextOut));
     }
     return response;
+}
+
+function answerGlossaryEnquiry(term, definition, apiAiEvent) {
+    return buildSimpleSpeechApiAiResponse(`${definition}.<break time="1s"/> Should we continue?`, apiAiEvent);
+}
+
+function answerUnknownGlossaryEnquiry(term, apiAiEvent) {
+    return buildSimpleSpeechApiAiResponse(`I am sorry but I don't much about ${term}.<break time="1s"/> Should we continue?`, apiAiEvent);
+}
+
+function buildSimpleSpeechApiAiResponse(speech, apiAiEvent) {
+    let response = buildApiAiResponse(speech, stripSSMLTags(speech));
+    copyInContextToOutContext(response, apiAiEvent);
+
+    return response;
+}
+
+function buildApiAiResponse(speech, displayText) {
+    return {
+        speech: speech,
+        displayText: displayText,
+        source: "samuelli.net"
+    };
+}
+
+function copyInContextToOutContext(response, apiAiEvent) {
+    let contextOut = [];
+    apiAiEvent.result.contexts.forEach(function (context) {
+        contextOut.push(context);
+    });
+
+    if (contextOut.length > 0) {
+        response.contextOut = contextOut;
+    }
+}
+
+function stripSSMLTags(str) {
+    if ((str === null) || (str === ''))
+        return false;
+    else
+        str = str.toString();
+    return str.replace(/<[^>]*>/g, '');
 }
 
 module.exports = ResponseFromApiAi;

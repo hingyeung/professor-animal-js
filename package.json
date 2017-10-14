@@ -27,6 +27,7 @@
     "run-local-followup-yes": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_yes_request.js",
     "run-local-followup-no": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_no_request.js",
     "run-local-followup-repeat": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_repeat_request.js",
+    "run-local-glossary-enquiry": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_glossary_enquiry.js",
     "upload-package-to-lambda": "app/scripts/upload_package_to_lambda.sh"
   },
   "author": "",
