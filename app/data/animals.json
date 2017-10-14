@@ -659,7 +659,8 @@
       "cold blooded animal",
       "predator",
       "carnivore",
-      "large animal"
+      "large animal",
+      "vertebrate"
     ],
     "physical": [
       "tail",
@@ -690,7 +691,8 @@
       "mammal",
       "herbivore",
       "large animal",
-      "marsupial"
+      "marsupial",
+      "vertebrate"
     ],
     "physical": [
       "tail",
@@ -716,7 +718,8 @@
       "ape",
       "herbivore",
       "a highly intelligent animal",
-      "large animal"
+      "large animal",
+      "vertebrate"
     ],
     "physical": [
       "dark hair",
@@ -741,7 +744,8 @@
     "types": [
       "mammal",
       "herbivore",
-      "large animal"
+      "large animal",
+      "vertebrate"
     ],
     "behaviours": [
       "live in Africa",
@@ -767,7 +771,8 @@
     "name": "Dolphin",
     "types": [
       "mammal",
-      "carnivore"
+      "carnivore",
+      "vertebrate"
     ],
     "behaviours": [
       "live in the sea",
@@ -798,7 +803,8 @@
       "carnivore",
       "predator",
       "big cat",
-      "nocturnal animal"
+      "nocturnal animal",
+      "vertebrate"
     ],
     "behaviours": [
       "live in Africa",
@@ -824,7 +830,8 @@
     "name": "Narwhal",
     "types": [
       "mammal",
-      "carnivore"
+      "carnivore",
+      "vertebrate"
     ],
     "behaviours": [
       "live in the sea",
