@@ -45,11 +45,11 @@ function fromQuestion(question, additionalContextOut) {
 }
 
 function answerGlossaryEnquiry(term, definition, apiAiEvent) {
-    return buildSimpleSpeechApiAiResponse(`${definition}.<break time="1s"/> Should we continue?`, apiAiEvent);
+    return buildSimpleSpeechApiAiResponse(`<speak>${definition}.<break time="1s"/> Should we continue?</speak>`, apiAiEvent);
 }
 
 function answerUnknownGlossaryEnquiry(term, apiAiEvent) {
-    return buildSimpleSpeechApiAiResponse(`I am sorry but I don't much about ${term}.<break time="1s"/> Should we continue?`, apiAiEvent);
+    return buildSimpleSpeechApiAiResponse(`<speak>I am sorry but I don't much about ${term}.<break time="1s"/> Should we continue?</speak>`, apiAiEvent);
 }
 
 function buildSimpleSpeechApiAiResponse(speech, apiAiEvent) {

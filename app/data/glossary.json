@@ -10,5 +10,9 @@
   {
     "term": "carnivore",
     "definition": "A carnivore is an animal which eats mostly meat."
+  },
+  {
+    "term": "mammal",
+    "definition": "A mammal is an animal that breathes air, has a backbone, and grows hair at some point during its life. In addition, all female mammals have glands that can produce milk."
   }
 ]

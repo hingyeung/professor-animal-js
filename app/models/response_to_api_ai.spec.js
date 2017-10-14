@@ -74,7 +74,7 @@ describe('ResponseFromApiAi', function () {
             }
         };
         ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A", apiAiEvent).should.deep.equal(
-            buildExpectedContextOut("definition for A.<break time=\"1s\"/> Should we continue?", "definition for A. Should we continue?", null)
+            buildExpectedContextOut("<speak>definition for A.<break time=\"1s\"/> Should we continue?</speak>", "definition for A. Should we continue?", null)
         );
     });
 
@@ -85,7 +85,7 @@ describe('ResponseFromApiAi', function () {
             }
         };
         ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A", apiAiEvent).should.deep.equal(
-            buildExpectedContextOut("definition for A.<break time=\"1s\"/> Should we continue?", "definition for A. Should we continue?", [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
+            buildExpectedContextOut("<speak>definition for A.<break time=\"1s\"/> Should we continue?</speak>", "definition for A. Should we continue?", [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
         );
     });
 
@@ -96,7 +96,7 @@ describe('ResponseFromApiAi', function () {
             }
         };
         ResponseToApiAi.answerUnknownGlossaryEnquiry("A", apiAiEvent).should.deep.equal(
-            buildExpectedContextOut("I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?", "I am sorry but I don't much about A. Should we continue?", null)
+            buildExpectedContextOut("<speak>I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about A. Should we continue?", null)
         );
     });
 
@@ -107,7 +107,7 @@ describe('ResponseFromApiAi', function () {
             }
         };
         ResponseToApiAi.answerUnknownGlossaryEnquiry("A", apiAiEvent).should.deep.equal(
-            buildExpectedContextOut("I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?", "I am sorry but I don't much about A. Should we continue?", [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
+            buildExpectedContextOut("<speak>I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about A. Should we continue?", [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
         );
     });
 });
