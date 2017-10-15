@@ -6,7 +6,6 @@
       "mammal",
       "big cat",
       "carnivore",
-      "predator",
       "large animal"
     ],
     "behaviours": [
@@ -32,7 +31,6 @@
       "mammal",
       "big cat",
       "carnivore",
-      "predator",
       "fastest land animal in the world"
     ],
     "behaviours": [
@@ -214,7 +212,6 @@
       "vertebrate",
       "reptile",
       "carnivore",
-      "predator",
       "cold blooded animal"
     ],
     "behaviours": [
@@ -240,13 +237,13 @@
       "vertebrate",
       "fish",
       "carnivore",
-      "predator",
       "large animal",
       "warm-blooded"
     ],
     "behaviours": [
       "smell blood in water",
-      "swim very fast"
+      "swim very fast",
+      "lay eggs"
     ],
     "physical": [
       "fins",
@@ -270,12 +267,10 @@
       "vertebrate",
       "carnivore",
       "bird",
-      "predator",
       "good swimmer"
     ],
     "behaviours": [
       "walk in a funny way",
-      "stay on the ground",
       "lay eggs",
       "live in Antarctica",
       "swim"
@@ -296,15 +291,15 @@
       "bird",
       "bird of prey",
       "large bird",
-      "carnivore",
-      "predator"
+      "carnivore"
     ],
     "behaviours": [
-      "fly"
+      "fly",
+      "lay eggs"
     ],
     "physical": [
       "wings",
-      "talon",
+      "strong talon",
       "excellent eyesight",
       "legs"
     ],
@@ -321,7 +316,8 @@
       "omnivore"
     ],
     "behaviours": [
-      "fly"
+      "fly",
+      "lay eggs"
     ],
     "physical": [
       "wings",
@@ -436,7 +432,6 @@
       "carnivore",
       "large animal",
       "the largest land predator in the world",
-      "predator",
       "mammal"
     ],
     "behaviours": [
@@ -461,6 +456,7 @@
     "behaviours": [
       "live in a large group",
       "fly",
+      "lay eggs",
       "stand on one leg"
     ],
     "physical": [
@@ -476,7 +472,6 @@
   {
     "name": "Orca",
     "types": [
-      "predators",
       "vertebrate",
       "carnivore",
       "mammal",
@@ -552,7 +547,8 @@
     ],
     "behaviours": [
       "live in anemone",
-      "lays up to 1000 eggs"
+      "lays up to 1000 eggs",
+      "lay eggs"
     ],
     "physical": [
       "orange and white stripes on its body"
@@ -657,7 +653,6 @@
     "types": [
       "reptile",
       "cold blooded animal",
-      "predator",
       "carnivore",
       "large animal",
       "vertebrate"
@@ -801,7 +796,6 @@
     "types": [
       "mammal",
       "carnivore",
-      "predator",
       "big cat",
       "nocturnal animal",
       "vertebrate"
@@ -861,12 +855,14 @@
       "omnivore"
     ],
     "behaviours": [
-      "live in Australia"
+      "live in Australia",
+      "lay eggs"
     ],
     "physical": [
       "scale",
       "blue tougue",
-      "legs"
+      "legs",
+      "tail"
     ],
     "diet": [
       "insects, snails and fruits"
@@ -876,10 +872,12 @@
     "name": "Puffer Fish",
     "types": [
       "vertebrate",
-      "fish"
+      "fish",
+      "omnivore"
     ],
     "behaviours": [
-      "swim"
+      "swim",
+      "lay eggs"
     ],
     "physical": [
       "fins"
@@ -890,6 +888,32 @@
     "possible_behaviours": [
       "be poisonous",
       "enlarge its body by swallowing huge amount of water to scare off predators"
+    ]
+  },
+  {
+    "name": "Tawny Frogmouth",
+    "types": [
+      "bird",
+      "vertebrate",
+      "nocturnal animal",
+      "carnivore"
+    ],
+    "behaviours": [
+      "live in Australia",
+      "fly",
+      "lay eggs",
+      "camouflage by staying very still and upright on low perch",
+      "excellent eyesight",
+      "excellent hearing"
+    ],
+    "physical": [
+      "yellow eyes",
+      "wide beak",
+      "legs",
+      "wings"
+    ],
+    "diet": [
+      "insects, frogs and small animals"
     ]
   }
 ]

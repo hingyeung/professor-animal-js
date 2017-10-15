@@ -37,7 +37,8 @@
       "vertebrate"
     ],
     "behaviours": [
-      "fly"
+      "fly",
+      "lay eggs"
     ],
     "physical": [
       "legs",
@@ -68,7 +69,8 @@
       "fish"
     ],
     "behaviours": [
-      "swim"
+      "swim",
+      "lay eggs"
     ],
     "physical": [
       "fins"
