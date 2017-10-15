@@ -3,7 +3,8 @@
     "name": "Mammal",
     "types": [
       "mammal",
-      "carnivore"
+      "carnivore",
+      "vertebrate"
     ],
     "behaviours": [
     ],
@@ -17,7 +18,8 @@
     "name": "Marine Mammal",
     "types": [
       "mammal",
-      "carnivore"
+      "carnivore",
+      "vertebrate"
     ],
     "behaviours": [
       "swim"
@@ -31,7 +33,8 @@
   {
     "name": "Bird",
     "types": [
-      "bird"
+      "bird",
+      "vertebrate"
     ],
     "behaviours": [
       "fly"
@@ -47,12 +50,28 @@
     "name": "Reptile",
     "types": [
       "reptile",
-      "cold blooded"
+      "cold blooded",
+      "vertebrate"
     ],
     "behaviours": [
     ],
     "physical": [
       "scale"
+    ],
+    "diet": [
+    ]
+  },
+  {
+    "name": "Fish",
+    "types": [
+      "vertebrate",
+      "fish"
+    ],
+    "behaviours": [
+      "swim"
+    ],
+    "physical": [
+      "fins"
     ],
     "diet": [
     ]

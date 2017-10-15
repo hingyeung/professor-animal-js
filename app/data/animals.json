@@ -231,7 +231,7 @@
       "insects, eggs and small animals"
     ],
     "possible_behaviours": [
-      "poisonous"
+      "be poisonous"
     ]
   },
   {
@@ -850,6 +850,46 @@
     ],
     "possible_behaviours": [
       "be referred to as the unicorn of the sea"
+    ]
+  },
+  {
+    "name": "Blue-tongued Lizard",
+    "types": [
+      "reptile",
+      "cold blooded",
+      "vertebrate",
+      "omnivore"
+    ],
+    "behaviours": [
+      "live in Australia"
+    ],
+    "physical": [
+      "scale",
+      "blue tougue",
+      "legs"
+    ],
+    "diet": [
+      "insects, snails and fruits"
+    ]
+  },
+  {
+    "name": "Puffer Fish",
+    "types": [
+      "vertebrate",
+      "fish"
+    ],
+    "behaviours": [
+      "swim"
+    ],
+    "physical": [
+      "fins"
+    ],
+    "diet": [
+      "algae, clams, mussels, and shellfish"
+    ],
+    "possible_behaviours": [
+      "be poisonous",
+      "enlarge its body by swallowing huge amount of water to scare off predators"
     ]
   }
 ]
