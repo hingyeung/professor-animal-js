@@ -5,6 +5,9 @@ const USER_SESSION_TABLE = "AnimalGenieUserSession",
     Q = require('q'),
     path = require('path');
 
+const SECONDS_IN_A_DAY = 24 * 60 * 60,
+    MILLISECONDS_IN_A_SECOND = 1000;
+
 let docClient;
 
 function DbService() {
@@ -34,7 +37,18 @@ DbService.prototype.getSession = function (id) {
 
 DbService.prototype.saveSession = function (userSession) {
     let deferred = Q.defer();
-    userSession.timestamp = new Date().getTime();
+
+    function nowInSeconds() {
+        return Math.trunc(new Date().getTime() / MILLISECONDS_IN_A_SECOND);
+    }
+
+    // zero is still a proper time
+    if (userSession.creationTime === undefined || userSession.creationTime === null) {
+        userSession.creationTime = nowInSeconds();
+    }
+    userSession.lastUpdatedTime = nowInSeconds();
+    userSession.expirationTime = userSession.lastUpdatedTime + SECONDS_IN_A_DAY;
+
     docClient.put({
         TableName: USER_SESSION_TABLE,
         Item: userSession

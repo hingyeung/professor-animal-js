@@ -5,6 +5,10 @@ const expect = require('chai').expect,
     UserSession = require('../models/UserSession'),
     proxyquire = require('proxyquire');
 
+const SECONDS_IN_A_DAY = 24 * 60 * 60,
+    MILLISECONS_IN_SECOND = 1000,
+    FAKE_TIME = 10000;
+
 let mockAws, DbService, getSpy, putSpy, clock;
 
 describe('DBService', function () {
@@ -29,7 +33,7 @@ describe('DBService', function () {
 
         DbService = proxyquire('./DbService', {'aws-sdk': mockAws});
         // fake the time to Epoch time
-        clock = sinon.useFakeTimers();
+        clock = sinon.useFakeTimers(FAKE_TIME);
     });
 
     after(function () {
@@ -37,14 +41,41 @@ describe('DBService', function () {
     });
 
     it('saveSession should called put() in dynamodb driver', function (done) {
-        let dbService = new DbService();
-        // dbService.saveSession({id: "sessionId"}, null);
-        // expect(putSpy.called).to.equal(true);
-        // done();
-        let session = new UserSession("id", ["A", "B"]);
-        session.timestamp = new Date();
+        let dbService = new DbService(),
+            session = new UserSession("id", ["A", "B"]);
+
+        // session.creationTime = new Date();
         dbService.saveSession(session).then(function () {
             expect(putSpy.calledOnce).to.equal(true);
+            done();
+        });
+    });
+
+    it('saveSession should set creationTime when it is not already set', function (done) {
+        let dbService = new DbService(),
+            session = new UserSession("id", ["A", "B"]);
+
+        dbService.saveSession(session).then(function () {
+            expect(putSpy.calledWith(sinon.match(function (dataToSave) {
+                return dataToSave.Item.creationTime === FAKE_TIME / MILLISECONS_IN_SECOND &&
+                    dataToSave.Item.lastUpdatedTime === FAKE_TIME / MILLISECONS_IN_SECOND &&
+                    dataToSave.Item.expirationTime === FAKE_TIME / MILLISECONS_IN_SECOND + SECONDS_IN_A_DAY;
+            }))).to.equal(true);
+            done();
+        });
+    });
+
+    it('saveSession should set creationTime when it is already set', function (done) {
+        let dbService = new DbService(),
+            session = new UserSession("id", ["A", "B"]);
+
+        session.creationTime = 0;
+        dbService.saveSession(session).then(function () {
+            expect(putSpy.calledWith(sinon.match(function (dataToSave) {
+                return dataToSave.Item.creationTime === 0 &&
+                    dataToSave.Item.lastUpdatedTime === FAKE_TIME / MILLISECONS_IN_SECOND &&
+                    dataToSave.Item.expirationTime === FAKE_TIME / MILLISECONS_IN_SECOND + SECONDS_IN_A_DAY;
+            }))).to.equal(true);
             done();
         });
     });
