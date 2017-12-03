@@ -16,3 +16,12 @@ is because Lambda has its own IAM role and that role determines if the Lambda ca
 
 UPLOADING CODE TO LAMBDA
 aws lambda update-function-code --zip-file fileb://./dist/lambda.zip --function-name $LAMBDA_ARN
+
+CONFIG FILES
+While config.json for environments are git-ignored, the code expects to find config file in app/configs/<ENV>/config.json. The config.json should look like:
+{
+  // endpoint to DynamoDB, not required in prod (AWS)
+  "endpoint": "http://localhost:8000",
+  // region is required in prod (AWS) as well as dev
+  "region": "ap-southeast-2"
+}

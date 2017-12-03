@@ -55,7 +55,6 @@
       "vertebrate",
       "mammal",
       "herbivore",
-      "tail",
       "largest land-living mammal"
     ],
     "behaviours": [
@@ -860,7 +859,7 @@
     ],
     "physical": [
       "scale",
-      "blue tougue",
+      "blue tongue",
       "legs",
       "tail"
     ],
@@ -899,7 +898,7 @@
       "carnivore"
     ],
     "behaviours": [
-      "live in Australia",
+      "only live in Australia",
       "fly",
       "lay eggs",
       "camouflage by staying very still and upright on low perch",
