@@ -5,10 +5,10 @@
       "vertebrate",
       "mammal",
       "big cat",
-      "carnivore",
       "large animal"
     ],
     "behaviours": [
+      "only eat meat",
       "hunt in a group",
       "live in a group called pride",
       "roar",
@@ -30,10 +30,10 @@
       "vertebrate",
       "mammal",
       "big cat",
-      "carnivore",
       "fastest land animal in the world"
     ],
     "behaviours": [
+      "only eat meat",
       "run very fast"
     ],
     "possible_behaviours": [
@@ -54,10 +54,10 @@
     "types": [
       "vertebrate",
       "mammal",
-      "herbivore",
       "largest land-living mammal"
     ],
     "behaviours": [
+      "only eat plants",
       "live in a groups called herds",
       "live in Africa or Asia"
     ],
@@ -80,10 +80,10 @@
     "types": [
       "vertebrate",
       "mammal",
-      "carnivore",
       "pet"
     ],
     "behaviours": [
+      "only eat meat",
       "bark"
     ],
     "physical": [
@@ -99,10 +99,10 @@
     "types": [
       "vertebrate",
       "mammal",
-      "pet",
-      "carnivore"
+      "pet"
     ],
     "behaviours": [
+      "only eat meat",
       "climb tree",
       "meow"
     ],
@@ -119,10 +119,10 @@
     "types": [
       "vertebrate",
       "mammal",
-      "omnivore",
       "large animal"
     ],
     "behaviours": [
+      "eat both plants and animals",
       "hibernate in winter",
       "live in caves"
     ],
@@ -140,10 +140,10 @@
     "types": [
       "vertebrate",
       "mammal",
-      "herbivore",
       "large animal"
     ],
     "behaviours": [
+      "only eat plants",
       "climb tree"
     ],
     "physical": [
@@ -159,13 +159,13 @@
     "types": [
       "vertebrate",
       "mammal",
-      "carnivore",
       "large animal",
       "big cat",
       "predator",
       "solitary animal"
     ],
     "behaviours": [
+      "only eat meat",
       "swim",
       "roar"
     ],
@@ -187,11 +187,11 @@
     "types": [
       "vertebrate",
       "reptile",
-      "carnivore",
       "predator",
       "cold blooded animal"
     ],
     "behaviours": [
+      "only eat meat",
       "climb tree",
       "change colour to blend in"
     ],
@@ -210,10 +210,10 @@
     "types": [
       "vertebrate",
       "reptile",
-      "carnivore",
       "cold blooded animal"
     ],
     "behaviours": [
+      "only eat meat",
       "climb tree",
       "hibernate in winter",
       "lay eggs",
@@ -235,11 +235,11 @@
     "types": [
       "vertebrate",
       "fish",
-      "carnivore",
       "large animal",
       "warm-blooded"
     ],
     "behaviours": [
+      "only eat meat",
       "smell blood in water",
       "swim very fast",
       "lay eggs"
@@ -264,11 +264,11 @@
     "name": "Emperor Penguin",
     "types": [
       "vertebrate",
-      "carnivore",
       "bird",
       "good swimmer"
     ],
     "behaviours": [
+      "only eat meat",
       "walk in a funny way",
       "lay eggs",
       "live in Antarctica",
@@ -289,10 +289,10 @@
       "vertebrate",
       "bird",
       "bird of prey",
-      "large bird",
-      "carnivore"
+      "large bird"
     ],
     "behaviours": [
+      "only eat meat",
       "fly",
       "lay eggs"
     ],
@@ -311,10 +311,10 @@
     "types": [
       "vertebrate",
       "bird",
-      "small animal",
-      "omnivore"
+      "small animal"
     ],
     "behaviours": [
+      "eat both plants and animals",
       "fly",
       "lay eggs"
     ],
@@ -329,10 +329,10 @@
   {
     "name": "Jellyfish",
     "types": [
-      "invertebrate",
-      "carnivore"
+      "invertebrate"
     ],
     "behaviours": [
+      "only eat meat",
       "sting",
       "swim",
       "live in the sea",
@@ -353,10 +353,10 @@
     "name": "Horse",
     "types": [
       "vertebrate",
-      "herbivore",
       "large animal"
     ],
     "behaviours": [
+      "only eat plants",
       "run very fast",
       "let people ride on it"
     ],
@@ -381,10 +381,10 @@
     "name": "Zebra",
     "types": [
       "vertebrate",
-      "herbivore",
       "large animal"
     ],
     "behaviours": [
+      "only eat plants",
       "live in Africa",
       "live in a group",
       "run very fast"
@@ -405,11 +405,11 @@
     "name": "Sea turtle",
     "types": [
       "vertebrate",
-      "omnivore",
       "reptile",
       "cold-blooded"
     ],
     "behaviours": [
+      "eat both plants and animals",
       "swim",
       "live in the sea",
       "lay eggs on beach"
@@ -428,12 +428,12 @@
     "name": "Polar bear",
     "types": [
       "vertebrate",
-      "carnivore",
       "large animal",
       "the largest land predator in the world",
       "mammal"
     ],
     "behaviours": [
+      "only eat meat",
       "swim",
       "live in Arctic Circle"
     ],
@@ -449,10 +449,10 @@
     "name": "Flamingo",
     "types": [
       "vertebrate",
-      "carnivore",
       "bird"
     ],
     "behaviours": [
+      "only eat meat",
       "live in a large group",
       "fly",
       "lay eggs",
@@ -472,12 +472,12 @@
     "name": "Orca",
     "types": [
       "vertebrate",
-      "carnivore",
       "mammal",
       "good diver",
       "large animal"
     ],
     "behaviours": [
+      "only eat meat",
       "live in the sea",
       "hunt in a group",
       "swim"
@@ -499,13 +499,13 @@
     "name": "Blue Whale",
     "types": [
       "vertebrate",
-      "carnivore",
       "mammal",
       "good diver",
       "largest animal on Earth",
       "loudest animal on Earth"
     ],
     "behaviours": [
+      "only eat meat",
       "live in the sea"
     ],
     "physical": [
@@ -541,10 +541,10 @@
     "name": "Clownfish",
     "types": [
       "vertebrate",
-      "fish",
-      "omnivore"
+      "fish"
     ],
     "behaviours": [
+      "eat both plants and animals",
       "live in anemone",
       "lays up to 1000 eggs",
       "lay eggs"
@@ -560,11 +560,11 @@
     "name": "Rhinoceros",
     "types": [
       "mammal",
-      "herbivore",
       "territorial animal",
       "vertebrate"
     ],
     "behaviours": [
+      "only eat plants",
       "stay in muddy pools",
       "charge directly at whatever fightens it"
     ],
@@ -582,10 +582,10 @@
     "name": "Meerkat",
     "types": [
       "mammal",
-      "omnivore",
       "vertebrate"
     ],
     "behaviours": [
+      "eat both plants and animals",
       "stand on two legs when looking out for danger",
       "live in burrows",
       "live in a big group of up to 50 members"
@@ -604,10 +604,10 @@
     "types": [
       "vertebrate",
       "marsupial",
-      "mammal",
-      "herbivore"
+      "mammal"
     ],
     "behaviours": [
+      "only eat plants",
       "spend most of its time on trees",
       "sleep up to 18 hours a day",
       "stay in its mother's pouch for about six months when it is a baby"
@@ -627,11 +627,11 @@
     "types": [
       "vertebrate",
       "mammal",
-      "herbivore",
       "social animal",
       "large animal"
     ],
     "behaviours": [
+      "only eat plants",
       "live in Africa",
       "live in a group"
     ],
@@ -652,7 +652,6 @@
     "types": [
       "reptile",
       "cold blooded animal",
-      "carnivore",
       "large animal",
       "vertebrate"
     ],
@@ -663,6 +662,7 @@
       "legs"
     ],
     "behaviours": [
+      "only eat meat",
       "swim",
       "lay eggs",
       "live in swamps and rivers"
@@ -683,12 +683,12 @@
     "name": "Kangaroo",
     "types": [
       "mammal",
-      "herbivore",
       "large animal",
       "marsupial",
       "vertebrate"
     ],
     "physical": [
+      "only eat plants",
       "tail",
       "pouch on its tummy",
       "large ears",
@@ -710,7 +710,6 @@
     "types": [
       "mammal",
       "ape",
-      "herbivore",
       "a highly intelligent animal",
       "large animal",
       "vertebrate"
@@ -722,6 +721,7 @@
       "legs"
     ],
     "behaviours": [
+      "only eat plants",
       "live in Africa",
       "live in forests and swamps",
       "climb tree"
@@ -737,11 +737,11 @@
     "name": "Hippopotamus",
     "types": [
       "mammal",
-      "herbivore",
       "large animal",
       "vertebrate"
     ],
     "behaviours": [
+      "only eat plants",
       "live in Africa",
       "live in rivers, lakes and swamps",
       "spend most of their day in rivers and lakes to stay cool",
@@ -765,10 +765,10 @@
     "name": "Dolphin",
     "types": [
       "mammal",
-      "carnivore",
       "vertebrate"
     ],
     "behaviours": [
+      "only eat meat",
       "live in the sea",
       "swim",
       "live in a group",
@@ -794,12 +794,12 @@
     "name": "Leopard",
     "types": [
       "mammal",
-      "carnivore",
       "big cat",
       "nocturnal animal",
       "vertebrate"
     ],
     "behaviours": [
+      "only eat meat",
       "live in Africa",
       "climb tree",
       "spend a lot of time in trees"
@@ -823,10 +823,10 @@
     "name": "Narwhal",
     "types": [
       "mammal",
-      "carnivore",
       "vertebrate"
     ],
     "behaviours": [
+      "only eat meat",
       "live in the sea",
       "live in a group",
       "live in the cold waters of the Arctic Circle",
@@ -850,10 +850,10 @@
     "types": [
       "reptile",
       "cold blooded",
-      "vertebrate",
-      "omnivore"
+      "vertebrate"
     ],
     "behaviours": [
+      "eat both plants and animals",
       "live in Australia",
       "lay eggs"
     ],
@@ -871,10 +871,10 @@
     "name": "Puffer Fish",
     "types": [
       "vertebrate",
-      "fish",
-      "omnivore"
+      "fish"
     ],
     "behaviours": [
+      "eat both plants and animals",
       "swim",
       "lay eggs"
     ],
@@ -894,8 +894,7 @@
     "types": [
       "bird",
       "vertebrate",
-      "nocturnal animal",
-      "carnivore"
+      "nocturnal animal"
     ],
     "behaviours": [
       "only live in Australia",
@@ -903,7 +902,8 @@
       "lay eggs",
       "camouflage by staying very still and upright on low perch",
       "excellent eyesight",
-      "excellent hearing"
+      "excellent hearing",
+      "only eat meat"
     ],
     "physical": [
       "yellow eyes",
