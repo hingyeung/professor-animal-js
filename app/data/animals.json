@@ -54,6 +54,7 @@
     "types": [
       "vertebrate",
       "mammal",
+      "large animal",
       "largest land-living mammal"
     ],
     "behaviours": [
