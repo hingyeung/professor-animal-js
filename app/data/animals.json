@@ -189,7 +189,7 @@
       "vertebrate",
       "reptile",
       "predator",
-      "cold blooded animal"
+      "cold-blooded animal"
     ],
     "behaviours": [
       "only eat meat",
@@ -200,7 +200,8 @@
       "long tongue",
       "eyes that can move independently",
       "tail",
-      "legs"
+      "legs",
+      "scales"
     ],
     "diet": [
       "insects"
@@ -211,7 +212,7 @@
     "types": [
       "vertebrate",
       "reptile",
-      "cold blooded animal"
+      "cold-blooded animal"
     ],
     "behaviours": [
       "only eat meat",
@@ -236,8 +237,7 @@
     "types": [
       "vertebrate",
       "fish",
-      "large animal",
-      "warm-blooded"
+      "large animal"
     ],
     "behaviours": [
       "only eat meat",
@@ -254,7 +254,7 @@
       "a body that weights up to 1800 kilogram",
       "a body that is up to 6 metres long",
       "sharp teeth up to 6 cm long",
-      "large dorsel fin on its back and stick out of the water"
+      "large dorsal fin on its back which sticks out of the water"
     ],
     "diet": [
       "fish",
@@ -336,7 +336,6 @@
       "only eat meat",
       "sting",
       "swim",
-      "live in the sea",
       "look like an umbrellas"
     ],
     "physical": [
@@ -407,12 +406,12 @@
     "types": [
       "vertebrate",
       "reptile",
-      "cold-blooded"
+      "cold-blooded animal"
     ],
     "behaviours": [
       "eat both plants and animals",
       "swim",
-      "live in the sea",
+      "lay eggs",
       "lay eggs on beach"
     ],
     "physical": [
@@ -436,7 +435,7 @@
     "behaviours": [
       "only eat meat",
       "swim",
-      "live in Arctic Circle"
+      "live in the Arctic Circle"
     ],
     "physical": [
       "white fur",
@@ -479,7 +478,6 @@
     ],
     "behaviours": [
       "only eat meat",
-      "live in the sea",
       "hunt in a group",
       "swim"
     ],
@@ -488,7 +486,7 @@
       "big tail fin",
       "blowhole on top of its head",
       "black and white colour on its body",
-      "large dorsel fin on its back and stick out of the water"
+      "large dorsal fin on its back which sticks out of the water"
     ],
     "diet": [
       "seals and sea lions",
@@ -507,7 +505,7 @@
     ],
     "behaviours": [
       "only eat meat",
-      "live in the sea"
+      "swim"
     ],
     "physical": [
       "fins",
@@ -567,7 +565,7 @@
     "behaviours": [
       "only eat plants",
       "stay in muddy pools",
-      "charge directly at whatever fightens it"
+      "charge directly at whatever frightens it"
     ],
     "physical": [
       "giant horns on its nose",
@@ -652,7 +650,7 @@
     "name": "Saltwater Crocodile",
     "types": [
       "reptile",
-      "cold blooded animal",
+      "cold-blooded animal",
       "large animal",
       "vertebrate"
     ],
@@ -770,7 +768,6 @@
     ],
     "behaviours": [
       "only eat meat",
-      "live in the sea",
       "swim",
       "live in a group",
       "use echolocation for finding food",
@@ -828,9 +825,8 @@
     ],
     "behaviours": [
       "only eat meat",
-      "live in the sea",
       "live in a group",
-      "live in the cold waters of the Arctic Circle",
+      "live in the Arctic Circle",
       "swim",
       "communicate with each other by clicking and whistling"
     ],
@@ -850,7 +846,7 @@
     "name": "Blue-tongued Lizard",
     "types": [
       "reptile",
-      "cold blooded",
+      "cold-blooded animal",
       "vertebrate"
     ],
     "behaviours": [
