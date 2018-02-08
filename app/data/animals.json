@@ -22,7 +22,8 @@
     ],
     "diet": [
       "zebra, buffalo, wildebeest, giraffes and antelopes"
-    ]
+    ],
+    "id": "30fe0728-0a50-c06e-4f6f-874a845b423a"
   },
   {
     "name": "Cheetah",
@@ -47,7 +48,8 @@
     ],
     "diet": [
       "gazelles, impalas and wildebeest"
-    ]
+    ],
+    "id": "d4a46610-bb75-4748-ca12-80a66583b10d"
   },
   {
     "name": "Elephant",
@@ -74,7 +76,8 @@
     ],
     "diet": [
       "grass, leaves, fruits and small plants"
-    ]
+    ],
+    "id": "36275bd7-4784-c460-c578-a132f808c2c0"
   },
   {
     "name": "Dog",
@@ -93,7 +96,8 @@
     ],
     "diet": [
       "bone and pet food"
-    ]
+    ],
+    "id": "f25c52df-1dcb-b110-8b01-5a3b971ddc68"
   },
   {
     "name": "Cat",
@@ -113,7 +117,8 @@
     ],
     "diet": [
       "fish and pet food"
-    ]
+    ],
+    "id": "b0da8c8b-a1c1-9d34-ad9d-7caf3a8352c9"
   },
   {
     "name": "Brown Bear",
@@ -134,7 +139,8 @@
     ],
     "diet": [
       "fruit, fish and small animals"
-    ]
+    ],
+    "id": "ea460a4b-224b-51fb-7789-973698fda55b"
   },
   {
     "name": "Panda",
@@ -153,7 +159,8 @@
     ],
     "diet": [
       "bamboo"
-    ]
+    ],
+    "id": "46c75867-654e-a1f6-1d7f-925dfb2c371d"
   },
   {
     "name": "Tiger",
@@ -181,7 +188,8 @@
     ],
     "possible_behaviours": [
       "swim"
-    ]
+    ],
+    "id": "9cc82ebc-21fd-94f6-290e-ab402c903086"
   },
   {
     "name": "Chameleon",
@@ -205,7 +213,8 @@
     ],
     "diet": [
       "insects"
-    ]
+    ],
+    "id": "7c34c244-75c8-8e8b-da18-bafeaa3e3823"
   },
   {
     "name": "Snake",
@@ -230,7 +239,8 @@
     ],
     "possible_behaviours": [
       "be poisonous"
-    ]
+    ],
+    "id": "10a498ad-7370-1a4b-0674-c839b4b2d63f"
   },
   {
     "name": "Great White Shark",
@@ -259,7 +269,8 @@
     "diet": [
       "fish",
       "seals and sea lions"
-    ]
+    ],
+    "id": "54e5470c-f527-3cb7-172a-f58c00104acc"
   },
   {
     "name": "Emperor Penguin",
@@ -282,7 +293,8 @@
     ],
     "diet": [
       "fish, squids and krill"
-    ]
+    ],
+    "id": "b3962ab0-4c44-f493-e0af-01fe74b76535"
   },
   {
     "name": "Eagle",
@@ -305,7 +317,8 @@
     ],
     "diet": [
       "mouse, rat and rabbit"
-    ]
+    ],
+    "id": "db0bcdd1-c408-e0ce-ef49-a5bd58a4ec21"
   },
   {
     "name": "Hummingbird",
@@ -325,7 +338,8 @@
     ],
     "diet": [
       "nectar from flowers and insects"
-    ]
+    ],
+    "id": "3beb2cb1-8032-17ac-7944-5166cc8066bc"
   },
   {
     "name": "Jellyfish",
@@ -347,7 +361,8 @@
     ],
     "possible_behaviours": [
       "poisonous"
-    ]
+    ],
+    "id": "ff3fca60-c290-5799-d41d-e66616cf0439"
   },
   {
     "name": "Horse",
@@ -375,7 +390,8 @@
     ],
     "considerations": [
       "as helpful to humans"
-    ]
+    ],
+    "id": "67f4280e-bc3e-ebe2-3a6f-5f0e80db23ca"
   },
   {
     "name": "Zebra",
@@ -399,7 +415,8 @@
     ],
     "diet": [
       "grass"
-    ]
+    ],
+    "id": "3f281e2f-3705-d131-19c4-bfec672e714e"
   },
   {
     "name": "Sea turtle",
@@ -422,7 +439,8 @@
       "jellyfish",
       "crabs and shrimp",
       "sea grass and seaweed"
-    ]
+    ],
+    "id": "4a7f43a6-6c3a-9cdb-a9bd-9151103fc386"
   },
   {
     "name": "Polar bear",
@@ -443,7 +461,8 @@
     ],
     "diet": [
       "seals"
-    ]
+    ],
+    "id": "3836d976-b10d-65cb-03a5-e04885c9d47d"
   },
   {
     "name": "Flamingo",
@@ -466,7 +485,8 @@
     ],
     "diet": [
       "insects and shrimp"
-    ]
+    ],
+    "id": "fc76a960-da0b-dd12-f097-5f8c51d1a144"
   },
   {
     "name": "Orca",
@@ -492,7 +512,8 @@
       "seals and sea lions",
       "sharks, squid and other fish",
       "penguins and sea turtles"
-    ]
+    ],
+    "id": "1609ce8a-7c5b-32e9-556b-6fc277c8ab30"
   },
   {
     "name": "Blue Whale",
@@ -515,7 +536,8 @@
     ],
     "diet": [
       "krill"
-    ]
+    ],
+    "id": "be903051-f4d3-a4bd-8f5b-884a0da1ad3d"
   },
   {
     "name": "Butterfly",
@@ -534,7 +556,8 @@
     ],
     "diet": [
       "nectar from flowers"
-    ]
+    ],
+    "id": "92101007-8aa5-9ce4-a6ab-696bb2edd632"
   },
   {
     "name": "Clownfish",
@@ -553,7 +576,8 @@
     ],
     "diet": [
       "algae"
-    ]
+    ],
+    "id": "53a0d4ed-5cbe-79ce-41ae-4d45768298eb"
   },
   {
     "name": "Rhinoceros",
@@ -575,7 +599,8 @@
     ],
     "diet": [
       "grass and plants"
-    ]
+    ],
+    "id": "18b088bb-c947-02ce-20ea-9e45d8731b80"
   },
   {
     "name": "Meerkat",
@@ -596,7 +621,8 @@
     ],
     "diet": [
       "many things such as insects, small reptiles, birds, eggs, fruit and plants"
-    ]
+    ],
+    "id": "fe59030d-55e8-e186-7904-8d1f7cf15579"
   },
   {
     "name": "Koala",
@@ -619,7 +645,8 @@
     ],
     "diet": [
       "eucalyptus leaves"
-    ]
+    ],
+    "id": "088088a8-b566-77a7-a948-43af25249b67"
   },
   {
     "name": "Giraffe",
@@ -644,7 +671,8 @@
     ],
     "diet": [
       "acacia tree and other plants"
-    ]
+    ],
+    "id": "daa6634c-685b-09a0-60c8-b4627b734fa6"
   },
   {
     "name": "Saltwater Crocodile",
@@ -676,7 +704,8 @@
     ],
     "considerations": [
       "as dangerous to humans"
-    ]
+    ],
+    "id": "9c386ffa-d296-03cb-ce8a-af5f378b9263"
   },
   {
     "name": "Kangaroo",
@@ -702,7 +731,8 @@
     ],
     "possible_behaviours": [
       "jump very high"
-    ]
+    ],
+    "id": "c182e123-ef24-832b-7ed4-0ecde7f94f74"
   },
   {
     "name": "Gorilla",
@@ -730,7 +760,8 @@
     ],
     "possible_behaviours": [
       "use tools"
-    ]
+    ],
+    "id": "27bed12a-bdb3-9020-68c4-4c3b4ec137f2"
   },
   {
     "name": "Hippopotamus",
@@ -758,7 +789,8 @@
     ],
     "considerations": [
       "as most dangerous animals in Africa"
-    ]
+    ],
+    "id": "5176aac5-d55e-80f3-4084-f5535e225742"
   },
   {
     "name": "Dolphin",
@@ -786,7 +818,8 @@
     ],
     "possible_behaviours": [
       "jump out of the water"
-    ]
+    ],
+    "id": "77168193-1ef8-3cff-5c70-490be7000ab2"
   },
   {
     "name": "Leopard",
@@ -815,7 +848,8 @@
     ],
     "possible_behaviours": [
       "swim"
-    ]
+    ],
+    "id": "c084615f-cad7-d84e-b074-32512c71cca8"
   },
   {
     "name": "Narwhal",
@@ -840,7 +874,8 @@
     ],
     "possible_behaviours": [
       "be referred to as the unicorn of the sea"
-    ]
+    ],
+    "id": "d4e91c04-643e-ae01-8a4f-2a50f154d4eb"
   },
   {
     "name": "Blue-tongued Lizard",
@@ -862,7 +897,8 @@
     ],
     "diet": [
       "insects, snails and fruits"
-    ]
+    ],
+    "id": "7ae7a60f-a42f-0da2-f6da-a02c90e6574b"
   },
   {
     "name": "Puffer Fish",
@@ -884,7 +920,8 @@
     "possible_behaviours": [
       "be poisonous",
       "enlarge its body by swallowing huge amount of water to scare off predators"
-    ]
+    ],
+    "id": "caab75ef-8815-eaa0-a739-97435d605615"
   },
   {
     "name": "Tawny Frogmouth",
@@ -910,6 +947,7 @@
     ],
     "diet": [
       "insects, frogs and small animals"
-    ]
+    ],
+    "id": "70d9bda1-2ebd-59ac-25b2-7f4c35414390"
   }
 ]
