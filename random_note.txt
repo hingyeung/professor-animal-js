@@ -11,8 +11,9 @@ GET ITEM
 aws dynamodb get-item  --endpoint-url http://localhost:8000  --table-name AnimalGenieUserSession --key '{"id":{"S":"403f864b-3f12-4987-ad87-0377f2b6f5d4"}}'
 
 ACCESS KEY
-When using DynamoDB in a Lambda, "accessKeyId" and "secretAccessKey" are not required (you can invalid key exception if they are provided). It
-is because Lambda has its own IAM role and that role determines if the Lambda can access DynamoDB or not.
+When using DynamoDB in a Lambda, "accessKeyId" and "secretAccessKey" are not required (you would get
+invalid key exception if they are provided). It is because Lambda has its own IAM role and that role
+determines if the Lambda can access DynamoDB or not.
 
 UPLOADING CODE TO LAMBDA
 aws lambda update-function-code --zip-file fileb://./dist/lambda.zip --function-name $LAMBDA_ARN
