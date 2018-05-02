@@ -21,16 +21,18 @@ On Google Home
 2. Say "**Let me talk to Professor Animal**".
 
 ## Development
-This project's core logic runs as a Lambda function in AWS, and relies on [Dialogflow](https://dialogflow.com) for natural language processing (NPL). It uses DynamoDB for session storage. The code is written in NodeJS.
+This project's core logic runs as a Lambda function in AWS, and expects input from [Dialogflow](https://dialogflow.com) natural language processing (NPL) engine. The response from the Lambda function is also sent back to Dialogflow for text-to-speech and other conversation context tracking. It uses DynamoDB for session storage. The code is written in NodeJS.
+
 #### Running locally
 1. Install dependencies: `npm install`
-2. Start the local [DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html)
+2. Start the local [DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html), see app/configs/$env/config.json.sample for necessary configuration for DynamoDB. 
 3. Use one of the npm tasks for local testing. e.g. `npm run-local-initial`.
 
-#### Useful npm tasks for building
+#### Useful npm tasks for building and deploying
 `npm package` Package the code in zip file, ready for uploading to AWS Lambda.
 
 `npm upload-package-to-lambda $AWS_LAMBDA_ARN` Upload zip file generated from `package` task to AWS Lambda.
+
 #### Useful npm tasks for local testing
 These tasks are useful for testing the app using local Lambda and DynamoDB:
 
