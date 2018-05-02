@@ -1,7 +1,11 @@
 # Professor Animal
 
 ## What is it?
-This is a [game](https://assistant.google.com/services/a/uid/0000000d710d70f0) developed for Google Assistant and can be played on Google Home, Android devices and iOS devices with Google Assistant app. This is a classic **Who am I?** game and designed with Voice UI in mind. This game is best suited for children of age 5 or older.
+This is a [game](https://assistant.google.com/services/a/uid/0000000d710d70f0) developed for Google Assistant and can be played on Google Home, Android devices and iOS devices with Google Assistant app. This is a classic **Who am I?** game and designed with Voice UI in mind.
+
+The game asks the player a series of questions such as "Can it fly?", "Does it have tail?" and "Is it considered dangerous to human?" and expects the player to answer "yes" or "no" to each question. The aim is to have the game to correctly guess the animal the player has in mind. The game can also provide definition on defined keywords during the game when player ask questions such as "What is mammal?". 
+
+This game is best suited for children of age 5 or older.
 
 ## How do I to play it?
 On Android device
@@ -17,7 +21,7 @@ On Google Home
 2. Say "**Let me talk to Professor Animal**".
 
 ## Development
-This project runs as a Lambda function in AWS. It uses DynamoDB for session storage. The code is written in NodeJS.
+This project's core logic runs as a Lambda function in AWS, and relies on [Dialogflow](https://dialogflow.com) for natural language processing (NPL). It uses DynamoDB for session storage. The code is written in NodeJS.
 #### Running locally
 1. Install dependencies: `npm install`
 2. Start the local [DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html)
