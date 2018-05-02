@@ -1,7 +1,7 @@
 {
-  "name": "animal-genie-js",
+  "name": "professor-animal-js",
   "version": "0.0.1",
-  "description": "",
+  "description": "Professor Animal is a game developed for Google Assistant and can be played on Google Home, Android devices and iOS devices with Google Assistant app. This is a classic Who am I? game and designed with Voice UI in mind. This game is best suited for children of age 5 or older.",
   "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.111.0",
@@ -30,7 +30,7 @@
     "run-local-glossary-enquiry": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_glossary_enquiry.js",
     "upload-package-to-lambda": "app/scripts/upload_package_to_lambda.sh"
   },
-  "author": "",
+  "author": "Samuel Li <samli@samuelli.net>",
   "license": "ISC",
   "jshintConfig": {
     "node": true,
