@@ -46,5 +46,8 @@ These tasks are useful for testing the app using local Lambda and DynamoDB:
 
 `npm run-local-glossary-enquiry` Ask for definition of a known keyword. Keywords are defined in Google Action. I have plan to incorporate the keyword definition into a this code base.
 
+## License
+ISC
+
 ## Feedback
 Drop me a line at professor.animal@samuelli.net
