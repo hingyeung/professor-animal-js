@@ -1,0 +1,16 @@
+1. Copy swagger definition to s3:
+# https://github.com/awslabs/serverless-application-model/issues/305
+aws s3 cp deployer/swagger.yml  s3://<BUCKET>/
+
+2. Generate CloduFormation changeset:
+aws cloudformation package \
+    --template-file deployer/professor-animal.yml \
+    --s3-bucket <BUCKET> \
+    --output-template-file dist/professor-animal.cfn
+
+3. Deploy to AWS CloudFormation:
+aws cloudformation deploy \
+    --template-file dist/professor-animal.cfn \
+    --stack-name <YOUR STACK NAME>
+    --parameter-overrides bucketName=<BUCKET_CONTAINS_CODE_AND_API_DEFINITION>
+# BUCKET_CONTAINS_CODE_AND_API_DEFINITION the destination bucket of step 1.

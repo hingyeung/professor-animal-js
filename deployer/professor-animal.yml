@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Parameters:
+  bucketName:
+    Type: String
+Resources:
+  ProfessorAnimalLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.myHandler
+      Runtime: nodejs6.10
+      # https://github.com/awslabs/serverless-application-model/issues/61
+      # https://github.com/awslabs/serverless-application-model/blob/master/HOWTO.md#using-intrinsic-functions
+      CodeUri:
+        Bucket: !Ref bucketName
+        Key: lambda.zip
+      MemorySize: 128
+      Timeout: 3
+      Role: arn:aws:iam::411134731516:role/myLambdaDynamoDbFullAccessLog
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /apiaiwebhook
+            Method: post
+            RestApiId: !Ref ProfessorAnimalApi
+      Environment:
+        Variables:
+          NODE_ENV: 'production'
+
+  ProfessorAnimalApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      # can't use DefinitionUri
+      # https://github.com/awslabs/serverless-application-model/issues/305
+      DefinitionBody:
+        'Fn::Transform':
+          Name: 'AWS::Include'
+          Parameters:
+            Location: !Join [ '', ['s3://', !Ref bucketName, '/swagger.yml'] ]
+      StageName: "dev"
+
+# https://github.com/awslabs/serverless-application-model/tree/master/examples/2016-10-31/api_swagger_cors

@@ -1,0 +1,2 @@
+# install node-prune to remove unnecessary files from node_modules
+curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | bash

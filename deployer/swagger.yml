@@ -1,0 +1,43 @@
+---
+swagger: "2.0"
+info:
+  version: "2018-06-06T01:49:58Z"
+  title: "Professor Animal"
+basePath: "/dev"
+schemes:
+- "https"
+paths:
+  /apiaiwebhook:
+    #x-amazon-apigateway-any-method:
+    post:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      security:
+      - api_key: []
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ProfessorAnimalLambdaFunction.Arn}/invocations"
+
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"
+
+# originally exported from API Gateway
