@@ -3,7 +3,7 @@ Transform: 'AWS::Serverless-2016-10-31'
 Parameters:
   bucketName:
     Type: String
-  lambdaIAMRole:
+  keyToBuildArtefact:
     Type: String
   notificationTopicArn:
     Type: String
@@ -15,10 +15,12 @@ Resources:
       Runtime: nodejs6.10
       # https://github.com/awslabs/serverless-application-model/issues/61
       # https://github.com/awslabs/serverless-application-model/blob/master/HOWTO.md#using-intrinsic-functions
-      CodeUri: ../dist/lambda.zip
+      #CodeUri: !Join [ 's3://', !Ref bucketName, '/professor-animal/src/', !Ref keyToBuildArtefact ]
+      CodeUri:
+        Bucket: !Ref bucketName
+        Key: !Join ['', ['professor-animal/src/', !Ref keyToBuildArtefact]]
       MemorySize: 128
       Timeout: 3
-      #Role: !Ref lambdaIAMRole
       Policies:
         - AWSLambdaBasicExecutionRole
         - AmazonDynamoDBFullAccess

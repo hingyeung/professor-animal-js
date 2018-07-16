@@ -1,13 +1,14 @@
 #!/bin/bash
 
+source scripts/utils.sh
+
 pushd .
 
 mkdir dist && \
-    git log -1 --pretty=format:"%h" > dist/BUILD &&
+    build_artefact_name > dist/BUILD &&
     cp -r app/* dist/ && \
     cp -R node_modules dist/ && \
-    git log --format='%h' -1 > dist/BUILD && \
     cd dist && \
-    zip -r lambda.zip *
+    zip -r ProfAnimalLambdaFunc-$(build_artefact_name).zip *
 
 popd
