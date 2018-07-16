@@ -3,6 +3,10 @@ Transform: 'AWS::Serverless-2016-10-31'
 Parameters:
   bucketName:
     Type: String
+  lambdaIAMRole:
+    Type: String
+  notificationTopicArn:
+    Type: String
 Resources:
   ProfessorAnimalLambdaFunction:
     Type: AWS::Serverless::Function
@@ -11,12 +15,14 @@ Resources:
       Runtime: nodejs6.10
       # https://github.com/awslabs/serverless-application-model/issues/61
       # https://github.com/awslabs/serverless-application-model/blob/master/HOWTO.md#using-intrinsic-functions
-      CodeUri:
-        Bucket: !Ref bucketName
-        Key: lambda.zip
+      CodeUri: ../dist/lambda.zip
       MemorySize: 128
       Timeout: 3
-      Role: arn:aws:iam::411134731516:role/myLambdaDynamoDbFullAccessLog
+      #Role: !Ref lambdaIAMRole
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AmazonDynamoDBFullAccess
+        - AmazonSNSFullAccess
       Events:
         Api1:
           Type: Api
@@ -27,6 +33,7 @@ Resources:
       Environment:
         Variables:
           NODE_ENV: 'production'
+          NOTIFICATION_TOPIC_ARN: !Ref notificationTopicArn
 
   ProfessorAnimalApi:
     Type: AWS::Serverless::Api
@@ -37,7 +44,12 @@ Resources:
         'Fn::Transform':
           Name: 'AWS::Include'
           Parameters:
-            Location: !Join [ '', ['s3://', !Ref bucketName, '/swagger.yml'] ]
+            Location: !Join [ '', ['s3://', !Ref bucketName, '/professor-animal/deployer/swagger.yml'] ]
       StageName: "dev"
+
+Outputs:
+  ProfessorAnimalApi:
+    Description: "API Gateway endpoint URL for dev stage for ProfessorAnimalLambdaFunction function"
+    Value: !Sub "https://${ProfessorAnimalApi}.execute-api.${AWS::Region}.amazonaws.com/dev/apiaiwebhook/"
 
 # https://github.com/awslabs/serverless-application-model/tree/master/examples/2016-10-31/api_swagger_cors

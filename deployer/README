@@ -6,11 +6,13 @@ aws s3 cp deployer/swagger.yml  s3://<BUCKET>/
 aws cloudformation package \
     --template-file deployer/professor-animal.yml \
     --s3-bucket <BUCKET> \
+    --s3-prefix professor-animal/src \
     --output-template-file dist/professor-animal.cfn
 
 3. Deploy to AWS CloudFormation:
 aws cloudformation deploy \
     --template-file dist/professor-animal.cfn \
-    --stack-name <YOUR STACK NAME>
-    --parameter-overrides bucketName=<BUCKET_CONTAINS_CODE_AND_API_DEFINITION>
+    --stack-name <YOUR STACK NAME> \
+    --parameter-overrides bucketName=<BUCKET_CONTAINS_CODE_AND_API_DEFINITION> \
+        lambdaIAMRole=<LAMBDA_IAM_ROLE> notificationTopicArn=<NOTIFICATION_TOPIC_ARN>
 # BUCKET_CONTAINS_CODE_AND_API_DEFINITION the destination bucket of step 1.

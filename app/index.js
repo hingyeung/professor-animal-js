@@ -18,7 +18,9 @@ exports.myHandler = function (event, context, callback) {
     console.dir(context);
 
     let animalGenie = new AnimalGenie();
-    animalGenie.play(event, callback);
+    animalGenie.play(event, callback, {
+        notificationTopicArn: process.env.NOTIFICATION_TOPIC_ARN
+    });
 
     // or
     // callback("some error type");

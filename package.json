@@ -4,7 +4,7 @@
   "description": "Professor Animal is a game developed for Google Assistant and can be played on Google Home, Android devices and iOS devices with Google Assistant app. This is a classic Who am I? game and designed with Voice UI in mind. This game is best suited for children of age 5 or older.",
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.111.0",
+    "aws-sdk": "^2.274.1",
     "lodash": "^4.17.4",
     "q": "^1.5.0"
   },
@@ -22,13 +22,15 @@
     "jshint": "jshint app/**/*.js",
     "test": "npm run test-unit",
     "test-unit": "NODE_ENV=dev mocha -R spec './app/**/*.spec.js'",
-    "package": "app/scripts/package.sh",
+    "package": "scripts/package.sh",
+    "cf-package": "scripts/cf_package.sh",
+    "cf-deploy": "scripts/cf_deploy.sh",
     "run-local-initial": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/initial_request.js",
     "run-local-followup-yes": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_yes_request.js",
     "run-local-followup-no": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_no_request.js",
     "run-local-followup-repeat": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_repeat_request.js",
     "run-local-glossary-enquiry": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_glossary_enquiry.js",
-    "upload-package-to-lambda": "app/scripts/upload_package_to_lambda.sh"
+    "upload-package-to-lambda": "scripts/upload_package_to_lambda.sh"
   },
   "author": "Samuel Li <samli@samuelli.net>",
   "license": "ISC",

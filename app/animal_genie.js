@@ -11,7 +11,8 @@ let fs = require('fs'),
     ResponseToApiAi = require('./models/response_to_api_ai'),
     Q = require('q'),
     GlossaryRepo = require('./services/glossary_repo'),
-    DbService = require('./services/DbService');
+    DbService = require('./services/DbService'),
+    AWS = require('aws-sdk');
 
 const animalRepo = new AnimalRepo();
 
@@ -19,7 +20,7 @@ function AnimalGenie() {
 
 }
 
-AnimalGenie.prototype.play = function (event, callback) {
+AnimalGenie.prototype.play = function (event, callback, options) {
     let animalsToPlayWith = [], userSession, nextQuestion,
         dbService = new DbService();
 
@@ -49,7 +50,9 @@ AnimalGenie.prototype.play = function (event, callback) {
             .then(buildResponseToApiAiForRepeatingLastSpeech(event, callback))
             .done();
     } else if (event.result.action === 'answer_question_glossary_enquiry') {
-        buildSpeechForAnsweringGlossaryEnquiry(event, callback);
+      buildSpeechForAnsweringGlossaryEnquiry(event, callback);
+    } else if (event.result.action === 'computer_made_incorrect_guess') {
+      notifyIncorrectGuess(event.result.parameters.animal, options.notificationTopicArn);
     } else {
         callback("Unknown action: " + event.result.action, buildErrorResponseToApiAi(null));
     }
@@ -159,6 +162,20 @@ function loadFullAnimalListFromFile() {
 function buildErrorResponseToApiAi(err) {
     console.log('ERROR', err);
     return null;
+}
+
+function notifyIncorrectGuess(animal, topicArn) {
+  let sns = new AWS.SNS();
+  console.dir(topicArn);
+  let params = {
+    Message: 'Professor Animal has made an incorrect guess. The answer was ' + animal,
+    Subject: 'Professor Animal has just lost a game.',
+    TopicArn: topicArn
+  };
+  sns.publish(params, function(err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else     console.log(data);           // successful response
+  });
 }
 
 module.exports = AnimalGenie;
