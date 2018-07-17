@@ -13,6 +13,7 @@
     "jshint": "^2.9.5",
     "lambda-local": "^1.4.2",
     "mocha": "^3.5.0",
+    "mustache": "^2.3.0",
     "proxyquire": "^1.8.0",
     "sinon": "^3.2.1",
     "sinon-promise": "^0.1.3"
@@ -24,7 +25,6 @@
     "test-unit": "NODE_ENV=dev mocha -R spec './app/**/*.spec.js'",
     "package": "scripts/package.sh",
     "upload-to-s3": "scripts/upload_to_s3.sh",
-    "cf-package": "scripts/cf_package.sh",
     "cf-deploy": "scripts/cf_deploy.sh",
     "run-local-initial": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/initial_request.js",
     "run-local-followup-yes": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_yes_request.js",

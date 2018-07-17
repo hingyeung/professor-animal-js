@@ -3,8 +3,6 @@ Transform: 'AWS::Serverless-2016-10-31'
 Parameters:
   bucketName:
     Type: String
-  keyToBuildArtefact:
-    Type: String
   notificationTopicArn:
     Type: String
 Resources:
@@ -18,7 +16,7 @@ Resources:
       #CodeUri: !Join [ 's3://', !Ref bucketName, '/professor-animal/src/', !Ref keyToBuildArtefact ]
       CodeUri:
         Bucket: !Ref bucketName
-        Key: !Ref keyToBuildArtefact
+        Key: 'professor-animal/src/ProfAnimalLambdaFunc-{{ build }}.zip'
       MemorySize: 128
       Timeout: 3
       Policies:
@@ -46,7 +44,8 @@ Resources:
         'Fn::Transform':
           Name: 'AWS::Include'
           Parameters:
-            Location: !Join [ '', ['s3://', !Ref bucketName, '/professor-animal/deployer/swagger.yml'] ]
+            Location: !Join [ '', ['s3://', !Ref bucketName, '/professor-animal/src/swagger-{{ build }}.yml'] ]
+      EndpointConfiguration: 'REGIONAL'
       StageName: "dev"
 
 Outputs:
