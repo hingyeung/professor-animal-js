@@ -18,7 +18,7 @@ Resources:
       #CodeUri: !Join [ 's3://', !Ref bucketName, '/professor-animal/src/', !Ref keyToBuildArtefact ]
       CodeUri:
         Bucket: !Ref bucketName
-        Key: !Join ['', ['professor-animal/src/', !Ref keyToBuildArtefact]]
+        Key: !Ref keyToBuildArtefact
       MemorySize: 128
       Timeout: 3
       Policies:
