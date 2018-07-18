@@ -7,8 +7,3 @@ function s3_key_from_build {
     local build=$1
     echo "professor-animal/src/ProfAnimalLambdaFunc-${build}.zip"
 }
-
-function s3_key_for_swagger_from_build {
-    local build=$1
-    echo "professor-animal/src/swagger-${build}.yml"
-}

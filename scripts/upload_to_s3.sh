@@ -2,14 +2,12 @@
 set -e
 
 source `dirname "$0"`/utils.sh
-source `dirname "$0"`/init.sh
 
 S3_BUCKET=$1
-
-#BUILD=`cat dist/BUILD`
-#BUILD_ARTEFACT=ProfAnimalLambdaFunc-${BUILD}.zip
-#PATH_TO_BUILD_ARTEFACT=dist/${BUILD_ARTEFACT}
-#S3_KEY=$(s3_key_from_build ${BUILD})
+BUILD=`cat dist/BUILD`
+BUILD_ARTEFACT=ProfAnimalLambdaFunc-${BUILD}.zip
+PATH_TO_BUILD_ARTEFACT=dist/${BUILD_ARTEFACT}
+S3_KEY=$(s3_key_from_build ${BUILD})
 
 function get_checksum_for_object() {
     local bucket=$1
@@ -17,17 +15,6 @@ function get_checksum_for_object() {
 
     aws s3api head-object --bucket ${bucket} --key ${S3_KEY} 2>/dev/null | jq -r '.Metadata.md5chksum'
 }
-
-if [ -L dist/CURRENT_SWAGGER ] && [ -e ${PATH_TO_SWAGGER_ARTEFACT} ]
-then
-    aws s3api put-object \
-        --bucket ${S3_BUCKET} \
-        --key ${S3_KEY_TO_SWAGGER} \
-        --body ${PATH_TO_SWAGGER_ARTEFACT}
-else
-    echo "dist/CURRENT_SWAGGER does not exist or not pointing to a valid file."
-    exit 1
-fi
 
 if [ -L dist/CURRENT_BUILD ] && [ -e ${PATH_TO_BUILD_ARTEFACT} ]
 then
@@ -62,5 +49,4 @@ then
     fi
 else
     echo "dist/CURRENT_BUILD does not exist or not pointing to a valid file."
-    exit 1
 fi
