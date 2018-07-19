@@ -5,19 +5,22 @@ S3_BUCKET=$1
 source scripts/utils.sh
 BUILD_NAME=$(build_artefact_name)
 
-pushd .
+# validate SAM template
+sam validate --template deployer/professor-animal.yml
 
+# build artefact
+pushd .
 BUILD_ARTEFACT=ProfAnimalLambdaFunc-${BUILD_NAME}.zip
-mkdir dist && \
+mkdir -p dist && \
     echo -n ${BUILD_NAME} > dist/BUILD &&
     cp -r app/* dist/ && \
     cp -R node_modules dist/ && \
     cd dist && \
-    zip -r ${BUILD_ARTEFACT} * && \
+    zip -Xqr ${BUILD_ARTEFACT} * && \
     ln -s ${BUILD_ARTEFACT} CURRENT_BUILD
-
 popd
 
+# build CloudFormation template
 aws cloudformation package \
      --template-file deployer/professor-animal.yml \
      --s3-bucket ${S3_BUCKET} \
