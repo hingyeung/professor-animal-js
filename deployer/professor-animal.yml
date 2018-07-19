@@ -7,6 +7,10 @@ Parameters:
     Type: String
   notificationTopicArn:
     Type: String
+  dataBucket:
+    Type: String
+  sessionDB:
+    Type: String
 Resources:
   ProfessorAnimalLambdaFunction:
     Type: AWS::Serverless::Function
@@ -23,8 +27,12 @@ Resources:
       Timeout: 3
       Policies:
         - AWSLambdaBasicExecutionRole
-        - AmazonDynamoDBFullAccess
-        - AmazonSNSFullAccess
+        - DynamoDBCrudPolicy:
+            TableName: !Ref sessionDB
+        - SNSPublishMessagePolicy:
+            TopicName: !Ref notificationTopicArn
+        - S3ReadPolicy:
+            BucketName: !Ref dataBucket
       Events:
         Api1:
           Type: Api
