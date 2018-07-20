@@ -27,7 +27,7 @@
     "upload-to-s3": "scripts/upload_to_s3.sh",
     "cf-deploy-stack": "scripts/cf_deploy_stack.sh",
     "cf-update-stack": "scripts/cf_update_stack.sh",
-    "run-local-initial": "sam local invoke --template dist/professor-animal.cfn ProfessorAnimalLambdaFunction  --env-vars app/data/env-vars.json  -e app/data/initial_request.json --docker-network  professor-animal_default",
+    "invoke-lambda-with-initial-event": "scripts/invoke_lambda.sh app/data/initial_request.json",
     "run-local-followup-yes": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_yes_request.js",
     "run-local-followup-no": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_no_request.js",
     "run-local-followup-repeat": "cd app && lambda-local -l index.js -h myHandler -E '{\"NODE_ENV\":\"dev\"}' -e data/followup_repeat_request.js",
