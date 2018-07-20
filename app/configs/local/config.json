@@ -1,0 +1,5 @@
+{
+  "dynamodbEndpoint": "http://localstack:4569",
+  "s3Endpoint": "http://localstack:4572",
+  "region": "ap-southeast-2"
+}
