@@ -1,15 +1,30 @@
 'use strict';
 
-const fs = require('fs'),
+const AWS = require('aws-sdk'),
+    fs = require('fs'),
     path = require('path'),
     _ = require('lodash');
 
 function AnimalRepo(datafile) {
+    let options = {apiVersion: '2006-03-01'};
+    if (process.env.AWS_SAM_LOCAL) {
+        let config = require(`../configs/${process.env.NODE_ENV}/config.json`);
+        options.endpoint = config.s3Endpoint;
+    }
     this.datafile = !datafile ? path.join(__dirname, '../data/animals.json') : datafile;
     this.animalsLoadedFromFile = JSON.parse(fs.readFileSync(this.datafile));
+    this.s3 = new AWS.S3(options);
 }
 
 AnimalRepo.prototype.allAnimals = function () {
+      this.s3.listBuckets(function (err, data) {
+        if (err) {
+          console.log("Error", err);
+        } else {
+          console.log("Bucket List", data.Buckets);
+        }
+      });
+
     return this.animalsLoadedFromFile;
 };
 

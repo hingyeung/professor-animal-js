@@ -1,7 +1,0 @@
-{
-  // endpoint to local DynamoDB (use IP address of local box, not localhost/127.0.0.1, as local Lambda is running inside a
-  // docker container. Not required in prod (AWS)
-  "endpoint": "http://<IP_ADDRESS>:8000",
-  // region is required in prod (AWS) as well as dev
-  "region": "ap-southeast-2"
-}

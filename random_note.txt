@@ -1,14 +1,14 @@
 STARTING LOCAL DYNAMODB
 java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory
 
-CREATE TABLE
-aws dynamodb create-table --endpoint-url http://localhost:8000  --table-name AnimalGenieUserSession --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
+CREATE TABLE (DynamoDB hosted inside localstack)
+aws dynamodb create-table --endpoint-url http://localhost:4569  --table-name AnimalGenieUserSession --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
 
 LIST ALL ITEMS
-aws dynamodb scan  --endpoint-url http://localhost:8000  --table-name AnimalGenieUserSession
+aws dynamodb scan  --endpoint-url http://localhost:4569  --table-name AnimalGenieUserSession
 
 GET ITEM
-aws dynamodb get-item  --endpoint-url http://localhost:8000  --table-name AnimalGenieUserSession --key '{"id":{"S":"403f864b-3f12-4987-ad87-0377f2b6f5d4"}}'
+aws dynamodb get-item  --endpoint-url http://localhost:4569  --table-name AnimalGenieUserSession --key '{"id":{"S":"403f864b-3f12-4987-ad87-0377f2b6f5d4"}}'
 
 ACCESS KEY
 When using DynamoDB in a Lambda, "accessKeyId" and "secretAccessKey" are not required (you would get

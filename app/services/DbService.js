@@ -2,8 +2,7 @@
 
 const USER_SESSION_TABLE = "AnimalGenieUserSession",
     AWS = require('aws-sdk'),
-    Q = require('q'),
-    path = require('path');
+    Q = require('q');
 
 const SECONDS_IN_A_DAY = 24 * 60 * 60,
     MILLISECONDS_IN_A_SECOND = 1000;
@@ -11,8 +10,13 @@ const SECONDS_IN_A_DAY = 24 * 60 * 60,
 let docClient;
 
 function DbService() {
-    AWS.config.loadFromPath(path.join(__dirname, `../configs/${process.env.NODE_ENV}/config.json`));
-    docClient = new AWS.DynamoDB.DocumentClient({});
+
+    let options = {};
+    if (process.env.AWS_SAM_LOCAL) {
+        let config = require(`../configs/${process.env.NODE_ENV}/config.json`);
+        options.endpoint = config.dynamodbEndpoint;
+    }
+    docClient = new AWS.DynamoDB.DocumentClient(options);
 }
 
 DbService.prototype.getSession = function (id) {

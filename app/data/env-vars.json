@@ -1,5 +1,5 @@
 {
   "ProfessorAnimalLambdaFunction": {
-    "NODE_ENV": "dev"
+    "NODE_ENV": "local"
   }
 }
