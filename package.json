@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Professor Animal is a game developed for Google Assistant and can be played on Google Home, Android devices and iOS devices with Google Assistant app. This is a classic Who am I? game and designed with Voice UI in mind. This game is best suited for children of age 5 or older.",
   "main": "index.js",
+  "engines": {"node": ">=6.14.3 <8.0.0"},
   "dependencies": {
     "aws-sdk": "^2.274.1",
     "lodash": "^4.17.4",

@@ -21,8 +21,9 @@ aws lambda update-function-code --zip-file fileb://./dist/lambda.zip --function-
 CONFIG FILES
 While config.json for environments are git-ignored, the code expects to find config file in app/configs/<ENV>/config.json. The config.json should look like:
 {
-  // endpoint to DynamoDB, not required in prod (AWS)
-  "endpoint": "http://localhost:8000",
+  // endpoint to local DynamoDB (use IP address of local box, not localhost/127.0.0.1, as local Lambda is running inside a
+  // docker container. Not required in prod (AWS)
+  "endpoint": "http://<IP_ADDRESS>:8000",
   // region is required in prod (AWS) as well as dev
   "region": "ap-southeast-2"
 }

@@ -1,4 +1,7 @@
-# accessKeyId and secretAccessKey are only needed when accessing DynamoDB directly without using Lambda.
-# When access DynamoDB with Lambda, which has its own IAM role, will cause error if accessKeyId and secretAccessKey
-# are present.
-{ "accessKeyId": <YOUR_ACCESS_KEY_ID>, "secretAccessKey": <YOUR_SECRET_ACCESS_KEY>, "region": "us-east-1" }
+{
+  // endpoint to local DynamoDB (use IP address of local box, not localhost/127.0.0.1, as local Lambda is running inside a
+  // docker container. Not required in prod (AWS)
+  "endpoint": "http://<IP_ADDRESS>:8000",
+  // region is required in prod (AWS) as well as dev
+  "region": "ap-southeast-2"
+}
