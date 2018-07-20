@@ -25,8 +25,11 @@ This project's core logic runs as a Lambda function in AWS, and expects input fr
 
 #### Running locally
 1. Install dependencies: `npm install`
-2. Start the local [DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html), see app/configs/$env/config.json.sample for necessary configuration for DynamoDB. 
-3. Use one of the npm tasks for local testing. e.g. `npm run-local-initial`.
+2. `pip install --user aws-sam-cli` (https://github.com/awslabs/aws-sam-cli#installation)
+3. `pip install localstack` (https://github.com/localstack/localstack#installing)
+4. `localstack start --docker`
+5. Start the local [DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html), see app/configs/$env/config.json.sample for necessary configuration for DynamoDB. 
+6. Use one of the npm tasks for local testing. e.g. `npm run-local-initial`.
 
 #### Useful npm tasks for building and deploying
 `npm package` Package the code in zip file, ready for uploading to AWS Lambda.
