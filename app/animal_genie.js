@@ -5,7 +5,6 @@ const fs = require('fs'),
     AnimalFilter = require('./services/animal_filter'),
     Context = require('./models/context'),
     UserSession = require('./models/UserSession'),
-    AnimalRepo = require('./services/animal_repo'),
     Question = require('./models/question'),
     QuestionSelector = require('./services/question_selector'),
     ResponseToApiAi = require('./models/response_to_api_ai'),
@@ -14,8 +13,6 @@ const fs = require('fs'),
     DbService = require('./services/DbService'),
     AnimalListUtils = require('./services/animal_list_utils'),
     AWS = require('aws-sdk');
-
-const animalRepo = new AnimalRepo();
 
 function AnimalGenie(fullAnimalList) {
     this.fullAnimalList = fullAnimalList;
@@ -32,7 +29,7 @@ AnimalGenie.prototype.play = function (event, callback, options) {
         nextQuestion = QuestionSelector.nextQuestion(that.fullAnimalList, []);
         let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion);
         userSession = new UserSession(event.sessionId,
-            animalRepo.convertAnimalListToAnimalNameList(that.fullAnimalList), nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
+            AnimalListUtils.convertAnimalListToAnimalNameList(that.fullAnimalList), nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
         dbService.saveSession(userSession).then(function () {
             console.dir(nextQuestion);
             callback(null, responseToApiAi);
@@ -96,7 +93,7 @@ AnimalGenie.prototype.updateSession = function(contextForNextRound) {
     if (nextQuestion.questionType === "filter_based_question") {
         userSession.field = nextQuestion.field;
         userSession.chosenValue = nextQuestion.chosenValue;
-        userSession.animalNames = animalRepo.convertAnimalListToAnimalNameList(contextForNextRound.animalsForNextRound);
+        userSession.animalNames = AnimalListUtils.convertAnimalListToAnimalNameList(contextForNextRound.animalsForNextRound);
         userSession.fieldAndAttributeValuesToIgnore = contextForNextRound.fieldAndAttributeValuesToIgnore;
     }
     userSession.speech = nextQuestion.toText();
@@ -119,7 +116,7 @@ AnimalGenie.prototype.getNextQuestion = function(event) {
         let animalsToPlayWith = AnimalListUtils.convertAnimalNameListToAnimalList(userSession.animalNames, that.fullAnimalList);
         // filter animalsToPlayWith before determining the next question
         animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
-        console.log('animals remaining: ', animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith));
+        console.log('animals remaining: ', AnimalListUtils.convertAnimalListToAnimalNameList(animalsToPlayWith));
 
         if (animalsToPlayWith.length === 1) {
             fieldAndAttributeValuesToIgnore = [];

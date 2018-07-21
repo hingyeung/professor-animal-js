@@ -12,6 +12,13 @@ let convertAnimalNameListToAnimalList = function (animalNameList, fullAnimalList
     return animalList;
 };
 
+let convertAnimalListToAnimalNameList = function (animalList) {
+    return _.map(animalList, function (animal) {
+        return animal.name;
+    });
+};
+
 module.exports = {
-    convertAnimalNameListToAnimalList: convertAnimalNameListToAnimalList
+    convertAnimalNameListToAnimalList: convertAnimalNameListToAnimalList,
+    convertAnimalListToAnimalNameList: convertAnimalListToAnimalNameList
 };

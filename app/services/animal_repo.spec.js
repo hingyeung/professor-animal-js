@@ -33,14 +33,4 @@ describe('AnimalRepo', function () {
                 });
             });
     });
-
-    it('should convert animal list to animal name list', function () {
-        let animalRepo = new AnimalRepo();
-        animalRepo.loadAnimals()
-            .then(() => {
-                let allAnimals = animalRepo.allAnimals();
-                animalRepo.convertAnimalListToAnimalNameList(allAnimals).should.deep.equal(
-                    ["Lion", "Elephant", "Chameleon", "Shark", "Penguin", "Eagle"]);
-            });
-    });
 });

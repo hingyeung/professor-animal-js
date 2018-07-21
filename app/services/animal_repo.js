@@ -38,10 +38,4 @@ AnimalRepo.prototype.allAnimals = function () {
     return this.animalsLoadedFromFile;
 };
 
-AnimalRepo.prototype.convertAnimalListToAnimalNameList = function (animalList) {
-    return _.map(animalList, function (animal) {
-        return animal.name;
-    });
-};
-
 module.exports = AnimalRepo;

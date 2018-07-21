@@ -3,10 +3,15 @@ const fs = require('fs'),
     AnimalListUtils = require('./animal_list_utils');
 
 describe('AnimalListUtils', () => {
+    it('should convert animal list to animal name list', function () {
+        AnimalListUtils.convertAnimalListToAnimalNameList(loadTestAnimalList()).should.deep.equal(
+            ["Lion", "Elephant", "Chameleon", "Shark", "Penguin", "Eagle"]);
+    });
+
     it('should convert animal name list to animal list', function () {
         AnimalListUtils.convertAnimalNameListToAnimalList(
             ['Lion', 'Eagle', 'Shark'],
-            JSON.parse(fs.readFileSync('app/data/test-animals.json'))).should.deep.equal(
+            loadTestAnimalList()).should.deep.equal(
             [{
                 "name": "Lion",
                 "types": [
@@ -73,4 +78,8 @@ describe('AnimalListUtils', () => {
             }]
         );
     });
+
+    function loadTestAnimalList() {
+        return JSON.parse(fs.readFileSync('app/data/test-animals.json'));
+    }
 });
