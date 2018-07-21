@@ -21,23 +21,32 @@ function AnimalGenie() {
 }
 
 AnimalGenie.prototype.play = function (event, callback, options) {
-    let animalsToPlayWith = [], userSession, nextQuestion,
+    let userSession, nextQuestion,
         dbService = new DbService();
 
     if (event.result.action === 'startgame') {
         // this is a new game, get the next question using animals from data file.
-        animalsToPlayWith = loadFullAnimalListFromFile();
-        nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith, []);
-        let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion);
-        userSession = new UserSession(event.sessionId,
-            animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith), nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
-        dbService.saveSession(userSession).then(function () {
-            console.dir(nextQuestion);
-            callback(null, responseToApiAi);
-        }).catch(function (err) {
-            callback(err, buildErrorResponseToApiAi(err));
-        }).done();
-
+        loadFullAnimalListFromFile()
+            .then(function() {
+                let animalsToPlayWith = getLoadedFullAnimalList();
+                console.dir(animalsToPlayWith);
+                nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith, []);
+                let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion);
+                userSession = new UserSession(event.sessionId,
+                    animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith), nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
+                dbService.saveSession(userSession).then(function () {
+                    console.dir(nextQuestion);
+                    callback(null, responseToApiAi);
+                }).catch(function (err) {
+                    callback(err, buildErrorResponseToApiAi(err));
+                }).done();
+            })
+            .catch((err) => {
+                // TODO: handle this error
+                console.log(`Error reading animal definition from s3://${process.env.DATA_S3_BUCKET}/${process.env.ANIMAL_DEFINITION_S3_KEY}`, err);
+                callback("Unknown action: " + event.result.action, buildErrorResponseToApiAi(null));
+            })
+            .done();
     } else if (event.result.action === "answer_question") {
         loadSession(event.sessionId)
             .then(getNextQuestion(event))
@@ -155,6 +164,10 @@ function responseToClient(callback) {
 }
 
 function loadFullAnimalListFromFile() {
+    return animalRepo.loadAnimals();
+}
+
+function getLoadedFullAnimalList() {
     return animalRepo.allAnimals();
 }
 

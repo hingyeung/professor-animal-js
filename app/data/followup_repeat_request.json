@@ -1,0 +1,43 @@
+{
+    "id": "f5513f3e-e390-4444-ac38-1cf81a9c6aa4",
+    "timestamp": "2017-09-17T03:34:55.312Z",
+    "lang": "en",
+    "result": {
+        "source": "agent",
+        "resolvedQuery": "no",
+        "action": "answer_question_repeat",
+        "actionIncomplete": false,
+        "parameters": {
+        },
+        "contexts": [
+            {
+                "name": "ingame",
+                "lifespan": 1
+            }
+        ],
+        "metadata": {
+            "intentId": "dba6691e-a9a4-4ad6-91e4-458715602324",
+            "webhookUsed": "true",
+            "webhookForSlotFillingUsed": "false",
+            "webhookResponseTime": 1036,
+            "intentName": "Answer in-game quesiton - No"
+        },
+        "fulfillment": {
+            "speech": "Does it have long fur?",
+            "source": "samuelli.net",
+            "displayText": "Does it have long fur?",
+            "messages": [
+                {
+                    "type": 0,
+                    "speech": "Does it have long fur?"
+                }
+            ]
+        },
+        "score": 1
+    },
+    "status": {
+        "code": 200,
+        "errorType": "success"
+    },
+    "sessionId": "403f864b-3f12-4987-ad87-0377f2b6f5d4"
+}

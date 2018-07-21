@@ -6,7 +6,7 @@ source scripts/utils.sh
 BUILD_NAME=$(build_artefact_name)
 
 # validate SAM template
-sam validate --template deployer/professor-animal.yml
+#sam validate --template deployer/professor-animal.yml
 
 # build artefact
 pushd .

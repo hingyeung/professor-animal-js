@@ -1,5 +1,7 @@
 {
   "ProfessorAnimalLambdaFunction": {
-    "NODE_ENV": "local"
+    "NODE_ENV": "local",
+    "DATA_S3_BUCKET": "test-data",
+    "ANIMAL_DEFINITION_S3_KEY": "professor-animal/data/animals.json"
   }
 }

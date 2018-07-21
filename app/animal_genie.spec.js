@@ -99,6 +99,7 @@ describe('AnimalGenie', function () {
         convertAnimalNameListToAnimalListStub = sinon.stub().returns(listOfAnimalsRestoredFromSession);
         mockAnimalRepo = function () {
             return {
+                loadAnimals: sinon.promise().resolves(),
                 allAnimals: allAnimalsStub.returns(fullAnimalListFromFile),
                 convertAnimalListToAnimalNameList: (new AnimalRepo()).convertAnimalListToAnimalNameList,
                 convertAnimalNameListToAnimalList: convertAnimalNameListToAnimalListStub

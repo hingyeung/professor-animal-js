@@ -1,8 +1,20 @@
 #!/bin/bash
 set -e
 
+# https://github.com/localstack/localstack#running-in-docker
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+    export TMPDIR=/private$TMPDIR
+fi
+
+# Setting DATA_DIR to blank to disable persistence
+export DATA_DIR=
+
+# enable the following services
+export SERVICES=s3,dynamodb
+
 # start localstack Docker container
-SERVICES=s3,dynamodb TMPDIR=/private$TMPDIR docker-compose \
+docker-compose \
     --file deployer/localstack-docker-compose.yml \
     --project-name professor-animal \
     up

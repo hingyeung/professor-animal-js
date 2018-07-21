@@ -41,6 +41,8 @@ Resources:
         Variables:
           NODE_ENV: 'production'
           NOTIFICATION_TOPIC_ARN: !Sub "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:prof_animal_lost_game"
+          DATA_S3_BUCKET: !Ref dataBucket
+          ANIMAL_DEFINITION_S3_KEY: professor-animal/data/animals.json
 
   # need explicit API definition for API key requirement
   # (otherwise, having AWS::Serverless::Function is enough and
