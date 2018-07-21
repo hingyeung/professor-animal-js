@@ -95,14 +95,9 @@ describe('AnimalGenie', function () {
                 getSession: getSessionStub
             };
         };
-        allAnimalsStub = sinon.stub();
-        convertAnimalNameListToAnimalListStub = sinon.stub().returns(listOfAnimalsRestoredFromSession);
         mockAnimalRepo = function () {
             return {
-                loadAnimals: sinon.promise().resolves(),
-                allAnimals: allAnimalsStub.returns(fullAnimalListFromFile),
                 convertAnimalListToAnimalNameList: (new AnimalRepo()).convertAnimalListToAnimalNameList,
-                convertAnimalNameListToAnimalList: convertAnimalNameListToAnimalListStub
             };
         };
         glossaryGetDefinitionStub = sinon.stub();
@@ -146,18 +141,6 @@ describe('AnimalGenie', function () {
         let event = createEvent("123", "startgame", "yes");
         animalGenie.play(event, callbackSpy);
         callbackSpy.calledWith(null, apiAiResponseForFilterBasedQuestion).should.equal(true);
-    });
-
-    it('should read all animals from data file when Api.ai action is "startgame"', function () {
-        let event = createEvent("123", "startgame", "yes");
-        animalGenie.play(event, callbackSpy);
-        allAnimalsStub.called.should.equal(true);
-    });
-
-    it('should not read all animals from data file Api.ai action is "answer_question', function () {
-        let event = createEvent("123", "answer_question", "yes");
-        animalGenie.play(event, callbackSpy);
-        allAnimalsStub.called.should.equal(false);
     });
 
     it('should create new session in DB when Api.ai action is "startgame"', function () {
@@ -333,7 +316,11 @@ describe('AnimalGenie', function () {
             './models/response_to_api_ai': mockResponseToApiAi,
             './services/animal_filter': mockAnimalFilter,
             './services/glossary_repo': mockGlossaryRepo
-        }))();
+        }))(getFullAnimalList());
+    }
+
+    function getFullAnimalList() {
+        return JSON.parse(fs.readFileSync('app/data/test-animals.json'));
     }
 
     function createEvent(sessionId, action, answer) {

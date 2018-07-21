@@ -7,7 +7,7 @@ const proxyquire = require('proxyquire'),
 let mockAws, AnimalRepo;
 
 describe('AnimalRepo', function () {
-    before(() => {
+    beforeEach(() => {
         mockAws = {
             S3: function () {
                 return {
@@ -41,79 +41,6 @@ describe('AnimalRepo', function () {
                 let allAnimals = animalRepo.allAnimals();
                 animalRepo.convertAnimalListToAnimalNameList(allAnimals).should.deep.equal(
                     ["Lion", "Elephant", "Chameleon", "Shark", "Penguin", "Eagle"]);
-            });
-    });
-
-    it('should convert animal name list to animal list', function () {
-        let animalRepo = new AnimalRepo();
-        animalRepo.loadAnimals()
-            .then(() => {
-                animalRepo.convertAnimalNameListToAnimalList(['Lion', 'Eagle', 'Shark']).should.deep.equal(
-                    [{
-                        "name": "Lion",
-                        "types": [
-                            "vertebrate",
-                            "mammal",
-                            "big cat",
-                            "large",
-                            "carnivore",
-                            "predator"
-                        ],
-                        "behaviours": [
-                            "hunt in a pack"
-                        ],
-                        "physical": [
-                            "mane"
-                        ],
-                        "diet": [
-                            "zebra",
-                            "buffalo",
-                            "wildebeest",
-                            "giraffes"
-                        ]
-                    }, {
-                        "name": "Shark",
-                        "types": [
-                            "vertebrate",
-                            "fish",
-                            "carnivore",
-                            "predator",
-                            "large"
-                        ],
-                        "behaviours": [
-                            "smell blood in water"
-                        ],
-                        "physical": [
-                            "sharp teeth"
-                        ],
-                        "diet": [
-                            "fish",
-                            "seals"
-                        ]
-                    }, {
-                        "name": "Eagle",
-                        "types": [
-                            "vertebrate",
-                            "bird",
-                            "bird of prey",
-                            "large"
-                        ],
-                        "behaviours": [
-                            "carnivore",
-                            "predator",
-                            "flying"
-                        ],
-                        "physical": [
-                            "wings",
-                            "talon"
-                        ],
-                        "diet": [
-                            "mouse",
-                            "rat",
-                            "rabbit"
-                        ]
-                    }]
-                );
             });
     });
 });

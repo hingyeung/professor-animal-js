@@ -30,7 +30,7 @@ AnimalRepo.prototype.loadAnimals = function () {
     };
     return Q.ninvoke(this.s3, "getObject", s3Params)
         .then((data) => {
-            this.animalsLoadedFromFile = JSON.parse(data.Body.toString('utf-8'));
+            return Q(JSON.parse(data.Body.toString('utf-8')));
         });
 };
 
@@ -42,16 +42,6 @@ AnimalRepo.prototype.convertAnimalListToAnimalNameList = function (animalList) {
     return _.map(animalList, function (animal) {
         return animal.name;
     });
-};
-
-AnimalRepo.prototype.convertAnimalNameListToAnimalList = function (animalNameList) {
-    let animalList = [];
-    this.animalsLoadedFromFile.forEach(function (animal) {
-        if (_.includes(animalNameList, animal.name)) {
-            animalList.push(animal);
-        }
-    });
-    return animalList;
 };
 
 module.exports = AnimalRepo;

@@ -12,7 +12,7 @@ const SECONDS_IN_A_DAY = 24 * 60 * 60,
 let mockAws, DbService, getSpy, putSpy, clock;
 
 describe('DBService', function () {
-    before(function () {
+    beforeEach(function () {
         // call arg[1] as callback function with arguments (null, {id:"123"}). e.g. get("id", callback).
         getSpy = sinon.stub().callsArgWith(1, null, {id: "123"});
         putSpy = sinon.stub().callsArgWith(1, null, {id: "123"});

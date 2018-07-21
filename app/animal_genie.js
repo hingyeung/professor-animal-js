@@ -1,6 +1,6 @@
 'use strict';
 
-let fs = require('fs'),
+const fs = require('fs'),
     _ = require('lodash'),
     AnimalFilter = require('./services/animal_filter'),
     Context = require('./models/context'),
@@ -12,62 +12,54 @@ let fs = require('fs'),
     Q = require('q'),
     GlossaryRepo = require('./services/glossary_repo'),
     DbService = require('./services/DbService'),
+    AnimalListUtils = require('./services/animal_list_utils'),
     AWS = require('aws-sdk');
 
 const animalRepo = new AnimalRepo();
 
-function AnimalGenie() {
-
+function AnimalGenie(fullAnimalList) {
+    this.fullAnimalList = fullAnimalList;
 }
 
 AnimalGenie.prototype.play = function (event, callback, options) {
     let userSession, nextQuestion,
-        dbService = new DbService();
+        dbService = new DbService(),
+        that = this;
 
     if (event.result.action === 'startgame') {
         // this is a new game, get the next question using animals from data file.
-        loadFullAnimalListFromFile()
-            .then(function() {
-                let animalsToPlayWith = getLoadedFullAnimalList();
-                console.dir(animalsToPlayWith);
-                nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith, []);
-                let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion);
-                userSession = new UserSession(event.sessionId,
-                    animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith), nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
-                dbService.saveSession(userSession).then(function () {
-                    console.dir(nextQuestion);
-                    callback(null, responseToApiAi);
-                }).catch(function (err) {
-                    callback(err, buildErrorResponseToApiAi(err));
-                }).done();
-            })
-            .catch((err) => {
-                // TODO: handle this error
-                console.log(`Error reading animal definition from s3://${process.env.DATA_S3_BUCKET}/${process.env.ANIMAL_DEFINITION_S3_KEY}`, err);
-                callback("Unknown action: " + event.result.action, buildErrorResponseToApiAi(null));
-            })
-            .done();
+        console.dir(that.fullAnimalList);
+        nextQuestion = QuestionSelector.nextQuestion(that.fullAnimalList, []);
+        let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion);
+        userSession = new UserSession(event.sessionId,
+            animalRepo.convertAnimalListToAnimalNameList(that.fullAnimalList), nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
+        dbService.saveSession(userSession).then(function () {
+            console.dir(nextQuestion);
+            callback(null, responseToApiAi);
+        }).catch(function (err) {
+            callback(err, that.buildErrorResponseToApiAi(err));
+        }).done();
     } else if (event.result.action === "answer_question") {
-        loadSession(event.sessionId)
-            .then(getNextQuestion(event))
-            .then(updateSession)
-            .then(responseToClient(callback))
-            .catch(responseErrorToClient(callback))
+        that.loadSession(event.sessionId)
+            .then(that.getNextQuestion(event))
+            .then(that.updateSession)
+            .then(that.responseToClient(callback))
+            .catch(that.responseErrorToClient(callback))
             .done();
     } else if (event.result.action === 'answer_question_repeat') {
-        loadSession(event.sessionId)
-            .then(buildResponseToApiAiForRepeatingLastSpeech(event, callback))
+        that.loadSession(event.sessionId)
+            .then(that.buildResponseToApiAiForRepeatingLastSpeech(event, callback))
             .done();
     } else if (event.result.action === 'answer_question_glossary_enquiry') {
-      buildSpeechForAnsweringGlossaryEnquiry(event, callback);
+        that.buildSpeechForAnsweringGlossaryEnquiry(event, callback);
     } else if (event.result.action === 'computer_made_incorrect_guess') {
-      notifyIncorrectGuess(event.result.parameters.animal, options.notificationTopicArn);
+        that.notifyIncorrectGuess(event.result.parameters.animal, options.notificationTopicArn);
     } else {
-        callback("Unknown action: " + event.result.action, buildErrorResponseToApiAi(null));
+        callback("Unknown action: " + event.result.action, that.buildErrorResponseToApiAi(null));
     }
 };
 
-function buildSpeechForAnsweringGlossaryEnquiry(event, callback) {
+AnimalGenie.prototype.buildSpeechForAnsweringGlossaryEnquiry = function(event, callback) {
     let term = event.result.parameters.term,
         glossaryRepo = new GlossaryRepo();
     let definition = glossaryRepo.getDefinition(term);
@@ -76,25 +68,26 @@ function buildSpeechForAnsweringGlossaryEnquiry(event, callback) {
     } else {
         callback(null, ResponseToApiAi.answerUnknownGlossaryEnquiry(term, definition));
     }
-}
+};
 
-function buildResponseToApiAiForRepeatingLastSpeech(event, callback) {
+AnimalGenie.prototype.buildResponseToApiAiForRepeatingLastSpeech = function(event, callback) {
     return function (userSession) {
         callback(null, ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, event));
     };
-}
+};
 
-function responseErrorToClient(callback) {
+AnimalGenie.prototype.responseErrorToClient = function(callback) {
+    let that = this;
     return function (err) {
-        callback(err, buildErrorResponseToApiAi(err));
+        callback(err, that.buildErrorResponseToApiAi(err));
     };
-}
+};
 
-function loadSession(sessionId) {
+AnimalGenie.prototype.loadSession = function(sessionId) {
     return (new DbService()).getSession(sessionId);
-}
+};
 
-function updateSession(contextForNextRound) {
+AnimalGenie.prototype.updateSession = function(contextForNextRound) {
     let dbService = new DbService(),
         deferred = Q.defer(),
         nextQuestion = contextForNextRound.nextQuestion,
@@ -116,13 +109,14 @@ function updateSession(contextForNextRound) {
             deferred.reject(err);
         });
     return deferred.promise;
-}
+};
 
-function getNextQuestion(event) {
+AnimalGenie.prototype.getNextQuestion = function(event) {
+    let that = this;
     return function (userSession) {
         let fieldAndAttributeValuesToIgnore, nextQuestion;
         let answer = event.result.parameters.answer;
-        let animalsToPlayWith = animalRepo.convertAnimalNameListToAnimalList(userSession.animalNames);
+        let animalsToPlayWith = AnimalListUtils.convertAnimalNameListToAnimalList(userSession.animalNames, that.fullAnimalList);
         // filter animalsToPlayWith before determining the next question
         animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
         console.log('animals remaining: ', animalRepo.convertAnimalListToAnimalNameList(animalsToPlayWith));
@@ -155,29 +149,21 @@ function getNextQuestion(event) {
             fieldAndAttributeValuesToIgnore: fieldAndAttributeValuesToIgnore
         };
     };
-}
+};
 
-function responseToClient(callback) {
+AnimalGenie.prototype.responseToClient = function(callback) {
     return function (nextQuestion) {
         callback(null, ResponseToApiAi.fromQuestion(nextQuestion));
     };
-}
-
-function loadFullAnimalListFromFile() {
-    return animalRepo.loadAnimals();
-}
-
-function getLoadedFullAnimalList() {
-    return animalRepo.allAnimals();
-}
+};
 
 // TODO return error and reset the game
-function buildErrorResponseToApiAi(err) {
+AnimalGenie.prototype.buildErrorResponseToApiAi = function(err) {
     console.log('ERROR', err);
     return null;
-}
+};
 
-function notifyIncorrectGuess(animal, topicArn) {
+AnimalGenie.prototype.notifyIncorrectGuess = function(animal, topicArn) {
   let sns = new AWS.SNS();
   console.dir(topicArn);
   let params = {
@@ -189,6 +175,6 @@ function notifyIncorrectGuess(animal, topicArn) {
     if (err) console.log(err, err.stack); // an error occurred
     else     console.log(data);           // successful response
   });
-}
+};
 
 module.exports = AnimalGenie;
