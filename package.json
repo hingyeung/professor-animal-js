@@ -34,7 +34,6 @@
     "invoke-lambda-with-followup-no": "scripts/invoke_lambda.sh app/data/followup_no_request.json",
     "invoke-lambda-with-followup-repeat": "scripts/invoke_lambda.sh app/data/followup_repeat_request.json",
     "invoke-lambda-with-glossary-enquiry": "scripts/invoke_lambda.sh app/data/followup_glossary_enquiry.json",
-    "upload-package-to-lambda": "scripts/upload_package_to_lambda.sh",
     "start-localstack": "scripts/start_localstack.sh",
     "seed-data": "scripts/seed_data.sh"
   },

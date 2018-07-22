@@ -25,29 +25,37 @@ This project's core logic runs as a Lambda function in AWS, and expects input fr
 
 #### Running locally
 1. Install dependencies: `npm install`
-2. `pip install --user aws-sam-cli` (https://github.com/awslabs/aws-sam-cli#installation)
-3. `pip install localstack` (https://github.com/localstack/localstack#installing)
-4. `localstack start --docker`
-5. Start the local [DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html), see app/configs/$env/config.json.sample for necessary configuration for DynamoDB. 
-6. Use one of the npm tasks for local testing. e.g. `npm run-local-initial`.
+2. Install AWS SAM CLI: `pip install --user aws-sam-cli` (https://github.com/awslabs/aws-sam-cli#installation)
+3. Install localstack: `pip install localstack` (https://github.com/localstack/localstack#installing)
+4. Start localstack: `npm run start-localstack`
+5. Seed initial data: `npm run seed-data`
+6. Use one of the npm tasks for local testing. e.g. `run invoke-lambda-with-initial-event`.
 
 #### Useful npm tasks for building and deploying
-`npm package` Package the code in zip file, ready for uploading to AWS Lambda.
+`npm run package ${SRC_S3_BUCKET}` Package the code in zip file, generate CloudFormation template, which expects to find Lambda function source in `s3://${SRC_S3_BUCKET}/professor-animal/src`.
 
-`npm upload-package-to-lambda $AWS_LAMBDA_ARN` Upload zip file generated from `package` task to AWS Lambda.
+`npm run upload-to-s3 ${SRC_S3_BUCKET}` Upload zip file generated from `package` task to AWS S3. The zipped file will be uploaded to `s3://${SRC_S3_BUCKET}/professor-animal/src/`
+
+`npm run cf-deploy-stack ${BUILD_NUMBER} ${SRC_S3_BUCKET} ${DATA_S3_BUCKET} ${STACK_NAME}` Create a stack with API Gateway, Lambda function with source from `s3://${SRC_S3_BUCKET}/professor-animal/src/` and expect to find animal definition data in `s3://${DATA_S3_BUCKET}/professor-animal/data/`
+
+`npm run cf-update-stack ${BUILD_NUMBER} ${SRC_S3_BUCKET} ${DATA_S3_BUCKET} ${STACK_NAME}` Update an existing stack. Upload the specified build to S3 before running this task.
 
 #### Useful npm tasks for local testing
 These tasks are useful for testing the app using local Lambda and DynamoDB:
 
-`npm run-local-initial` Reset state in local DynamoDB, ready for new game.
+`npm run start-localstack` Starts localstack Docker container to support local Lambda function testing. DynamoDB and S3 data are only persisted in memory and will be discarded when localstack container is stopped.
 
-`npm run-local-followup-yes` Answer "Yes" to the current question.
+`npm run seed-data` Seed initial table and data in localstack DynamoDB and S3.
 
-`npm run-local-followup-no` Answer "No" to the current question.
+`npm run invoke-lambda-with-initial-event` Invoke Lambda function to reset state in local DynamoDB, ready for new game.
 
-`npm run-local-followup-repeat` Send "Repeat" action to the current question, effectively asking the app to repeat its last message.
+`npm run invoke-lambda-with-followup-yes` Invoke Lambda function to answer "Yes" to the current question.
 
-`npm run-local-glossary-enquiry` Ask for definition of a known keyword. Keywords are defined in Google Action. I have plan to incorporate the keyword definition into a this code base.
+`npm run invoke-lambda-with-followup-no` Invoke Lambda function to answer "No" to the current question.
+
+`npm run invoke-lambda-with-followup-repeat` Invoke Lambda function to send "Repeat" action to the current question, effectively asking the app to repeat its last message.
+
+`npm run invoke-lambda-with-glossary-enquiry` Invoke Lambda function to ask for definition of a known keyword. Keywords are defined in Google Action. I have plan to incorporate the keyword definition into a this code base.
 
 ## License
 ISC
