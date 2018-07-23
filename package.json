@@ -29,6 +29,8 @@
     "upload-to-s3": "scripts/upload_to_s3.sh",
     "cf-deploy-stack": "scripts/cf_deploy_stack.sh",
     "cf-update-stack": "scripts/cf_update_stack.sh",
+    "cf-delete-stack": "scripts/cf_delete_stack.sh",
+    "update-custom-domain-mapping": "scripts/update_custom_domain_mapping.sh",
     "invoke-lambda-with-initial-event": "scripts/invoke_lambda.sh app/data/initial_request.json",
     "invoke-lambda-with-followup-yes": "scripts/invoke_lambda.sh app/data/followup_yes_request.json",
     "invoke-lambda-with-followup-no": "scripts/invoke_lambda.sh app/data/followup_no_request.json",
