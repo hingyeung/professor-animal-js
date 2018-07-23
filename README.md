@@ -26,10 +26,11 @@ This project's core logic runs as a Lambda function in AWS, and expects input fr
 #### Running locally
 1. Install dependencies: `npm install`
 2. Install AWS SAM CLI: `pip install --user aws-sam-cli` (https://github.com/awslabs/aws-sam-cli#installation)
-3. Install localstack: `pip install localstack` (https://github.com/localstack/localstack#installing)
-4. Start localstack: `npm run start-localstack`
-5. Seed initial data: `npm run seed-data`
-6. Use one of the npm tasks for local testing. e.g. `run invoke-lambda-with-initial-event`.
+3. Install Docker and Docker Compose
+4. Install localstack: `pip install localstack` (https://github.com/localstack/localstack#installing)
+5. Start localstack: `npm run start-localstack`
+6. Seed initial data: `npm run seed-data`
+7. Use one of the npm tasks for local testing. e.g. `run invoke-lambda-with-initial-event`.
 
 #### Useful npm tasks for building and deploying
 `npm run package ${SRC_S3_BUCKET}` Package the code in zip file, generate CloudFormation template, which expects to find Lambda function source in `s3://${SRC_S3_BUCKET}/professor-animal/src`.

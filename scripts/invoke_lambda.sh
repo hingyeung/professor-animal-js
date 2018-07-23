@@ -4,7 +4,7 @@ set -e
 EVENT=$1
 CF_TEMPLATE=dist/professor-animal.cfn
 ENV_VARS=app/data/env-vars.json
-DOCKER_NETWORK=professor-animal_default
+DOCKER_NETWORK=professoranimal_default
 
 # use --skip-pull-image when offline
 sam local invoke \

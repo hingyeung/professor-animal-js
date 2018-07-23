@@ -16,5 +16,5 @@ export SERVICES=s3,dynamodb
 # start localstack Docker container
 docker-compose \
     --file deployer/localstack-docker-compose.yml \
-    --project-name professor-animal \
+    --project-name professoranimal \
     up
