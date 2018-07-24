@@ -1,0 +1,7 @@
+{
+  "TableName": "AnimalGenieUserSession",
+  "TimeToLiveSpecification": {
+    "AttributeName": "expirationTime",
+    "Enabled": true
+  }
+}
