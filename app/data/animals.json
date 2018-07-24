@@ -1032,5 +1032,134 @@
     ],
     "possible_behaviours": [],
     "considerations": []
+  },
+  {
+    "id": "8aff3c01-1133-b8f6-edbf-19c88871fa83",
+    "name": "Sugar Glider",
+    "physical": [
+      "tail",
+      "legs",
+      "pouch on its tummy"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal",
+      "marsupial",
+      "social animal",
+      "nocturnal animal"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "climb tree",
+      "live in a group",
+      "live in forests",
+      "glide from tree to tree",
+      "carry its baby in its pouch"
+    ],
+    "diet": [
+      "insects",
+      "nectar"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
+  },
+  {
+    "id": "c245c48b-2471-17f3-a6ae-42d017b1f0f1",
+    "name": "Cockroach",
+    "physical": [
+      "six legs",
+      "two antenna"
+    ],
+    "types": [
+      "invertebrate",
+      "insect"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "lay eggs",
+      "like to live in the dark",
+      "pick up lots of germs and can spread disease to people"
+    ],
+    "diet": [
+      "almost anything"
+    ],
+    "possible_behaviours": [
+      "have wings"
+    ],
+    "considerations": [
+      "as dangerous to humans"
+    ]
+  },
+  {
+    "id": "eb3916fe-305a-d8b2-2f6c-6dcc42e0e1ff",
+    "name": "Skunk",
+    "physical": [
+      "tail",
+      "legs",
+      "black body with two white stripes down their backs"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal",
+      "solitary animal",
+      "nocturnal animal"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "live in burrows",
+      "spray stinky smell from its bottom"
+    ],
+    "diet": [
+      "insects",
+      "garbage left by humans"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
+  },
+  {
+    "id": "e47d8b0e-9ee3-a5ff-a5fd-4af09460b64f",
+    "name": "Wallaby",
+    "physical": [
+      "tail",
+      "legs",
+      "pouch on its tummy",
+      "large ears"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal",
+      "marsupial",
+      "nocturnal animal"
+    ],
+    "behaviours": [
+      "only eat plants",
+      "only live in Australia",
+      "hop and jump"
+    ],
+    "diet": [
+      "grass and plants"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
+  },
+  {
+    "id": "68715572-409d-a74a-b9eb-37aedd28fc2f",
+    "name": "Tapeworm",
+    "physical": [
+      "a body up to 12 meters long"
+    ],
+    "types": [
+      "invertebrate",
+      "parasite"
+    ],
+    "behaviours": [
+      "lay eggs",
+      "absorb nutrients directly across their skin"
+    ],
+    "diet": [],
+    "possible_behaviours": [],
+    "considerations": [
+      "as dangerous to humans"
+    ]
   }
 ]
