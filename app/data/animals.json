@@ -1154,7 +1154,8 @@
     ],
     "behaviours": [
       "lay eggs",
-      "absorb nutrients directly across their skin"
+      "absorb nutrients directly across their skin",
+      "live inside someone's body"
     ],
     "diet": [],
     "possible_behaviours": [],
