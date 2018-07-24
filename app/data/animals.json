@@ -1239,5 +1239,91 @@
       "grow up to more than 5 meters long"
     ],
     "considerations": []
+  },
+  {
+    "id": "3721edcd-f697-f5a7-6607-ff1ec6044001",
+    "name": "Owl",
+    "physical": [
+      "legs",
+      "wings",
+      "strong talon",
+      "large eyes"
+    ],
+    "types": [
+      "vertebrate",
+      "solitary animal",
+      "bird",
+      "bird of prey",
+      "nocturnal animal"
+    ],
+    "behaviours": [
+      "only eat meat",
+      "lay eggs",
+      "fly",
+      "fly very quietly"
+    ],
+    "diet": [
+      "insects",
+      "small mammals"
+    ],
+    "possible_behaviours": [
+      "turn their heads as much as 270 degrees"
+    ],
+    "considerations": []
+  },
+  {
+    "id": "3b8ab0a6-b6ea-5f5b-fbdd-882cbe414a32",
+    "name": "Hermit Crab",
+    "physical": [
+      "legs",
+      "a hard shell",
+      "claws"
+    ],
+    "types": [
+      "invertebrate"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "lay eggs",
+      "live in the sea",
+      "live inside seashells that are often scavenged shells of dead animals"
+    ],
+    "diet": [
+      "fish",
+      "plankton"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
+  },
+  {
+    "id": "9acd17a6-01ea-652d-d183-0d5e55ce2ec9",
+    "name": "Cassowary",
+    "physical": [
+      "legs",
+      "large animal",
+      "sharp claws",
+      "wings",
+      "horn-like structure that grows from the top of its head",
+      "colourful wattles hanging from its throat"
+    ],
+    "types": [
+      "vertebrate",
+      "solitary animal",
+      "bird",
+      "territorial animal"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "lay eggs"
+    ],
+    "diet": [
+      "fruit",
+      "small animals"
+    ],
+    "possible_behaviours": [
+      "jump very high",
+      "run very fast"
+    ],
+    "considerations": []
   }
 ]
