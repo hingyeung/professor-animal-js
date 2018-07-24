@@ -1,6 +1,12 @@
 [
   {
+    "id": "30fe0728-0a50-c06e-4f6f-874a845b423a",
     "name": "Lion",
+    "physical": [
+      "mane",
+      "tail",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "mammal",
@@ -15,18 +21,21 @@
       "live in Africa",
       "rest for around 20 hours a day"
     ],
-    "physical": [
-      "mane",
-      "tail",
-      "legs"
-    ],
     "diet": [
       "zebra, buffalo, wildebeest, giraffes and antelopes"
     ],
-    "id": "30fe0728-0a50-c06e-4f6f-874a845b423a"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "d4a46610-bb75-4748-ca12-80a66583b10d",
     "name": "Cheetah",
+    "physical": [
+      "tail",
+      "excellent eyesight",
+      "long, black lines which run from the inside of each eye to the mouth",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "mammal",
@@ -37,22 +46,24 @@
       "only eat meat",
       "run very fast"
     ],
-    "possible_behaviours": [
-      "run at top speed of 113 km per hour"
-    ],
-    "physical": [
-      "tail",
-      "excellent eyesight",
-      "long, black lines which run from the inside of each eye to the mouth",
-      "legs"
-    ],
     "diet": [
       "gazelles, impalas and wildebeest"
     ],
-    "id": "d4a46610-bb75-4748-ca12-80a66583b10d"
+    "possible_behaviours": [
+      "run at top speed of 113 km per hour"
+    ],
+    "considerations": []
   },
   {
+    "id": "36275bd7-4784-c460-c578-a132f808c2c0",
     "name": "Elephant",
+    "physical": [
+      "tusks",
+      "tail",
+      "long trunk",
+      "large, thin ears",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "mammal",
@@ -64,23 +75,21 @@
       "live in a groups called herds",
       "live in Africa or Asia"
     ],
-    "possible_behaviours": [
-      "swim"
-    ],
-    "physical": [
-      "tusks",
-      "tail",
-      "long trunk",
-      "large, thin ears",
-      "legs"
-    ],
     "diet": [
       "grass, leaves, fruits and small plants"
     ],
-    "id": "36275bd7-4784-c460-c578-a132f808c2c0"
+    "possible_behaviours": [
+      "swim"
+    ],
+    "considerations": []
   },
   {
+    "id": "f25c52df-1dcb-b110-8b01-5a3b971ddc68",
     "name": "Dog",
+    "physical": [
+      "tail",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "mammal",
@@ -90,17 +99,19 @@
       "only eat meat",
       "bark"
     ],
+    "diet": [
+      "bone and pet food"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
+  },
+  {
+    "id": "b0da8c8b-a1c1-9d34-ad9d-7caf3a8352c9",
+    "name": "Cat",
     "physical": [
       "tail",
       "legs"
     ],
-    "diet": [
-      "bone and pet food"
-    ],
-    "id": "f25c52df-1dcb-b110-8b01-5a3b971ddc68"
-  },
-  {
-    "name": "Cat",
     "types": [
       "vertebrate",
       "mammal",
@@ -111,17 +122,20 @@
       "climb tree",
       "meow"
     ],
-    "physical": [
-      "tail",
-      "legs"
-    ],
     "diet": [
       "fish and pet food"
     ],
-    "id": "b0da8c8b-a1c1-9d34-ad9d-7caf3a8352c9"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "ea460a4b-224b-51fb-7789-973698fda55b",
     "name": "Brown Bear",
+    "physical": [
+      "long fur",
+      "sharp claws",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "mammal",
@@ -132,18 +146,19 @@
       "hibernate in winter",
       "live in caves"
     ],
-    "physical": [
-      "long fur",
-      "sharp claws",
-      "legs"
-    ],
     "diet": [
       "fruit, fish and small animals"
     ],
-    "id": "ea460a4b-224b-51fb-7789-973698fda55b"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "46c75867-654e-a1f6-1d7f-925dfb2c371d",
     "name": "Panda",
+    "physical": [
+      "black and white fur",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "mammal",
@@ -153,17 +168,21 @@
       "only eat plants",
       "climb tree"
     ],
-    "physical": [
-      "black and white fur",
-      "legs"
-    ],
     "diet": [
       "bamboo"
     ],
-    "id": "46c75867-654e-a1f6-1d7f-925dfb2c371d"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "9cc82ebc-21fd-94f6-290e-ab402c903086",
     "name": "Tiger",
+    "physical": [
+      "tail",
+      "black strip",
+      "unique pattern of stripes on each animal",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "mammal",
@@ -177,22 +196,24 @@
       "swim",
       "roar"
     ],
-    "physical": [
-      "tail",
-      "black strip",
-      "unique pattern of stripes on each animal",
-      "legs"
-    ],
     "diet": [
       "deer, antelope and other large animals"
     ],
     "possible_behaviours": [
       "swim"
     ],
-    "id": "9cc82ebc-21fd-94f6-290e-ab402c903086"
+    "considerations": []
   },
   {
+    "id": "7c34c244-75c8-8e8b-da18-bafeaa3e3823",
     "name": "Chameleon",
+    "physical": [
+      "long tongue",
+      "eyes that can move independently",
+      "tail",
+      "legs",
+      "scales"
+    ],
     "types": [
       "vertebrate",
       "reptile",
@@ -204,20 +225,19 @@
       "climb tree",
       "change colour to blend in"
     ],
-    "physical": [
-      "long tongue",
-      "eyes that can move independently",
-      "tail",
-      "legs",
-      "scales"
-    ],
     "diet": [
       "insects"
     ],
-    "id": "7c34c244-75c8-8e8b-da18-bafeaa3e3823"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "10a498ad-7370-1a4b-0674-c839b4b2d63f",
     "name": "Snake",
+    "physical": [
+      "scales",
+      "long body"
+    ],
     "types": [
       "vertebrate",
       "reptile",
@@ -230,31 +250,17 @@
       "lay eggs",
       "slither across flat surfaces without legs"
     ],
-    "physical": [
-      "scales",
-      "long body"
-    ],
     "diet": [
       "insects, eggs and small animals"
     ],
     "possible_behaviours": [
       "be poisonous"
     ],
-    "id": "10a498ad-7370-1a4b-0674-c839b4b2d63f"
+    "considerations": []
   },
   {
+    "id": "54e5470c-f527-3cb7-172a-f58c00104acc",
     "name": "Great White Shark",
-    "types": [
-      "vertebrate",
-      "fish",
-      "large animal"
-    ],
-    "behaviours": [
-      "only eat meat",
-      "smell blood in water",
-      "swim very fast",
-      "lay eggs"
-    ],
     "physical": [
       "fins",
       "about 300 teeth",
@@ -266,14 +272,32 @@
       "sharp teeth up to 6 cm long",
       "large dorsal fin on its back which sticks out of the water"
     ],
+    "types": [
+      "vertebrate",
+      "fish",
+      "large animal"
+    ],
+    "behaviours": [
+      "only eat meat",
+      "smell blood in water",
+      "swim very fast",
+      "lay eggs"
+    ],
     "diet": [
       "fish",
       "seals and sea lions"
     ],
-    "id": "54e5470c-f527-3cb7-172a-f58c00104acc"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "b3962ab0-4c44-f493-e0af-01fe74b76535",
     "name": "Emperor Penguin",
+    "physical": [
+      "wings",
+      "white belly and a black head, back, tail and wings",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "bird",
@@ -286,18 +310,21 @@
       "live in Antarctica",
       "swim"
     ],
-    "physical": [
-      "wings",
-      "white belly and a black head, back, tail and wings",
-      "legs"
-    ],
     "diet": [
       "fish, squids and krill"
     ],
-    "id": "b3962ab0-4c44-f493-e0af-01fe74b76535"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "db0bcdd1-c408-e0ce-ef49-a5bd58a4ec21",
     "name": "Eagle",
+    "physical": [
+      "wings",
+      "strong talon",
+      "excellent eyesight",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "bird",
@@ -309,19 +336,19 @@
       "fly",
       "lay eggs"
     ],
-    "physical": [
-      "wings",
-      "strong talon",
-      "excellent eyesight",
-      "legs"
-    ],
     "diet": [
       "mouse, rat and rabbit"
     ],
-    "id": "db0bcdd1-c408-e0ce-ef49-a5bd58a4ec21"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "3beb2cb1-8032-17ac-7944-5166cc8066bc",
     "name": "Hummingbird",
+    "physical": [
+      "wings",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "bird",
@@ -332,17 +359,18 @@
       "fly",
       "lay eggs"
     ],
-    "physical": [
-      "wings",
-      "legs"
-    ],
     "diet": [
       "nectar from flowers and insects"
     ],
-    "id": "3beb2cb1-8032-17ac-7944-5166cc8066bc"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "ff3fca60-c290-5799-d41d-e66616cf0439",
     "name": "Jellyfish",
+    "physical": [
+      "tentacles"
+    ],
     "types": [
       "invertebrate"
     ],
@@ -352,9 +380,6 @@
       "swim",
       "look like an umbrellas"
     ],
-    "physical": [
-      "tentacles"
-    ],
     "diet": [
       "plankton",
       "tiny fish and fish eggs"
@@ -362,10 +387,18 @@
     "possible_behaviours": [
       "poisonous"
     ],
-    "id": "ff3fca60-c290-5799-d41d-e66616cf0439"
+    "considerations": []
   },
   {
+    "id": "67f4280e-bc3e-ebe2-3a6f-5f0e80db23ca",
     "name": "Horse",
+    "physical": [
+      "long legs",
+      "mane",
+      "tail",
+      "hooves",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "large animal"
@@ -375,13 +408,6 @@
       "run very fast",
       "let people ride on it"
     ],
-    "physical": [
-      "long legs",
-      "mane",
-      "tail",
-      "hooves",
-      "legs"
-    ],
     "diet": [
       "grass"
     ],
@@ -390,11 +416,19 @@
     ],
     "considerations": [
       "as helpful to humans"
-    ],
-    "id": "67f4280e-bc3e-ebe2-3a6f-5f0e80db23ca"
+    ]
   },
   {
+    "id": "3f281e2f-3705-d131-19c4-bfec672e714e",
     "name": "Zebra",
+    "physical": [
+      "long legs",
+      "mane",
+      "tail",
+      "hooves",
+      "black stripes on its body",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "large animal"
@@ -405,21 +439,19 @@
       "live in a group",
       "run very fast"
     ],
-    "physical": [
-      "long legs",
-      "mane",
-      "tail",
-      "hooves",
-      "black stripes on its body",
-      "legs"
-    ],
     "diet": [
       "grass"
     ],
-    "id": "3f281e2f-3705-d131-19c4-bfec672e714e"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "4a7f43a6-6c3a-9cdb-a9bd-9151103fc386",
     "name": "Sea turtle",
+    "physical": [
+      "a hard shell",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "reptile",
@@ -431,19 +463,21 @@
       "lay eggs",
       "lay eggs on beach"
     ],
-    "physical": [
-      "a hard shell",
-      "legs"
-    ],
     "diet": [
       "jellyfish",
       "crabs and shrimp",
       "sea grass and seaweed"
     ],
-    "id": "4a7f43a6-6c3a-9cdb-a9bd-9151103fc386"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "3836d976-b10d-65cb-03a5-e04885c9d47d",
     "name": "Polar bear",
+    "physical": [
+      "white fur",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "large animal",
@@ -455,17 +489,21 @@
       "swim",
       "live in the Arctic Circle"
     ],
-    "physical": [
-      "white fur",
-      "legs"
-    ],
     "diet": [
       "seals"
     ],
-    "id": "3836d976-b10d-65cb-03a5-e04885c9d47d"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "fc76a960-da0b-dd12-f097-5f8c51d1a144",
     "name": "Flamingo",
+    "physical": [
+      "long legs",
+      "pink bill",
+      "pink feather",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "bird"
@@ -477,19 +515,22 @@
       "lay eggs",
       "stand on one leg"
     ],
-    "physical": [
-      "long legs",
-      "pink bill",
-      "pink feather",
-      "legs"
-    ],
     "diet": [
       "insects and shrimp"
     ],
-    "id": "fc76a960-da0b-dd12-f097-5f8c51d1a144"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "1609ce8a-7c5b-32e9-556b-6fc277c8ab30",
     "name": "Orca",
+    "physical": [
+      "fins",
+      "big tail fin",
+      "blowhole on top of its head",
+      "black and white colour on its body",
+      "large dorsal fin on its back which sticks out of the water"
+    ],
     "types": [
       "vertebrate",
       "mammal",
@@ -501,22 +542,23 @@
       "hunt in a group",
       "swim"
     ],
-    "physical": [
-      "fins",
-      "big tail fin",
-      "blowhole on top of its head",
-      "black and white colour on its body",
-      "large dorsal fin on its back which sticks out of the water"
-    ],
     "diet": [
       "seals and sea lions",
       "sharks, squid and other fish",
       "penguins and sea turtles"
     ],
-    "id": "1609ce8a-7c5b-32e9-556b-6fc277c8ab30"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "be903051-f4d3-a4bd-8f5b-884a0da1ad3d",
     "name": "Blue Whale",
+    "physical": [
+      "fins",
+      "big tail fin",
+      "no teeth",
+      "blowhole on top of its head"
+    ],
     "types": [
       "vertebrate",
       "mammal",
@@ -528,19 +570,20 @@
       "only eat meat",
       "swim"
     ],
-    "physical": [
-      "fins",
-      "big tail fin",
-      "no teeth",
-      "blowhole on top of its head"
-    ],
     "diet": [
       "krill"
     ],
-    "id": "be903051-f4d3-a4bd-8f5b-884a0da1ad3d"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "92101007-8aa5-9ce4-a6ab-696bb2edd632",
     "name": "Butterfly",
+    "physical": [
+      "bright and colourful wings",
+      "six legs",
+      "two antenna"
+    ],
     "types": [
       "invertebrate",
       "insect"
@@ -549,18 +592,18 @@
       "live as caterpillar when it is young",
       "fly"
     ],
-    "physical": [
-      "bright and colourful wings",
-      "six legs",
-      "two antenna"
-    ],
     "diet": [
       "nectar from flowers"
     ],
-    "id": "92101007-8aa5-9ce4-a6ab-696bb2edd632"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "53a0d4ed-5cbe-79ce-41ae-4d45768298eb",
     "name": "Clownfish",
+    "physical": [
+      "orange and white stripes on its body"
+    ],
     "types": [
       "vertebrate",
       "fish"
@@ -571,16 +614,21 @@
       "lays up to 1000 eggs",
       "lay eggs"
     ],
-    "physical": [
-      "orange and white stripes on its body"
-    ],
     "diet": [
       "algae"
     ],
-    "id": "53a0d4ed-5cbe-79ce-41ae-4d45768298eb"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "18b088bb-c947-02ce-20ea-9e45d8731b80",
     "name": "Rhinoceros",
+    "physical": [
+      "giant horns on its nose",
+      "thick, armour-like skin",
+      "has a body that weights up to 2500 kilogram",
+      "legs"
+    ],
     "types": [
       "mammal",
       "territorial animal",
@@ -591,19 +639,20 @@
       "stay in muddy pools",
       "charge directly at whatever frightens it"
     ],
-    "physical": [
-      "giant horns on its nose",
-      "thick, armour-like skin",
-      "has a body that weights up to 2500 kilogram",
-      "legs"
-    ],
     "diet": [
       "grass and plants"
     ],
-    "id": "18b088bb-c947-02ce-20ea-9e45d8731b80"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "fe59030d-55e8-e186-7904-8d1f7cf15579",
     "name": "Meerkat",
+    "physical": [
+      "tail",
+      "long, sharp claws for digging",
+      "legs"
+    ],
     "types": [
       "mammal",
       "vertebrate"
@@ -614,18 +663,21 @@
       "live in burrows",
       "live in a big group of up to 50 members"
     ],
-    "physical": [
-      "tail",
-      "long, sharp claws for digging",
-      "legs"
-    ],
     "diet": [
       "many things such as insects, small reptiles, birds, eggs, fruit and plants"
     ],
-    "id": "fe59030d-55e8-e186-7904-8d1f7cf15579"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "088088a8-b566-77a7-a948-43af25249b67",
     "name": "Koala",
+    "physical": [
+      "grey fur with a cream-coloured chest",
+      "strong, clawed feet for climbing trees",
+      "a pouch where their newborns live",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "marsupial",
@@ -637,19 +689,23 @@
       "sleep up to 18 hours a day",
       "stay in its mother's pouch for about six months when it is a baby"
     ],
-    "physical": [
-      "grey fur with a cream-coloured chest",
-      "strong, clawed feet for climbing trees",
-      "a pouch where their newborns live",
-      "legs"
-    ],
     "diet": [
       "eucalyptus leaves"
     ],
-    "id": "088088a8-b566-77a7-a948-43af25249b67"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "daa6634c-685b-09a0-60c8-b4627b734fa6",
     "name": "Giraffe",
+    "physical": [
+      "long neck",
+      "long tongue",
+      "excellent eyesight",
+      "hooves",
+      "tail",
+      "legs"
+    ],
     "types": [
       "vertebrate",
       "mammal",
@@ -661,32 +717,26 @@
       "live in Africa",
       "live in a group"
     ],
-    "physical": [
-      "long neck",
-      "long tongue",
-      "excellent eyesight",
-      "hooves",
-      "tail",
-      "legs"
-    ],
     "diet": [
       "acacia tree and other plants"
     ],
-    "id": "daa6634c-685b-09a0-60c8-b4627b734fa6"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "9c386ffa-d296-03cb-ce8a-af5f378b9263",
     "name": "Saltwater Crocodile",
-    "types": [
-      "reptile",
-      "cold-blooded animal",
-      "large animal",
-      "vertebrate"
-    ],
     "physical": [
       "tail",
       "large jaw",
       "many sharp teeth",
       "legs"
+    ],
+    "types": [
+      "reptile",
+      "cold-blooded animal",
+      "large animal",
+      "vertebrate"
     ],
     "behaviours": [
       "only eat meat",
@@ -704,23 +754,23 @@
     ],
     "considerations": [
       "as dangerous to humans"
-    ],
-    "id": "9c386ffa-d296-03cb-ce8a-af5f378b9263"
+    ]
   },
   {
+    "id": "c182e123-ef24-832b-7ed4-0ecde7f94f74",
     "name": "Kangaroo",
-    "types": [
-      "mammal",
-      "large animal",
-      "marsupial",
-      "vertebrate"
-    ],
     "physical": [
       "only eat plants",
       "tail",
       "pouch on its tummy",
       "large ears",
       "legs"
+    ],
+    "types": [
+      "mammal",
+      "large animal",
+      "marsupial",
+      "vertebrate"
     ],
     "behaviours": [
       "hop around using two legs",
@@ -732,22 +782,23 @@
     "possible_behaviours": [
       "jump very high"
     ],
-    "id": "c182e123-ef24-832b-7ed4-0ecde7f94f74"
+    "considerations": []
   },
   {
+    "id": "27bed12a-bdb3-9020-68c4-4c3b4ec137f2",
     "name": "Gorilla",
+    "physical": [
+      "dark hair",
+      "long arms",
+      "thumbs like humans",
+      "legs"
+    ],
     "types": [
       "mammal",
       "ape",
       "a highly intelligent animal",
       "large animal",
       "vertebrate"
-    ],
-    "physical": [
-      "dark hair",
-      "long arms",
-      "thumbs like humans",
-      "legs"
     ],
     "behaviours": [
       "only eat plants",
@@ -761,10 +812,18 @@
     "possible_behaviours": [
       "use tools"
     ],
-    "id": "27bed12a-bdb3-9020-68c4-4c3b4ec137f2"
+    "considerations": []
   },
   {
+    "id": "5176aac5-d55e-80f3-4084-f5535e225742",
     "name": "Hippopotamus",
+    "physical": [
+      "tail",
+      "short legs",
+      "huge mouth",
+      "live in a groups",
+      "legs"
+    ],
     "types": [
       "mammal",
       "large animal",
@@ -777,23 +836,21 @@
       "spend most of their day in rivers and lakes to stay cool",
       "swim"
     ],
-    "physical": [
-      "tail",
-      "short legs",
-      "huge mouth",
-      "live in a groups",
-      "legs"
-    ],
     "diet": [
       "grass"
     ],
+    "possible_behaviours": [],
     "considerations": [
       "as most dangerous animals in Africa"
-    ],
-    "id": "5176aac5-d55e-80f3-4084-f5535e225742"
+    ]
   },
   {
+    "id": "77168193-1ef8-3cff-5c70-490be7000ab2",
     "name": "Dolphin",
+    "physical": [
+      "fins",
+      "blowhole on top of its head"
+    ],
     "types": [
       "mammal",
       "vertebrate"
@@ -805,24 +862,24 @@
       "use echolocation for finding food",
       "communicate with each other by clicking and whistling"
     ],
-    "physical": [
-      "fins",
-      "blowhole on top of its head"
-    ],
     "diet": [
       "fish and squid"
-    ],
-    "considerations": [
-      "to be very intelligent",
-      "to be friendly to humans"
     ],
     "possible_behaviours": [
       "jump out of the water"
     ],
-    "id": "77168193-1ef8-3cff-5c70-490be7000ab2"
+    "considerations": [
+      "to be very intelligent",
+      "to be friendly to humans"
+    ]
   },
   {
+    "id": "c084615f-cad7-d84e-b074-32512c71cca8",
     "name": "Leopard",
+    "physical": [
+      "legs",
+      "rose-like markings patterns called rosettes on their fur"
+    ],
     "types": [
       "mammal",
       "big cat",
@@ -835,10 +892,6 @@
       "climb tree",
       "spend a lot of time in trees"
     ],
-    "physical": [
-      "legs",
-      "rose-like markings patterns called rosettes on their fur"
-    ],
     "diet": [
       "deers",
       "impalas",
@@ -849,10 +902,16 @@
     "possible_behaviours": [
       "swim"
     ],
-    "id": "c084615f-cad7-d84e-b074-32512c71cca8"
+    "considerations": []
   },
   {
+    "id": "d4e91c04-643e-ae01-8a4f-2a50f154d4eb",
     "name": "Narwhal",
+    "physical": [
+      "fins",
+      "blowhole on top of its head",
+      "long, hornlike tooth sticking out of its head"
+    ],
     "types": [
       "mammal",
       "vertebrate"
@@ -864,21 +923,23 @@
       "swim",
       "communicate with each other by clicking and whistling"
     ],
-    "physical": [
-      "fins",
-      "blowhole on top of its head",
-      "long, hornlike tooth sticking out of its head"
-    ],
     "diet": [
       "fish and squid"
     ],
     "possible_behaviours": [
       "be referred to as the unicorn of the sea"
     ],
-    "id": "d4e91c04-643e-ae01-8a4f-2a50f154d4eb"
+    "considerations": []
   },
   {
+    "id": "7ae7a60f-a42f-0da2-f6da-a02c90e6574b",
     "name": "Blue-tongued Lizard",
+    "physical": [
+      "scale",
+      "blue tongue",
+      "legs",
+      "tail"
+    ],
     "types": [
       "reptile",
       "cold-blooded animal",
@@ -889,19 +950,18 @@
       "live in Australia",
       "lay eggs"
     ],
-    "physical": [
-      "scale",
-      "blue tongue",
-      "legs",
-      "tail"
-    ],
     "diet": [
       "insects, snails and fruits"
     ],
-    "id": "7ae7a60f-a42f-0da2-f6da-a02c90e6574b"
+    "possible_behaviours": [],
+    "considerations": []
   },
   {
+    "id": "caab75ef-8815-eaa0-a739-97435d605615",
     "name": "Puffer Fish",
+    "physical": [
+      "fins"
+    ],
     "types": [
       "vertebrate",
       "fish"
@@ -911,9 +971,6 @@
       "swim",
       "lay eggs"
     ],
-    "physical": [
-      "fins"
-    ],
     "diet": [
       "algae, clams, mussels, and shellfish"
     ],
@@ -921,10 +978,17 @@
       "be poisonous",
       "enlarge its body by swallowing huge amount of water to scare off predators"
     ],
-    "id": "caab75ef-8815-eaa0-a739-97435d605615"
+    "considerations": []
   },
   {
+    "id": "70d9bda1-2ebd-59ac-25b2-7f4c35414390",
     "name": "Tawny Frogmouth",
+    "physical": [
+      "yellow eyes",
+      "wide beak",
+      "legs",
+      "wings"
+    ],
     "types": [
       "bird",
       "vertebrate",
@@ -939,15 +1003,34 @@
       "excellent hearing",
       "only eat meat"
     ],
-    "physical": [
-      "yellow eyes",
-      "wide beak",
-      "legs",
-      "wings"
-    ],
     "diet": [
       "insects, frogs and small animals"
     ],
-    "id": "70d9bda1-2ebd-59ac-25b2-7f4c35414390"
+    "possible_behaviours": [],
+    "considerations": []
+  },
+  {
+    "id": "e1af7d80-8de8-cf71-9825-024ed6f0f535",
+    "name": "Sloth",
+    "physical": [
+      "legs",
+      "thick fur",
+      "long, sharp claws to hold on to tree branches"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal"
+    ],
+    "behaviours": [
+      "only eat plants",
+      "climb tree",
+      "move very slowly",
+      "live in jungles"
+    ],
+    "diet": [
+      "leaves"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
   }
 ]
