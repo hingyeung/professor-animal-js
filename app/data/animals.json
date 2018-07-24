@@ -1162,5 +1162,31 @@
     "considerations": [
       "as dangerous to humans"
     ]
+  },
+  {
+    "id": "66714625-b409-5231-00d3-c91a8cbdffd9",
+    "name": "Tasmanian Devil",
+    "physical": [
+      "tail",
+      "legs",
+      "pouch on its tummy"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal",
+      "solitary animal",
+      "marsupial",
+      "the largest carnivorous marsupials in the world"
+    ],
+    "behaviours": [
+      "only eat meat",
+      "only live in Australia",
+      "let out a shrieking sound and show their teeth when they feel like they are in danger"
+    ],
+    "diet": [
+      "animals that are already dead"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
   }
 ]
