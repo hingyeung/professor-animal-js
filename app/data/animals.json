@@ -188,7 +188,7 @@
       "mammal",
       "large animal",
       "big cat",
-      "predator",
+      "large predator",
       "solitary animal"
     ],
     "behaviours": [
@@ -217,7 +217,7 @@
     "types": [
       "vertebrate",
       "reptile",
-      "predator",
+      "large predator",
       "cold-blooded animal"
     ],
     "behaviours": [
@@ -709,7 +709,6 @@
     "types": [
       "vertebrate",
       "mammal",
-      "social animal",
       "large animal"
     ],
     "behaviours": [
@@ -729,7 +728,7 @@
     "physical": [
       "tail",
       "large jaw",
-      "many sharp teeth",
+      "large sharp teeth",
       "legs"
     ],
     "types": [
@@ -1045,7 +1044,6 @@
       "vertebrate",
       "mammal",
       "marsupial",
-      "social animal",
       "nocturnal animal"
     ],
     "behaviours": [
