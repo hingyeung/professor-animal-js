@@ -60,8 +60,11 @@ Resources:
       StageName: "dev"
 
 Outputs:
-  ProfessorAnimalApi:
+  ProfessorAnimalApiEndpoint:
     Description: "API Gateway endpoint URL for dev stage for ProfessorAnimalLambdaFunction function"
     Value: !Sub "https://${ProfessorAnimalApi}.execute-api.${AWS::Region}.amazonaws.com/dev/apiaiwebhook/"
+  ProfessorAnimalApiId:
+    Description: "API ID for ProfessorAnimalLambdaFunction function"
+    Value: !Ref ProfessorAnimalApi
 
 # https://github.com/awslabs/serverless-application-model/tree/master/examples/2016-10-31/api_swagger_cors

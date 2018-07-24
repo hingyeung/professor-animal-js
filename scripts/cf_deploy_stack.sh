@@ -24,4 +24,4 @@ aws  cloudformation deploy \
         bucketName=${S3_BUCKET} \
         dataBucket=${DATA_S3_BUCKET} && \
     aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
-        --query 'Stacks[0].Outputs[?OutputKey==`ProfessorAnimalApi`]'
+        --query 'Stacks[0].Outputs[?OutputKey==`ProfessorAnimalApiEndpoint`]'
