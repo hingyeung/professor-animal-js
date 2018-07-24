@@ -73,13 +73,13 @@
     "behaviours": [
       "only eat plants",
       "live in a groups called herds",
-      "live in Africa or Asia"
+      "live in Africa or Asia",
+      "swim"
     ],
     "diet": [
       "grass, leaves, fruits and small plants"
     ],
     "possible_behaviours": [
-      "swim"
     ],
     "considerations": []
   },
@@ -200,7 +200,6 @@
       "deer, antelope and other large animals"
     ],
     "possible_behaviours": [
-      "swim"
     ],
     "considerations": []
   },
@@ -889,7 +888,8 @@
       "only eat meat",
       "live in Africa",
       "climb tree",
-      "spend a lot of time in trees"
+      "spend a lot of time in trees",
+      "swim"
     ],
     "diet": [
       "deers",
@@ -899,7 +899,6 @@
       "bird"
     ],
     "possible_behaviours": [
-      "swim"
     ],
     "considerations": []
   },
@@ -1201,13 +1200,13 @@
     "behaviours": [
       "only eat meat",
       "lay eggs",
-      "live in the sea"
+      "live in the sea",
+      "swim"
     ],
     "diet": [
       "fish"
     ],
     "possible_behaviours": [
-      "swim",
       "be poisonous",
       "eject a thick, blackish ink in a large cloud to distract the predator"
     ],
@@ -1228,14 +1227,14 @@
     ],
     "behaviours": [
       "only eat meat",
-      "live in the sea"
+      "live in the sea",
+      "swim"
     ],
     "diet": [
       "fish",
       "shrimp"
     ],
     "possible_behaviours": [
-      "swim",
       "grow up to more than 5 meters long"
     ],
     "considerations": []
