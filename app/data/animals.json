@@ -1186,5 +1186,58 @@
     ],
     "possible_behaviours": [],
     "considerations": []
+  },
+  {
+    "id": "879cfa94-e620-bdb4-17da-9d3fd5c70b8e",
+    "name": "Octopus",
+    "physical": [
+      "tentacles",
+      "three hearts"
+    ],
+    "types": [
+      "solitary animal",
+      "invertebrate"
+    ],
+    "behaviours": [
+      "only eat meat",
+      "lay eggs",
+      "live in the sea"
+    ],
+    "diet": [
+      "fish"
+    ],
+    "possible_behaviours": [
+      "swim",
+      "be poisonous",
+      "eject a thick, blackish ink in a large cloud to distract the predator"
+    ],
+    "considerations": [
+      "to be very intelligent"
+    ]
+  },
+  {
+    "id": "893332ac-cb45-4c2d-52fe-3913708ce6ea",
+    "name": "Giant Squid",
+    "physical": [
+      "tentacles",
+      "eight arms and two feeding tentacles",
+      "eyes the size of beach balls"
+    ],
+    "types": [
+      "invertebrate"
+    ],
+    "behaviours": [
+      "only eat meat",
+      "live in the sea"
+    ],
+    "diet": [
+      "fish",
+      "shrimp"
+    ],
+    "possible_behaviours": [
+      "swim",
+      "grow up to more than 5 meters long"
+    ],
+    "considerations": []
   }
 ]
