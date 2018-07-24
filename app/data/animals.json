@@ -79,8 +79,7 @@
     "diet": [
       "grass, leaves, fruits and small plants"
     ],
-    "possible_behaviours": [
-    ],
+    "possible_behaviours": [],
     "considerations": []
   },
   {
@@ -199,8 +198,7 @@
     "diet": [
       "deer, antelope and other large animals"
     ],
-    "possible_behaviours": [
-    ],
+    "possible_behaviours": [],
     "considerations": []
   },
   {
@@ -898,8 +896,7 @@
       "fish",
       "bird"
     ],
-    "possible_behaviours": [
-    ],
+    "possible_behaviours": [],
     "considerations": []
   },
   {
@@ -1211,7 +1208,8 @@
       "eject a thick, blackish ink in a large cloud to distract the predator"
     ],
     "considerations": [
-      "to be very intelligent"
+      "to be very intelligent",
+      "to be food for humans"
     ]
   },
   {
@@ -1324,5 +1322,65 @@
       "run very fast"
     ],
     "considerations": []
+  },
+  {
+    "id": "27a76ee5-9fd7-a700-531d-95c1897d521e",
+    "name": "Goat",
+    "physical": [
+      "tail",
+      "legs",
+      "hooves"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal",
+      "pet"
+    ],
+    "behaviours": [
+      "only eat plants",
+      "climb tree",
+      "live in a group",
+      "produce milk for humans to drink"
+    ],
+    "diet": [
+      "grass"
+    ],
+    "possible_behaviours": [
+      "domesticated"
+    ],
+    "considerations": [
+      "to be food for humans"
+    ]
+  },
+  {
+    "id": "39570522-dcc2-f4c1-d5a0-a8a0c2fc807d",
+    "name": "Llama",
+    "physical": [
+      "tail",
+      "legs",
+      "large animal",
+      "hooves",
+      "long ears"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal"
+    ],
+    "behaviours": [
+      "only eat plants",
+      "live in a group",
+      "live in mountains in South America",
+      "produce wool for us to make clothes ",
+      "spit when it feels threatened"
+    ],
+    "diet": [
+      "grass"
+    ],
+    "possible_behaviours": [
+      "domesticated"
+    ],
+    "considerations": [
+      "as helpful to humans"
+    ]
   }
 ]
