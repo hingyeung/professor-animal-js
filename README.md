@@ -10,27 +10,28 @@ This game is best suited for children of age 5 or older.
 ## How do I to play it?
 On Android device
 1. Start conversation with Google Assistant by either using the [home button](https://support.google.com/assistant/answer/7172657?co=GENIE.Platform%3DAndroid&oco=0) or using the dedicated [Google Assistant app](https://play.google.com/store/apps/details?id=com.google.android.apps.googleassistant&hl=en).
-2. Type or say "**Let me talk to Professor Animal**".
+1. Type or say "**Let me talk to Professor Animal**".
 
 On iOS device
 1. Start the [Google Assistant app](https://itunes.apple.com/au/app/google-assistant/id1220976145?mt=8).
-2. Type or say "**Let me talk to Professor Animal**".
+1. Type or say "**Let me talk to Professor Animal**".
 
 On Google Home
 1. [Start conversation](https://support.google.com/googlehome/answer/7207759?hl=en-AU&ref_topic=7196346) with Google Home.
-2. Say "**Let me talk to Professor Animal**".
+1. Say "**Let me talk to Professor Animal**".
 
 ## Development
 This project's core logic runs as a Lambda function in AWS, and expects input from [Dialogflow](https://dialogflow.com) natural language processing (NPL) engine. The response from the Lambda function is also sent back to Dialogflow for text-to-speech and other conversation context tracking. It uses DynamoDB for session storage. The code is written in NodeJS.
 
 #### Running locally
 1. Install dependencies: `npm install`
-2. Install AWS SAM CLI: `pip install --user aws-sam-cli` (https://github.com/awslabs/aws-sam-cli#installation)
-3. Install Docker and Docker Compose
-4. Install localstack: `pip install localstack` (https://github.com/localstack/localstack#installing)
-5. Start localstack: `npm run start-localstack`
-6. Seed initial data: `npm run seed-data`
-7. Use one of the npm tasks for local testing. e.g. `run invoke-lambda-with-initial-event`.
+1. Install AWS SAM CLI: `pip install --user aws-sam-cli` (https://github.com/awslabs/aws-sam-cli#installation)
+1. Install Docker and Docker Compose
+1. Install localstack: `pip install localstack` (https://github.com/localstack/localstack#installing)
+1. Install Boto 3 `pip install boto3`
+1. Start localstack: `npm run start-localstack`
+1. Seed initial data: `npm run seed-data`
+1. Use one of the npm tasks for local testing. e.g. `run invoke-lambda-with-initial-event`.
 
 #### Useful npm tasks for building and deploying
 `npm run package ${SRC_S3_BUCKET}` Package the code in zip file, generate CloudFormation template, which expects to find Lambda function source in `s3://${SRC_S3_BUCKET}/professor-animal/src`.
@@ -40,6 +41,8 @@ This project's core logic runs as a Lambda function in AWS, and expects input fr
 `npm run cf-deploy-stack ${BUILD_NUMBER} ${SRC_S3_BUCKET} ${DATA_S3_BUCKET} ${STACK_NAME}` Create a stack with API Gateway, Lambda function with source from `s3://${SRC_S3_BUCKET}/professor-animal/src/` and expect to find animal definition data in `s3://${DATA_S3_BUCKET}/professor-animal/data/`
 
 `npm run cf-update-stack ${BUILD_NUMBER} ${SRC_S3_BUCKET} ${DATA_S3_BUCKET} ${STACK_NAME}` Update an existing stack. Upload the specified build to S3 before running this task.
+
+`npm run cf-delete-stack -- --stack-name ${STACK_NAME}` Remove base path mappings of custom domain names associated with this stack before deleting the stack itself.   
 
 #### Useful npm tasks for local testing
 These tasks are useful for testing the app using local Lambda and DynamoDB:

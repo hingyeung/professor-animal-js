@@ -29,7 +29,7 @@
     "upload-to-s3": "scripts/upload_to_s3.sh",
     "cf-deploy-stack": "scripts/cf_deploy_stack.sh",
     "cf-update-stack": "scripts/cf_update_stack.sh",
-    "cf-delete-stack": "scripts/cf_delete_stack.sh",
+    "cf-delete-stack": "scripts/cf_delete_stack.py",
     "update-custom-domain-mapping": "scripts/update_custom_domain_mapping.sh",
     "add-api-stage-to-usage-plan": "scripts/add_api_stage_to_usage_plan.sh",
     "invoke-lambda-with-initial-event": "scripts/invoke_lambda.sh app/data/initial_request.json",
