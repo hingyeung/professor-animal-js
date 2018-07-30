@@ -1,6 +1,6 @@
 'use strict';
 
-const USER_SESSION_TABLE = "AnimalGenieUserSession",
+const USER_SESSION_TABLE = process.env.USER_SESSION_TABLE,
     AWS = require('aws-sdk'),
     Q = require('q');
 

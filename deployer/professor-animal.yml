@@ -8,6 +8,21 @@ Parameters:
   dataBucket:
     Type: String
 Resources:
+  UserSessionTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "id"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "id"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      TimeToLiveSpecification:
+        AttributeName: expirationTime
+        Enabled: true
   ProfessorAnimalLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -25,7 +40,7 @@ Resources:
       Policies:
         - AWSLambdaBasicExecutionRole
         - DynamoDBCrudPolicy:
-            TableName: AnimalGenieUserSession
+            TableName: !Ref UserSessionTable
         - SNSPublishMessagePolicy:
             TopicName: prof_animal_lost_game
         - S3ReadPolicy:
@@ -39,6 +54,7 @@ Resources:
             RestApiId: !Ref ProfessorAnimalApi
       Environment:
         Variables:
+          USER_SESSION_TABLE: !Ref UserSessionTable
           NODE_ENV: 'production'
           NOTIFICATION_TOPIC_ARN: !Sub "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:prof_animal_lost_game"
           DATA_S3_BUCKET: !Ref dataBucket
