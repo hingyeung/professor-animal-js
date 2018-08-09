@@ -1382,5 +1382,38 @@
     "considerations": [
       "as helpful or useful to humans"
     ]
+  },
+  {
+    "id": "374c328f-83e4-80eb-4975-f9397cbdd0d4",
+    "name": "Duck",
+    "physical": [
+      "legs",
+      "wings"
+    ],
+    "types": [
+      "vertebrate",
+      "pet",
+      "bird"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "swim",
+      "lay eggs",
+      "fly",
+      "live in a group",
+      "quack",
+      "live around water"
+    ],
+    "diet": [
+      "insects",
+      "grain",
+      "water plants"
+    ],
+    "possible_behaviours": [
+      "domesticated"
+    ],
+    "considerations": [
+      "as helpful or useful to humans"
+    ]
   }
 ]
