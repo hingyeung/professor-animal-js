@@ -91,8 +91,7 @@
     ],
     "types": [
       "vertebrate",
-      "mammal",
-      "pet"
+      "mammal"
     ],
     "behaviours": [
       "only eat meat",
@@ -101,7 +100,9 @@
     "diet": [
       "bone and pet food"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "be kept as pet"
+    ],
     "considerations": []
   },
   {
@@ -113,8 +114,7 @@
     ],
     "types": [
       "vertebrate",
-      "mammal",
-      "pet"
+      "mammal"
     ],
     "behaviours": [
       "only eat meat",
@@ -124,7 +124,9 @@
     "diet": [
       "fish and pet food"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "be kept as pet"
+    ],
     "considerations": []
   },
   {
@@ -1339,8 +1341,7 @@
     ],
     "types": [
       "vertebrate",
-      "mammal",
-      "pet"
+      "mammal"
     ],
     "behaviours": [
       "only eat plants",
@@ -1352,7 +1353,8 @@
       "grass"
     ],
     "possible_behaviours": [
-      "domesticated"
+      "domesticated",
+      "be kept as pet"
     ],
     "considerations": [
       "to be food for humans"
@@ -1398,7 +1400,6 @@
     ],
     "types": [
       "vertebrate",
-      "pet",
       "bird"
     ],
     "behaviours": [
@@ -1416,7 +1417,8 @@
       "water plants"
     ],
     "possible_behaviours": [
-      "domesticated"
+      "domesticated",
+      "be kept as pet"
     ],
     "considerations": [
       "as helpful or useful to humans"
