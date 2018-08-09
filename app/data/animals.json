@@ -523,6 +523,7 @@
     "name": "Orca",
     "physical": [
       "fins",
+      "flippers",
       "big tail fin",
       "blowhole on top of its head",
       "black and white colour on its body",
@@ -552,6 +553,7 @@
     "name": "Blue Whale",
     "physical": [
       "fins",
+      "flippers",
       "big tail fin",
       "no teeth",
       "blowhole on top of its head"
@@ -637,7 +639,8 @@
       "charge directly at whatever frightens it"
     ],
     "diet": [
-      "grass and plants"
+      "grass",
+      "plants"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -845,6 +848,7 @@
     "name": "Dolphin",
     "physical": [
       "fins",
+      "flippers",
       "blowhole on top of its head"
     ],
     "types": [
@@ -904,6 +908,7 @@
     "name": "Narwhal",
     "physical": [
       "fins",
+      "flippers",
       "blowhole on top of its head",
       "long, hornlike tooth sticking out of its head"
     ],
@@ -1131,7 +1136,8 @@
       "hop and jump"
     ],
     "diet": [
-      "grass and plants"
+      "grass",
+      "plants"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -1415,5 +1421,33 @@
     "considerations": [
       "as helpful or useful to humans"
     ]
+  },
+  {
+    "id": "328d1f29-a200-8317-7bed-6243d906e2cc",
+    "name": "Turtle",
+    "physical": [
+      "tail",
+      "legs",
+      "a hard shell",
+      "short legs"
+    ],
+    "types": [
+      "vertebrate",
+      "solitary animal"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "swim",
+      "lay eggs"
+    ],
+    "diet": [
+      "insects",
+      "fruit",
+      "plants"
+    ],
+    "possible_behaviours": [
+      "be kept as pet"
+    ],
+    "considerations": []
   }
 ]
