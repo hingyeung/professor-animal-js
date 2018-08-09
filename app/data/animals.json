@@ -449,7 +449,8 @@
     "name": "Sea turtle",
     "physical": [
       "a hard shell",
-      "legs"
+      "legs",
+      "flippers"
     ],
     "types": [
       "vertebrate",
@@ -1435,6 +1436,7 @@
     ],
     "types": [
       "vertebrate",
+      "reptile",
       "solitary animal"
     ],
     "behaviours": [
