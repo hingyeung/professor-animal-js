@@ -103,7 +103,9 @@
     "possible_behaviours": [
       "be kept as pet"
     ],
-    "considerations": []
+    "considerations": [
+      "to be friendly to humans"
+    ]
   },
   {
     "id": "b0da8c8b-a1c1-9d34-ad9d-7caf3a8352c9",
@@ -127,7 +129,9 @@
     "possible_behaviours": [
       "be kept as pet"
     ],
-    "considerations": []
+    "considerations": [
+      "to be friendly to humans"
+    ]
   },
   {
     "id": "ea460a4b-224b-51fb-7789-973698fda55b",
