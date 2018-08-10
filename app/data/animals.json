@@ -1542,5 +1542,38 @@
     ],
     "possible_behaviours": [],
     "considerations": []
+  },
+  {
+    "id": "25dc3b6d-7206-bf0d-0733-e9e8b47d3ce5",
+    "name": "Chicken",
+    "physical": [
+      "legs",
+      "sharp claws",
+      "wings",
+      "a comb above its head",
+      "a wattle under its beak"
+    ],
+    "types": [
+      "vertebrate",
+      "bird"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "lay eggs",
+      "live in a group"
+    ],
+    "diet": [
+      "insects",
+      "grain",
+      "chicken feed"
+    ],
+    "possible_behaviours": [
+      "be domesticated",
+      "be kept as pet"
+    ],
+    "considerations": [
+      "as helpful or useful to humans",
+      "to be food for humans"
+    ]
   }
 ]
