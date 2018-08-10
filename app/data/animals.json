@@ -1516,5 +1516,31 @@
     "considerations": [
       "to be very intelligent"
     ]
+  },
+  {
+    "id": "d6df69a0-11b7-d674-4ff3-f671174aa3e3",
+    "name": "Pangolin",
+    "physical": [
+      "tail",
+      "legs",
+      "sharp claws",
+      "scales",
+      "long tongue "
+    ],
+    "types": [
+      "vertebrate",
+      "mammal"
+    ],
+    "behaviours": [
+      "only eat meat",
+      "climb tree",
+      "live in burrows"
+    ],
+    "diet": [
+      "insects",
+      "ants and termites"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
   }
 ]
