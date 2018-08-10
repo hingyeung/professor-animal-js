@@ -1457,5 +1457,64 @@
       "be kept as pet"
     ],
     "considerations": []
+  },
+  {
+    "id": "0a6d4c86-e1b9-ac9b-e5a2-8928f1ce4d70",
+    "name": "Frog",
+    "physical": [
+      "legs"
+    ],
+    "types": [
+      "vertebrate",
+      "solitary animal",
+      "cold-blooded animal",
+      "amphibian",
+      "tadpole when it is young"
+    ],
+    "behaviours": [
+      "only eat meat",
+      "swim",
+      "lay eggs",
+      "breathe through its nose and its skin",
+      "live around water"
+    ],
+    "diet": [
+      "insects"
+    ],
+    "possible_behaviours": [
+      "jump very high"
+    ],
+    "considerations": []
+  },
+  {
+    "id": "01efe1a2-7db7-929b-78c8-406b385d00d4",
+    "name": "Orangutan",
+    "physical": [
+      "legs",
+      "large animal",
+      "thumbs like humans",
+      "pads on the sides of their cheeks"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal",
+      "ape"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "climb tree",
+      "live in a group"
+    ],
+    "diet": [
+      "insects",
+      "fruits",
+      "plants"
+    ],
+    "possible_behaviours": [
+      "use tools"
+    ],
+    "considerations": [
+      "to be very intelligent"
+    ]
   }
 ]
