@@ -1575,5 +1575,32 @@
       "as helpful or useful to humans",
       "to be food for humans"
     ]
+  },
+  {
+    "id": "3279dc07-b562-db6f-585d-9db78ea95fdc",
+    "name": "Rabbit",
+    "physical": [
+      "tail",
+      "legs",
+      "long ears"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal"
+    ],
+    "behaviours": [
+      "only eat plants",
+      "live in a group"
+    ],
+    "diet": [
+      "grass",
+      "carrots"
+    ],
+    "possible_behaviours": [
+      "be kept as pet"
+    ],
+    "considerations": [
+      "to be friendly to humans"
+    ]
   }
 ]
