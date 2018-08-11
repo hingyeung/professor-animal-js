@@ -73,7 +73,8 @@
     "behaviours": [
       "only eat plants",
       "live in a groups",
-      "live in Africa or Asia",
+      "live in Africa",
+      "live in Asia",
       "swim"
     ],
     "diet": [
