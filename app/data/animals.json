@@ -72,12 +72,15 @@
     ],
     "behaviours": [
       "only eat plants",
-      "live in a groups called herds",
+      "live in a groups",
       "live in Africa or Asia",
       "swim"
     ],
     "diet": [
-      "grass, leaves, fruits and small plants"
+      "grass",
+      "leaves",
+      "fruits",
+      "small plants"
     ],
     "possible_behaviours": [],
     "considerations": []
