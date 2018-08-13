@@ -23,6 +23,8 @@ On Google Home
 ## Development
 This project's core logic runs as a Lambda function in AWS, and expects input from [Dialogflow](https://dialogflow.com) natural language processing (NPL) engine. The response from the Lambda function is also sent back to Dialogflow for text-to-speech and other conversation context tracking. It uses DynamoDB for session storage. The code is written in NodeJS.
 
+![Architecture Overview](img/architecture.png?raw=true "Architecture Overview")
+
 #### Running locally
 1. Install dependencies: `npm install`
 1. Install AWS SAM CLI: `pip install --user aws-sam-cli` (https://github.com/awslabs/aws-sam-cli#installation)
