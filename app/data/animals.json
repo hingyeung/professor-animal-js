@@ -1586,7 +1586,8 @@
     "physical": [
       "tail",
       "legs",
-      "long ears"
+      "long ears",
+      "teeth that grow constantly"
     ],
     "types": [
       "vertebrate",
@@ -1606,5 +1607,34 @@
     "considerations": [
       "to be friendly to humans"
     ]
+  },
+  {
+    "id": "3390b678-888e-54fe-ab8f-457c281e3d15",
+    "name": "Hamster",
+    "physical": [
+      "tail",
+      "legs",
+      "teeth that grow constantly"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "live in burrows",
+      "carry food in its spacious cheek pouches",
+      "like to play in a hamster wheel"
+    ],
+    "diet": [
+      "pet food",
+      "vegetables",
+      "fruits",
+      "nuts"
+    ],
+    "possible_behaviours": [
+      "be kept as pet"
+    ],
+    "considerations": []
   }
 ]
