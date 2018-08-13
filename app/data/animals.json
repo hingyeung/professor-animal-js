@@ -1405,7 +1405,8 @@
     "name": "Duck",
     "physical": [
       "legs",
-      "wings"
+      "wings",
+      "a body smaller than a goose's"
     ],
     "types": [
       "vertebrate",
@@ -1418,7 +1419,8 @@
       "fly",
       "live in a group",
       "quack",
-      "live around water"
+      "live around water",
+      "migrate to warmer places in the winter"
     ],
     "diet": [
       "insects",
@@ -1636,5 +1638,38 @@
       "be kept as pet"
     ],
     "considerations": []
+  },
+  {
+    "id": "1c17b5aa-b45c-f56c-4dc0-ac4aaab70e65",
+    "name": "Goose",
+    "physical": [
+      "legs",
+      "wings",
+      "a body larger than a duck's"
+    ],
+    "types": [
+      "vertebrate",
+      "bird"
+    ],
+    "behaviours": [
+      "only eat plants",
+      "swim",
+      "lay eggs",
+      "fly",
+      "live in a group",
+      "live around water",
+      "migrate to warmer places in the winter"
+    ],
+    "diet": [
+      "grass",
+      "grain"
+    ],
+    "possible_behaviours": [
+      "be domesticated",
+      "be kept as pet"
+    ],
+    "considerations": [
+      "to be food for humans"
+    ]
   }
 ]
