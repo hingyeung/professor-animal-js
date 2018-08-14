@@ -16,7 +16,8 @@ echo "Using:   s3://${S3_BUCKET}/${S3_KEY}"
 echo
 
 aws  cloudformation update-stack \
-     --use-previous-template \
+     --no-use-previous-template \
+     --template-body file://./dist/professor-animal.cfn \
      --stack-name ${STACK_NAME} \
      --capabilities CAPABILITY_IAM \
      --parameters \
