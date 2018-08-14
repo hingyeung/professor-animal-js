@@ -33,7 +33,7 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
     });
 
     // get the 1st and 2nd highest frequency, needed for introducing less predictability
-    let firstAndSecondMostPopularAttrubuteValues = findTwoAttributeValusWithHighestFrequency(attributeListSortedByFreq);
+    let firstAndSecondMostPopularAttrubuteValues = findTwoAttributeValuesWithMediumFrequency(attributeListSortedByFreq, animals.length);
 
     // the resulting map attributesWithHighestFreq should contain a list of [{field, attr, freq}] sorted by frequency
     // field e.g.: diet
@@ -49,6 +49,7 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
         // return attributeListSortedByFreq[0].freq === attribute.freq || attributeListSortedByFreq[0].freq - 1 === attribute.freq;
         return _.indexOf(firstAndSecondMostPopularAttrubuteValues, attribute.freq) !== -1;
     }).map(function (o) {
+        console.log(o);
         return {field: o.field, attr: o.attr, freq: o.freq};
     });
 
@@ -59,9 +60,8 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
     return determineNextQuestionFromAttributeHighestFreqMap(attributesWithHighestFreq);
 }
 
-// this function assumes attribteList is already sorted in descending order
-function findTwoAttributeValusWithHighestFrequency(attributeList) {
-    if (attributeList.length === 0) {
+function getUniqueSortedAttributeValues(attributeList) {
+    if (attributeList.length <= 1) {
         return attributeList;
     }
 
@@ -69,8 +69,22 @@ function findTwoAttributeValusWithHighestFrequency(attributeList) {
         return item.freq;
     });
 
-    freqList = _.uniq(freqList);
+    return _.uniq(freqList);
+}
+
+// this function assumes attribteList is already sorted in descending order
+function findTwoAttributeValusWithHighestFrequency(attributeList) {
+    let freqList = getUniqueSortedAttributeValues(attributeList);
     return [freqList[0], freqList[1]];
+}
+
+function findTwoAttributeValuesWithMediumFrequency(attributeList, numberOfRemainingAnimals) {
+    let freqList = getUniqueSortedAttributeValues(attributeList);
+    console.log(numberOfRemainingAnimals);
+    console.log(freqList);
+    let freqListSortedByProximityToMidpoint = _.orderBy(freqList, [function(o) {return Math.abs(numberOfRemainingAnimals / 2 - o);}]);
+    console.log(freqListSortedByProximityToMidpoint);
+    return [freqListSortedByProximityToMidpoint[0], freqListSortedByProximityToMidpoint[1]];
 }
 
 function determineNextQuestionFromAttributeHighestFreqMap(attributesWithHighestFreqFromAllFields) {

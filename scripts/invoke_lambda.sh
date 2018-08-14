@@ -11,4 +11,5 @@ sam local invoke \
     --template ${CF_TEMPLATE} ProfessorAnimalLambdaFunction \
     --env-vars ${ENV_VARS} \
     --docker-network ${DOCKER_NETWORK} \
+    --skip-pull-image \
     -e ${EVENT}

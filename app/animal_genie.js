@@ -116,7 +116,8 @@ AnimalGenie.prototype.getNextQuestion = function(event) {
         let animalsToPlayWith = AnimalListUtils.convertAnimalNameListToAnimalList(userSession.animalNames, that.fullAnimalList);
         // filter animalsToPlayWith before determining the next question
         animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
-        console.log('animals remaining: ', AnimalListUtils.convertAnimalListToAnimalNameList(animalsToPlayWith));
+        let animalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(animalsToPlayWith);
+        console.log('animals remaining: ', animalNameList, animalNameList.length);
 
         if (animalsToPlayWith.length === 1) {
             fieldAndAttributeValuesToIgnore = [];

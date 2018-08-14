@@ -99,7 +99,8 @@
     ],
     "behaviours": [
       "only eat meat",
-      "bark"
+      "bark",
+      "live in a group"
     ],
     "diet": [
       "bone and pet food"
@@ -864,6 +865,7 @@
     ],
     "types": [
       "mammal",
+      "large animal",
       "vertebrate"
     ],
     "behaviours": [
