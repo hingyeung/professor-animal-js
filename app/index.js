@@ -7,7 +7,6 @@ exports.myHandler = function (event, context, callback) {
     console.dir(event.result.action);
     console.dir(event.result.contexts);
     console.dir(event.result.parameters);
-    console.dir(context);
 
     let animalRepo = new AnimalRepo();
     animalRepo.loadAnimals()

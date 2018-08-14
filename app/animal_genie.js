@@ -24,12 +24,13 @@ AnimalGenie.prototype.play = function (event, callback, options) {
         that = this;
 
     if (event.result.action === 'startgame') {
+        let fullAnimalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(that.fullAnimalList);
         // this is a new game, get the next question using animals from data file.
-        console.dir(that.fullAnimalList);
+        console.log(fullAnimalNameList, fullAnimalNameList.length);
         nextQuestion = QuestionSelector.nextQuestion(that.fullAnimalList, []);
         let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion);
         userSession = new UserSession(event.sessionId,
-            AnimalListUtils.convertAnimalListToAnimalNameList(that.fullAnimalList), nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
+            fullAnimalNameList, nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
         dbService.saveSession(userSession).then(function () {
             console.dir(nextQuestion);
             callback(null, responseToApiAi);

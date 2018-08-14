@@ -15,13 +15,13 @@ describe('Question selector', function () {
     });
 
     ["types", "behaviours", "physical", "diet", "possible_behaviours", "considerations"].forEach(function (fieldToTest) {
-        it(`should select 2 most popular field and attribute values for next question about "${fieldToTest}" when the "${fieldToTest}" is the only field all animals have`, function () {
+        it(`should select 2 field and attribute values that would cut the number of remaining animals by half for next question about "${fieldToTest}" when the "${fieldToTest}" is the only field all animals have`, function () {
             let animals = buildTestAnimalsWithOnlyOneField(fieldToTest);
             let nextQuestion = QuestionSelector.nextQuestion(animals);
             should.exist(nextQuestion);
             nextQuestion.field.should.equal(fieldToTest);
-            nextQuestion.possibleValues.should.deep.equal(["v1", "v2"]);
-            nextQuestion.chosenValue.should.equal("v1");
+            nextQuestion.possibleValues.should.deep.equal(["v3", "v2"]);
+            nextQuestion.chosenValue.should.equal("v3");
         });
     });
 
@@ -80,19 +80,23 @@ function buildTestAnimalsWithOnlyOneField(field) {
     return [
         {
             name: "A",
-            [field]: ["v1", "v2", "v4", "v5"],
+            [field]: ["v5", "v4", "v3", "v2", "v1", "v10"],
         },
         {
             name: "B",
-            [field]: ["v1", "v2", "v6", "v7"],
+            [field]: ["v5", "v4", "v3", "v2", "v11"],
         },
         {
             name: "C",
-            [field]: ["v1", "v3", "v8", "v9"],
+            [field]: ["v5", "v4", "v3", "v12"],
         },
         {
-            name: "C",
-            [field]: ["v10", "v11", "v12", "v13"],
+            name: "D",
+            [field]: ["v5", "v4", "v13"],
+        },
+        {
+            name: "E",
+            [field]: ["v5", "v14"]
         }
     ];
 }

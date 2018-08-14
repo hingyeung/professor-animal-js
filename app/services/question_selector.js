@@ -32,32 +32,35 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
         return item.freq < animals.length;
     });
 
-    // get the 1st and 2nd highest frequency, needed for introducing less predictability
-    let firstAndSecondMostPopularAttrubuteValues = findTwoAttributeValuesWithMediumFrequency(attributeListSortedByFreq, animals.length);
+    // Get the two attribute values are featured in almost half of the remaining animals.
+    // this should cut the number of remaining animals by as close to half as possible.
+    // Needed two to introduce less predictability
+    let middlePopularAttrubuteValues = findTwoAttributeValuesWithMediumFrequency(attributeListSortedByFreq, animals.length);
 
     // the resulting map attributesWithHighestFreq should contain a list of [{field, attr, freq}] sorted by frequency
     // field e.g.: diet
     // attr e.g.: grass
-    let attributesWithHighestFreq = _.filter(attributeListSortedByFreq, function (attribute) {
-        // 1. the first element in the list should have the highest frequency and all elements with
+    let attributesWithMiddleFreq = _.filter(attributeListSortedByFreq, function (attribute) {
+        // 1. the first element in the list should have the frequency close to half of the animals and all elements with
         //    this frequency will be included in the shortlist.
-        // 2. to make things less predictable, include top 2 frequencies (2 most popular) in the shortlist
+        // 2. to make things less predictable, include the 2 frequencies closest the half the number of remaining
+        //    animals in the shortlist
         //
-        // Top frequency and top frequency - 1 is not good enough because there could be a gap between
-        // the top frequency and the 2nd highest frequence (e.g. 1: 10, 2: 3. Including frequency 10 and 9 doesn't
+        // first frequency and first frequency - 1 is not good enough because there could be a gap between
+        // the the two frequencies (e.g. 1: 10, 2: 3. Including frequency 10 and 9 doesn't
         // do anything.
         // return attributeListSortedByFreq[0].freq === attribute.freq || attributeListSortedByFreq[0].freq - 1 === attribute.freq;
-        return _.indexOf(firstAndSecondMostPopularAttrubuteValues, attribute.freq) !== -1;
+        return _.indexOf(middlePopularAttrubuteValues, attribute.freq) !== -1;
     }).map(function (o) {
         console.log(o);
         return {field: o.field, attr: o.attr, freq: o.freq};
     });
 
-    if (attributesWithHighestFreq.length === 0) {
+    if (attributesWithMiddleFreq.length === 0) {
         return new Question(null, null, null, Question.GIVE_UP_MESSAGE);
     }
 
-    return determineNextQuestionFromAttributeHighestFreqMap(attributesWithHighestFreq);
+    return determineNextQuestionFromAttributeHighestFreqMap(attributesWithMiddleFreq);
 }
 
 function getUniqueSortedAttributeValues(attributeList) {
@@ -73,17 +76,9 @@ function getUniqueSortedAttributeValues(attributeList) {
 }
 
 // this function assumes attribteList is already sorted in descending order
-function findTwoAttributeValusWithHighestFrequency(attributeList) {
-    let freqList = getUniqueSortedAttributeValues(attributeList);
-    return [freqList[0], freqList[1]];
-}
-
 function findTwoAttributeValuesWithMediumFrequency(attributeList, numberOfRemainingAnimals) {
     let freqList = getUniqueSortedAttributeValues(attributeList);
-    console.log(numberOfRemainingAnimals);
-    console.log(freqList);
     let freqListSortedByProximityToMidpoint = _.orderBy(freqList, [function(o) {return Math.abs(numberOfRemainingAnimals / 2 - o);}]);
-    console.log(freqListSortedByProximityToMidpoint);
     return [freqListSortedByProximityToMidpoint[0], freqListSortedByProximityToMidpoint[1]];
 }
 
