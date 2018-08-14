@@ -1,4 +1,5 @@
-# Professor Animal
+# Animal Academy
+(formerly known as Professor Animal)
 
 ## What is it?
 This is a [game](https://assistant.google.com/services/a/uid/0000000d710d70f0) developed for Google Assistant and can be played on Google Home, Android devices and iOS devices with Google Assistant app. This is a classic **Who am I?** game and designed with Voice UI in mind.
@@ -10,15 +11,15 @@ This game is best suited for children of age 5 or older.
 ## How do I to play it?
 On Android device
 1. Start conversation with Google Assistant by either using the [home button](https://support.google.com/assistant/answer/7172657?co=GENIE.Platform%3DAndroid&oco=0) or using the dedicated [Google Assistant app](https://play.google.com/store/apps/details?id=com.google.android.apps.googleassistant&hl=en).
-1. Type or say "**Let me talk to Professor Animal**".
+1. Type or say "**Let me talk to Animal Academy**".
 
 On iOS device
 1. Start the [Google Assistant app](https://itunes.apple.com/au/app/google-assistant/id1220976145?mt=8).
-1. Type or say "**Let me talk to Professor Animal**".
+1. Type or say "**Let me talk to Animal Academy**".
 
 On Google Home
 1. [Start conversation](https://support.google.com/googlehome/answer/7207759?hl=en-AU&ref_topic=7196346) with Google Home.
-1. Say "**Let me talk to Professor Animal**".
+1. Say "**Let me talk to Animal Academy**".
 
 ## Development
 This project's core logic runs as a Lambda function in AWS, and expects input from [Dialogflow](https://dialogflow.com) natural language processing (NPL) engine. The response from the Lambda function is also sent back to Dialogflow for text-to-speech and other conversation context tracking. It uses DynamoDB for session storage. The code is written in NodeJS.
