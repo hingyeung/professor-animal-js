@@ -1673,5 +1673,34 @@
     "considerations": [
       "to be food for humans"
     ]
+  },
+  {
+    "id": "62f6ed84-139c-edc6-f699-6d688acf3984",
+    "name": "Pelican",
+    "physical": [
+      "legs",
+      "wings",
+      "the largest bill of all birds",
+      "a big pouch under its bill"
+    ],
+    "types": [
+      "vertebrate",
+      "bird",
+      "large bird"
+    ],
+    "behaviours": [
+      "only eat meat",
+      "hunt in a group",
+      "swim",
+      "lay eggs",
+      "fly",
+      "live in a group",
+      "live around water"
+    ],
+    "diet": [
+      "fish"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
   }
 ]
