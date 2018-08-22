@@ -157,7 +157,8 @@
       "live in caves"
     ],
     "diet": [
-      "fruit, fish and small animals"
+      "fruit, fish and small animals",
+      "grass"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -1701,6 +1702,34 @@
       "fish"
     ],
     "possible_behaviours": [],
+    "considerations": []
+  },
+  {
+    "id": "1f16ef67-7588-b30f-c23f-2927e6a152de",
+    "name": "Parrot",
+    "physical": [
+      "legs",
+      "wings",
+      "colourful feather",
+      "a curved bill"
+    ],
+    "types": [
+      "vertebrate",
+      "bird"
+    ],
+    "behaviours": [
+      "lay eggs",
+      "fly",
+      "live in a group"
+    ],
+    "diet": [
+      "fruits",
+      "seeds"
+    ],
+    "possible_behaviours": [
+      "be kept as pet",
+      "say simple words "
+    ],
     "considerations": []
   }
 ]
