@@ -1731,5 +1731,33 @@
       "say simple words "
     ],
     "considerations": []
+  },
+  {
+    "id": "235c835a-2530-b3dc-4a81-0aabe38f9ec8",
+    "name": "Squirrel",
+    "physical": [
+      "tail",
+      "legs",
+      "a bushy tail",
+      "big eyes"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal",
+      "territorial animal"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "climb tree",
+      "live in trees or in burrows"
+    ],
+    "diet": [
+      "insects",
+      "nuts",
+      "fruits",
+      "seeds"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
   }
 ]
