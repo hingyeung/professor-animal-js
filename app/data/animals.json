@@ -320,7 +320,9 @@
       "swim"
     ],
     "diet": [
-      "fish, squids and krill"
+      "fish",
+      "squids",
+      "krill"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -436,7 +438,8 @@
       "tail",
       "hooves",
       "black stripes on its body",
-      "legs"
+      "legs",
+      "teeth that grow constantly"
     ],
     "types": [
       "vertebrate",
