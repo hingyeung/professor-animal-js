@@ -1768,5 +1768,120 @@
     ],
     "possible_behaviours": [],
     "considerations": []
+  },
+  {
+    "id": "4e9a220a-893c-ff58-94af-91b881dc406b",
+    "name": "Cow",
+    "physical": [
+      "tail",
+      "legs",
+      "large animal",
+      "hooves"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal"
+    ],
+    "behaviours": [
+      "only eat plants",
+      "live in a group",
+      "moo"
+    ],
+    "diet": [
+      "grass",
+      "plants"
+    ],
+    "possible_behaviours": [
+      "be domesticated"
+    ],
+    "considerations": [
+      "as helpful or useful to humans",
+      "to be food for humans",
+      "to be sacred in India"
+    ]
+  },
+  {
+    "id": "aea5253b-5db5-fab9-c3ee-047542be90ee",
+    "name": "Wolf",
+    "physical": [
+      "tail",
+      "legs"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal"
+    ],
+    "behaviours": [
+      "only eat meat",
+      "hunt in a group",
+      "live in a group",
+      "howl"
+    ],
+    "diet": [
+      "deer",
+      "sheep",
+      "bison"
+    ],
+    "possible_behaviours": [],
+    "considerations": [
+      "as the ancestor of all breeds of domestic dogs"
+    ]
+  },
+  {
+    "id": "0ed0ee14-ff02-c4c3-cb1e-9a1b2abb3459",
+    "name": "Deer",
+    "physical": [
+      "tail",
+      "legs",
+      "large animal",
+      "hooves",
+      "antlers on its head"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal"
+    ],
+    "behaviours": [
+      "only eat plants",
+      "live in a group"
+    ],
+    "diet": [
+      "grass",
+      "plants"
+    ],
+    "possible_behaviours": [
+      "swim",
+      "run very fast to escape from predators"
+    ],
+    "considerations": [
+      "to be food for humans"
+    ]
+  },
+  {
+    "id": "2bc915a1-716d-243c-57a4-da266a363051",
+    "name": "Hedgehog",
+    "physical": [
+      "tail",
+      "legs",
+      "quills on its back",
+      "long snout"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal",
+      "solitary animal",
+      "nocturnal animal"
+    ],
+    "behaviours": [
+      "only eat meat"
+    ],
+    "diet": [
+      "insects",
+      "snails"
+    ],
+    "possible_behaviours": [
+      "be kept as pet"
+    ],
+    "considerations": []
   }
 ]
