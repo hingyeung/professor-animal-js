@@ -144,7 +144,8 @@
     "physical": [
       "long fur",
       "sharp claws",
-      "legs"
+      "legs",
+      "tail"
     ],
     "types": [
       "vertebrate",
@@ -317,6 +318,7 @@
       "walk in a funny way",
       "lay eggs",
       "live in Antarctica",
+      "live in a group",
       "swim"
     ],
     "diet": [
@@ -692,7 +694,8 @@
       "grey fur with a cream-coloured chest",
       "strong, clawed feet for climbing trees",
       "a pouch where their newborns live",
-      "legs"
+      "legs",
+      "large nose"
     ],
     "types": [
       "vertebrate",
@@ -880,7 +883,9 @@
       "communicate with each other by clicking and whistling"
     ],
     "diet": [
-      "fish and squid"
+      "fish",
+      "squid",
+      "krill"
     ],
     "possible_behaviours": [
       "jump out of the water"
