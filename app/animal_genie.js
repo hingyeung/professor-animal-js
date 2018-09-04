@@ -116,7 +116,9 @@ AnimalGenie.prototype.getNextQuestion = function(event) {
         let answer = event.result.parameters.answer;
         let animalsToPlayWith = AnimalListUtils.convertAnimalNameListToAnimalList(userSession.animalNames, that.fullAnimalList);
         // filter animalsToPlayWith before determining the next question
-        animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
+        if (answer === "yes" || answer === "no") {
+            animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
+        }
         let animalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(animalsToPlayWith);
         console.log('animals remaining: ', animalNameList, animalNameList.length);
 
@@ -129,8 +131,9 @@ AnimalGenie.prototype.getNextQuestion = function(event) {
             // if the answer is "yes", the attribute needs to be ignored during the generation of
             // the next question to avoid infinity loop (always pick the most popular attribute, which
             // remain the same.
+            // Also ignored the attribute if player answered "not_sure" to avoid asking the same question
             fieldAndAttributeValuesToIgnore = userSession.fieldAndAttributeValuesToIgnore;
-            if (answer === 'yes') {
+            if (answer === 'yes' || answer === "not_sure") {
                 fieldAndAttributeValuesToIgnore.push({
                     field: userSession.field,
                     attributeValue: userSession.chosenValue

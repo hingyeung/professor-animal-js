@@ -35,6 +35,7 @@
     "invoke-lambda-with-initial-event": "scripts/invoke_lambda.sh app/data/initial_request.json",
     "invoke-lambda-with-followup-yes": "scripts/invoke_lambda.sh app/data/followup_yes_request.json",
     "invoke-lambda-with-followup-no": "scripts/invoke_lambda.sh app/data/followup_no_request.json",
+    "invoke-lambda-with-followup-not-sure": "scripts/invoke_lambda.sh app/data/followup_not_sure_request.json",
     "invoke-lambda-with-followup-repeat": "scripts/invoke_lambda.sh app/data/followup_repeat_request.json",
     "invoke-lambda-with-glossary-enquiry": "scripts/invoke_lambda.sh app/data/followup_glossary_enquiry.json",
     "start-localstack": "scripts/start_localstack.sh",
