@@ -191,6 +191,28 @@ describe('AnimalGenie', function () {
         ).should.equal(true);
     });
 
+    it('should save updated session to DB with field-attributeValue to ignore in next round when Api.ai action is "answer_question and user answer is "not_sure"', function() {
+        let event = createEvent("123", "answer_question", "not_sure", 'speech');
+        animalGenie.play(event, callbackSpy);
+        // the field and chosenValue in the incoming session should be added to the ignore list when the user answer is "not_sure"
+        saveSessionStub.calledWith(
+            new UserSession("123", ["Lion", "Eagle"], "diet", "A", [{
+                field: "types",
+                attributeValue: "A"
+            }], 'Does it eat A?')
+        ).should.equal(true);
+    });
+
+    it('should not use remove any animal using filter when Api.ai action is "answer_question and user answer is "not_sure"', function (done) {
+        let event = createEvent("123", "answer_question", "not_sure", 'speech');
+        mockAnimalFilter.filter = sinon.spy();
+        animalGenie = animalGenieWithMocks();
+        animalGenie.play(event, function (err, responseToApiAi) {
+            mockAnimalFilter.filter.called.should.equal(false);
+            done();
+        });
+    });
+
     it('should save updated session when computer is ready to guess the animal', function (done) {
         let event = createEvent("123", "answer_question", "yes");
 
