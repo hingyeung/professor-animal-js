@@ -17,7 +17,11 @@ describe('ResponseFromApiAi', function () {
 
     it('should remove defaultwelcome* context in contextOut when in-game', function () {
         const question = new Question("types", ["A", "B"], "A", Question.FILTER_BASED_QUESTION);
-        const additionalContextOut = [new Context("NotDefaultWelcomeIntent", 1), new Context("DefaultWelcomeIntentA", 1), new Context("DefaultWelcomeIntentB", 1)];
+        const additionalContextOut = [
+            new Context("NotDefaultWelcomeIntent", 1),
+            new Context("DefaultWelcomeIntentA", 1),
+            new Context("DefaultWelcomeIntentB", 1),
+            new Context("defaultwelcomeintentc", 1)];
         ResponseToApiAi.fromQuestion(question, additionalContextOut).should.deep.equal(
             buildExpectedContextOut(question.toText(), question.toText(), [new Context('ingame', 1), new Context("NotDefaultWelcomeIntent", 1)])
         );

@@ -24,7 +24,7 @@ function repeatSpeechFromUserSesssion(userSession, apiAiEvent) {
 
 function removeDefaultWelcomeContext(contextsOut) {
     return _.filter(contextsOut, (context) => {
-        return (context.name && !context.name.startsWith(DEFAULT_WELCOME_INTENT_PREFIX));
+        return (context.name && !context.name.toLowerCase().startsWith(DEFAULT_WELCOME_INTENT_PREFIX.toLowerCase()));
     });
 }
 

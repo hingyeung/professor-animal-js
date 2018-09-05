@@ -42,10 +42,11 @@ then
                 --metadata md5chksum=${chksum_for_new_artefact} \
                 --content-md5 ${chksum_for_new_artefact}
 
+        # this line is important, deploy_to_aws_with_custom_domain_name.sh relies on this.
         echo "Build ${BUILD} uploaded."
         echo
     else
-        echo "${BUILD_ARTEFACT} with identical checksum already exists. SKipping."
+        echo "${BUILD_ARTEFACT} with identical checksum already exists. Skipping."
     fi
 else
     echo "dist/CURRENT_BUILD does not exist or not pointing to a valid file."

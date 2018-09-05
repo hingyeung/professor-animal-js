@@ -39,7 +39,8 @@
     "invoke-lambda-with-followup-repeat": "scripts/invoke_lambda.sh app/data/followup_repeat_request.json",
     "invoke-lambda-with-glossary-enquiry": "scripts/invoke_lambda.sh app/data/followup_glossary_enquiry.json",
     "start-localstack": "scripts/start_localstack.sh",
-    "seed-data": "scripts/seed_data.sh"
+    "seed-data": "scripts/seed_data.sh",
+    "deploy-to-aws-with-custom-domain-name": "scripts/deploy_to_aws_with_custom_domain_name.sh"
   },
   "author": "Samuel Li <samli@samuelli.net>",
   "license": "ISC",
