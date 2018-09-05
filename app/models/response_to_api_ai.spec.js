@@ -8,21 +8,29 @@ const ResponseToApiAi = require('./response_to_api_ai'),
     Question = require('./question');
 
 describe('ResponseFromApiAi', function () {
-    it('should convert filter based question to response object without contextOut to api.ai', function () {
+    it('should convert filter based question to response object without contextOut set to "ingame" to api.ai', function () {
         let question = new Question("types", ["A", "B"], "A", Question.FILTER_BASED_QUESTION);
         ResponseToApiAi.fromQuestion(question).should.deep.equal(
             buildExpectedContextOut(question.toText(), question.toText(), [new Context('ingame', 1)])
         );
     });
 
-    it('should convert ready-to-guess question to response object without contextOut to api.ai', function () {
+    it('should remove defaultwelcome* context in contextOut when in-game', function () {
+        const question = new Question("types", ["A", "B"], "A", Question.FILTER_BASED_QUESTION);
+        const additionalContextOut = [new Context("NotDefaultWelcomeIntent", 1), new Context("DefaultWelcomeIntentA", 1), new Context("DefaultWelcomeIntentB", 1)];
+        ResponseToApiAi.fromQuestion(question, additionalContextOut).should.deep.equal(
+            buildExpectedContextOut(question.toText(), question.toText(), [new Context('ingame', 1), new Context("NotDefaultWelcomeIntent", 1)])
+        );
+    });
+
+    it('should convert ready-to-guess question to response object with contextOut set to "readytoguess" to api.ai', function () {
         let question = new Question("types", ["A", "B"], "A", Question.READY_TO_GUESS_QUESTION);
         ResponseToApiAi.fromQuestion(question).should.deep.equal(
             buildExpectedContextOut(question.toText(), question.toText(), [new Context('readytoguess', 1)])
         );
     });
 
-    it('should convert give-up question to response object without contextOut to api.ai', function () {
+    it('should convert give-up question to response object without contextOut set to "giveup" to api.ai', function () {
         let question = new Question("types", ["A", "B"], "A", Question.GIVE_UP_MESSAGE);
         ResponseToApiAi.fromQuestion(question).should.deep.equal(
             buildExpectedContextOut(question.toText(), question.toText(), [new Context('giveup', 1)])

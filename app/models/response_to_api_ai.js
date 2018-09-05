@@ -4,6 +4,8 @@ const Question = require('./question'),
     _ = require('lodash'),
     Context = require('./context');
 
+const DEFAULT_WELCOME_INTENT_PREFIX = "DefaultWelcomeIntent";
+
 let ResponseFromApiAi = {
     fromQuestion: fromQuestion,
     repeatSpeechFromUserSesssion: repeatSpeechFromUserSesssion,
@@ -18,6 +20,12 @@ function repeatSpeechFromUserSesssion(userSession, apiAiEvent) {
     copyInContextToOutContext(response, apiAiEvent);
 
     return response;
+}
+
+function removeDefaultWelcomeContext(contextsOut) {
+    return _.filter(contextsOut, (context) => {
+        return (context.name && !context.name.startsWith(DEFAULT_WELCOME_INTENT_PREFIX));
+    });
 }
 
 function fromQuestion(question, additionalContextOut) {
@@ -39,7 +47,9 @@ function fromQuestion(question, additionalContextOut) {
     }
 
     if (contextOutForQuestion.length > 0 || (Array.isArray(additionalContextOut) && additionalContextOut.length > 0)) {
-        response.contextOut = _.compact(contextOutForQuestion.concat(additionalContextOut));
+        response.contextOut = _.compact(contextOutForQuestion.concat(
+            removeDefaultWelcomeContext(additionalContextOut)
+        ));
     }
     return response;
 }
