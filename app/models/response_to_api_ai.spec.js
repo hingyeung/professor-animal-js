@@ -8,10 +8,12 @@ const ResponseToApiAi = require('./response_to_api_ai'),
     Question = require('./question');
 
 describe('ResponseFromApiAi', function () {
-    it('should convert filter based question to response object without contextOut set to "ingame" to api.ai', function () {
-        let question = new Question("types", ["A", "B"], "A", Question.FILTER_BASED_QUESTION);
+    it('should add "ingame", type and chosen value of the next question to contextOut', function () {
+        const question = new Question("types", ["A", "B"], "A", Question.FILTER_BASED_QUESTION);
         ResponseToApiAi.fromQuestion(question).should.deep.equal(
-            buildExpectedContextOut(question.toText(), question.toText(), [new Context('ingame', 1)])
+            buildExpectedContextOut(question.toText(), question.toText(), question.field, question.chosenValue, [
+                new Context('ingame', 1)
+            ])
         );
     });
 
@@ -23,7 +25,7 @@ describe('ResponseFromApiAi', function () {
             new Context("DefaultWelcomeIntentB", 1),
             new Context("defaultwelcomeintentc", 1)];
         ResponseToApiAi.fromQuestion(question, additionalContextOut).should.deep.equal(
-            buildExpectedContextOut(question.toText(), question.toText(), [
+            buildExpectedContextOut(question.toText(), question.toText(), question.field, question.chosenValue, [
                 new Context('ingame', 1),
                 new Context("NotDefaultWelcomeIntent", 1),
                 new Context("DefaultWelcomeIntentA", 0),
@@ -35,21 +37,21 @@ describe('ResponseFromApiAi', function () {
     it('should convert ready-to-guess question to response object with contextOut set to "readytoguess" to api.ai', function () {
         let question = new Question("types", ["A", "B"], "A", Question.READY_TO_GUESS_QUESTION);
         ResponseToApiAi.fromQuestion(question).should.deep.equal(
-            buildExpectedContextOut(question.toText(), question.toText(), [new Context('readytoguess', 1)])
+            buildExpectedContextOut(question.toText(), question.toText(), null, null, [new Context('readytoguess', 1)])
         );
     });
 
     it('should convert give-up question to response object without contextOut set to "giveup" to api.ai', function () {
         let question = new Question("types", ["A", "B"], "A", Question.GIVE_UP_MESSAGE);
         ResponseToApiAi.fromQuestion(question).should.deep.equal(
-            buildExpectedContextOut(question.toText(), question.toText(), [new Context('giveup', 1)])
+            buildExpectedContextOut(question.toText(), question.toText(), null, null, [new Context('giveup', 1)])
         );
     });
 
     it('should convert question to response object with additional contextOut to api.ai', function () {
         let question = new Question("types", ["A", "B"], "A");
         ResponseToApiAi.fromQuestion(question, [new Context("name", 1)]).should.deep.equal(
-            buildExpectedContextOut(question.toText(), question.toText(), [new Context('ingame', 1), new Context('name', 1)])
+            buildExpectedContextOut(question.toText(), question.toText(), question.field, question.chosenValue, [new Context('ingame', 1), new Context('name', 1)])
         );
     });
 
@@ -91,7 +93,7 @@ describe('ResponseFromApiAi', function () {
             }
         };
         ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A.", apiAiEvent).should.deep.equal(
-            buildExpectedContextOut("<speak>definition for A.<break time=\"1s\"/> Should we continue?</speak>", "definition for A. Should we continue?", null)
+            buildExpectedContextOut("<speak>definition for A.<break time=\"1s\"/> Should we continue?</speak>", "definition for A. Should we continue?", null, null, null)
         );
     });
 
@@ -102,7 +104,7 @@ describe('ResponseFromApiAi', function () {
             }
         };
         ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A.", apiAiEvent).should.deep.equal(
-            buildExpectedContextOut("<speak>definition for A.<break time=\"1s\"/> Should we continue?</speak>", "definition for A. Should we continue?", [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
+            buildExpectedContextOut("<speak>definition for A.<break time=\"1s\"/> Should we continue?</speak>", "definition for A. Should we continue?", null, null, [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
         );
     });
 
@@ -113,7 +115,7 @@ describe('ResponseFromApiAi', function () {
             }
         };
         ResponseToApiAi.answerUnknownGlossaryEnquiry("A", apiAiEvent).should.deep.equal(
-            buildExpectedContextOut("<speak>I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about A. Should we continue?", null)
+            buildExpectedContextOut("<speak>I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about A. Should we continue?", null, null, null)
         );
     });
 
@@ -124,21 +126,27 @@ describe('ResponseFromApiAi', function () {
             }
         };
         ResponseToApiAi.answerUnknownGlossaryEnquiry("A", apiAiEvent).should.deep.equal(
-            buildExpectedContextOut("<speak>I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about A. Should we continue?", [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
+            buildExpectedContextOut("<speak>I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about A. Should we continue?", null, null, [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
         );
     });
 });
 
-function buildExpectedContextOut(speech, text, contextOut) {
+function buildExpectedContextOut(speech, text, questionField, questionChosenValue, contextOut) {
     let context = {
         speech: speech,
         displayText: text,
         source: "samuelli.net",
     };
 
-    if (contextOut) {
-        context = _.extend({}, context, {contextOut: contextOut});
-    }
+    let contextOutForResponse = contextOut || [];
+    if (questionField) contextOutForResponse.push(new Context("question.field:" + questionField, 1));
+    if (questionChosenValue) contextOutForResponse.push(new Context("question.chosenValue:" + questionChosenValue, 1));
 
-    return context;
+    return _.extend(
+        {},
+        context,
+        contextOutForResponse.length > 0 ?
+            {
+                contextOut: contextOutForResponse.sort((a, b) => a.name > b.name)
+            } : {});
 }

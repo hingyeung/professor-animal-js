@@ -24,6 +24,8 @@ function repeatSpeechFromUserSesssion(userSession, apiAiEvent) {
 
 function setLifespanForDefaultWelcomeContextToZero(contextsOut) {
     return _.map(contextsOut, (context) => {
+        // the output context set by an intent will not be unset by your webhook code
+        // unless you explicitly do it by setting its lifespan to zero
         return context.name && context.name.toLowerCase().startsWith(DEFAULT_WELCOME_INTENT_PREFIX.toLowerCase()) ?
             new Context(context.name, 0):
             new Context(context.name, context.lifespan);
@@ -36,10 +38,14 @@ function fromQuestion(question, additionalContextOut) {
     let response = buildApiAiResponse(question.toText(), question.toText());
 
     let contextOutForQuestion = [];
-    console.dir(additionalContextOut);
     switch (question.questionType) {
         case Question.FILTER_BASED_QUESTION:
-            contextOutForQuestion.push(new Context("ingame", 1));
+            contextOutForQuestion = _.concat(
+                contextOutForQuestion,
+                new Context("ingame", 1),
+                new Context("question.field:" + question.field, 1),
+                new Context("question.chosenValue:" + question.chosenValue, 1)
+            );
             break;
         case Question.GIVE_UP_MESSAGE:
             contextOutForQuestion.push(new Context("giveup", 1));
@@ -52,7 +58,7 @@ function fromQuestion(question, additionalContextOut) {
     if (contextOutForQuestion.length > 0 || (Array.isArray(additionalContextOut) && additionalContextOut.length > 0)) {
         response.contextOut = _.compact(contextOutForQuestion.concat(
             setLifespanForDefaultWelcomeContextToZero(additionalContextOut)
-        ));
+        )).sort((a,b) => a.name > b.name);
     }
     return response;
 }

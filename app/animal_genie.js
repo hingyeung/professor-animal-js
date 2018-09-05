@@ -155,7 +155,9 @@ AnimalGenie.prototype.getNextQuestion = function(event) {
 
 AnimalGenie.prototype.responseToClient = function(callback) {
     return function (nextQuestion) {
-        callback(null, ResponseToApiAi.fromQuestion(nextQuestion));
+        const response = ResponseToApiAi.fromQuestion(nextQuestion);
+        console.dir(response);
+        callback(null, response);
     };
 };
 
