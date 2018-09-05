@@ -18,6 +18,14 @@
                 "name": "ingame",
                 "parameters": {},
                 "lifespan": 1
+            },
+            {
+                "name": "defaultwelcomeintent-readytopickanimal-followup",
+                "parameters": {
+                    "answer": "yes",
+                    "answer.original": ""
+                },
+                "lifespan": 3
             }
         ],
         "metadata": {

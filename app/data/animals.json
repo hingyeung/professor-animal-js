@@ -72,7 +72,7 @@
     ],
     "behaviours": [
       "only eat plants",
-      "live in a groups",
+      "live in a group",
       "live in Africa",
       "live in Asia",
       "swim"
@@ -657,8 +657,7 @@
       "charge directly at whatever frightens it"
     ],
     "diet": [
-      "grass",
-      "plants"
+      "grass"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -709,8 +708,7 @@
       "stay in its mother's pouch for about six months when it is a baby"
     ],
     "diet": [
-      "eucalyptus leaves",
-      "plants"
+      "eucalyptus leaves"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -801,7 +799,9 @@
     "possible_behaviours": [
       "jump very high"
     ],
-    "considerations": []
+    "considerations": [
+      "to be food for humans"
+    ]
   },
   {
     "id": "27bed12a-bdb3-9020-68c4-4c3b4ec137f2",
@@ -840,7 +840,7 @@
       "tail",
       "short legs",
       "huge mouth",
-      "live in a groups",
+      "live in a group",
       "legs"
     ],
     "types": [
@@ -1159,8 +1159,7 @@
       "hop and jump"
     ],
     "diet": [
-      "grass",
-      "plants"
+      "grass"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -1326,13 +1325,13 @@
     "name": "Cassowary",
     "physical": [
       "legs",
-      "large animal",
       "sharp claws",
       "wings",
       "horn-like structure that grows from the top of its head",
       "colourful wattles hanging from its throat"
     ],
     "types": [
+      "large animal",
       "vertebrate",
       "solitary animal",
       "bird",
@@ -1469,7 +1468,7 @@
     "diet": [
       "insects",
       "fruit",
-      "plants"
+      "grass"
     ],
     "possible_behaviours": [
       "be kept as pet"
@@ -1526,7 +1525,7 @@
     "diet": [
       "insects",
       "fruits",
-      "plants"
+      "leaves"
     ],
     "possible_behaviours": [
       "use tools"
@@ -1788,8 +1787,7 @@
       "moo"
     ],
     "diet": [
-      "grass",
-      "plants"
+      "grass"
     ],
     "possible_behaviours": [
       "be domesticated"
@@ -1846,8 +1844,7 @@
       "live in a group"
     ],
     "diet": [
-      "grass",
-      "plants"
+      "grass"
     ],
     "possible_behaviours": [
       "swim",

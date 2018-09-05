@@ -28,7 +28,7 @@ AnimalGenie.prototype.play = function (event, callback, options) {
         // this is a new game, get the next question using animals from data file.
         console.log(fullAnimalNameList, fullAnimalNameList.length);
         nextQuestion = QuestionSelector.nextQuestion(that.fullAnimalList, []);
-        let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion);
+        let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion, event.result.contexts);
         userSession = new UserSession(event.sessionId,
             fullAnimalNameList, nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
         dbService.saveSession(userSession).then(function () {

@@ -22,9 +22,11 @@ function repeatSpeechFromUserSesssion(userSession, apiAiEvent) {
     return response;
 }
 
-function removeDefaultWelcomeContext(contextsOut) {
-    return _.filter(contextsOut, (context) => {
-        return (context.name && !context.name.toLowerCase().startsWith(DEFAULT_WELCOME_INTENT_PREFIX.toLowerCase()));
+function setLifespanForDefaultWelcomeContextToZero(contextsOut) {
+    return _.map(contextsOut, (context) => {
+        return context.name && context.name.toLowerCase().startsWith(DEFAULT_WELCOME_INTENT_PREFIX.toLowerCase()) ?
+            new Context(context.name, 0):
+            new Context(context.name, context.lifespan);
     });
 }
 
@@ -34,6 +36,7 @@ function fromQuestion(question, additionalContextOut) {
     let response = buildApiAiResponse(question.toText(), question.toText());
 
     let contextOutForQuestion = [];
+    console.dir(additionalContextOut);
     switch (question.questionType) {
         case Question.FILTER_BASED_QUESTION:
             contextOutForQuestion.push(new Context("ingame", 1));
@@ -48,7 +51,7 @@ function fromQuestion(question, additionalContextOut) {
 
     if (contextOutForQuestion.length > 0 || (Array.isArray(additionalContextOut) && additionalContextOut.length > 0)) {
         response.contextOut = _.compact(contextOutForQuestion.concat(
-            removeDefaultWelcomeContext(additionalContextOut)
+            setLifespanForDefaultWelcomeContextToZero(additionalContextOut)
         ));
     }
     return response;
