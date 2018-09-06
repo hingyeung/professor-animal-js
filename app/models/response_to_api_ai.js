@@ -68,7 +68,7 @@ function answerGlossaryEnquiry(term, definition, apiAiEvent) {
 }
 
 function answerUnknownGlossaryEnquiry(term, apiAiEvent) {
-    return buildSimpleSpeechApiAiResponse(`<speak>I am sorry but I don't much about ${term}.<break time="1s"/> Should we continue?</speak>`, apiAiEvent);
+    return buildSimpleSpeechApiAiResponse(`<speak>I am sorry but I don't much about ${term || 'that'}.<break time="1s"/> Should we continue?</speak>`, apiAiEvent);
 }
 
 function buildSimpleSpeechApiAiResponse(speech, apiAiEvent) {

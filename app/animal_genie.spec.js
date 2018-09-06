@@ -333,10 +333,44 @@ describe('AnimalGenie', function () {
 
     it('should explain definition of the chosen value of the current question during game', (done) => {
         const contextWithCurrentQuestionFieldAndChosenValue = [new Context('question.field:FIELD', 1), new Context('question.chosenValue:VALUE', 1)];
-        let event = createEvent("123", ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE, contextWithCurrentQuestionFieldAndChosenValue);
+        let event = createEvent("123", ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE, null, contextWithCurrentQuestionFieldAndChosenValue);
         animalGenie.play(event, function (err, responseToApiAi) {
+            glossaryGetDefinitionStub.calledOnce.should.equal(true);
             glossaryGetDefinitionStub.calledWith('VALUE').should.equal(true);
             responseToApiAi.should.equal(apiAiForAnswerForGlossaryEnquirySpeech);
+            done();
+        });
+    });
+
+    it('should respond properly chosenValue of the current question is not in the context', (done) => {
+        let event = createEvent("123", ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE, "yes");
+        mockGlossaryRepo = function () {
+            return {
+                getDefinition: glossaryGetDefinitionStub.returns(null)
+            };
+        };
+        // force mockGlossaryRepo to use the updated getDefinition()
+        animalGenie = animalGenieWithMocks();
+
+        animalGenie.play(event, function (err, responseToApiAi) {
+            responseToApiAi.should.equal(apiAiForAnswerForUnknownGlossaryEnquirySpeech);
+            done();
+        });
+    });
+
+    it('should respond properly when definition of the chosenValue in context is unknown', function (done) {
+        const contextWithCurrentQuestionFieldAndChosenValue = [new Context('question.field:FIELD', 1), new Context('question.chosenValue:VALUE', 1)];
+        const event = createEvent("123", ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE, null, contextWithCurrentQuestionFieldAndChosenValue);
+        mockGlossaryRepo = function () {
+            return {
+                getDefinition: glossaryGetDefinitionStub.returns(null)
+            };
+        };
+        // force mockGlossaryRepo to use the updated getDefinition()
+        animalGenie = animalGenieWithMocks();
+
+        animalGenie.play(event, function (err, responseToApiAi) {
+            responseToApiAi.should.equal(apiAiForAnswerForUnknownGlossaryEnquirySpeech);
             done();
         });
     });

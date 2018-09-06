@@ -19,10 +19,15 @@ function AnimalGenie(fullAnimalList) {
     this.fullAnimalList = fullAnimalList;
 }
 
-AnimalGenie.prototype.findQuestionChosenValueForContext = function(contextList) {
-    return _.find(contextList, function(context) {
-        return context.name.startsWith("question.field");
+AnimalGenie.prototype.extractQuestionChosenValueFromContext = function(contextList) {
+    let chosenValue = null;
+    _.find(contextList, function(context) {
+        const matched = context.name.match(/^question.chosenValue:(.+)$/);
+        chosenValue = matched ? matched[1] : null;
+        return matched;
     });
+
+    return chosenValue;
 };
 
 AnimalGenie.prototype.play = function (event, callback, options) {
@@ -58,7 +63,7 @@ AnimalGenie.prototype.play = function (event, callback, options) {
     } else if (event.result.action === 'answer_question_glossary_enquiry') {
         that.buildSpeechForAnsweringGlossaryEnquiry(event, callback);
     } else if (event.result.action === ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE) {
-        const term = that.findQuestionChosenValueForContext(event.result.contexts);
+        const term = that.extractQuestionChosenValueFromContext(event.result.contexts);
         that.buildSpeechForAnsweringGlossaryEnquiryForTerm(term, event, callback);
     } else if (event.result.action === 'computer_made_incorrect_guess') {
         that.notifyIncorrectGuess(event.result.parameters.animal, options.notificationTopicArn);
@@ -73,7 +78,7 @@ AnimalGenie.prototype.buildSpeechForAnsweringGlossaryEnquiryForTerm = function(t
     if (definition) {
         callback(null, ResponseToApiAi.answerGlossaryEnquiry(term, definition, event));
     } else {
-        callback(null, ResponseToApiAi.answerUnknownGlossaryEnquiry(term, definition));
+        callback(null, ResponseToApiAi.answerUnknownGlossaryEnquiry(term, event));
     }
 };
 

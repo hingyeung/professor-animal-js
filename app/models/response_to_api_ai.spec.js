@@ -129,6 +129,17 @@ describe('ResponseFromApiAi', function () {
             buildExpectedContextOut("<speak>I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about A. Should we continue?", null, null, [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
         );
     });
+
+    it('should convert properly when term for glossary look up is null', function () {
+        let apiAiEvent = {
+            result: {
+                contexts: []
+            }
+        };
+        ResponseToApiAi.answerUnknownGlossaryEnquiry(null, apiAiEvent).should.deep.equal(
+            buildExpectedContextOut("<speak>I am sorry but I don't much about that.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about that. Should we continue?", null, null, null)
+        );
+    });
 });
 
 function buildExpectedContextOut(speech, text, questionField, questionChosenValue, contextOut) {

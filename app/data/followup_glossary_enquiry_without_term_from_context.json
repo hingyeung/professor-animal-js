@@ -1,26 +1,31 @@
 {
-    "id": "f668fd90-1948-4012-8150-7a1558e373c0",
-    "timestamp": "2017-09-17T03:20:38.081Z",
+    "id": "f5513f3e-e390-4444-ac38-1cf81a9c6aa4",
+    "timestamp": "2017-09-17T03:34:55.312Z",
     "lang": "en",
     "result": {
         "source": "agent",
-        "resolvedQuery": "game reset",
-        "action": "startgame",
+        "resolvedQuery": "no",
+        "action": "answer_question_glossary_enquiry_of_the_current_question_value",
         "actionIncomplete": false,
-        "parameters": {},
+        "parameters": {
+            "term": "carnivore"
+        },
         "contexts": [
             {
-                "name": "readytoplay",
-                "parameters": {},
+                "name": "ingame",
+                "lifespan": 1
+            },
+            {
+                "name": "question.field:types",
                 "lifespan": 1
             }
         ],
         "metadata": {
-            "intentId": "d7e5f593-dfa0-4488-8bbf-98ba8c34b8c1",
+            "intentId": "dba6691e-a9a4-4ad6-91e4-458715602324",
             "webhookUsed": "true",
             "webhookForSlotFillingUsed": "false",
-            "webhookResponseTime": 3443,
-            "intentName": "Test Game Reset"
+            "webhookResponseTime": 1036,
+            "intentName": "Answer in-game quesiton - No"
         },
         "fulfillment": {
             "speech": "Does it have long fur?",
