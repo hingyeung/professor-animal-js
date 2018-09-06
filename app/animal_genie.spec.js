@@ -9,6 +9,7 @@ const proxyquire = require('proxyquire').noPreserveCache(),
     fs = require('fs'),
     Context = require('./models/context'),
     AnimalRepo = require('./services/animal_repo'),
+    ActionType = require('./models/action_types'),
     sinon = require('sinon');
 
 describe('AnimalGenie', function () {
@@ -162,14 +163,14 @@ describe('AnimalGenie', function () {
     });
 
     it('should load existing session in DB when Api.ai action is "answer_question"', function () {
-        let event = createEvent("123", "answer_question", "yes");
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "yes");
         animalGenie.play(event, callbackSpy);
         getSessionStub.calledOnce.should.equal(true);
         getSessionStub.calledWith("123").should.equal(true);
     });
 
     it('should save updated session to DB with field-attributeValue to ignore in next round when Api.ai action is "answer_question and user answer is "yes"', function () {
-        let event = createEvent("123", "answer_question", "yes");
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "yes");
         animalGenie.play(event, callbackSpy);
         // the field and chosenValue in the incoming session should be added to the ignore list when the user answer is "yes",
         // which trigger inclusive filter
@@ -182,7 +183,7 @@ describe('AnimalGenie', function () {
     });
 
     it('should save updated session to DB without field-attributeValue to ignore in next round when Api.ai action is "answer_question" and user answer is "no"', function () {
-        let event = createEvent("123", "answer_question", "no", 'speech');
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "no", 'speech');
         animalGenie.play(event, callbackSpy);
         // the field and chosenValue in the incoming session should not be added to the ignore list when the user answer is "no",
         // which trigger inclusive filter
@@ -192,7 +193,7 @@ describe('AnimalGenie', function () {
     });
 
     it('should save updated session to DB with field-attributeValue to ignore in next round when Api.ai action is "answer_question and user answer is "not_sure"', function() {
-        let event = createEvent("123", "answer_question", "not_sure", 'speech');
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "not_sure", 'speech');
         animalGenie.play(event, callbackSpy);
         // the field and chosenValue in the incoming session should be added to the ignore list when the user answer is "not_sure"
         saveSessionStub.calledWith(
@@ -204,7 +205,7 @@ describe('AnimalGenie', function () {
     });
 
     it('should not use remove any animal using filter when Api.ai action is "answer_question and user answer is "not_sure"', function (done) {
-        let event = createEvent("123", "answer_question", "not_sure", 'speech');
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "not_sure", 'speech');
         mockAnimalFilter.filter = sinon.spy();
         animalGenie = animalGenieWithMocks();
         animalGenie.play(event, function (err, responseToApiAi) {
@@ -214,7 +215,7 @@ describe('AnimalGenie', function () {
     });
 
     it('should save updated session when computer is ready to guess the animal', function (done) {
-        let event = createEvent("123", "answer_question", "yes");
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "yes");
 
         // forcing mockAnimalFilter is reloaded with the updated filterStub
         filterStub = sinon.stub().returns([{name: "correct animal"}]);
@@ -228,14 +229,14 @@ describe('AnimalGenie', function () {
     });
 
     it('should get next question with QuestionSelector with animal list restored from session when Api.ai action is "answer_question"', function () {
-        let event = createEvent("123", "answer_question", "yes");
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "yes");
         animalGenie.play(event, callbackSpy);
         nextQuestionStub.calledOnce.should.equal(true);
         nextQuestionStub.calledWith(listOfAnimalsRestoredFromSession).should.equal(true);
     });
 
     it('should convert next question to Api.ai resposne', function (done) {
-        let event = createEvent("123", "answer_question", "yes");
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "yes");
         animalGenie.play(event, function () {
             mockResponseToApiAi.fromQuestion.calledWith(nextQuestion).should.equal(true);
             done();
@@ -243,7 +244,7 @@ describe('AnimalGenie', function () {
     });
 
     it('should return "ready-to-guess" question, when only one animal left', function (done) {
-        let event = createEvent("123", "answer_question", "yes");
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "yes");
 
         // forcing mockAnimalFilter is reloaded with the updated filterStub
         filterStub = sinon.stub().returns([{name: "correct animal"}]);
@@ -258,7 +259,7 @@ describe('AnimalGenie', function () {
     });
 
     it('should use AnimalFilter to filter out unmatched animal when user answer is "yes"', function (done) {
-        let event = createEvent("123", "answer_question", "yes");
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "yes");
         animalGenie.play(event, function () {
             filterStub.calledWith(listOfAnimalsRestoredFromSession, true, "types", userSession.chosenValue).should.be.true;
             done();
@@ -266,7 +267,7 @@ describe('AnimalGenie', function () {
     });
 
     it('should use AnimalFilter to filter out unmatched animal when user answer is "no"', function (done) {
-        let event = createEvent("123", "answer_question", "no");
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "no");
         animalGenie.play(event, function () {
             filterStub.calledWith(listOfAnimalsRestoredFromSession, false, "types", userSession.chosenValue).should.be.true;
             done();
@@ -274,7 +275,7 @@ describe('AnimalGenie', function () {
     });
 
     it('should return give-up api.ai response when it cannot determine the next question to ask and confident guess cannot be made', function (done) {
-        let event = createEvent("123", "answer_question", "no");
+        let event = createEvent("123", ActionType.ANSWER_QUESTION, "no");
         nextQuestionStub = sinon.stub().returns(new Question(null, null, null, Question.GIVE_UP_MESSAGE));
         mockQuestionSelector.nextQuestion = nextQuestionStub;
         animalGenie = animalGenieWithMocks();
@@ -296,7 +297,7 @@ describe('AnimalGenie', function () {
     });
 
     it('should repeat the previous question when Api.ai action is "answer_question_repeat" during "answer_question" stage', function (done) {
-        let firstEvent = createEvent("123", "answer_question", "yes");
+        let firstEvent = createEvent("123", ActionType.ANSWER_QUESTION, "yes");
         animalGenie.play(firstEvent, function (err, firstResponseToApiAi) {
             let secondEvent = createEvent("123", "answer_question_repeat");
             animalGenie.play(secondEvent, function (err, secondResponseToApiAi) {
@@ -307,7 +308,7 @@ describe('AnimalGenie', function () {
     });
 
     it('should explain definition of a word in glossary during game', function (done) {
-        let event = createEvent("123", "answer_question_glossary_enquiry");
+        let event = createEvent("123", ActionType.ANSWER_QUESTION_GLOSSARY_ENQUIRY);
         animalGenie.play(event, function (err, responseToApiAi) {
             responseToApiAi.should.equal(apiAiForAnswerForGlossaryEnquirySpeech);
             done();
@@ -315,7 +316,7 @@ describe('AnimalGenie', function () {
     });
 
     it('should response properly when definition of a word is unknown during game', function (done) {
-        let event = createEvent("123", "answer_question_glossary_enquiry");
+        let event = createEvent("123", ActionType.ANSWER_QUESTION_GLOSSARY_ENQUIRY);
         mockGlossaryRepo = function () {
             return {
                 getDefinition: glossaryGetDefinitionStub.returns(null)
@@ -326,6 +327,16 @@ describe('AnimalGenie', function () {
 
         animalGenie.play(event, function (err, responseToApiAi) {
             responseToApiAi.should.equal(apiAiForAnswerForUnknownGlossaryEnquirySpeech);
+            done();
+        });
+    });
+
+    it('should explain definition of the chosen value of the current question during game', (done) => {
+        const contextWithCurrentQuestionFieldAndChosenValue = [new Context('question.field:FIELD', 1), new Context('question.chosenValue:VALUE', 1)];
+        let event = createEvent("123", ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE, contextWithCurrentQuestionFieldAndChosenValue);
+        animalGenie.play(event, function (err, responseToApiAi) {
+            glossaryGetDefinitionStub.calledWith('VALUE').should.equal(true);
+            responseToApiAi.should.equal(apiAiForAnswerForGlossaryEnquirySpeech);
             done();
         });
     });
@@ -345,11 +356,11 @@ describe('AnimalGenie', function () {
         return JSON.parse(fs.readFileSync('app/data/test-animals.json'));
     }
 
-    function createEvent(sessionId, action, answer) {
+    function createEvent(sessionId, action, answer, context) {
         return {
             sessionId: sessionId,
             result: {
-                contexts: [],
+                contexts: context || [],
                 action: action,
                 parameters: {
                     answer: answer

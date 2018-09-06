@@ -12,11 +12,18 @@ const fs = require('fs'),
     GlossaryRepo = require('./services/glossary_repo'),
     DbService = require('./services/DbService'),
     AnimalListUtils = require('./services/animal_list_utils'),
+    ActionType = require('./models/action_types'),
     AWS = require('aws-sdk');
 
 function AnimalGenie(fullAnimalList) {
     this.fullAnimalList = fullAnimalList;
 }
+
+AnimalGenie.prototype.findQuestionChosenValueForContext = function(contextList) {
+    return _.find(contextList, function(context) {
+        return context.name.startsWith("question.field");
+    });
+};
 
 AnimalGenie.prototype.play = function (event, callback, options) {
     let userSession, nextQuestion,
@@ -50,6 +57,9 @@ AnimalGenie.prototype.play = function (event, callback, options) {
             .done();
     } else if (event.result.action === 'answer_question_glossary_enquiry') {
         that.buildSpeechForAnsweringGlossaryEnquiry(event, callback);
+    } else if (event.result.action === ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE) {
+        const term = that.findQuestionChosenValueForContext(event.result.contexts);
+        that.buildSpeechForAnsweringGlossaryEnquiryForTerm(term, event, callback);
     } else if (event.result.action === 'computer_made_incorrect_guess') {
         that.notifyIncorrectGuess(event.result.parameters.animal, options.notificationTopicArn);
     } else {
@@ -57,15 +67,20 @@ AnimalGenie.prototype.play = function (event, callback, options) {
     }
 };
 
-AnimalGenie.prototype.buildSpeechForAnsweringGlossaryEnquiry = function(event, callback) {
-    let term = event.result.parameters.term,
-        glossaryRepo = new GlossaryRepo();
+AnimalGenie.prototype.buildSpeechForAnsweringGlossaryEnquiryForTerm = function(term, event, callback) {
+    const glossaryRepo = new GlossaryRepo();
     let definition = glossaryRepo.getDefinition(term);
     if (definition) {
         callback(null, ResponseToApiAi.answerGlossaryEnquiry(term, definition, event));
     } else {
         callback(null, ResponseToApiAi.answerUnknownGlossaryEnquiry(term, definition));
     }
+};
+
+AnimalGenie.prototype.buildSpeechForAnsweringGlossaryEnquiry = function(event, callback) {
+    let that = this;
+    const term = event.result.parameters.term;
+    that.buildSpeechForAnsweringGlossaryEnquiryForTerm(term, event, callback);
 };
 
 AnimalGenie.prototype.buildResponseToApiAiForRepeatingLastSpeech = function(event, callback) {
