@@ -23,7 +23,7 @@ Resources:
     Type: AWS::Logs::LogGroup
     Properties:
       LogGroupName: !Join [ '/', [ "/aws/lambda", !Ref ProfessorAnimalLambdaFunction ] ]
-      RetentionInDays: 1
+      RetentionInDays: 7
   ProfessorAnimalLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
