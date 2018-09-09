@@ -1,10 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Parameters:
-  bucketName:
-    Type: String
-  keyToBuildArtefact:
-    Type: String
   dataBucket:
     Type: String
 Resources:
@@ -23,6 +19,11 @@ Resources:
       TimeToLiveSpecification:
         AttributeName: expirationTime
         Enabled: true
+  ProfessorAnimalLambdaLog:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Join [ '/', [ "/aws/lambda", !Ref ProfessorAnimalLambdaFunction ] ]
+      RetentionInDays: 1
   ProfessorAnimalLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -31,9 +32,7 @@ Resources:
       # https://github.com/awslabs/serverless-application-model/issues/61
       # https://github.com/awslabs/serverless-application-model/blob/master/HOWTO.md#using-intrinsic-functions
       #CodeUri: !Join [ 's3://', !Ref bucketName, '/professor-animal/src/', !Ref keyToBuildArtefact ]
-      CodeUri:
-        Bucket: !Ref bucketName
-        Key: !Ref keyToBuildArtefact
+      CodeUri: ../dist
       MemorySize: 128
       Timeout: 3
       # https://bit.ly/2O3CUXl
@@ -51,7 +50,6 @@ Resources:
           Properties:
             Path: /apiaiwebhook
             Method: post
-            RestApiId: !Ref ProfessorAnimalApi
       Environment:
         Variables:
           USER_SESSION_TABLE: !Ref UserSessionTable
@@ -59,28 +57,5 @@ Resources:
           NOTIFICATION_TOPIC_ARN: !Sub "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:prof_animal_lost_game"
           DATA_S3_BUCKET: !Ref dataBucket
           ANIMAL_DEFINITION_S3_KEY: professor-animal/data/animals.json
-
-  # need explicit API definition for API key requirement
-  # (otherwise, having AWS::Serverless::Function is enough and
-  #  SAM would create API automatically)
-  ProfessorAnimalApi:
-    Type: AWS::Serverless::Api
-    Properties:
-      # can't use DefinitionUri
-      # https://github.com/awslabs/serverless-application-model/issues/305
-      DefinitionBody:
-        'Fn::Transform':
-          Name: 'AWS::Include'
-          Parameters:
-            Location: !Join [ '', ['s3://', !Ref bucketName, '/professor-animal/deployer/swagger.yml'] ]
-      StageName: "dev"
-
-Outputs:
-  ProfessorAnimalApiEndpoint:
-    Description: "API Gateway endpoint URL for dev stage for ProfessorAnimalLambdaFunction function"
-    Value: !Sub "https://${ProfessorAnimalApi}.execute-api.${AWS::Region}.amazonaws.com/dev/apiaiwebhook/"
-  ProfessorAnimalApiId:
-    Description: "API ID for ProfessorAnimalLambdaFunction function"
-    Value: !Ref ProfessorAnimalApi
 
 # https://github.com/awslabs/serverless-application-model/tree/master/examples/2016-10-31/api_swagger_cors
