@@ -100,7 +100,8 @@
     "behaviours": [
       "only eat meat",
       "bark",
-      "live in a group"
+      "live in a group",
+      "swim"
     ],
     "diet": [
       "bone and pet food"
@@ -1047,6 +1048,7 @@
       "mammal"
     ],
     "behaviours": [
+      "live in South America",
       "only eat plants",
       "climb tree",
       "move very slowly",
@@ -1399,7 +1401,7 @@
     "behaviours": [
       "only eat plants",
       "live in a group",
-      "live in mountains in South America",
+      "live in South America",
       "produce wool for us to make clothes ",
       "spit when it feels threatened"
     ],
@@ -1843,13 +1845,13 @@
     ],
     "behaviours": [
       "only eat plants",
-      "live in a group"
+      "live in a group",
+      "swim"
     ],
     "diet": [
       "grass"
     ],
     "possible_behaviours": [
-      "swim",
       "run very fast to escape from predators"
     ],
     "considerations": [
@@ -1872,7 +1874,10 @@
       "nocturnal animal"
     ],
     "behaviours": [
-      "only eat meat"
+      "only eat meat",
+      "live in burrows",
+      "swim",
+      "climb tree"
     ],
     "diet": [
       "insects",
