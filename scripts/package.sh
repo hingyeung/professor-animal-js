@@ -21,11 +21,11 @@ mkdir -p dist && \
 popd
 
 # build CloudFormation template
-#aws cloudformation package \
-#     --template-file deployer/professor-animal.yml \
-#     --s3-bucket ${S3_BUCKET} \
-#     --s3-prefix professor-animal/artefacts \
-#     --output-template-file dist/professor-animal.cfn
+aws cloudformation package \
+     --template-file deployer/professor-animal.yml \
+     --s3-bucket ${S3_BUCKET} \
+     --s3-prefix professor-animal/artefacts \
+     --output-template-file dist/professor-animal.cfn
 
 echo
 echo ===

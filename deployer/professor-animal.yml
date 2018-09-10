@@ -1,7 +1,11 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Parameters:
+  artefactBucket:
+    Type: String
   dataBucket:
+    Type: String
+  gitBranch:
     Type: String
 Resources:
   UserSessionTable:
@@ -31,7 +35,7 @@ Resources:
       Runtime: nodejs6.10
       # https://github.com/awslabs/serverless-application-model/issues/61
       # https://github.com/awslabs/serverless-application-model/blob/master/HOWTO.md#using-intrinsic-functions
-      #CodeUri: !Join [ 's3://', !Ref bucketName, '/professor-animal/src/', !Ref keyToBuildArtefact ]
+      #CodeUri: !Join [ 's3://', !Ref artefactBucket, '/professor-animal/src/', !Ref keyToBuildArtefact ]
       CodeUri: ../dist
       MemorySize: 128
       Timeout: 10
@@ -50,6 +54,7 @@ Resources:
           Properties:
             Path: /apiaiwebhook
             Method: post
+            RestApiId: !Ref ProfessorAnimalApi
       Environment:
         Variables:
           USER_SESSION_TABLE: !Ref UserSessionTable
@@ -57,5 +62,25 @@ Resources:
           NOTIFICATION_TOPIC_ARN: !Sub "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:prof_animal_lost_game"
           DATA_S3_BUCKET: !Ref dataBucket
           ANIMAL_DEFINITION_S3_KEY: professor-animal/data/animals.json
+
+  ProfessorAnimalApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      # can't use DefinitionUri
+      # https://github.com/awslabs/serverless-application-model/issues/305
+      DefinitionBody:
+        'Fn::Transform':
+          Name: 'AWS::Include'
+          Parameters:
+            Location: !Join [ '', ['s3://', !Ref artefactBucket, '/professor-animal/deployer/', !Ref gitBranch, '/swagger.yml'] ]
+      StageName: "dev"
+
+Outputs:
+  ProfessorAnimalApiEndpoint:
+    Description: "API Gateway endpoint URL for dev stage for ProfessorAnimalLambdaFunction function"
+    Value: !Sub "https://${ProfessorAnimalApi}.execute-api.${AWS::Region}.amazonaws.com/dev/apiaiwebhook/"
+  ProfessorAnimalApiId:
+    Description: "API ID for ProfessorAnimalLambdaFunction function"
+    Value: !Ref ProfessorAnimalApi
 
 # https://github.com/awslabs/serverless-application-model/tree/master/examples/2016-10-31/api_swagger_cors
