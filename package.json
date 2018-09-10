@@ -9,7 +9,12 @@
   "dependencies": {
     "aws-sdk": "^2.274.1",
     "lodash": "^4.17.4",
-    "q": "^1.5.0"
+    "q": "^1.5.0",
+    "actions-on-google": "^2.3.0",
+    "body-parser": "^1.18.3",
+    "dialogflow-fulfillment": "^0.5.0",
+    "express": "^4.16.3",
+    "serverless-http": "^1.6.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -32,7 +37,9 @@
     "cf-delete-stack": "scripts/cf_delete_stack.py",
     "update-custom-domain-mapping": "scripts/update_custom_domain_mapping.sh",
     "add-api-stage-to-usage-plan": "scripts/add_api_stage_to_usage_plan.sh",
+    "start-api": "scripts/start_api.sh",
     "invoke-lambda-with-initial-event": "scripts/invoke_lambda.sh app/data/initial_request.json",
+    "invoke-lambda-with-initial-event-v2": "scripts/invoke_lambda.sh app/data/initial_request-v2.json",
     "invoke-lambda-with-followup-yes": "scripts/invoke_lambda.sh app/data/followup_yes_request.json",
     "invoke-lambda-with-followup-no": "scripts/invoke_lambda.sh app/data/followup_no_request.json",
     "invoke-lambda-with-followup-not-sure": "scripts/invoke_lambda.sh app/data/followup_not_sure_request.json",

@@ -1,21 +1,40 @@
 'use strict';
 
-const AnimalGenie = require('./animal_genie'),
+const {WebhookClient} = require('dialogflow-fulfillment'),
+    AnimalGenie = require('./animal_genie'),
     AnimalRepo = require('./services/animal_repo');
 
-exports.myHandler = function (event, context, callback) {
-    console.dir(event.result.action);
-    console.dir(event.result.contexts);
-    console.dir(event.result.parameters);
+// exports.myHandler = function (event, context, callback) {
+//     console.dir(event.result.action);
+//     console.dir(event.result.contexts);
+//     console.dir(event.result.parameters);
+//
+//     let animalRepo = new AnimalRepo();
+//     animalRepo.loadAnimals()
+//         .then((fullAnimalList) => {
+//             new AnimalGenie(fullAnimalList).play(event, callback, );
+//         })
+//         .catch((err) => {
+//             console.log('Error loading animal definition', err);
+//         })
+//         .done();
+//
+//     // or
+//     // callback("some error type");
+// };
 
-    let animalRepo = new AnimalRepo();
+const createAnimalGenieApp = function (request, response) {
+    const animalRepo = new AnimalRepo();
     animalRepo.loadAnimals()
-        .then((fullAnimalList) => {
-            new AnimalGenie(fullAnimalList).play(event, callback, {
+        .then(fullAnimalList => {
+            console.log('animals.json loaded');
+            const animalGenie = new AnimalGenie(fullAnimalList);
+            const options = {
                 notificationTopicArn: process.env.NOTIFICATION_TOPIC_ARN
-            });
+            };
+            animalGenie.playByIntent(request, response, options);
         })
-        .catch((err) => {
+        .catch(err => {
             console.log('Error loading animal definition', err);
         })
         .done();
@@ -23,3 +42,5 @@ exports.myHandler = function (event, context, callback) {
     // or
     // callback("some error type");
 };
+
+exports.createAnimalGenieApp = createAnimalGenieApp;

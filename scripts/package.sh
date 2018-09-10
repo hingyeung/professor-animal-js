@@ -16,16 +16,16 @@ mkdir -p dist && \
     cp -r app/* dist/ && \
     cp -R node_modules dist/ && \
     cd dist && \
-    zip -Xqr ${BUILD_ARTEFACT} * && \
-    ln -s ${BUILD_ARTEFACT} CURRENT_BUILD
+#    zip -Xqr ${BUILD_ARTEFACT} * && \
+#    ln -s ${BUILD_ARTEFACT} CURRENT_BUILD
 popd
 
 # build CloudFormation template
-aws cloudformation package \
-     --template-file deployer/professor-animal.yml \
-     --s3-bucket ${S3_BUCKET} \
-     --s3-prefix professor-animal/src \
-     --output-template-file dist/professor-animal.cfn
+#aws cloudformation package \
+#     --template-file deployer/professor-animal.yml \
+#     --s3-bucket ${S3_BUCKET} \
+#     --s3-prefix professor-animal/artefacts \
+#     --output-template-file dist/professor-animal.cfn
 
 echo
 echo ===

@@ -34,7 +34,7 @@ Resources:
       #CodeUri: !Join [ 's3://', !Ref bucketName, '/professor-animal/src/', !Ref keyToBuildArtefact ]
       CodeUri: ../dist
       MemorySize: 128
-      Timeout: 3
+      Timeout: 10
       # https://bit.ly/2O3CUXl
       Policies:
         - AWSLambdaBasicExecutionRole

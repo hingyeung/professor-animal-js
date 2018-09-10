@@ -13,6 +13,7 @@ const fs = require('fs'),
     DbService = require('./services/DbService'),
     AnimalListUtils = require('./services/animal_list_utils'),
     ActionType = require('./models/action_types'),
+    {WebhookClient} = require('dialogflow-fulfillment'),
     AWS = require('aws-sdk');
 
 function AnimalGenie(fullAnimalList) {
@@ -28,6 +29,14 @@ AnimalGenie.prototype.extractQuestionChosenValueFromContext = function(contextLi
     });
 
     return chosenValue;
+};
+
+AnimalGenie.prototype.playByIntent = function(request, response, options) {
+    const agent = new WebhookClient({request: request, response: response});
+    const intentMap = new Map();
+
+    intentMap.set('Test Game Reset', () => agent.add('start the game...'));
+    agent.handleRequest(intentMap);
 };
 
 AnimalGenie.prototype.play = function (event, callback, options) {
