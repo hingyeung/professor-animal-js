@@ -7,7 +7,8 @@ const bodyParser = require("body-parser"),
 
 const expressApp = express();
 expressApp.use(bodyParser.json());
-expressApp.post("/v1/apiaiwebhook", createAnimalGenieApp);
+const path = process.env.AWS_SAM_LOCAL ? "/apiaiwebhook" : "/v1/apiaiwebhook";
+expressApp.post(path, createAnimalGenieApp);
 
 console.log("preparing lambda");
 

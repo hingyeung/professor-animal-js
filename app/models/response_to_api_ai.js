@@ -43,8 +43,8 @@ function fromQuestion(question, additionalContextOut) {
             contextOutForQuestion = _.concat(
                 contextOutForQuestion,
                 new Context("ingame", 1),
-                new Context("question.field:" + question.field, 1),
-                new Context("question.chosenValue:" + question.chosenValue, 1)
+                new Context("question-field--" + question.field, 1),
+                new Context("question-chosenValue--" + question.chosenValue, 1)
             );
             break;
         case Question.GIVE_UP_MESSAGE:
