@@ -56,14 +56,7 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
         }
 
         console.dir("nextQuestion: ", nextQuestion);
-        responseToApiAi.contextOut.forEach(context => {
-            console.log(context);
-            agent.setContext({
-                name: context.name,
-                lifespanCount: context.lifespan,
-                parameters: context.parameters
-            });
-        });
+        responseToApiAi.contextOut.forEach(context => agent.setContext(context));
         agent.add(responseToApiAi.speech);
     });
 
