@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 S3_BUCKET=$1
+UPLOAD_TO_S3=$2
 
 source scripts/utils.sh
 BUILD_NAME=$(build_artefact_name)
@@ -21,11 +22,14 @@ mkdir -p dist && \
 popd
 
 # build CloudFormation template
-aws cloudformation package \
-     --template-file deployer/professor-animal.yml \
-     --s3-bucket ${S3_BUCKET} \
-     --s3-prefix professor-animal/artefacts \
-     --output-template-file dist/professor-animal.cfn
+if [ "${UPLOAD_TO_S3}" == "true" ]
+then
+    aws cloudformation package \
+         --template-file deployer/professor-animal.yml \
+         --s3-bucket ${S3_BUCKET} \
+         --s3-prefix professor-animal/artefacts \
+         --output-template-file dist/professor-animal.cfn
+fi
 
 echo
 echo ===

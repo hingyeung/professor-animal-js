@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 function Context(name, lifespan) {
     this.name = name;

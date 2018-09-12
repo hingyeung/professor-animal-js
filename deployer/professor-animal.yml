@@ -32,7 +32,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.myHandler
-      Runtime: nodejs6.10
+      Runtime: nodejs8.10
       # https://github.com/awslabs/serverless-application-model/issues/61
       # https://github.com/awslabs/serverless-application-model/blob/master/HOWTO.md#using-intrinsic-functions
       #CodeUri: !Join [ 's3://', !Ref artefactBucket, '/professor-animal/src/', !Ref keyToBuildArtefact ]

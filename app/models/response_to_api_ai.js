@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const Question = require('./question'),
-    _ = require('lodash'),
-    Context = require('./context');
+const Question = require("./question"),
+    _ = require("lodash"),
+    Context = require("./context");
 
 const DEFAULT_WELCOME_INTENT_PREFIX = "DefaultWelcomeIntent";
 
@@ -68,7 +68,7 @@ function answerGlossaryEnquiry(term, definition, apiAiEvent) {
 }
 
 function answerUnknownGlossaryEnquiry(term, apiAiEvent) {
-    return buildSimpleSpeechApiAiResponse(`<speak>I am sorry but I don't much about ${term || 'that'}.<break time="1s"/> Should we continue?</speak>`, apiAiEvent);
+    return buildSimpleSpeechApiAiResponse(`<speak>I am sorry but I don't much about ${term || "that"}.<break time="1s"/> Should we continue?</speak>`, apiAiEvent);
 }
 
 function buildSimpleSpeechApiAiResponse(speech, apiAiEvent) {
@@ -98,11 +98,11 @@ function copyInContextToOutContext(response, apiAiEvent) {
 }
 
 function stripSSMLTags(str) {
-    if ((str === null) || (str === ''))
+    if ((str === null) || (str === ""))
         return false;
     else
         str = str.toString();
-    return str.replace(/<[^>]*>/g, '');
+    return str.replace(/<[^>]*>/g, "");
 }
 
 module.exports = ResponseFromApiAi;

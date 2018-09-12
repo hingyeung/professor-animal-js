@@ -1,20 +1,18 @@
-'use strict';
+"use strict";
 
-const fs = require('fs'),
-    _ = require('lodash'),
-    AnimalFilter = require('./services/animal_filter'),
-    Context = require('./models/context'),
-    UserSession = require('./models/UserSession'),
-    Question = require('./models/question'),
-    QuestionSelector = require('./services/question_selector'),
-    ResponseToApiAi = require('./models/response_to_api_ai'),
-    Q = require('q'),
-    GlossaryRepo = require('./services/glossary_repo'),
-    DbService = require('./services/DbService'),
-    AnimalListUtils = require('./services/animal_list_utils'),
-    ActionType = require('./models/action_types'),
-    {WebhookClient} = require('dialogflow-fulfillment'),
-    AWS = require('aws-sdk');
+const _ = require("lodash"),
+    AnimalFilter = require("./services/animal_filter"),
+    UserSession = require("./models/UserSession"),
+    Question = require("./models/question"),
+    QuestionSelector = require("./services/question_selector"),
+    ResponseToApiAi = require("./models/response_to_api_ai"),
+    Q = require("q"),
+    GlossaryRepo = require("./services/glossary_repo"),
+    DbService = require("./services/DbService"),
+    AnimalListUtils = require("./services/animal_list_utils"),
+    ActionType = require("./models/action_types"),
+    {WebhookClient} = require("dialogflow-fulfillment"),
+    AWS = require("aws-sdk");
 
 function AnimalGenie(fullAnimalList) {
     this.fullAnimalList = fullAnimalList;
@@ -32,10 +30,56 @@ AnimalGenie.prototype.extractQuestionChosenValueFromContext = function(contextLi
 };
 
 AnimalGenie.prototype.playByIntent = function(request, response, options) {
-    const agent = new WebhookClient({request: request, response: response});
-    const intentMap = new Map();
+    console.log(options);
+    const agent = new WebhookClient({request: request, response: response}),
+        intentMap = new Map(),
+        dbService = new DbService();
 
-    intentMap.set('Test Game Reset', () => agent.add('start the game...'));
+    let userSession, nextQuestion,
+        that = this;
+
+    // action: startgame
+    intentMap.set("Test Game Reset", async () => {
+        let fullAnimalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(that.fullAnimalList);
+        // this is a new game, get the next question using animals from data file.
+        console.log(fullAnimalNameList, fullAnimalNameList.length);
+        nextQuestion = QuestionSelector.nextQuestion(that.fullAnimalList, []);
+        let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion, agent.contexts);
+        userSession = new UserSession(agent.session,
+            fullAnimalNameList, nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
+
+        try {
+            await dbService.saveSession(userSession);
+        } catch (err) {
+            console.log("Failed to save user session", err);
+            agent.end("Something has gone wrong. Bye now.");
+        }
+
+        console.dir("nextQuestion: ", nextQuestion);
+        responseToApiAi.contextOut.forEach(context => agent.setContext(context));
+        agent.add(responseToApiAi.speech);
+    });
+
+    // action: answer_question
+    intentMap.set("Response.To.InGameQuestion.No", async () => {
+        try {
+            const userSession = await that.loadSession(agent.session);
+            const answer = agent.parameters.answer;
+            console.log("answer: ", answer);
+            const contextForNextRound = that.getNextQuestion2(userSession, answer);
+
+            await that.updateSession(contextForNextRound);
+            const response = ResponseToApiAi.fromQuestion(contextForNextRound.nextQuestion);
+            // response.speech, response.contextOut
+            response.contextOut.forEach(context => agent.setContext(context));
+            agent.add(response.speech);
+        } catch(err) {
+            console.log(err);
+            agent.end("Something has gone wrong. Bye now.");
+        }
+    });
+
+    // intentMap.set('Test Game Reset', () => agent.add('start the game...'));
     agent.handleRequest(intentMap);
 };
 
@@ -44,7 +88,7 @@ AnimalGenie.prototype.play = function (event, callback, options) {
         dbService = new DbService(),
         that = this;
 
-    if (event.result.action === 'startgame') {
+    if (event.result.action === "startgame") {
         let fullAnimalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(that.fullAnimalList);
         // this is a new game, get the next question using animals from data file.
         console.log(fullAnimalNameList, fullAnimalNameList.length);
@@ -65,16 +109,16 @@ AnimalGenie.prototype.play = function (event, callback, options) {
             .then(that.responseToClient(callback))
             .catch(that.responseErrorToClient(callback))
             .done();
-    } else if (event.result.action === 'answer_question_repeat') {
+    } else if (event.result.action === "answer_question_repeat") {
         that.loadSession(event.sessionId)
             .then(that.buildResponseToApiAiForRepeatingLastSpeech(event, callback))
             .done();
-    } else if (event.result.action === 'answer_question_glossary_enquiry') {
+    } else if (event.result.action === "answer_question_glossary_enquiry") {
         that.buildSpeechForAnsweringGlossaryEnquiry(event, callback);
     } else if (event.result.action === ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE) {
         const term = that.extractQuestionChosenValueFromContext(event.result.contexts);
         that.buildSpeechForAnsweringGlossaryEnquiryForTerm(term, event, callback);
-    } else if (event.result.action === 'computer_made_incorrect_guess') {
+    } else if (event.result.action === "computer_made_incorrect_guess") {
         that.notifyIncorrectGuess(event.result.parameters.animal, options.notificationTopicArn);
     } else {
         callback("Unknown action: " + event.result.action, that.buildErrorResponseToApiAi(null));
@@ -138,6 +182,47 @@ AnimalGenie.prototype.updateSession = function(contextForNextRound) {
     return deferred.promise;
 };
 
+AnimalGenie.prototype.getNextQuestion2 = function(userSession, answer) {
+    const that = this;
+    let fieldAndAttributeValuesToIgnore, nextQuestion;
+    let animalsToPlayWith = AnimalListUtils.convertAnimalNameListToAnimalList(userSession.animalNames, that.fullAnimalList);
+    // filter animalsToPlayWith before determining the next question
+    if (answer === "yes" || answer === "no") {
+        animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
+    }
+    let animalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(animalsToPlayWith);
+    console.log("animals remaining: ", animalNameList, animalNameList.length);
+
+    if (animalsToPlayWith.length === 1) {
+        fieldAndAttributeValuesToIgnore = [];
+        nextQuestion = new Question(null, null, animalsToPlayWith[0].name, "ready_to_guess_question");
+        userSession.speech = nextQuestion.toText();
+    } else {
+
+        // if the answer is "yes", the attribute needs to be ignored during the generation of
+        // the next question to avoid infinity loop (always pick the most popular attribute, which
+        // remain the same.
+        // Also ignored the attribute if player answered "not_sure" to avoid asking the same question
+        fieldAndAttributeValuesToIgnore = userSession.fieldAndAttributeValuesToIgnore;
+        if (answer === "yes" || answer === "not_sure") {
+            fieldAndAttributeValuesToIgnore.push({
+                field: userSession.field,
+                attributeValue: userSession.chosenValue
+            });
+        }
+
+        nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith, fieldAndAttributeValuesToIgnore);
+        userSession.speech = nextQuestion.toText();
+        console.log("Next question to ask: ", nextQuestion.toText());
+    }
+    return {
+        nextQuestion: nextQuestion,
+        userSession: userSession,
+        animalsForNextRound: animalsToPlayWith,
+        fieldAndAttributeValuesToIgnore: fieldAndAttributeValuesToIgnore
+    };
+};
+
 AnimalGenie.prototype.getNextQuestion = function(event) {
     let that = this;
     return function (userSession) {
@@ -149,7 +234,7 @@ AnimalGenie.prototype.getNextQuestion = function(event) {
             animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
         }
         let animalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(animalsToPlayWith);
-        console.log('animals remaining: ', animalNameList, animalNameList.length);
+        console.log("animals remaining: ", animalNameList, animalNameList.length);
 
         if (animalsToPlayWith.length === 1) {
             fieldAndAttributeValuesToIgnore = [];
@@ -162,7 +247,7 @@ AnimalGenie.prototype.getNextQuestion = function(event) {
             // remain the same.
             // Also ignored the attribute if player answered "not_sure" to avoid asking the same question
             fieldAndAttributeValuesToIgnore = userSession.fieldAndAttributeValuesToIgnore;
-            if (answer === 'yes' || answer === "not_sure") {
+            if (answer === "yes" || answer === "not_sure") {
                 fieldAndAttributeValuesToIgnore.push({
                     field: userSession.field,
                     attributeValue: userSession.chosenValue
@@ -192,22 +277,22 @@ AnimalGenie.prototype.responseToClient = function(callback) {
 
 // TODO return error and reset the game
 AnimalGenie.prototype.buildErrorResponseToApiAi = function(err) {
-    console.log('ERROR', err);
+    console.log("ERROR", err);
     return null;
 };
 
-AnimalGenie.prototype.notifyIncorrectGuess = function(animal, topicArn) {
-  let sns = new AWS.SNS();
-  console.dir(topicArn);
-  let params = {
-    Message: 'Professor Animal has made an incorrect guess. The answer was ' + animal,
-    Subject: 'Professor Animal has just lost a game.',
-    TopicArn: topicArn
-  };
-  sns.publish(params, function(err, data) {
-    if (err) console.log(err, err.stack); // an error occurred
-    else     console.log(data);           // successful response
-  });
+AnimalGenie.prototype.notifyIncorrectGuess = function (animal, topicArn) {
+    let sns = new AWS.SNS();
+    console.dir(topicArn);
+    let params = {
+        Message: "Professor Animal has made an incorrect guess. The answer was " + animal,
+        Subject: "Professor Animal has just lost a game.",
+        TopicArn: topicArn
+    };
+    sns.publish(params, function (err, data) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else console.log(data);           // successful response
+    });
 };
 
 module.exports = AnimalGenie;

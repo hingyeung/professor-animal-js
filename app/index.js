@@ -1,15 +1,15 @@
-'use strict';
+"use strict";
 
-const bodyParser = require('body-parser'),
-    serverless = require('serverless-http'),
-    {createAnimalGenieApp} = require('./CreateAnimalGenieApp'),
-    express = require('express');
+const bodyParser = require("body-parser"),
+    serverless = require("serverless-http"),
+    {createAnimalGenieApp} = require("./CreateAnimalGenieApp"),
+    express = require("express");
 
 const expressApp = express();
 expressApp.use(bodyParser.json());
-expressApp.post('/apiaiwebhook', createAnimalGenieApp);
+expressApp.post("/v1/apiaiwebhook", createAnimalGenieApp);
 
-console.log('preparing lambda');
+console.log("preparing lambda");
 
 exports.myHandler = serverless(expressApp);
 
