@@ -60,8 +60,7 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
         agent.add(responseToApiAi.speech);
     });
 
-    // action: answer_question
-    intentMap.set("Response.To.InGameQuestion.No", async () => {
+    const answerQuestion = async () => {
         try {
             const userSession = await that.loadSession(agent.session);
             const answer = agent.parameters.answer;
@@ -77,7 +76,26 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
             console.log(err);
             agent.end("Something has gone wrong. Bye now.");
         }
-    });
+    };
+
+    // action: answer_question yes/no/not_sure
+    intentMap.set("Response.To.InGameQuestion.No", answerQuestion);
+    intentMap.set("Response.To.InGameQuestion.Yes", answerQuestion);
+    intentMap.set("Response.To.InGameQuestion.NotSure", answerQuestion);
+
+    // answer_question_glossary_enquiry
+    // that.buildSpeechForAnsweringGlossaryEnquiry(event, callback);
+    // intentMap.set("Enquire.Glossary", () => {
+    //     const term = agent.parameters.term;
+    //     that.buildSpeechForAnsweringGlossaryEnquiry(term);
+    // });
+    // EnquireGlossary.EnquireGlossary-no
+    // intentMap.set("Enquire.Glossary.Continue - no");
+    // answer_question_repeat
+    intentMap.set("Enquire.Glossary.Continue - yes", answerQuestion);
+
+    // answer_question_repeat
+    intentMap.set("Response.To.InGameQuestion.Repeat", answerQuestion);
 
     // intentMap.set('Test Game Reset', () => agent.add('start the game...'));
     agent.handleRequest(intentMap);
