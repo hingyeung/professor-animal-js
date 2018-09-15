@@ -1,0 +1,69 @@
+{
+    "responseId": "12bbc5f6-65a6-4ca2-9d13-d8845f534196",
+    "queryResult": {
+        "queryText": "what is mammal",
+        "action": "answer_question_glossary_enquiry",
+        "parameters": {
+            "term": "mammal"
+        },
+        "allRequiredParamsPresent": true,
+        "fulfillmentMessages": [
+            {
+                "text": {
+                    "text": [
+                        ""
+                    ]
+                }
+            }
+        ],
+        "outputContexts": [
+            {
+                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-chosenvalue--tail",
+                "parameters": {
+                    "term.original": "mammal",
+                    "term": "mammal"
+                }
+            },
+            {
+                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/readytoplay",
+                "parameters": {
+                    "term.original": "mammal",
+                    "term": "mammal"
+                }
+            },
+            {
+                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/enquireglossary-followup",
+                "lifespanCount": 1,
+                "parameters": {
+                    "term.original": "mammal",
+                    "term": "mammal"
+                }
+            },
+            {
+                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
+                "lifespanCount": 1,
+                "parameters": {
+                    "term.original": "mammal",
+                    "term": "mammal"
+                }
+            },
+            {
+                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-field--physical",
+                "parameters": {
+                    "term.original": "mammal",
+                    "term": "mammal"
+                }
+            }
+        ],
+        "intent": {
+            "name": "projects/animalgenie20180906/agent/intents/515a78cd-c307-47fa-8119-addb82b14cd4",
+            "displayName": "Enquire.Glossary"
+        },
+        "intentDetectionConfidence": 1,
+        "languageCode": "en"
+    },
+    "originalDetectIntentRequest": {
+        "payload": {}
+    },
+    "session": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56"
+}

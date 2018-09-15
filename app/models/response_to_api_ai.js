@@ -13,11 +13,11 @@ let ResponseFromApiAi = {
     answerUnknownGlossaryEnquiry: answerUnknownGlossaryEnquiry
 };
 
-function repeatSpeechFromUserSesssion(userSession, apiAiEvent) {
+function repeatSpeechFromUserSesssion(userSession, contextsIn) {
     let response = buildApiAiResponse(userSession.speech, userSession.speech);
 
     // copy contextIn to contextOut
-    copyInContextToOutContext(response, apiAiEvent);
+    copyInContextToOutContext(response, contextsIn);
 
     return response;
 }
@@ -32,6 +32,10 @@ function setLifespanForDefaultWelcomeContextToZero(contextsOut) {
     });
 }
 
+function escapeSpecialChars(str) {
+    return str !== undefined ? str.replace(/[^a-zA-Z0-9+]/g, "-") : "";
+}
+
 function fromQuestion(question, additionalContextOut) {
     // https://discuss.api.ai/t/webhook-response/786
     // Don't have empty list and object.
@@ -44,7 +48,7 @@ function fromQuestion(question, additionalContextOut) {
                 contextOutForQuestion,
                 new Context("ingame", 1),
                 new Context("question-field--" + question.field, 1),
-                new Context("question-chosenValue--" + question.chosenValue, 1)
+                new Context("question-chosenValue--" + escapeSpecialChars(question.chosenValue), 1)
             );
             break;
         case Question.GIVE_UP_MESSAGE:
@@ -63,17 +67,17 @@ function fromQuestion(question, additionalContextOut) {
     return response;
 }
 
-function answerGlossaryEnquiry(term, definition, apiAiEvent) {
-    return buildSimpleSpeechApiAiResponse(`<speak>${definition}<break time="1s"/> Should we continue?</speak>`, apiAiEvent);
+function answerGlossaryEnquiry(term, definition, contextsIn) {
+    return buildSimpleSpeechApiAiResponse(`<speak>${definition}<break time="1s"/> Should we continue?</speak>`, contextsIn);
 }
 
-function answerUnknownGlossaryEnquiry(term, apiAiEvent) {
-    return buildSimpleSpeechApiAiResponse(`<speak>I am sorry but I don't much about ${term || "that"}.<break time="1s"/> Should we continue?</speak>`, apiAiEvent);
+function answerUnknownGlossaryEnquiry(term, contextsIn) {
+    return buildSimpleSpeechApiAiResponse(`<speak>I am sorry but I don't much about ${term || "that"}.<break time="1s"/> Should we continue?</speak>`, contextsIn);
 }
 
-function buildSimpleSpeechApiAiResponse(speech, apiAiEvent) {
+function buildSimpleSpeechApiAiResponse(speech, contextsIn) {
     let response = buildApiAiResponse(speech, stripSSMLTags(speech));
-    copyInContextToOutContext(response, apiAiEvent);
+    copyInContextToOutContext(response, contextsIn);
 
     return response;
 }
@@ -86,9 +90,9 @@ function buildApiAiResponse(speech, displayText) {
     };
 }
 
-function copyInContextToOutContext(response, apiAiEvent) {
+function copyInContextToOutContext(response, contextsIn) {
     let contextOut = [];
-    apiAiEvent.result.contexts.forEach(function (context) {
+    contextsIn.forEach(function (context) {
         contextOut.push(context);
     });
 

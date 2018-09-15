@@ -11,7 +11,7 @@ const _ = require("lodash"),
     DbService = require("./services/DbService"),
     AnimalListUtils = require("./services/animal_list_utils"),
     ActionType = require("./models/action_types"),
-    {WebhookClient} = require("dialogflow-fulfillment"),
+    {WebhookClient, Text} = require("dialogflow-fulfillment"),
     AWS = require("aws-sdk");
 
 function AnimalGenie(fullAnimalList) {
@@ -78,24 +78,45 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
         }
     };
 
-    // action: answer_question yes/no/not_sure
+    const repeatQuestion = async function() {
+        try {
+            const userSession = await that.loadSession(agent.session);
+            // that.buildResponseToApiAiForRepeatingLastSpeech(event, callback);
+            const response = ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, agent.contexts);
+            response.contextOut.forEach(context => agent.setContext(context));
+            agent.add(response.speech);
+        } catch (err) {
+            console.log(err);
+            agent.end("Something has gone wrong. Bye now.");
+        }
+    };
+
+    // action: answer_question yes / no / not_sure / repeat
     intentMap.set("Response.To.InGameQuestion.No", answerQuestion);
     intentMap.set("Response.To.InGameQuestion.Yes", answerQuestion);
     intentMap.set("Response.To.InGameQuestion.NotSure", answerQuestion);
+    intentMap.set("Response.To.InGameQuestion.Repeat", repeatQuestion);
 
     // answer_question_glossary_enquiry
     // that.buildSpeechForAnsweringGlossaryEnquiry(event, callback);
-    // intentMap.set("Enquire.Glossary", () => {
-    //     const term = agent.parameters.term;
-    //     that.buildSpeechForAnsweringGlossaryEnquiry(term);
-    // });
+    intentMap.set("Enquire.Glossary", () => {
+        const term = agent.parameters.term,
+            contextsIn = agent.contexts;
+        const responseToApiAi = that.buildSpeechForAnsweringGlossaryEnquiry(term, contextsIn);
+
+        responseToApiAi.contextOut.forEach(context => agent.setContext(context));
+        const text = new Text({
+            text: responseToApiAi.displayText,
+            ssml: responseToApiAi.speech,
+            platform: agent.ACTIONS_ON_GOOGLE
+        });
+
+        agent.add(text);
+    });
     // EnquireGlossary.EnquireGlossary-no
     // intentMap.set("Enquire.Glossary.Continue - no");
     // answer_question_repeat
     intentMap.set("Enquire.Glossary.Continue - yes", answerQuestion);
-
-    // answer_question_repeat
-    intentMap.set("Response.To.InGameQuestion.Repeat", answerQuestion);
 
     // intentMap.set('Test Game Reset', () => agent.add('start the game...'));
     agent.handleRequest(intentMap);
@@ -143,20 +164,19 @@ AnimalGenie.prototype.play = function (event, callback, options) {
     }
 };
 
-AnimalGenie.prototype.buildSpeechForAnsweringGlossaryEnquiryForTerm = function(term, event, callback) {
+AnimalGenie.prototype.buildSpeechForAnsweringGlossaryEnquiryForTerm = function(term, contextsIn) {
     const glossaryRepo = new GlossaryRepo();
     let definition = glossaryRepo.getDefinition(term);
     if (definition) {
-        callback(null, ResponseToApiAi.answerGlossaryEnquiry(term, definition, event));
+        return ResponseToApiAi.answerGlossaryEnquiry(term, definition, contextsIn);
     } else {
-        callback(null, ResponseToApiAi.answerUnknownGlossaryEnquiry(term, event));
+        return ResponseToApiAi.answerUnknownGlossaryEnquiry(term, contextsIn);
     }
 };
 
-AnimalGenie.prototype.buildSpeechForAnsweringGlossaryEnquiry = function(event, callback) {
+AnimalGenie.prototype.buildSpeechForAnsweringGlossaryEnquiry = function(term, contextsIn) {
     let that = this;
-    const term = event.result.parameters.term;
-    that.buildSpeechForAnsweringGlossaryEnquiryForTerm(term, event, callback);
+    return that.buildSpeechForAnsweringGlossaryEnquiryForTerm(term, contextsIn);
 };
 
 AnimalGenie.prototype.buildResponseToApiAiForRepeatingLastSpeech = function(event, callback) {

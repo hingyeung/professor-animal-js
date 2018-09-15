@@ -1,0 +1,43 @@
+{
+    "responseId": "62d1ee63-a4af-484e-ab2f-a74b6c399e59",
+    "queryResult": {
+        "queryText": "sorry",
+        "action": "answer_question_repeat",
+        "parameters": {},
+        "allRequiredParamsPresent": true,
+        "fulfillmentMessages": [
+            {
+                "text": {
+                    "text": [
+                        ""
+                    ]
+                }
+            }
+        ],
+        "outputContexts": [
+            {
+                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-field--types"
+            },
+            {
+                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-chosenvalue--mammal"
+            },
+            {
+                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/readytoplay"
+            },
+            {
+                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
+                "lifespanCount": 1
+            }
+        ],
+        "intent": {
+            "name": "projects/animalgenie20180906/agent/intents/a399cd1e-a2cd-453b-bd74-b21da4ce43dc",
+            "displayName": "Response.To.InGameQuestion.Repeat"
+        },
+        "intentDetectionConfidence": 1,
+        "languageCode": "en"
+    },
+    "originalDetectIntentRequest": {
+        "payload": {}
+    },
+    "session": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56"
+}
