@@ -1,0 +1,64 @@
+{
+  "responseId": "e6f320c1-7c47-427f-8e4d-3cc13c3a5f92",
+  "queryResult": {
+    "queryText": "killer whale",
+    "action": "computer_made_incorrect_guess",
+    "parameters": {
+      "animal": "killer whale"
+    },
+    "allRequiredParamsPresent": true,
+    "fulfillmentText": "Let me read about killer whale later. Another game?",
+    "fulfillmentMessages": [
+      {
+        "text": {
+          "text": [
+            "I need to learn more about killer whale. Do you want to play again?"
+          ]
+        }
+      }
+    ],
+    "outputContexts": [
+      {
+        "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/rejectcomputersguess-followup",
+        "lifespanCount": 2,
+        "parameters": {
+          "animal.original": "killer whale",
+          "animal": "killer whale"
+        }
+      },
+      {
+        "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/responsetocomputerguessreject-followup",
+        "lifespanCount": 2,
+        "parameters": {
+          "animal.original": "killer whale",
+          "animal": "killer whale"
+        }
+      },
+      {
+        "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/computer_made_incorrect_guess",
+        "lifespanCount": 1,
+        "parameters": {
+          "animal.original": "killer whale",
+          "animal": "killer whale"
+        }
+      },
+      {
+        "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/readytoguess",
+        "parameters": {
+          "animal.original": "killer whale",
+          "animal": "killer whale"
+        }
+      }
+    ],
+    "intent": {
+      "name": "projects/animalgenie20180906/agent/intents/271d3891-9ba9-40e9-8b86-92ac650cec1b",
+      "displayName": "Response.To.ComputerGuess.Reject"
+    },
+    "intentDetectionConfidence": 1,
+    "languageCode": "en"
+  },
+  "originalDetectIntentRequest": {
+    "payload": {}
+  },
+  "session": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56"
+}

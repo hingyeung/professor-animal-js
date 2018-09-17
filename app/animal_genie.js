@@ -113,10 +113,20 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
 
         agent.add(text);
     });
-    // EnquireGlossary.EnquireGlossary-no
-    // intentMap.set("Enquire.Glossary.Continue - no");
-    // answer_question_repeat
+    // EnquireGlossary.EnquireGlossary-yes
     intentMap.set("Enquire.Glossary.Continue - yes", answerQuestion);
+
+    // computer_made_incorrect_guess
+    intentMap.set("Response.To.ComputerGuess.Reject", () => {
+        const correctAnimal = agent.parameters.animal;
+        // that.notifyIncorrectGuess(event.result.parameters.animal, options.notificationTopicArn);
+        that.notifyIncorrectGuess(correctAnimal, options.notificationTopicArn);
+    });
+
+    // ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE
+
+    // default fallback
+
 
     // intentMap.set('Test Game Reset', () => agent.add('start the game...'));
     agent.handleRequest(intentMap);
