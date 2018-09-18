@@ -51,8 +51,7 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
         try {
             await dbService.saveSession(userSession);
         } catch (err) {
-            console.log("Failed to save user session", err);
-            agent.end("Something has gone wrong. Bye now.");
+            crashOut(err);
         }
 
         console.dir("nextQuestion: ", nextQuestion);
@@ -73,8 +72,7 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
             response.contextOut.forEach(context => agent.setContext(context));
             agent.add(response.speech);
         } catch(err) {
-            console.log(err);
-            agent.end("Something has gone wrong. Bye now.");
+            crashOut(err);
         }
     };
 
@@ -86,9 +84,13 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
             response.contextOut.forEach(context => agent.setContext(context));
             agent.add(response.speech);
         } catch (err) {
-            console.log(err);
-            agent.end("Something has gone wrong. Bye now.");
+            crashOut(err);
         }
+    };
+
+    const crashOut = function(err) {
+        console.log(err);
+        agent.end("Something is broken on my side. Sorry for leaving you like this. Bye.");
     };
 
     // action: answer_question yes / no / not_sure / repeat
