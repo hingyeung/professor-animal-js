@@ -1,7 +1,6 @@
 'use strict';
 
-const {WebhookClient} = require('dialogflow-fulfillment'),
-    AnimalGenie = require('./animal_genie'),
+const AnimalGenie = require('./animal_genie'),
     AnimalRepo = require('./services/animal_repo');
 
 // exports.myHandler = function (event, context, callback) {

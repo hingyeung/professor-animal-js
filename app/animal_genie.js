@@ -12,6 +12,8 @@ const _ = require("lodash"),
     AnimalListUtils = require("./services/animal_list_utils"),
     ActionType = require("./models/action_types"),
     {WebhookClient, Text} = require("dialogflow-fulfillment"),
+    startGameIntentHandler = require("./handlers/start_game_intent_handler"),
+    answerQuestionHandler = require("./handlers/answer_question_intent_handler"),
     AWS = require("aws-sdk");
 
 function AnimalGenie(fullAnimalList) {
@@ -32,49 +34,14 @@ AnimalGenie.prototype.extractQuestionChosenValueFromContext = function(contextLi
 AnimalGenie.prototype.playByIntent = function(request, response, options) {
     console.log(options);
     const agent = new WebhookClient({request: request, response: response}),
-        intentMap = new Map(),
-        dbService = new DbService();
+        intentMap = new Map();
 
-    let userSession, nextQuestion,
-        that = this;
+    let that = this;
 
     // action: startgame
     intentMap.set("Test Game Reset", async () => {
-        let fullAnimalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(that.fullAnimalList);
-        // this is a new game, get the next question using animals from data file.
-        console.log(fullAnimalNameList, fullAnimalNameList.length);
-        nextQuestion = QuestionSelector.nextQuestion(that.fullAnimalList, []);
-        let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion, agent.contexts);
-        userSession = new UserSession(agent.session,
-            fullAnimalNameList, nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
-
-        try {
-            await dbService.saveSession(userSession);
-        } catch (err) {
-            crashOut(err);
-        }
-
-        console.dir("nextQuestion: ", nextQuestion);
-        responseToApiAi.contextOut.forEach(context => agent.setContext(context));
-        agent.add(responseToApiAi.speech);
+        await startGameIntentHandler(agent, this.fullAnimalList);
     });
-
-    const answerQuestion = async () => {
-        try {
-            const userSession = await that.loadSession(agent.session);
-            const answer = agent.parameters.answer;
-            console.log("answer: ", answer);
-            const contextForNextRound = that.getNextQuestion2(userSession, answer);
-
-            await that.updateSession(contextForNextRound);
-            const response = ResponseToApiAi.fromQuestion(contextForNextRound.nextQuestion);
-            // response.speech, response.contextOut
-            response.contextOut.forEach(context => agent.setContext(context));
-            agent.add(response.speech);
-        } catch(err) {
-            crashOut(err);
-        }
-    };
 
     const repeatQuestion = async function() {
         try {
@@ -94,9 +61,15 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
     };
 
     // action: answer_question yes / no / not_sure / repeat
-    intentMap.set("Response.To.InGameQuestion.No", answerQuestion);
-    intentMap.set("Response.To.InGameQuestion.Yes", answerQuestion);
-    intentMap.set("Response.To.InGameQuestion.NotSure", answerQuestion);
+    intentMap.set("Response.To.InGameQuestion.No", async () => {
+        await answerQuestionHandler(agent, this.fullAnimalList);
+    });
+    intentMap.set("Response.To.InGameQuestion.Yes", async () => {
+        await answerQuestionHandler(agent, this.fullAnimalList);
+    });
+    intentMap.set("Response.To.InGameQuestion.NotSure", async () => {
+        await answerQuestionHandler(agent, this.fullAnimalList);
+    });
     intentMap.set("Response.To.InGameQuestion.Repeat", repeatQuestion);
 
     // answer_question_glossary_enquiry
@@ -116,7 +89,9 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
         agent.add(text);
     });
     // EnquireGlossary.EnquireGlossary-yes
-    intentMap.set("Enquire.Glossary.Continue - yes", answerQuestion);
+    intentMap.set("Enquire.Glossary.Continue - yes", async () => {
+        await answerQuestionHandler(agent, this.fullAnimalList);
+    });
 
     // computer_made_incorrect_guess
     intentMap.set("Response.To.ComputerGuess.Reject", () => {
@@ -230,47 +205,6 @@ AnimalGenie.prototype.updateSession = function(contextForNextRound) {
             deferred.reject(err);
         });
     return deferred.promise;
-};
-
-AnimalGenie.prototype.getNextQuestion2 = function(userSession, answer) {
-    const that = this;
-    let fieldAndAttributeValuesToIgnore, nextQuestion;
-    let animalsToPlayWith = AnimalListUtils.convertAnimalNameListToAnimalList(userSession.animalNames, that.fullAnimalList);
-    // filter animalsToPlayWith before determining the next question
-    if (answer === "yes" || answer === "no") {
-        animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
-    }
-    let animalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(animalsToPlayWith);
-    console.log("animals remaining: ", animalNameList, animalNameList.length);
-
-    if (animalsToPlayWith.length === 1) {
-        fieldAndAttributeValuesToIgnore = [];
-        nextQuestion = new Question(null, null, animalsToPlayWith[0].name, "ready_to_guess_question");
-        userSession.speech = nextQuestion.toText();
-    } else {
-
-        // if the answer is "yes", the attribute needs to be ignored during the generation of
-        // the next question to avoid infinity loop (always pick the most popular attribute, which
-        // remain the same.
-        // Also ignored the attribute if player answered "not_sure" to avoid asking the same question
-        fieldAndAttributeValuesToIgnore = userSession.fieldAndAttributeValuesToIgnore;
-        if (answer === "yes" || answer === "not_sure") {
-            fieldAndAttributeValuesToIgnore.push({
-                field: userSession.field,
-                attributeValue: userSession.chosenValue
-            });
-        }
-
-        nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith, fieldAndAttributeValuesToIgnore);
-        userSession.speech = nextQuestion.toText();
-        console.log("Next question to ask: ", nextQuestion.toText());
-    }
-    return {
-        nextQuestion: nextQuestion,
-        userSession: userSession,
-        animalsForNextRound: animalsToPlayWith,
-        fieldAndAttributeValuesToIgnore: fieldAndAttributeValuesToIgnore
-    };
 };
 
 AnimalGenie.prototype.getNextQuestion = function(event) {

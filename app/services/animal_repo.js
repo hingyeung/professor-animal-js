@@ -14,7 +14,9 @@ function AnimalRepo(datafile) {
     };
 
     if (process.env.AWS_SAM_LOCAL) {
-        let config = require(`../configs/${process.env.NODE_ENV}/config.json`);
+        const configFile = "../configs/local/config.json";
+        console.log(`Loading ${configFile}...`);
+        const config = require(configFile);
         options.endpoint = config.s3Endpoint;
     }
 
