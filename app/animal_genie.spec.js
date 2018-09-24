@@ -16,8 +16,8 @@ describe('AnimalGenie', function () {
     let mockAnimalRepo, mockDbService, getSessionStub, AnimalGenie, animalGenie, nextQuestionStub, mockResponseToApiAi,
         fullAnimalListFromFile, listOfAnimalsRestoredFromSession, convertAnimalNameListToAnimalListStub,
         allAnimalsStub, saveSessionStub, mockQuestionSelector, nextQuestion, apiAiForGiveUpMessage,
-        apiAiForRepeatingSpeech, apiAiForAnswerForGlossaryEnquirySpeech, mockGlossaryRepo,
-        userSession, filterStub, mockAnimalFilter, callbackSpy, apiAiResponseForFilterBasedQuestion,
+        apiAiForRepeatingSpeech, apiAiForAnswerForGlossaryEnquirySpeech, mockGlossaryRepo, handleRequestSpy, askSpy, endSpy,
+        userSession, filterStub, mockAnimalFilter, callbackSpy, apiAiResponseForFilterBasedQuestion, mockWebhookClient,
         apiAiResponseForReadyToGuessQuestion, glossaryGetDefinitionStub, apiAiForAnswerForUnknownGlossaryEnquirySpeech;
 
     beforeEach(function () {
@@ -74,6 +74,9 @@ describe('AnimalGenie', function () {
         ];
         getSessionStub = sinon.promise().resolves(userSession);
         saveSessionStub = sinon.promise().resolves(userSession);
+        askSpy = sinon.spy();
+        endSpy = sinon.spy();
+        handleRequestSpy = sinon.spy();
         nextQuestion = new Question("diet", ["A", "B"], "A");
         nextQuestionStub = sinon.stub().returns(nextQuestion);
         filterStub = sinon.stub().returns(listOfAnimalsRestoredFromSession);
@@ -94,6 +97,13 @@ describe('AnimalGenie', function () {
             return {
                 saveSession: saveSessionStub,
                 getSession: getSessionStub
+            };
+        };
+        mockWebhookClient = function () {
+            return {
+                ask: askSpy,
+                end: endSpy,
+                handleRequest: handleRequestSpy
             };
         };
         mockAnimalRepo = function () {
@@ -138,10 +148,17 @@ describe('AnimalGenie', function () {
         // animalGenie = new AnimalGenie();
     });
 
-    it('shouild call callback', function () {
-        let event = createEvent("123", "startgame", "yes");
-        animalGenie.play(event, callbackSpy);
-        callbackSpy.calledWith(null, apiAiResponseForFilterBasedQuestion).should.equal(true);
+    // it('shouild call callback', function () {
+    //     let event = createEvent("123", "startgame", "yes");
+    //     animalGenie.play(event, callbackSpy);
+    //     callbackSpy.calledWith(null, apiAiResponseForFilterBasedQuestion).should.equal(true);
+    // });
+
+    it("should reply player", () => {
+        let webhookRequest = createStartGameWebhookRequest();
+        animalGenie.playByIntent(webhookRequest, {}, null);
+        handleRequestSpy.called.should.equal(true);
+        console.dir(handleRequestSpy.args);
     });
 
     it('should create new session in DB when Api.ai action is "startgame"', function () {
@@ -379,6 +396,7 @@ describe('AnimalGenie', function () {
         return new (proxyquire('./animal_genie', {
             './services/animal_repo': mockAnimalRepo,
             './services/DbService': mockDbService,
+            'dialogflow-fulfillment': {WebhookClient: mockWebhookClient},
             './services/question_selector': mockQuestionSelector,
             './models/response_to_api_ai': mockResponseToApiAi,
             './services/animal_filter': mockAnimalFilter,
@@ -402,4 +420,48 @@ describe('AnimalGenie', function () {
             }
         };
     }
+
+    const createStartGameWebhookRequest = () => {
+        const outputContexts = [
+                {
+                    "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/readytoplay",
+                    "lifespanCount": 1
+                }
+            ],
+            intent = {
+                "name": "projects/animalgenie20180906/agent/intents/d7e5f593-dfa0-4488-8bbf-98ba8c34b8c1",
+                "displayName": "Test Game Reset"
+            };
+
+        return createWebhookRequest("test game reset", "startgame", {}, outputContexts, intent);
+    };
+
+    const createWebhookRequest = (queryText, action, parameters, outputContexts, intent) => {
+        return {
+            "responseId": "81902796-90a9-4d68-8a2d-e41bc605072b",
+            "queryResult": {
+                "queryText": queryText,
+                "action": action,
+                "parameters": parameters,
+                "allRequiredParamsPresent": true,
+                "fulfillmentMessages": [
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ],
+                "outputContexts": outputContexts,
+                "intent": intent,
+                "intentDetectionConfidence": 0.59,
+                "languageCode": "en"
+            },
+            "originalDetectIntentRequest": {
+                "payload": {}
+            },
+            "session": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56"
+        };
+    };
 });

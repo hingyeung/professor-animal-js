@@ -3,25 +3,6 @@
 const AnimalGenie = require('./animal_genie'),
     AnimalRepo = require('./services/animal_repo');
 
-// exports.myHandler = function (event, context, callback) {
-//     console.dir(event.result.action);
-//     console.dir(event.result.contexts);
-//     console.dir(event.result.parameters);
-//
-//     let animalRepo = new AnimalRepo();
-//     animalRepo.loadAnimals()
-//         .then((fullAnimalList) => {
-//             new AnimalGenie(fullAnimalList).play(event, callback, );
-//         })
-//         .catch((err) => {
-//             console.log('Error loading animal definition', err);
-//         })
-//         .done();
-//
-//     // or
-//     // callback("some error type");
-// };
-
 const createAnimalGenieApp = function (request, response) {
     const animalRepo = new AnimalRepo();
     animalRepo.loadAnimals()
