@@ -30,7 +30,6 @@ Question.prototype.toText = function () {
                 default:
                     return "I don't know what to ask!";
             }
-            break;
         case "ready_to_guess_question":
             return `It is a ${this.chosenValue}. Am I right?`;
         case Question.GIVE_UP_MESSAGE:

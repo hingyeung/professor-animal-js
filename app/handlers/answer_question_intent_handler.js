@@ -11,8 +11,8 @@ const answerQuestionHandler = async (agent, fullAnimalList) => {
     try {
         const userSession = await loadSession(agent.session);
         const answer = agent.parameters.answer;
-        console.log("answer: ", answer);
         const contextForNextRound = getNextQuestion2(userSession, answer, fullAnimalList);
+        console.log("answer: ", answer);
 
         await updateSession(contextForNextRound);
         const response = ResponseToApiAi.fromQuestion(contextForNextRound.nextQuestion);
@@ -65,7 +65,7 @@ const getNextQuestion2 = function(userSession, answer, fullAnimalList) {
 
     if (animalsToPlayWith.length === 1) {
         fieldAndAttributeValuesToIgnore = [];
-        nextQuestion = new Question(null, null, animalsToPlayWith[0].name, "ready_to_guess_question");
+        nextQuestion = new Question(null, null, animalsToPlayWith[0].name, Question.READY_TO_GUESS_QUESTION);
         userSession.speech = nextQuestion.toText();
     } else {
         // if the answer is "yes", the attribute needs to be ignored during the generation of

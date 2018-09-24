@@ -7,7 +7,8 @@
       "big cat",
       "large",
       "carnivore",
-      "predator"
+      "predator",
+      "A"
     ],
     "behaviours": [
       "hunt in a pack"
@@ -28,7 +29,8 @@
       "vertebrate",
       "mammal",
       "herbivore",
-      "large"
+      "large",
+      "A"
     ],
     "behaviours": [
       "live in a group"
@@ -108,7 +110,8 @@
       "vertebrate",
       "bird",
       "bird of prey",
-      "large"
+      "large",
+      "B"
     ],
     "behaviours": [
       "carnivore",
