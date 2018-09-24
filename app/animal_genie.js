@@ -42,6 +42,9 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
     intentMap.set("Test Game Reset", async () => {
         await startGameIntentHandler(agent, this.fullAnimalList);
     });
+    intentMap.set("Default Welcome Intent - ready to pick animal - yes", async () => {
+        await startGameIntentHandler(agent, this.fullAnimalList);
+    });
 
     const repeatQuestion = async function() {
         try {
