@@ -29,6 +29,21 @@ class WebhookRequestBuilder {
         return WebhookRequestBuilder.createWebhookRequest("Repeat", "answer_question_repeat", {}, outputContexts, intent);
     }
 
+    static createEnquireGlossaryRequest() {
+        const outputContexts = [
+                {
+                    "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
+                    "lifespanCount": 1
+                }
+            ],
+            intent = {
+                "name": "projects/animalgenie20180906/agent/intents/d7e5f593-dfa0-4488-8bbf-98ba8c34b8c1",
+                "displayName": "Enquire.Glossary"
+            };
+
+        return WebhookRequestBuilder.createWebhookRequest("what is mammal", "answer_question_glossary_enquiry", {"term": "mammal"}, outputContexts, intent);
+    }
+
     static createStartGameWebhookRequest() {
         const outputContexts = [
                 {
