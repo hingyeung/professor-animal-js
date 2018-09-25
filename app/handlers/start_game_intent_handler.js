@@ -16,8 +16,7 @@ const startGameHandler = async (agent, fullAnimalList) => {
     userSession = new UserSession(agent.session,
         fullAnimalNameList, nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
     try {
-        const newSession = await dbService.saveSession(userSession);
-        console.dir("new session: ", newSession);
+        await dbService.saveSession(userSession);
     } catch (err) {
         errorHandler(agent, err);
     }
