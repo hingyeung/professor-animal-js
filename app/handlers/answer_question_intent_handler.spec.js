@@ -23,7 +23,7 @@ describe("answer_question_intent_handler", () => {
         chai.use(sinonChai);
         chai.should();
 
-        mockDbService = createMockDbService(new UserSession("123", ["Lion", "Eagle", "Elephant"], "types", "A"));
+        mockDbService = createMockDbService(new UserSession("123", ["Lion", "Eagle", "Elephant", "Shark"], "types", "A"));
 
         nextQuestion = new Question("diet", ["A", "B"], "A");
         nextQuestionStub = sandbox.stub().returns(nextQuestion);
@@ -55,11 +55,30 @@ describe("answer_question_intent_handler", () => {
         mockDbService.prototype.getSession.should.have.been.called;
     });
 
-    it('should get the next question with QuestionSelector', async () => {
+    it("should ignore field and attribute value when user answer is \"no\" when getting the next queston", async () => {
+        agent = new WebhookClient({
+            request: WebhookRequestBuilder.createAnswerQuestionWebhookRequest("no"),
+            response: {}
+        });
+
         await answerQuestionIntentHandler(agent, fullAnimalListFromFile);
 
-        nextQuestionStub.should.have.been.called;
+        nextQuestionStub.should.have.been.calledWith(sinon.match.array, []);
     });
+
+    ["yes", "not_sure"].forEach((answer) => {
+        it(`should ignore field and attribute value when user answer is ${answer} when getting the next queston`, async () => {
+            agent = new WebhookClient({
+                request: WebhookRequestBuilder.createAnswerQuestionWebhookRequest(answer),
+                response: {}
+            });
+
+            await answerQuestionIntentHandler(agent, fullAnimalListFromFile);
+
+            nextQuestionStub.should.have.been.calledWith(sinon.match.array, [{ attributeValue: "A", field: "types" }]);
+        });
+    });
+
 
     it('should save user session', async () => {
         await answerQuestionIntentHandler(agent, fullAnimalListFromFile);
@@ -67,12 +86,27 @@ describe("answer_question_intent_handler", () => {
         mockDbService.prototype.saveSession.should.have.been.called;
     });
 
-    it('should ask the next question', async () => {
+    it('should filter animals', async () => {
+        await answerQuestionIntentHandler(agent, fullAnimalListFromFile);
+
+        AnimalFilter.filter.should.have.been.called;
+    });
+
+    it("should response with the next question", async () => {
         await answerQuestionIntentHandler(agent, fullAnimalListFromFile);
 
         WebhookClient.prototype.add.should.have.been.calledWith("Does it eat A?");
+    });
 
-        AnimalFilter.filter.should.have.been.called;
+    it("should not filter animals when user asks to repeat the question", async () => {
+        agent = new WebhookClient({
+            request: WebhookRequestBuilder.createAnswerQuestionWebhookRequest("not_sure"),
+            response: {}
+        });
+
+        await answerQuestionIntentHandler(agent, fullAnimalListFromFile);
+
+        AnimalFilter.filter.should.not.have.been.called;
     });
 
     it("should be ready to make a guess when only one animal remaining", async () => {
@@ -84,17 +118,6 @@ describe("answer_question_intent_handler", () => {
         await answerQuestionIntentHandler(agent, fullAnimalListFromFile);
 
         WebhookClient.prototype.add.should.have.been.calledWith("It is a Lion. Am I right?");
-    });
-
-    it("should not filter animal when user asks to repeat the question", async () => {
-        agent = new WebhookClient({
-            request: WebhookRequestBuilder.createAnswerQuestionWebhookRequest("not_sure"),
-            response: {}
-        });
-
-        await answerQuestionIntentHandler(agent, fullAnimalListFromFile);
-
-        AnimalFilter.filter.should.not.have.been.called;
     });
 
     const createMockDbService = (userSession) => {
