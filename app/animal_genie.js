@@ -8,6 +8,7 @@ const _ = require("lodash"),
     {WebhookClient, Text} = require("dialogflow-fulfillment"),
     startGameIntentHandler = require("./handlers/start_game_intent_handler"),
     answerQuestionHandler = require("./handlers/answer_question_intent_handler"),
+    repeatQuestionIntentHandler = require('./handlers/repeat_question_intent_handler'),
     AWS = require("aws-sdk");
 
 function AnimalGenie(fullAnimalList) {
@@ -45,23 +46,6 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
         await startGameIntentHandler(agent, this.fullAnimalList);
     });
 
-    const repeatQuestion = async function() {
-        try {
-            const userSession = await that.loadSession(agent.session);
-            // that.buildResponseToApiAiForRepeatingLastSpeech(event, callback);
-            const response = ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, agent.contexts);
-            response.contextOut.forEach(context => agent.setContext(context));
-            agent.add(response.speech);
-        } catch (err) {
-            crashOut(err);
-        }
-    };
-
-    const crashOut = function(err) {
-        console.log(err);
-        agent.end("Something is broken on my side. Sorry for leaving you like this. Bye.");
-    };
-
     // action: answer_question yes / no / not_sure / repeat
     intentMap.set("Response.To.InGameQuestion.No", async () => {
         await answerQuestionHandler(agent, this.fullAnimalList);
@@ -72,7 +56,9 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
     intentMap.set("Response.To.InGameQuestion.NotSure", async () => {
         await answerQuestionHandler(agent, this.fullAnimalList);
     });
-    intentMap.set("Response.To.InGameQuestion.Repeat", repeatQuestion);
+    intentMap.set("Response.To.InGameQuestion.Repeat", async () => {
+        await repeatQuestionIntentHandler(agent);
+    });
 
     // answer_question_glossary_enquiry
     // that.buildSpeechForAnsweringGlossaryEnquiry(event, callback);

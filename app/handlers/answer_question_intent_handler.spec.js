@@ -110,7 +110,7 @@ describe("answer_question_intent_handler", () => {
         WebhookClient.prototype.add.should.have.been.calledWith("Does it eat A?");
     });
 
-    it("should not filter animals when user asks to repeat the question", async () => {
+    it("should not filter animals when user is unsure about the answer of a question", async () => {
         agent = new WebhookClient({
             request: WebhookRequestBuilder.createAnswerQuestionWebhookRequest("not_sure"),
             response: {}
