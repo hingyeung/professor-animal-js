@@ -6,27 +6,12 @@ const _ = require("lodash"),
     answerQuestionHandler = require("./handlers/answer_question_intent_handler"),
     repeatQuestionIntentHandler = require('./handlers/repeat_question_intent_handler'),
     enquireGlossaryIntentHandler = require('./handlers/enquire_glossary_intent_handler'),
+    enquireGlossaryForTermInContextIntentHandler = require('./handlers/enquire_glossary_for_term_in_context_intent_handler'),
     AWS = require("aws-sdk");
 
 function AnimalGenie(fullAnimalList) {
     this.fullAnimalList = fullAnimalList;
 }
-
-// TODO: move this to a separate intent handler
-// else if (event.result.action === ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE) {
-//     const term = that.extractQuestionChosenValueFromContext(event.result.contexts);
-//     that.buildSpeechForAnsweringGlossaryEnquiryForTerm(term, event, callback);
-// }
-// AnimalGenie.prototype.extractQuestionChosenValueFromContext = function(contextList) {
-//     let chosenValue = null;
-//     _.find(contextList, function(context) {
-//         const matched = context.name.match(/^question.chosenValue:(.+)$/);
-//         chosenValue = matched ? matched[1] : null;
-//         return matched;
-//     });
-//
-//     return chosenValue;
-// };
 
 AnimalGenie.prototype.playByIntent = function(request, response, options) {
     console.log(options);
@@ -64,6 +49,9 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
     // EnquireGlossary.EnquireGlossary-yes
     intentMap.set("Enquire.Glossary.Continue - yes", async () => {
         await answerQuestionHandler(agent, this.fullAnimalList);
+    });
+    intentMap.set("Enquire.Glossary.For.Term.In.Current.Question", async () => {
+        await enquireGlossaryForTermInContextIntentHandler(agent);
     });
 
     // computer_made_incorrect_guess

@@ -8,7 +8,7 @@ const proxyquire = require("proxyquire").noPreserveCache(),
     AWS = require("aws-sdk");
 
 describe("computer_guess_rejected_intent_handler", function () {
-    let stubPublish, sandbox, handler;
+    let stubSNSPublish, sandbox, handler;
 
     beforeEach(() => {
         sinonPromise(sinon);
@@ -16,9 +16,9 @@ describe("computer_guess_rejected_intent_handler", function () {
         chai.should();
 
         sandbox = sinon.createSandbox();
-        stubPublish = sandbox.stub();
+        stubSNSPublish = sandbox.stub();
         sandbox.stub(AWS, 'SNS').returns({
-            publish: stubPublish
+            publish: stubSNSPublish
         });
         handler = proxyquire("./computer_guess_rejected_intent_handler", {
             "aws-sdk": AWS
@@ -32,7 +32,7 @@ describe("computer_guess_rejected_intent_handler", function () {
     it("should send notification to SNS topic", () => {
         handler('animal', 'snsTopicArn');
 
-        stubPublish.should.have.been.calledWith({
+        stubSNSPublish.should.have.been.calledWith({
             "Message": sinon.match.string,
             "Subject": sinon.match.string,
             "TopicArn": 'snsTopicArn'

@@ -4,6 +4,29 @@ class WebhookRequestBuilder {
                 {
                     "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
                     "lifespanCount": 1
+                },
+                {
+                    "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question.field:types",
+                    "lifespan": 1
+                },
+                {
+                    "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question.chosenValue:mammal",
+                    "lifespan": 1
+                }
+            ],
+            intent = {
+                "name": "projects/animalgenie20180906/agent/intents/d7e5f593-dfa0-4488-8bbf-98ba8c34b8c1",
+                "displayName": "Response.To.InGameQuestion.Yes"
+            };
+
+        return WebhookRequestBuilder.createWebhookRequest(answer, "answer_question", {answer: answer}, outputContexts, intent);
+    }
+
+    static createAnswerQuestionWebhookRequestWithoutCurrentFieldAndChosenValueInContext(answer) {
+        const outputContexts = [
+                {
+                    "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
+                    "lifespanCount": 1
                 }
             ],
             intent = {
