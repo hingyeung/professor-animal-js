@@ -410,7 +410,8 @@
       "legs"
     ],
     "types": [
-      "vertebrate"
+      "vertebrate",
+      "mammal"
     ],
     "behaviours": [
       "only eat plants",
@@ -441,7 +442,8 @@
       "teeth that grow constantly"
     ],
     "types": [
-      "vertebrate"
+      "vertebrate",
+      "mammal"
     ],
     "behaviours": [
       "only eat plants",
