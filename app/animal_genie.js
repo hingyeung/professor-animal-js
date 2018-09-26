@@ -1,9 +1,6 @@
 "use strict";
 
 const _ = require("lodash"),
-    ResponseToApiAi = require("./models/response_to_api_ai"),
-    GlossaryRepo = require("./services/glossary_repo"),
-    DbService = require("./services/DbService"),
     {WebhookClient} = require("dialogflow-fulfillment"),
     startGameIntentHandler = require("./handlers/start_game_intent_handler"),
     answerQuestionHandler = require("./handlers/answer_question_intent_handler"),

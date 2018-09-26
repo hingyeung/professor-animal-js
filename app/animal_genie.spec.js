@@ -148,30 +148,6 @@ describe('AnimalGenie', function () {
         // animalGenie = new AnimalGenie();
     });
 
-    it('should explain definition of a word in glossary during game', function (done) {
-        let event = createEvent("123", ActionType.ANSWER_QUESTION_GLOSSARY_ENQUIRY);
-        animalGenie.play(event, function (err, responseToApiAi) {
-            responseToApiAi.should.equal(apiAiForAnswerForGlossaryEnquirySpeech);
-            done();
-        });
-    });
-
-    it('should response properly when definition of a word is unknown during game', function (done) {
-        let event = createEvent("123", ActionType.ANSWER_QUESTION_GLOSSARY_ENQUIRY);
-        mockGlossaryRepo = function () {
-            return {
-                getDefinition: glossaryGetDefinitionStub.returns(null)
-            };
-        };
-        // force mockGlossaryRepo to use the updated getDefinition()
-        animalGenie = animalGenieWithMocks();
-
-        animalGenie.play(event, function (err, responseToApiAi) {
-            responseToApiAi.should.equal(apiAiForAnswerForUnknownGlossaryEnquirySpeech);
-            done();
-        });
-    });
-
     it('should explain definition of the chosen value of the current question during game', (done) => {
         const contextWithCurrentQuestionFieldAndChosenValue = [new Context('question.field:FIELD', 1), new Context('question.chosenValue:VALUE', 1)];
         let event = createEvent("123", ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE, null, contextWithCurrentQuestionFieldAndChosenValue);
