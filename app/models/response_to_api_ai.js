@@ -91,6 +91,10 @@ function buildApiAiResponse(speech, displayText) {
 }
 
 function copyInContextToOutContext(response, contextsIn) {
+    if (!contextsIn) {
+        return;
+    }
+
     let contextOut = [];
     contextsIn.forEach(function (context) {
         contextOut.push(context);

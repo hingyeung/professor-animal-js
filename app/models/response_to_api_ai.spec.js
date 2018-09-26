@@ -58,12 +58,7 @@ describe('ResponseFromApiAi', function () {
     it('should use speech saved in session when in-context is not set', function () {
         let userSession = new UserSession("123");
         userSession.speech = 'previous speech';
-        let apiAiEvent = {
-            result: {
-                contexts: []
-            }
-        };
-        ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, apiAiEvent).should.deep.equal({
+        ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, []).should.deep.equal({
             speech: "previous speech",
             displayText: "previous speech",
             source: "samuelli.net"
@@ -73,70 +68,43 @@ describe('ResponseFromApiAi', function () {
     it('should use speech saved in session when in-context is set', function () {
         let userSession = new UserSession("123");
         userSession.speech = 'previous speech';
-        let apiAiEvent = {
-            result: {
-                contexts: [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}]
-            }
-        };
-        ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, apiAiEvent).should.deep.equal({
+        const contexts = [new Context('a', 1), new Context('b', 1)];
+        ResponseToApiAi.repeatSpeechFromUserSesssion(userSession, contexts).should.deep.equal({
             speech: "previous speech",
             displayText: "previous speech",
             source: "samuelli.net",
-            contextOut: [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}]
+            contextOut: contexts
         });
     });
 
     it('should convert glossary definition without in-context', function () {
-        let apiAiEvent = {
-            result: {
-                contexts: []
-            }
-        };
-        ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A.", apiAiEvent).should.deep.equal(
+        ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A.", []).should.deep.equal(
             buildExpectedContextOut("<speak>definition for A.<break time=\"1s\"/> Should we continue?</speak>", "definition for A. Should we continue?", null, null, null)
         );
     });
 
     it('should convert glossary definition with in-context', function () {
-        let apiAiEvent = {
-            result: {
-                contexts: [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}]
-            }
-        };
-        ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A.", apiAiEvent).should.deep.equal(
-            buildExpectedContextOut("<speak>definition for A.<break time=\"1s\"/> Should we continue?</speak>", "definition for A. Should we continue?", null, null, [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
+        const contexts = [new Context('a', 1), new Context('b', 1)];
+        ResponseToApiAi.answerGlossaryEnquiry("A", "definition for A.", contexts).should.deep.equal(
+            buildExpectedContextOut("<speak>definition for A.<break time=\"1s\"/> Should we continue?</speak>", "definition for A. Should we continue?", null, null, contexts)
         );
     });
 
     it('should convert unknown glossary definition without in-context', function () {
-        let apiAiEvent = {
-            result: {
-                contexts: []
-            }
-        };
-        ResponseToApiAi.answerUnknownGlossaryEnquiry("A", apiAiEvent).should.deep.equal(
+        ResponseToApiAi.answerUnknownGlossaryEnquiry("A", []).should.deep.equal(
             buildExpectedContextOut("<speak>I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about A. Should we continue?", null, null, null)
         );
     });
 
     it('should convert unknown glossary definition with in-context', function () {
-        let apiAiEvent = {
-            result: {
-                contexts: [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}]
-            }
-        };
-        ResponseToApiAi.answerUnknownGlossaryEnquiry("A", apiAiEvent).should.deep.equal(
-            buildExpectedContextOut("<speak>I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about A. Should we continue?", null, null, [{name: "a", lifespan: 1}, {name: "b", lifespan: 2}])
+        const contexts = [new Context('a', 1), new Context('b', 2)];
+        ResponseToApiAi.answerUnknownGlossaryEnquiry("A", contexts).should.deep.equal(
+            buildExpectedContextOut("<speak>I am sorry but I don't much about A.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about A. Should we continue?", null, null, contexts)
         );
     });
 
     it('should convert properly when term for glossary look up is null', function () {
-        let apiAiEvent = {
-            result: {
-                contexts: []
-            }
-        };
-        ResponseToApiAi.answerUnknownGlossaryEnquiry(null, apiAiEvent).should.deep.equal(
+        ResponseToApiAi.answerUnknownGlossaryEnquiry(null, []).should.deep.equal(
             buildExpectedContextOut("<speak>I am sorry but I don't much about that.<break time=\"1s\"/> Should we continue?</speak>", "I am sorry but I don't much about that. Should we continue?", null, null, null)
         );
     });
@@ -150,8 +118,8 @@ function buildExpectedContextOut(speech, text, questionField, questionChosenValu
     };
 
     let contextOutForResponse = contextOut || [];
-    if (questionField) contextOutForResponse.push(new Context("question.field:" + questionField, 1));
-    if (questionChosenValue) contextOutForResponse.push(new Context("question.chosenValue:" + questionChosenValue, 1));
+    if (questionField) contextOutForResponse.push(new Context("question-field--" + questionField, 1));
+    if (questionChosenValue) contextOutForResponse.push(new Context("question-chosenValue--" + questionChosenValue, 1));
 
     return _.extend(
         {},
