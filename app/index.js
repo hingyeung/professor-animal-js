@@ -2,7 +2,7 @@
 
 const bodyParser = require("body-parser"),
     serverless = require("serverless-http"),
-    {createAnimalGenieApp} = require("./CreateAnimalGenieApp"),
+    createAnimalGenieApp = require("./CreateAnimalGenieApp"),
     express = require("express");
 
 const expressApp = express();

@@ -18,9 +18,6 @@ const createAnimalGenieApp = function (request, response) {
             console.log('Error loading animal definition', err);
         })
         .done();
-
-    // or
-    // callback("some error type");
 };
 
-exports.createAnimalGenieApp = createAnimalGenieApp;
+module.exports = createAnimalGenieApp;

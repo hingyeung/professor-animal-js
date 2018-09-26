@@ -1,23 +1,26 @@
-const should = require('chai').should(),
-    sinon = require('sinon'),
-    sinonPromise = require('sinon-promise'),
-    proxyquire = require('proxyquire').noPreserveCache();
+const sinon = require("sinon"),
+    sinonPromise = require("sinon-promise"),
+    chai = require("chai"),
+    sinonChai = require("sinon-chai"),
+    proxyquire = require("proxyquire").noPreserveCache();
 
-let index, mockAnimalGenie, mockAnimalRepo, mockEvent, mockLoadAnimals, mockPlay, fullAnimalList;
+let createAnimalGenieApp, mockAnimalGenie, mockAnimalRepo, mockLoadAnimals, mockPlayByIntent;
 
-describe('index', function () {
+describe("CreateAnimalGenieApp", function () {
+    let originalEnv;
+
     beforeEach(() => {
         sinonPromise(sinon);
+        chai.use(sinonChai);
+        chai.should();
 
-        fullAnimalList = [];
+        const fullAnimalList = [];
         mockLoadAnimals = sinon.promise().resolves(fullAnimalList);
-        mockPlay = sinon.spy(function(event, callback) {
-            callback();
-        });
+        mockPlayByIntent = sinon.stub();
 
-        mockAnimalGenie = sinon.spy(function (fullAnimalData) {
+        mockAnimalGenie = sinon.spy(function () {
             return {
-                play: mockPlay
+                playByIntent: mockPlayByIntent
             };
         });
         mockAnimalRepo = function () {
@@ -25,30 +28,29 @@ describe('index', function () {
                 loadAnimals: mockLoadAnimals
             };
         };
-        mockEvent = {
-            result: {
-                action: '',
-                contexts: '',
-                parameters: ''
-            }
-        };
 
-        index = proxyquire('./index', {
-            './animal_genie': mockAnimalGenie,
-            './services/animal_repo': mockAnimalRepo
+        createAnimalGenieApp = proxyquire("./CreateAnimalGenieApp", {
+            "./animal_genie": mockAnimalGenie,
+            "./services/animal_repo": mockAnimalRepo
         });
+
+        originalEnv = process.env;
     });
 
-    it('should read all animals definition"', function () {
-        index.myHandler(mockEvent);
+    afterEach(() => {
+        process.env = Object.assign({}, originalEnv);
+    });
+
+    it("should load animal definition\"", function () {
+        createAnimalGenieApp({}, {});
         mockLoadAnimals.calledOnce.should.equal(true);
     });
 
-    it('should call instantiate AnimalGenie to play', function(done) {
-        index.myHandler(mockEvent, {}, function() {
-            mockAnimalGenie.calledOnce.should.equal(true);
-            mockPlay.calledOnce.should.equal(true);
-            done();
-        });
+    it("should call instantiate AnimalGenie to play", async function () {
+        process.env.NOTIFICATION_TOPIC_ARN = "snsTopicArn";
+        const request = {a: 1}, response = {b: 2}, options = {notificationTopicArn: "snsTopicArn"};
+        await createAnimalGenieApp(request, response, options);
+        mockAnimalGenie.should.have.been.calledOnce;
+        mockPlayByIntent.should.have.been.calledOnceWith(request, response, options);
     });
 });
