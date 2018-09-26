@@ -3,20 +3,12 @@
 const bodyParser = require("body-parser"),
     serverless = require("serverless-http"),
     createAnimalGenieApp = require("./CreateAnimalGenieApp"),
-    express = require("express");
+    express = require("express"),
+    expressApp = express(),
+    path = process.env.AWS_SAM_LOCAL ? "/apiaiwebhook" : "/v1/apiaiwebhook";
 
-const expressApp = express();
 expressApp.use(bodyParser.json());
-const path = process.env.AWS_SAM_LOCAL ? "/apiaiwebhook" : "/v1/apiaiwebhook";
 expressApp.post(path, createAnimalGenieApp);
 
 console.log("preparing lambda");
-
 exports.myHandler = serverless(expressApp);
-
-// exports.myHandler = function(event, context, callback) {
-//     console.log('in lambda');
-//     callback(null, {body: 'success', statusCode: 200});
-// };
-
-// exports.myHandler({}, {}, () => {});
