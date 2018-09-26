@@ -7,6 +7,7 @@ const _ = require("lodash"),
     repeatQuestionIntentHandler = require('./handlers/repeat_question_intent_handler'),
     enquireGlossaryIntentHandler = require('./handlers/enquire_glossary_intent_handler'),
     enquireGlossaryForTermInContextIntentHandler = require('./handlers/enquire_glossary_for_term_in_context_intent_handler'),
+    computerGuessRejectedIntentHandler = require('./handlers/computer_guess_rejected_intent_handler'),
     AWS = require("aws-sdk");
 
 function AnimalGenie(fullAnimalList) {
@@ -17,8 +18,9 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
     console.log(options);
     const agent = new WebhookClient({request: request, response: response}),
         intentMap = new Map();
-
-    let that = this;
+    if (agent.agentVersion === 1) {
+        agent.session = request.body.sessionId;
+    }
 
     // action: startgame
     intentMap.set("Test Game Reset", async () => {
@@ -55,9 +57,10 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
     });
 
     // computer_made_incorrect_guess
-    intentMap.set("Response.To.ComputerGuess.Reject", () => {
+    intentMap.set("Response.To.ComputerGuess.Reject", async () => {
         const correctAnimal = agent.parameters.animal;
-        that.notifyIncorrectGuess(correctAnimal, options.notificationTopicArn);
+        // that.notifyIncorrectGuess(correctAnimal, options.notificationTopicArn);
+        await computerGuessRejectedIntentHandler(agent, correctAnimal, options.notificationTopicArn);
     });
 
     // ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE
@@ -67,20 +70,6 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
 
     // intentMap.set('Test Game Reset', () => agent.add('start the game...'));
     agent.handleRequest(intentMap);
-};
-
-AnimalGenie.prototype.notifyIncorrectGuess = function (animal, topicArn) {
-    let sns = new AWS.SNS();
-    console.dir(topicArn);
-    let params = {
-        Message: "Professor Animal has made an incorrect guess. The answer was " + animal,
-        Subject: "Professor Animal has just lost a game.",
-        TopicArn: topicArn
-    };
-    sns.publish(params, function (err, data) {
-        if (err) console.log(err, err.stack); // an error occurred
-        else console.log(data);           // successful response
-    });
 };
 
 module.exports = AnimalGenie;

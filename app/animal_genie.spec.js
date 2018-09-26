@@ -27,10 +27,16 @@ describe('AnimalGenie', function () {
         sandbox.restore();
     });
 
+    it("should handle request from v1 fulfillment api", async () => {
+        await new AnimalGenie().playByIntent(WebhookRequestBuilder.createStartGameWebhookV1Request(), {}, {});
+
+        WebhookClient.prototype.handleRequest.should.have.been.calledOnceWith(sinon.match.map);
+    });
+
     it("should handle request using Dialogflow API", async () => {
         await new AnimalGenie().playByIntent(WebhookRequestBuilder.createStartGameWebhookRequest(), {}, {});
 
-        WebhookClient.prototype.handleRequest.should.have.been.calledOnce;
+        WebhookClient.prototype.handleRequest.should.have.been.calledOnceWith(sinon.match.map);
     });
 
     it("should register handlers for all 10 supported intents", async () => {

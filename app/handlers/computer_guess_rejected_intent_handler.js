@@ -2,7 +2,7 @@
 
 const AWS = require("aws-sdk");
 
-const computerGuessRejectedIntentHandler = (animal, snsTopicArn) => {
+const computerGuessRejectedIntentHandler = (agent, animal, snsTopicArn) => {
     let sns = new AWS.SNS(),
         params = {
             Message: "Professor Animal has made an incorrect guess. The answer was " + animal,
@@ -14,6 +14,7 @@ const computerGuessRejectedIntentHandler = (animal, snsTopicArn) => {
         if (err) console.log(err, err.stack); // an error occurred
         else console.log(data);           // successful response
     });
+    agent.add(`I need to learn more about ${animal}. Do you want to play again?`)
 };
 
 module.exports = computerGuessRejectedIntentHandler;
