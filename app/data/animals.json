@@ -10,8 +10,7 @@
     "types": [
       "vertebrate",
       "mammal",
-      "big cat",
-      "large animal"
+      "big cat"
     ],
     "behaviours": [
       "only eat meat",
@@ -67,7 +66,6 @@
     "types": [
       "vertebrate",
       "mammal",
-      "large animal",
       "largest land-living mammal"
     ],
     "behaviours": [
@@ -150,8 +148,7 @@
     ],
     "types": [
       "vertebrate",
-      "mammal",
-      "large animal"
+      "mammal"
     ],
     "behaviours": [
       "eat both plants and animals",
@@ -174,8 +171,7 @@
     ],
     "types": [
       "vertebrate",
-      "mammal",
-      "large animal"
+      "mammal"
     ],
     "behaviours": [
       "only eat plants",
@@ -194,12 +190,12 @@
       "tail",
       "black strip",
       "unique pattern of stripes on each animal",
-      "legs"
+      "legs",
+      "excellent eyesight"
     ],
     "types": [
       "vertebrate",
       "mammal",
-      "large animal",
       "big cat",
       "large predator",
       "solitary animal"
@@ -285,8 +281,7 @@
     ],
     "types": [
       "vertebrate",
-      "fish",
-      "large animal"
+      "fish"
     ],
     "behaviours": [
       "only eat meat",
@@ -416,18 +411,19 @@
     ],
     "types": [
       "vertebrate",
-      "large animal"
+      "mammal"
     ],
     "behaviours": [
       "only eat plants",
       "run very fast",
-      "let people ride on it"
+      "let people ride on it",
+      "live in a group"
     ],
     "diet": [
       "grass"
     ],
     "possible_behaviours": [
-      "domesticated"
+      "be domesticated"
     ],
     "considerations": [
       "as helpful or useful to humans"
@@ -447,7 +443,7 @@
     ],
     "types": [
       "vertebrate",
-      "large animal"
+      "mammal"
     ],
     "behaviours": [
       "only eat plants",
@@ -497,7 +493,6 @@
     ],
     "types": [
       "vertebrate",
-      "large animal",
       "the largest land predator in the world",
       "mammal"
     ],
@@ -552,8 +547,7 @@
     "types": [
       "vertebrate",
       "mammal",
-      "good diver",
-      "large animal"
+      "good diver"
     ],
     "behaviours": [
       "only eat meat",
@@ -728,8 +722,7 @@
     ],
     "types": [
       "vertebrate",
-      "mammal",
-      "large animal"
+      "mammal"
     ],
     "behaviours": [
       "only eat plants",
@@ -754,7 +747,6 @@
     "types": [
       "reptile",
       "cold-blooded animal",
-      "large animal",
       "vertebrate"
     ],
     "behaviours": [
@@ -787,7 +779,6 @@
     ],
     "types": [
       "mammal",
-      "large animal",
       "marsupial",
       "vertebrate"
     ],
@@ -819,7 +810,6 @@
       "mammal",
       "ape",
       "a highly intelligent animal",
-      "large animal",
       "vertebrate"
     ],
     "behaviours": [
@@ -848,7 +838,6 @@
     ],
     "types": [
       "mammal",
-      "large animal",
       "vertebrate"
     ],
     "behaviours": [
@@ -876,7 +865,6 @@
     ],
     "types": [
       "mammal",
-      "large animal",
       "vertebrate"
     ],
     "behaviours": [
@@ -1040,7 +1028,7 @@
     "name": "Sloth",
     "physical": [
       "legs",
-      "thick fur",
+      "long, thick fur",
       "long, sharp claws to hold on to tree branches"
     ],
     "types": [
@@ -1335,7 +1323,6 @@
       "colourful wattles hanging from its throat"
     ],
     "types": [
-      "large animal",
       "vertebrate",
       "solitary animal",
       "bird",
@@ -1377,7 +1364,7 @@
       "grass"
     ],
     "possible_behaviours": [
-      "domesticated",
+      "be domesticated",
       "be kept as pet"
     ],
     "considerations": [
@@ -1390,7 +1377,6 @@
     "physical": [
       "tail",
       "legs",
-      "large animal",
       "hooves",
       "long ears"
     ],
@@ -1409,7 +1395,7 @@
       "grass"
     ],
     "possible_behaviours": [
-      "domesticated"
+      "be domesticated"
     ],
     "considerations": [
       "as helpful or useful to humans"
@@ -1443,7 +1429,7 @@
       "water plants"
     ],
     "possible_behaviours": [
-      "domesticated",
+      "be domesticated",
       "be kept as pet"
     ],
     "considerations": [
@@ -1512,7 +1498,6 @@
     "name": "Orangutan",
     "physical": [
       "legs",
-      "large animal",
       "thumbs like humans",
       "pads on the sides of their cheeks"
     ],
@@ -1778,7 +1763,6 @@
     "physical": [
       "tail",
       "legs",
-      "large animal",
       "hooves"
     ],
     "types": [
@@ -1835,7 +1819,6 @@
     "physical": [
       "tail",
       "legs",
-      "large animal",
       "hooves",
       "antlers on its head"
     ],
