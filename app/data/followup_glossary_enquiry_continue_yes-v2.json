@@ -1,69 +1,76 @@
 {
-  "responseId": "dbc1fa31-1dda-4052-b20f-ac585bdf423b",
-  "queryResult": {
-    "queryText": "yes",
-    "action": "answer_question_repeat",
-    "parameters": {},
-    "allRequiredParamsPresent": true,
-    "fulfillmentMessages": [
-      {
-        "text": {
-          "text": [
-            ""
-          ]
+  "headers": {
+    "content-type": "application/json"
+  },
+  "httpMethod": "POST",
+  "path": "/apiaiwebhook",
+  "body": {
+    "responseId": "dbc1fa31-1dda-4052-b20f-ac585bdf423b",
+    "queryResult": {
+      "queryText": "yes",
+      "action": "answer_question_repeat",
+      "parameters": {},
+      "allRequiredParamsPresent": true,
+      "fulfillmentMessages": [
+        {
+          "text": {
+            "text": [
+              ""
+            ]
+          }
         }
-      }
-    ],
-    "outputContexts": [
-      {
-        "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-field--types",
-        "lifespanCount": 4,
-        "parameters": {
-          "term.original": "mammal",
-          "term": "mammal"
+      ],
+      "outputContexts": [
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-field--types",
+          "lifespanCount": 4,
+          "parameters": {
+            "term.original": "mammal",
+            "term": "mammal"
+          }
+        },
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-chosenvalue--mammal",
+          "lifespanCount": 4,
+          "parameters": {
+            "term.original": "mammal",
+            "term": "mammal"
+          }
+        },
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/readytoplay",
+          "lifespanCount": 4,
+          "parameters": {
+            "term.original": "mammal",
+            "term": "mammal"
+          }
+        },
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/enquireglossary-followup",
+          "parameters": {
+            "term.original": "mammal",
+            "term": "mammal"
+          }
+        },
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
+          "lifespanCount": 1,
+          "parameters": {
+            "term.original": "mammal",
+            "term": "mammal"
+          }
         }
+      ],
+      "intent": {
+        "name": "projects/animalgenie20180906/agent/intents/911dda84-5579-4ceb-b04e-e9c49fae7e98",
+        "displayName": "Enquire.Glossary.Continue - yes"
       },
-      {
-        "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-chosenvalue--mammal",
-        "lifespanCount": 4,
-        "parameters": {
-          "term.original": "mammal",
-          "term": "mammal"
-        }
-      },
-      {
-        "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/readytoplay",
-        "lifespanCount": 4,
-        "parameters": {
-          "term.original": "mammal",
-          "term": "mammal"
-        }
-      },
-      {
-        "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/enquireglossary-followup",
-        "parameters": {
-          "term.original": "mammal",
-          "term": "mammal"
-        }
-      },
-      {
-        "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
-        "lifespanCount": 1,
-        "parameters": {
-          "term.original": "mammal",
-          "term": "mammal"
-        }
-      }
-    ],
-    "intent": {
-      "name": "projects/animalgenie20180906/agent/intents/911dda84-5579-4ceb-b04e-e9c49fae7e98",
-      "displayName": "Enquire.Glossary.Continue - yes"
+      "intentDetectionConfidence": 0.7512625,
+      "languageCode": "en"
     },
-    "intentDetectionConfidence": 0.7512625,
-    "languageCode": "en"
-  },
-  "originalDetectIntentRequest": {
-    "payload": {}
-  },
-  "session": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56"
+    "originalDetectIntentRequest": {
+      "payload": {}
+    },
+    "session": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56"
+  }
 }

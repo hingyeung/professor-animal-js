@@ -1,60 +1,67 @@
 {
+  "headers": {
+    "content-type": "application/json"
+  },
+  "httpMethod": "POST",
+  "path": "/apiaiwebhook",
+  "body": {
     "responseId": "f8e0172f-6b08-415f-83e7-4a2fb340895c",
     "queryResult": {
-        "queryText": "yes",
-        "action": "answer_question",
-        "parameters": {
-            "answer": "yes"
+      "queryText": "yes",
+      "action": "answer_question",
+      "parameters": {
+        "answer": "yes"
+      },
+      "allRequiredParamsPresent": true,
+      "fulfillmentMessages": [
+        {
+          "text": {
+            "text": [
+              ""
+            ]
+          }
+        }
+      ],
+      "outputContexts": [
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-field--types",
+          "parameters": {
+            "answer": "yes",
+            "answer.original": ""
+          }
         },
-        "allRequiredParamsPresent": true,
-        "fulfillmentMessages": [
-            {
-                "text": {
-                    "text": [
-                        ""
-                    ]
-                }
-            }
-        ],
-        "outputContexts": [
-            {
-                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-field--types",
-                "parameters": {
-                    "answer": "yes",
-                    "answer.original": ""
-                }
-            },
-            {
-                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-chosenvalue--mammal",
-                "parameters": {
-                    "answer": "yes",
-                    "answer.original": ""
-                }
-            },
-            {
-                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/readytoplay",
-                "parameters": {
-                    "answer": "yes",
-                    "answer.original": ""
-                }
-            },
-            {
-                "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
-                "parameters": {
-                    "answer": "yes",
-                    "answer.original": ""
-                }
-            }
-        ],
-        "intent": {
-            "name": "projects/animalgenie20180906/agent/intents/0ada71e9-7c0a-4953-afab-2ecbfbbbdb3f",
-            "displayName": "Response.To.InGameQuestion.Yes"
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-chosenvalue--mammal",
+          "parameters": {
+            "answer": "yes",
+            "answer.original": ""
+          }
         },
-        "intentDetectionConfidence": 1,
-        "languageCode": "en"
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/readytoplay",
+          "parameters": {
+            "answer": "yes",
+            "answer.original": ""
+          }
+        },
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
+          "parameters": {
+            "answer": "yes",
+            "answer.original": ""
+          }
+        }
+      ],
+      "intent": {
+        "name": "projects/animalgenie20180906/agent/intents/0ada71e9-7c0a-4953-afab-2ecbfbbbdb3f",
+        "displayName": "Response.To.InGameQuestion.Yes"
+      },
+      "intentDetectionConfidence": 1,
+      "languageCode": "en"
     },
     "originalDetectIntentRequest": {
-        "payload": {}
+      "payload": {}
     },
     "session": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56"
+  }
 }

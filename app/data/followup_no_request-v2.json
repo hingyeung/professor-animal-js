@@ -1,34 +1,43 @@
 {
-  "responseId": "81902796-90a9-4d68-8a2d-e41bc605072b",
-  "queryResult": {
-    "queryText": "no",
-    "action": "answer_question",
-    "parameters": {"answer": "no"},
-    "allRequiredParamsPresent": true,
-    "fulfillmentMessages": [
-      {
-        "text": {
-          "text": [
-            ""
-          ]
+  "headers": {
+    "content-type": "application/json"
+  },
+  "httpMethod": "POST",
+  "path": "/apiaiwebhook",
+  "body": {
+    "responseId": "81902796-90a9-4d68-8a2d-e41bc605072b",
+    "queryResult": {
+      "queryText": "no",
+      "action": "answer_question",
+      "parameters": {
+        "answer": "no"
+      },
+      "allRequiredParamsPresent": true,
+      "fulfillmentMessages": [
+        {
+          "text": {
+            "text": [
+              ""
+            ]
+          }
         }
-      }
-    ],
-    "outputContexts": [
-      {
-        "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
-        "lifespanCount": 1
-      }
-    ],
-    "intent": {
-      "name": "projects/animalgenie20180906/agent/intents/d7e5f593-dfa0-4488-8bbf-98ba8c34b8c1",
-      "displayName": "Response.To.InGameQuestion.No"
+      ],
+      "outputContexts": [
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
+          "lifespanCount": 1
+        }
+      ],
+      "intent": {
+        "name": "projects/animalgenie20180906/agent/intents/d7e5f593-dfa0-4488-8bbf-98ba8c34b8c1",
+        "displayName": "Response.To.InGameQuestion.No"
+      },
+      "intentDetectionConfidence": 0.59,
+      "languageCode": "en"
     },
-    "intentDetectionConfidence": 0.59,
-    "languageCode": "en"
-  },
-  "originalDetectIntentRequest": {
-    "payload": {}
-  },
-  "session": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56"
+    "originalDetectIntentRequest": {
+      "payload": {}
+    },
+    "session": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56"
+  }
 }

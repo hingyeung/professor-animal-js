@@ -1,48 +1,55 @@
 {
+  "headers": {
+    "content-type": "application/json"
+  },
+  "httpMethod": "POST",
+  "path": "/apiaiwebhook",
+  "body": {
     "id": "4f92732b-ad1e-4f3c-a4a3-83678d60f0e5",
     "timestamp": "2017-09-17T03:36:57.082Z",
     "lang": "en",
     "result": {
-        "source": "agent",
-        "resolvedQuery": "yes",
-        "action": "answer_question",
-        "actionIncomplete": false,
-        "parameters": {
-            "answer": "yes"
-        },
-        "contexts": [
-            {
-                "name": "ingame",
-                "parameters": {
-                    "answer": "yes",
-                    "answer.original": ""
-                },
-                "lifespan": 1
-            }
-        ],
-        "metadata": {
-            "intentId": "0ada71e9-7c0a-4953-afab-2ecbfbbbdb3f",
-            "webhookUsed": "true",
-            "webhookForSlotFillingUsed": "false",
-            "webhookResponseTime": 1092,
-            "intentName": "Answer in-game question - Yes"
-        },
-        "fulfillment": {
-            "speech": "Does it have sharp claws?",
-            "source": "samuelli.net",
-            "displayText": "Does it have sharp claws?",
-            "messages": [
-                {
-                    "type": 0,
-                    "speech": "Does it have sharp claws?"
-                }
-            ]
-        },
-        "score": 1
+      "source": "agent",
+      "resolvedQuery": "yes",
+      "action": "answer_question",
+      "actionIncomplete": false,
+      "parameters": {
+        "answer": "yes"
+      },
+      "contexts": [
+        {
+          "name": "ingame",
+          "parameters": {
+            "answer": "yes",
+            "answer.original": ""
+          },
+          "lifespan": 1
+        }
+      ],
+      "metadata": {
+        "intentId": "0ada71e9-7c0a-4953-afab-2ecbfbbbdb3f",
+        "webhookUsed": "true",
+        "webhookForSlotFillingUsed": "false",
+        "webhookResponseTime": 1092,
+        "intentName": "Answer in-game question - Yes"
+      },
+      "fulfillment": {
+        "speech": "Does it have sharp claws?",
+        "source": "samuelli.net",
+        "displayText": "Does it have sharp claws?",
+        "messages": [
+          {
+            "type": 0,
+            "speech": "Does it have sharp claws?"
+          }
+        ]
+      },
+      "score": 1
     },
     "status": {
-        "code": 200,
-        "errorType": "success"
+      "code": 200,
+      "errorType": "success"
     },
     "sessionId": "403f864b-3f12-4987-ad87-0377f2b6f5d4"
+  }
 }
