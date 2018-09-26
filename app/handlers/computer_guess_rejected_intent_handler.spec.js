@@ -8,7 +8,7 @@ const proxyquire = require("proxyquire").noPreserveCache(),
     AWS = require("aws-sdk");
 
 describe("computer_guess_rejected_intent_handler", function () {
-    let sandbox, handler;
+    let stubPublish, sandbox, handler;
 
     beforeEach(() => {
         sinonPromise(sinon);
@@ -16,8 +16,10 @@ describe("computer_guess_rejected_intent_handler", function () {
         chai.should();
 
         sandbox = sinon.createSandbox();
-        // TODO https://github.com/dwyl/aws-sdk-mock#readme
-        sandbox.stub(AWS.SNS.prototype, 'publish');
+        stubPublish = sandbox.stub();
+        sandbox.stub(AWS, 'SNS').returns({
+            publish: stubPublish
+        });
         handler = proxyquire("./computer_guess_rejected_intent_handler", {
             "aws-sdk": AWS
         });
@@ -30,6 +32,10 @@ describe("computer_guess_rejected_intent_handler", function () {
     it("should send notification to SNS topic", () => {
         handler('animal', 'snsTopicArn');
 
-        AWS.SNS.prototype.publish.should.have.been.called;
+        stubPublish.should.have.been.calledWith({
+            "Message": sinon.match.string,
+            "Subject": sinon.match.string,
+            "TopicArn": 'snsTopicArn'
+        });
     });
 });
