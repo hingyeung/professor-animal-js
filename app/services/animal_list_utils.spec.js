@@ -20,7 +20,8 @@ describe('AnimalListUtils', () => {
                     "big cat",
                     "large",
                     "carnivore",
-                    "predator"
+                    "predator",
+                    "A"
                 ],
                 "behaviours": [
                     "hunt in a pack"
@@ -59,7 +60,8 @@ describe('AnimalListUtils', () => {
                     "vertebrate",
                     "bird",
                     "bird of prey",
-                    "large"
+                    "large",
+                    "B"
                 ],
                 "behaviours": [
                     "carnivore",
