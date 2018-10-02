@@ -6,11 +6,11 @@ class WebhookRequestBuilder {
                     "lifespanCount": 1
                 },
                 {
-                    "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question.field:types",
+                    "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-field--types",
                     "lifespan": 1
                 },
                 {
-                    "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question.chosenValue:mammal",
+                    "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-chosenvalue--mammal",
                     "lifespan": 1
                 }
             ],

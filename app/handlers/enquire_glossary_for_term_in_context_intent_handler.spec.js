@@ -64,10 +64,11 @@ describe("enquire_glossary_for_term_in_context_intent_handler", function () {
 
     const getHandler = (definitionFound, term) => {
         const responseObj = definitionFound ?
-            ResponseToApiAi.answerGlossaryEnquiry(term, "definition of mammal", []) :
+            ResponseToApiAi.answerGlossaryEnquiry(term, `definition of ${term}`, []) :
             ResponseToApiAi.answerUnknownGlossaryEnquiry(term, []);
 
         sandbox.stub(GlossaryUtils, "buildSpeechForAnsweringGlossaryEnquiryForTerm")
+            .withArgs(term, sinon.match.array)
             .returns(responseObj);
 
         return proxyquire("./enquire_glossary_for_term_in_context_intent_handler", {

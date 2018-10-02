@@ -50,10 +50,14 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
     });
     // EnquireGlossary.EnquireGlossary-yes
     intentMap.set("Enquire.Glossary.Continue - yes", async () => {
-        await answerQuestionHandler(agent, this.fullAnimalList);
+        await repeatQuestionIntentHandler(agent, this.fullAnimalList);
     });
+    // answer_question_glossary_enquiry_of_the_current_question_value
     intentMap.set("Enquire.Glossary.For.Term.In.Current.Question", async () => {
         await enquireGlossaryForTermInContextIntentHandler(agent);
+    });
+    intentMap.set("Enquire.Glossary.For.Term.In.Current.Question - yes", async () => {
+        await repeatQuestionIntentHandler(agent);
     });
 
     // computer_made_incorrect_guess
@@ -62,8 +66,6 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
         // that.notifyIncorrectGuess(correctAnimal, options.notificationTopicArn);
         await computerGuessRejectedIntentHandler(agent, correctAnimal, options.notificationTopicArn);
     });
-
-    // ActionType.ANSWER_QUESTION_GLOSSARY_ENQIRY_OF_THE_CURRENT_QUESTION_VALUE
 
     // default fallback
 

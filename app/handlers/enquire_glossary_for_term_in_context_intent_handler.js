@@ -21,7 +21,7 @@ const enquireGlossaryForTermInContextIntentHandler = (agent) => {
 const extractQuestionChosenValueFromContext = function(contextList) {
     let chosenValue = null;
     _.find(contextList, function(context) {
-        const matched = context.name.match(/^question.chosenValue:(.+)$/);
+        const matched = context.name.match(/^question-chosenvalue--(.+)$/);
         chosenValue = matched ? matched[1] : null;
         return matched;
     });

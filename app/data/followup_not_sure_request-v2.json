@@ -1,0 +1,67 @@
+{
+  "headers": {
+    "content-type": "application/json"
+  },
+  "httpMethod": "POST",
+  "path": "/apiaiwebhook",
+  "body": {
+    "responseId": "af5f215e-8d3e-4804-a6dc-9fc40c7f488a",
+    "queryResult": {
+      "queryText": "yes",
+      "action": "answer_question",
+      "parameters": {
+        "answer": "yes"
+      },
+      "allRequiredParamsPresent": true,
+      "fulfillmentMessages": [
+        {
+          "text": {
+            "text": [
+              ""
+            ]
+          }
+        }
+      ],
+      "outputContexts": [
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-chosenvalue--tail",
+          "parameters": {
+            "answer": "yes",
+            "answer.original": ""
+          }
+        },
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/readytoplay",
+          "parameters": {
+            "answer": "yes",
+            "answer.original": ""
+          }
+        },
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/ingame",
+          "parameters": {
+            "answer": "yes",
+            "answer.original": ""
+          }
+        },
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-field--physical",
+          "parameters": {
+            "answer": "yes",
+            "answer.original": ""
+          }
+        }
+      ],
+      "intent": {
+        "name": "projects/animalgenie/agent/intents/0ada71e9-7c0a-4953-afab-2ecbfbbbdb3f",
+        "displayName": "Response.To.InGameQuestion.Yes"
+      },
+      "intentDetectionConfidence": 1,
+      "languageCode": "en"
+    },
+    "originalDetectIntentRequest": {
+      "payload": {}
+    },
+    "session": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56"
+  }
+}
