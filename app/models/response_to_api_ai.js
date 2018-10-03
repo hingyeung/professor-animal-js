@@ -4,7 +4,9 @@ const Question = require("./question"),
     _ = require("lodash"),
     Context = require("./context");
 
-const DEFAULT_WELCOME_INTENT_PREFIX = "DefaultWelcomeIntent";
+const DEFAULT_WELCOME_INTENT_PREFIX = "DefaultWelcomeIntent",
+    FIELD_PREFIX = "question-field--",
+    CHOSEN_VALUE_PREFIX = "question-chosenvalue--";
 
 let ResponseFromApiAi = {
     fromQuestion: fromQuestion,
@@ -44,12 +46,13 @@ function fromQuestion(question, additionalContextOut) {
     let contextOutForQuestion = [];
     switch (question.questionType) {
         case Question.FILTER_BASED_QUESTION:
-            contextOutForQuestion = _.concat(
-                contextOutForQuestion,
-                new Context("ingame", 1),
-                new Context("question-field--" + question.field, 1),
-                new Context("question-chosenValue--" + escapeSpecialChars(question.chosenValue), 1)
-            );
+            // contextOutForQuestion = _.concat(
+            //     contextOutForQuestion,
+            //     new Context("ingame", 1),
+            //     new Context("question-field--" + question.field, 1),
+            //     new Context("question-chosenvalue--" + escapeSpecialChars(question.chosenValue), 1)
+            // );
+            contextOutForQuestion = replaceFieldAndChosenValueInContext(contextOutForQuestion, question.field, question.chosenValue);
             break;
         case Question.GIVE_UP_MESSAGE:
             contextOutForQuestion.push(new Context("giveup", 1));
@@ -61,7 +64,9 @@ function fromQuestion(question, additionalContextOut) {
 
     if (contextOutForQuestion.length > 0 || (Array.isArray(additionalContextOut) && additionalContextOut.length > 0)) {
         response.contextOut = _.compact(contextOutForQuestion.concat(
-            setLifespanForDefaultWelcomeContextToZero(additionalContextOut)
+            setLifespanForFieldAndChosenValueContextToZero(
+                setLifespanForDefaultWelcomeContextToZero(additionalContextOut)
+            )
         )).sort((a,b) => a.name > b.name);
     }
     return response;
@@ -96,8 +101,12 @@ function copyInContextToOutContext(response, contextsIn) {
     }
 
     let contextOut = [];
-    contextsIn.forEach(function (context) {
-        contextOut.push(context);
+    contextOut = contextsIn.map(context => {
+        if (context.lifespan === undefined) {
+            return new Context(context.name, 1);
+        } else {
+            return context;
+        }
     });
 
     if (contextOut.length > 0) {
@@ -111,6 +120,25 @@ function stripSSMLTags(str) {
     else
         str = str.toString();
     return str.replace(/<[^>]*>/g, "");
+}
+
+function setLifespanForFieldAndChosenValueContextToZero(contextsOut) {
+    return _.map(contextsOut, context => {
+        if (context.name && (context.name.startsWith(FIELD_PREFIX) || context.name.startsWith(CHOSEN_VALUE_PREFIX))) {
+            return new Context(context.name, 0);
+        } else {
+            return context;
+        }
+    });
+}
+
+function replaceFieldAndChosenValueInContext(oldContext, field, chosenValue) {
+    return _.concat(
+        oldContext,
+        new Context("ingame", 1),
+        new Context(FIELD_PREFIX + field, 1),
+        new Context(CHOSEN_VALUE_PREFIX + escapeSpecialChars(chosenValue), 1)
+    );
 }
 
 module.exports = ResponseFromApiAi;

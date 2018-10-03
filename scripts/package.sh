@@ -10,7 +10,10 @@ UPLOAD_TO_S3=$2
 pushd .
 mkdir -p dist && \
     rsync -avzh app/ dist/ && \
-    rsync -avzh node_modules dist/
+    rsync -zvzh package.json dist/ && \
+    rsync -zvzh package-lock.json dist/
+#    rsync -avzh node_modules dist/
+pushd dist/ && npm i --production && popd
 popd
 
 # build CloudFormation template

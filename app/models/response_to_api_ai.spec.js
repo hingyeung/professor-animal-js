@@ -119,7 +119,7 @@ function buildExpectedContextOut(speech, text, questionField, questionChosenValu
 
     let contextOutForResponse = contextOut || [];
     if (questionField) contextOutForResponse.push(new Context("question-field--" + questionField, 1));
-    if (questionChosenValue) contextOutForResponse.push(new Context("question-chosenValue--" + questionChosenValue, 1));
+    if (questionChosenValue) contextOutForResponse.push(new Context("question-chosenvalue--" + questionChosenValue, 1));
 
     return _.extend(
         {},
