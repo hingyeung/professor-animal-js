@@ -1,0 +1,47 @@
+{
+  "headers": {
+    "content-type": "application/json"
+  },
+  "httpMethod": "POST",
+  "path": "/apiaiwebhook",
+  "body": {
+    "responseId": "0e64bc49-54d0-459a-8f94-8547274a4e11",
+    "queryResult": {
+      "queryText": "what is it",
+      "action": "answer_question_glossary_enquiry_of_the_current_question_value",
+      "parameters": {},
+      "allRequiredParamsPresent": true,
+      "fulfillmentMessages": [
+        {
+          "text": {
+            "text": [
+              ""
+            ]
+          }
+        }
+      ],
+      "outputContexts": [
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-chosenvalue--grass"
+        },
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/enquireglossaryfortermincurrentquestion-followup",
+          "lifespanCount": 2
+        },
+        {
+          "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/question-field--diet"
+        }
+      ],
+      "intent": {
+        "name": "projects/animalgenie-20181002/agent/intents/c6f28f78-5ead-4d12-937f-3f29eb93050c",
+        "displayName": "Enquire.Glossary.For.Term.In.Current.Question"
+      },
+      "intentDetectionConfidence": 1,
+      "languageCode": "en"
+    },
+    "originalDetectIntentRequest": {
+      "payload": {}
+    },
+    "session": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56"
+  }
+}
