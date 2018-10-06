@@ -7,6 +7,9 @@ const ResponseToApiAi = require('./response_to_api_ai'),
     _ = require('lodash'),
     Question = require('./question');
 
+const FIELD_PREFIX = "question-field--",
+    CHOSEN_VALUE_PREFIX = "question-chosenvalue--";
+
 describe('ResponseFromApiAi', function () {
     it('should add "ingame", type and chosen value of the next question to contextOut', function () {
         const question = new Question("types", ["A", "B"], "A", Question.FILTER_BASED_QUESTION);
@@ -15,6 +18,20 @@ describe('ResponseFromApiAi', function () {
                 new Context('ingame', 1)
             ])
         );
+    });
+
+    it('should set the lifespan of question type and chosen value of the previous question in contextOut to zero', () => {
+        const additionalContextOut = [new Context(`${FIELD_PREFIX}physical`, 1), new Context(`${CHOSEN_VALUE_PREFIX}wings`, 1)];
+        const question = new Question("types", ["A", "B"], "A", Question.FILTER_BASED_QUESTION);
+        let expectedContextOut = buildExpectedContextOut(question.toText(), question.toText(), question.field, question.chosenValue, [
+            new Context('ingame', 1)
+        ]);
+        // lifespan of previous question type and chosen value should be zeroed out
+        expectedContextOut.contextOut.push(new Context(`${FIELD_PREFIX}physical`, 0));
+        expectedContextOut.contextOut.push(new Context(`${CHOSEN_VALUE_PREFIX}wings`, 0));
+        expectedContextOut.contextOut.sort((a,b) => a.name > b.name);
+
+        ResponseToApiAi.fromQuestion(question, additionalContextOut).should.deep.equal(expectedContextOut);
     });
 
     it('should remove defaultwelcome* context in contextOut when in-game by setting lifespan to zero', function () {
@@ -118,8 +135,8 @@ function buildExpectedContextOut(speech, text, questionField, questionChosenValu
     };
 
     let contextOutForResponse = contextOut || [];
-    if (questionField) contextOutForResponse.push(new Context("question-field--" + questionField, 1));
-    if (questionChosenValue) contextOutForResponse.push(new Context("question-chosenvalue--" + questionChosenValue, 1));
+    if (questionField) contextOutForResponse.push(new Context(FIELD_PREFIX + questionField, 1));
+    if (questionChosenValue) contextOutForResponse.push(new Context(CHOSEN_VALUE_PREFIX + questionChosenValue, 1));
 
     return _.extend(
         {},

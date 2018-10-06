@@ -46,13 +46,7 @@ function fromQuestion(question, additionalContextOut) {
     let contextOutForQuestion = [];
     switch (question.questionType) {
         case Question.FILTER_BASED_QUESTION:
-            // contextOutForQuestion = _.concat(
-            //     contextOutForQuestion,
-            //     new Context("ingame", 1),
-            //     new Context("question-field--" + question.field, 1),
-            //     new Context("question-chosenvalue--" + escapeSpecialChars(question.chosenValue), 1)
-            // );
-            contextOutForQuestion = replaceFieldAndChosenValueInContext(contextOutForQuestion, question.field, question.chosenValue);
+            contextOutForQuestion = addFieldAndChosenValueInContext(contextOutForQuestion, question.field, question.chosenValue);
             break;
         case Question.GIVE_UP_MESSAGE:
             contextOutForQuestion.push(new Context("giveup", 1));
@@ -132,7 +126,7 @@ function setLifespanForFieldAndChosenValueContextToZero(contextsOut) {
     });
 }
 
-function replaceFieldAndChosenValueInContext(oldContext, field, chosenValue) {
+function addFieldAndChosenValueInContext(oldContext, field, chosenValue) {
     return _.concat(
         oldContext,
         new Context("ingame", 1),
