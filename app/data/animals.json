@@ -603,7 +603,8 @@
     ],
     "behaviours": [
       "live as caterpillar when it is young",
-      "fly"
+      "fly",
+      "only eat plants"
     ],
     "diet": [
       "nectar from flowers"
@@ -938,7 +939,8 @@
       "communicate with each other by clicking and whistling"
     ],
     "diet": [
-      "fish and squid"
+      "fish",
+      "squid"
     ],
     "possible_behaviours": [
       "be referred to as the unicorn of the sea"
