@@ -28,7 +28,7 @@ This project's core logic runs as a Lambda function in AWS, and expects input fr
 
 #### Running locally
 1. Install dependencies: `npm install`
-1. Create python virtualenv: `mkvritualenv professor-animal`
+1. Create python virtualenv: `mkvritualenv professor-animal` (or `workon professor-animal` for existing virtualenv)
 1. Install python dependencies (e.g. aws-sam-cli, localstack & boto3): `pip install -r requirements.txt`
 1. Install Docker and Docker Compose
 1. Start localstack: `npm run start-localstack`
