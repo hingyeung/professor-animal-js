@@ -1873,5 +1873,113 @@
       "be kept as pet"
     ],
     "considerations": []
+  },
+  {
+    "id": "03b3d026-a2b7-22de-a7b7-1813c15bd98d",
+    "name": "Bat",
+    "physical": [
+      "legs",
+      "sharp claws",
+      "wings"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal",
+      "nocturnal animal"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "fly",
+      "live in a group",
+      "use echo-location to hunt"
+    ],
+    "diet": [
+      "insects",
+      "fruits",
+      "small animals"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
+  },
+  {
+    "id": "5d1c7592-1b68-ecea-c5a0-3c87ed4e36f2",
+    "name": "Walrus",
+    "physical": [
+      "flippers",
+      "large animal",
+      "tusks"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal",
+      "territorial animal"
+    ],
+    "behaviours": [
+      "only eat meat",
+      "swim",
+      "live around water"
+    ],
+    "diet": [
+      "shellfish"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
+  },
+  {
+    "id": "2d820704-13d8-51c6-4324-459de6ee5fff",
+    "name": "Pig",
+    "physical": [
+      "tail",
+      "legs"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal"
+    ],
+    "behaviours": [
+      "eat both plants and animals",
+      "live in a group"
+    ],
+    "diet": [
+      "insects",
+      "leaves",
+      "fruits",
+      "soybean"
+    ],
+    "possible_behaviours": [
+      "be domesticated",
+      "be kept as pet"
+    ],
+    "considerations": [
+      "as helpful or useful to humans",
+      "to be food for humans"
+    ]
+  },
+  {
+    "id": "535bda74-a3ed-37f3-6731-651cebe8c199",
+    "name": "Fox",
+    "physical": [
+      "tail",
+      "legs",
+      "triangular face",
+      "pointed ears",
+      "bushy tail",
+      "long snout"
+    ],
+    "types": [
+      "vertebrate",
+      "mammal",
+      "solitary animal"
+    ],
+    "behaviours": [
+      "eat both plants and animals"
+    ],
+    "diet": [
+      "insects",
+      "bird",
+      "small reptiles"
+    ],
+    "possible_behaviours": [],
+    "considerations": []
   }
 ]
