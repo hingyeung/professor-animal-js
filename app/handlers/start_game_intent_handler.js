@@ -21,7 +21,7 @@ const startGameHandler = async (agent, fullAnimalList) => {
         errorHandler(agent, err);
     }
 
-    responseToApiAi.contextOut.forEach(context => agent.setContext(context));
+    responseToApiAi.contextOut.forEach(context => context.lifespan > 0 ? agent.setContext(context) : agent.clearContext(context.name));
     agent.add(responseToApiAi.speech);
 };
 

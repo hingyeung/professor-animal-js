@@ -72,6 +72,10 @@ class WebhookRequestBuilder {
                 {
                     "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/readytoplay",
                     "lifespanCount": 1
+                },
+                {
+                    "name": "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56/contexts/clearme",
+                    "lifespanCount": 0
                 }
             ],
             intent = {

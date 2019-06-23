@@ -29,6 +29,7 @@ describe("start_game_intent_handler", () => {
         sandbox.resetHistory();
 
         sandbox.spy(WebhookClient.prototype, 'add');
+        sandbox.spy(WebhookClient.prototype, 'clearContext');
         agent = new WebhookClient({
             request: WebhookRequestBuilder.createStartGameWebhookRequest(),
             response: {}
@@ -67,6 +68,12 @@ describe("start_game_intent_handler", () => {
         await startGameIntentHandler(agent, FULL_ANIMAL_LIST_FROM_FILE);
 
         WebhookClient.prototype.add.should.have.been.calledWith("Does it eat A?");
+    });
+
+    it("should clear contexts with lifespan more than 0 in the agent", async () => {
+        await startGameIntentHandler(agent, FULL_ANIMAL_LIST_FROM_FILE);
+
+        WebhookClient.prototype.clearContext.should.have.been.calledWith("clearme");
     });
 
     const createMockDbService = (userSession) => {

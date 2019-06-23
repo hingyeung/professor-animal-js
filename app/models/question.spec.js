@@ -24,6 +24,11 @@ describe('Question', function () {
         question.toText().should.equal("Does it eat B?");
     });
 
+    it('should convert question for field "colour" to text', function () {
+        let question = new Question("colour", ["A", "B", "C"], "B");
+        question.toText().should.equal("Is it B?");
+    });
+
     it('should convert question for field "considerations" to text', function () {
         let question = new Question("considerations", ["A", "B", "C"], "B");
         question.toText().should.equal("Is it considered B?");

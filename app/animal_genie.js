@@ -7,8 +7,7 @@ const _ = require("lodash"),
     repeatQuestionIntentHandler = require('./handlers/repeat_question_intent_handler'),
     enquireGlossaryIntentHandler = require('./handlers/enquire_glossary_intent_handler'),
     enquireGlossaryForTermInContextIntentHandler = require('./handlers/enquire_glossary_for_term_in_context_intent_handler'),
-    computerGuessRejectedIntentHandler = require('./handlers/computer_guess_rejected_intent_handler'),
-    AWS = require("aws-sdk");
+    computerGuessRejectedIntentHandler = require('./handlers/computer_guess_rejected_intent_handler');
 
 function AnimalGenie(fullAnimalList) {
     this.fullAnimalList = fullAnimalList;

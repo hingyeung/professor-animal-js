@@ -27,6 +27,8 @@ Question.prototype.toText = function () {
                     return `Can it ${this.chosenValue}?`;
                 case "considerations":
                     return `Is it considered ${this.chosenValue}?`;
+                case "colour":
+                    return `Is it ${this.chosenValue}?`;
                 default:
                     return "I don't know what to ask!";
             }
