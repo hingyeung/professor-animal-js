@@ -6,37 +6,37 @@ const Question = require('./question'),
 describe('Question', function () {
     it('should convert question for field "types" to text', function () {
         let question = new Question("types", ["A", "B", "C"], "B");
-        question.toText().should.equal("Is it a B?");
+        question.toText().should.equal("Is your animal a B?");
     });
 
     it('should convert question for field "behaviours" to text', function () {
         let question = new Question("behaviours", ["A", "B", "C"], "B");
-        question.toText().should.equal("Does it B?");
+        question.toText().should.equal("Does your animal B?");
     });
 
     it('should convert question for field "physical" to text', function () {
         let question = new Question("physical", ["A", "B", "C"], "B");
-        question.toText().should.equal("Does it have B?");
+        question.toText().should.equal("Does your animal have B?");
     });
 
     it('should convert question for field "diet" to text', function () {
         let question = new Question("diet", ["A", "B", "C"], "B");
-        question.toText().should.equal("Does it eat B?");
+        question.toText().should.equal("Does your animal eat B?");
     });
 
-    it('should convert question for field "colour" to text', function () {
-        let question = new Question("colour", ["A", "B", "C"], "B");
-        question.toText().should.equal("Is it B?");
+    it('should convert question for field "adjectives" to text', function () {
+        let question = new Question("adjectives", ["A", "B", "C"], "B");
+        question.toText().should.equal("Is your animal B?");
     });
 
     it('should convert question for field "considerations" to text', function () {
         let question = new Question("considerations", ["A", "B", "C"], "B");
-        question.toText().should.equal("Is it considered B?");
+        question.toText().should.equal("Is your animal considered B?");
     });
 
     it('should convert question for field "possible_behaviours" to text', function () {
         let question = new Question("possible_behaviours", ["A", "B", "C"], "B");
-        question.toText().should.equal("Can it B?");
+        question.toText().should.equal("Can your animal B?");
     });
 
     it('should convert ready-to-guess question', function () {

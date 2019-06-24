@@ -59,7 +59,7 @@ describe("start_game_intent_handler", () => {
         mockDbService.prototype.saveSession.should.have.been.calledWith(
             new UserSession(USER_SESSION_ID,
                 ["Lion", "Elephant", "Chameleon", "Shark", "Penguin", "Eagle"],
-                "diet", "A", [], "Does it eat A?"));
+                "diet", "A", [], "Does your animal eat A?"));
 
         mockDbService.prototype.getSession.should.not.have.been.called;
     });
@@ -67,7 +67,7 @@ describe("start_game_intent_handler", () => {
     it("should response with the next question", async () => {
         await startGameIntentHandler(agent, FULL_ANIMAL_LIST_FROM_FILE);
 
-        WebhookClient.prototype.add.should.have.been.calledWith("Does it eat A?");
+        WebhookClient.prototype.add.should.have.been.calledWith("Does your animal eat A?");
     });
 
     it("should clear contexts with lifespan more than 0 in the agent", async () => {

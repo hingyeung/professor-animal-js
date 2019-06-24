@@ -16,19 +16,19 @@ Question.prototype.toText = function () {
         case "filter_based_question":
             switch (this.field) {
                 case "types":
-                    return `Is it a ${this.chosenValue}?`;
+                    return `Is your animal a ${this.chosenValue}?`;
                 case "behaviours":
-                    return `Does it ${this.chosenValue}?`;
+                    return `Does your animal ${this.chosenValue}?`;
                 case "physical":
-                    return `Does it have ${this.chosenValue}?`;
+                    return `Does your animal have ${this.chosenValue}?`;
                 case "diet":
-                    return `Does it eat ${this.chosenValue}?`;
+                    return `Does your animal eat ${this.chosenValue}?`;
                 case "possible_behaviours":
-                    return `Can it ${this.chosenValue}?`;
+                    return `Can your animal ${this.chosenValue}?`;
                 case "considerations":
-                    return `Is it considered ${this.chosenValue}?`;
-                case "colour":
-                    return `Is it ${this.chosenValue}?`;
+                    return `Is your animal considered ${this.chosenValue}?`;
+                case "adjectives":
+                    return `Is your animal ${this.chosenValue}?`;
                 default:
                     return "I don't know what to ask!";
             }

@@ -107,7 +107,7 @@ describe("answer_question_intent_handler", () => {
     it("should response with the next question", async () => {
         await answerQuestionIntentHandler(agent, fullAnimalListFromFile);
 
-        WebhookClient.prototype.add.should.have.been.calledWith("Does it eat A?");
+        WebhookClient.prototype.add.should.have.been.calledWith("Does your animal eat A?");
     });
 
     it("should not filter animals when user is unsure about the answer of a question", async () => {

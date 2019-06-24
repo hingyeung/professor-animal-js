@@ -2,26 +2,36 @@
   {
     "id": "30fe0728-0a50-c06e-4f6f-874a845b423a",
     "name": "Lion",
+    "adjectives": [
+      "generally yellow",
+      "big"
+    ],
     "physical": [
       "mane",
       "tail",
-      "legs"
+      "4 legs",
+      "hair",
+      "sharp teeth",
+      "ears",
+      "visible ears",
+      "2 eyes",
+      "claws",
+      "a tuft on its tail"
     ],
     "types": [
       "vertebrate",
       "mammal",
-      "big cat"
+      "feline"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "hunt in a group",
       "live in a group called pride",
-      "roar",
       "live in Africa",
       "rest for around 20 hours a day"
     ],
     "diet": [
-      "zebra, buffalo, wildebeest, giraffes and antelopes"
+      
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -29,23 +39,32 @@
   {
     "id": "d4a46610-bb75-4748-ca12-80a66583b10d",
     "name": "Cheetah",
+    "adjectives": [
+      "generally yellow",
+      "big"
+    ],
     "physical": [
       "tail",
-      "excellent eyesight",
       "long, black lines which run from the inside of each eye to the mouth",
-      "legs"
+      "4 legs",
+      "hair",
+      "sharp teeth",
+      "ears",
+      "visible ears",
+      "2 eyes",
+      "2 colours",
+      "claws"
     ],
     "types": [
       "vertebrate",
       "mammal",
-      "big cat",
+      "feline",
       "fastest running animal in the world"
     ],
     "behaviours": [
-      "only eat meat"
+      "eat other animals"
     ],
     "diet": [
-      "gazelles, impalas and wildebeest"
     ],
     "possible_behaviours": [
       "run at top speed of 113 km per hour"
@@ -55,30 +74,35 @@
   {
     "id": "36275bd7-4784-c460-c578-a132f808c2c0",
     "name": "Elephant",
+    "adjectives": [
+      "taller than a man",
+      "grey",
+      "big"
+    ],
     "physical": [
       "tusks",
       "tail",
-      "long trunk",
-      "large, thin ears",
-      "legs"
+      "a tuft on its tail",
+      "a trunk",
+      "4 legs",
+      "ears",
+      "visible ears",
+      "big ears",
+      "2 eyes"
     ],
     "types": [
       "vertebrate",
       "mammal",
-      "largest land-living mammal"
+      "largest mammal on land"
     ],
     "behaviours": [
+      "eject water",
       "only eat plants",
       "live in a group",
-      "live in Africa",
-      "live in Asia",
+      "live in Africa and Asia",
       "swim"
     ],
     "diet": [
-      "grass",
-      "leaves",
-      "fruits",
-      "small plants"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -88,14 +112,19 @@
     "name": "Dog",
     "physical": [
       "tail",
-      "legs"
+      "4 legs",
+      "ears",
+      "visible ears",
+      "2 eyes",
+      "claws",
+      "hair"
     ],
     "types": [
       "vertebrate",
       "mammal"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "bark",
       "live in a group",
       "swim"
@@ -104,7 +133,9 @@
       "bone and pet food"
     ],
     "possible_behaviours": [
-      "be kept as pet"
+      "be kept as pet",
+      "be found at your house",
+      "be bought"
     ],
     "considerations": [
       "to be friendly to humans"
@@ -115,22 +146,30 @@
     "name": "Cat",
     "physical": [
       "tail",
-      "legs"
+      "4 legs",
+      "ears",
+      "visible ears",
+      "2 eyes",
+      "claws",
+      "hair"
     ],
     "types": [
       "vertebrate",
       "mammal"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "climb tree",
-      "meow"
+      "meow",
+      "purr"
     ],
     "diet": [
       "fish and pet food"
     ],
     "possible_behaviours": [
-      "be kept as pet"
+      "be kept as pet",
+      "be found at your house",
+      "be bought"
     ],
     "considerations": [
       "to be friendly to humans"
@@ -139,11 +178,22 @@
   {
     "id": "ea460a4b-224b-51fb-7789-973698fda55b",
     "name": "Brown Bear",
+    "adjectives": [
+      "taller than a man",
+      "brown",
+      "big"
+    ],
     "physical": [
       "long fur",
       "sharp claws",
-      "legs",
-      "tail"
+      "4 legs",
+      "tail",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "claws",
+      "hair",
+      "sharp teeth"
     ],
     "types": [
       "vertebrate",
@@ -155,19 +205,30 @@
       "live in caves"
     ],
     "diet": [
-      "fruit, fish and small animals",
-      "grass"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "stand on two legs"
+    ],
     "considerations": []
   },
   {
     "id": "46c75867-654e-a1f6-1d7f-925dfb2c371d",
     "name": "Panda",
+    "adjectives": [
+      "black and white",
+      "big"
+    ],
     "physical": [
       "black and white fur",
-      "legs",
-      "tail"
+      "4 legs",
+      "ears",
+      "visible ears",
+      "tail",
+      "2 eyes",
+      "2 colours",
+      "claws",
+      "hair",
+      "sharp teeth"
     ],
     "types": [
       "vertebrate",
@@ -186,27 +247,36 @@
   {
     "id": "9cc82ebc-21fd-94f6-290e-ab402c903086",
     "name": "Tiger",
+    "adjectives": [
+      "generally yellow",
+      "big"
+    ],
     "physical": [
       "tail",
-      "black strip",
+      "stripes",
+      "stripes on its tail",
       "unique pattern of stripes on each animal",
-      "legs",
-      "excellent eyesight"
+      "4 legs",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "2 colours",
+      "hair",
+      "sharp teeth",
+      "claws"
     ],
     "types": [
       "vertebrate",
       "mammal",
-      "big cat",
-      "large predator",
+      "feline",
       "solitary animal"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "swim",
-      "roar"
+      "live in Asia"
     ],
     "diet": [
-      "deer, antelope and other large animals"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -214,12 +284,18 @@
   {
     "id": "7c34c244-75c8-8e8b-da18-bafeaa3e3823",
     "name": "Chameleon",
+    "adjectives": [
+      "small"
+    ],
     "physical": [
       "long tongue",
       "eyes that can move independently",
       "tail",
-      "legs",
-      "scales"
+      "curly tail",
+      "4 legs",
+      "scales",
+      "2 eyes",
+      "claws"
     ],
     "types": [
       "vertebrate",
@@ -228,22 +304,30 @@
       "cold-blooded animal"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "climb tree",
-      "change colour to blend in"
+      "change colour to blend in",
+      "lay eggs"
     ],
     "diet": [
       "insects"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "be green"
+    ],
     "considerations": []
   },
   {
     "id": "10a498ad-7370-1a4b-0674-c839b4b2d63f",
-    "name": "Snake",
+    "name": "Python",
+    "adjectives": [
+      "taller than a man"
+    ],
     "physical": [
       "scales",
-      "long body"
+      "long body",
+      "2 eyes",
+      "sharp teeth"
     ],
     "types": [
       "vertebrate",
@@ -251,24 +335,33 @@
       "cold-blooded animal"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "climb tree",
       "hibernate in winter",
       "lay eggs",
-      "slither across flat surfaces without legs"
+      "slither across flat surfaces without legs",
+      "live in a cage sometimes"
     ],
     "diet": [
-      "insects, eggs and small animals"
     ],
     "possible_behaviours": [
-      "be poisonous"
+      "be kept as pet",
+      "be bought",
+      "be dangerous"
     ],
     "considerations": []
   },
   {
     "id": "54e5470c-f527-3cb7-172a-f58c00104acc",
     "name": "Great White Shark",
+    "adjectives": [
+      "big",
+      "taller than a man",
+      "grey",
+      "white"
+    ],
     "physical": [
+      "tail",
       "fins",
       "about 300 teeth",
       "many rows of teeth",
@@ -277,33 +370,46 @@
       "a body that weights up to 1800 kilogram",
       "a body that is up to 6 metres long",
       "sharp teeth up to 6 cm long",
-      "large dorsal fin on its back which sticks out of the water"
+      "large dorsal fin on its back which sticks out of the water",
+      "2 eyes",
+      "sharp teeth",
+      "2 colours"
     ],
     "types": [
       "vertebrate",
       "fish"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "smell blood in water",
       "swim very fast",
       "swim",
-      "lay eggs"
+      "lay eggs",
+      "live in the sea"
     ],
     "diet": [
-      "fish",
-      "seals and sea lions"
+      
     ],
     "possible_behaviours": [],
-    "considerations": []
+    "considerations": [
+      "as dangerous to humans"
+    ]
   },
   {
     "id": "b3962ab0-4c44-f493-e0af-01fe74b76535",
     "name": "Emperor Penguin",
+    "adjectives": [
+      "black",
+      "white"
+    ],
     "physical": [
       "wings",
       "white belly and a black head, back, tail and wings",
-      "legs"
+      "2 legs",
+      "feather",
+      "2 eyes",
+      "ears",
+      "pale-yellow feather on its breast"
     ],
     "types": [
       "vertebrate",
@@ -311,29 +417,36 @@
       "good swimmer"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "walk in a funny way",
       "lay eggs",
       "live in Antarctica",
       "live in a group",
-      "swim"
+      "live on the ice",
+      "swim",
+      "often live by the water"
     ],
     "diet": [
-      "fish",
-      "squids",
-      "krill"
+      
     ],
     "possible_behaviours": [],
     "considerations": []
   },
   {
     "id": "db0bcdd1-c408-e0ce-ef49-a5bd58a4ec21",
-    "name": "Eagle",
+    "name": "Bald Eagle",
+    "adjectives": [
+      "brown",
+      "white"
+    ],
     "physical": [
       "wings",
       "strong talon",
       "excellent eyesight",
-      "legs"
+      "2 legs",
+      "2 eyes",
+      "ears",
+      "a yellow, hooked beak"
     ],
     "types": [
       "vertebrate",
@@ -342,12 +455,11 @@
       "large bird"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "fly",
       "lay eggs"
     ],
     "diet": [
-      "mouse, rat and rabbit"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -385,7 +497,7 @@
       "invertebrate"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "sting",
       "swim",
       "look like an umbrellas"
@@ -395,7 +507,7 @@
       "tiny fish and fish eggs"
     ],
     "possible_behaviours": [
-      "poisonous"
+      "be poisonous"
     ],
     "considerations": []
   },
@@ -497,7 +609,7 @@
       "mammal"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "swim",
       "live in the Arctic Circle"
     ],
@@ -513,6 +625,7 @@
     "physical": [
       "long legs",
       "pink bill",
+      "feather",
       "pink feather",
       "legs"
     ],
@@ -521,7 +634,7 @@
       "bird"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "live in a large group",
       "fly",
       "lay eggs",
@@ -551,7 +664,7 @@
       "good diver"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "hunt in a group",
       "live in the sea",
       "swim"
@@ -583,7 +696,7 @@
       "loudest animal on Earth"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "swim",
       "live in the sea"
     ],
@@ -755,7 +868,7 @@
       "vertebrate"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "swim",
       "lay eggs",
       "live in swamps and rivers"
@@ -874,7 +987,7 @@
       "vertebrate"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "swim",
       "live in a group",
       "live in the sea",
@@ -908,7 +1021,7 @@
       "vertebrate"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "live in Africa",
       "climb tree",
       "spend a lot of time in trees",
@@ -938,7 +1051,7 @@
       "vertebrate"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "live in a group",
       "live in the Arctic Circle",
       "swim",
@@ -1023,7 +1136,7 @@
       "camouflage by staying very still and upright on low perch",
       "excellent eyesight",
       "excellent hearing",
-      "only eat meat"
+      "eat other animals"
     ],
     "diet": [
       "insects, frogs and small animals"
@@ -1201,7 +1314,7 @@
       "the largest carnivorous marsupials in the world"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "only live in Australia",
       "let out a shrieking sound and show their teeth when they feel like they are in danger"
     ],
@@ -1223,7 +1336,7 @@
       "invertebrate"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "lay eggs",
       "live in the sea",
       "swim"
@@ -1252,7 +1365,7 @@
       "invertebrate"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "live in the sea",
       "swim"
     ],
@@ -1282,7 +1395,7 @@
       "nocturnal animal"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "lay eggs",
       "fly",
       "fly very quietly"
@@ -1325,8 +1438,8 @@
     "name": "Cassowary",
     "physical": [
       "legs",
-      "sharp claws",
       "wings",
+      "claws",
       "horn-like structure that grows from the top of its head",
       "colourful wattles hanging from its throat"
     ],
@@ -1373,7 +1486,8 @@
     ],
     "possible_behaviours": [
       "be domesticated",
-      "be kept as pet"
+      "be kept as pet",
+      "be bought"
     ],
     "considerations": [
       "to be food for humans"
@@ -1487,7 +1601,7 @@
       "tadpole when it is young"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "swim",
       "lay eggs",
       "breathe through its nose and its skin",
@@ -1546,7 +1660,7 @@
       "mammal"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "climb tree",
       "live in burrows"
     ],
@@ -1695,7 +1809,7 @@
       "large bird"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "hunt in a group",
       "swim",
       "lay eggs",
@@ -1715,6 +1829,7 @@
     "physical": [
       "legs",
       "wings",
+      "feather",
       "colourful feather",
       "a curved bill"
     ],
@@ -1806,7 +1921,7 @@
       "mammal"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "hunt in a group",
       "live in a group",
       "howl"
@@ -1865,7 +1980,7 @@
       "nocturnal animal"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "live in burrows",
       "swim",
       "climb tree"
@@ -1920,7 +2035,7 @@
       "territorial animal"
     ],
     "behaviours": [
-      "only eat meat",
+      "eat other animals",
       "swim",
       "live around water"
     ],
