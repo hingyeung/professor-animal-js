@@ -3,7 +3,9 @@ swagger: "2.0"
 info:
   version: "2018-06-06T01:49:58Z"
   title:
-    Fn::Sub: "Professor Animal ${AWS::StackName}"
+    Fn::Sub: "Professor Animal ${AWS::StackId}"
+  description:
+    Fn::Sub: "${AWS::StackName}"
 basePath: "/dev"
 schemes:
 - "https"

@@ -82,6 +82,7 @@ function buildSimpleSpeechApiAiResponse(speech, contextsIn) {
 }
 
 function buildApiAiResponse(speech, displayText) {
+    console.log(`Speech to user: ${speech}`);
     return {
         speech: speech,
         displayText: displayText,

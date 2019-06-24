@@ -61,7 +61,7 @@ const getNextQuestion2 = function(userSession, answer, fullAnimalList) {
         animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
     }
     let animalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(animalsToPlayWith);
-    console.log("animals remaining: ", animalNameList, animalNameList.length);
+    console.log("animals remaining: ", animalNameList.sort(), animalNameList.length);
 
     if (animalsToPlayWith.length === 1) {
         fieldAndAttributeValuesToIgnore = [];

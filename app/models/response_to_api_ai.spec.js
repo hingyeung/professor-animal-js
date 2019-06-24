@@ -1,7 +1,6 @@
 'use strict';
 
 const ResponseToApiAi = require('./response_to_api_ai'),
-    should = require('chai').should(),
     Context = require('./context'),
     UserSession = require('../models/UserSession'),
     _ = require('lodash'),
