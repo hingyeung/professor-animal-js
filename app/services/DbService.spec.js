@@ -14,8 +14,8 @@ let mockAws, DbService, getSpy, putSpy, clock;
 describe('DBService', function () {
     beforeEach(function () {
         // call arg[1] as callback function with arguments (null, {id:"123"}). e.g. get("id", callback).
-        getSpy = sinon.stub().callsArgWith(1, null, {id: "123"});
-        putSpy = sinon.stub().callsArgWith(1, null, {id: "123"});
+        getSpy = sinon.stub().callsArgWith(1, null, {Item: {id: "123"}});
+        putSpy = sinon.stub().callsArgWith(1, null, {Item: {id: "123"}});
         mockAws = {
             config: {
                 loadFromPath: function (configFile) {

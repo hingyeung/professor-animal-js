@@ -18,7 +18,7 @@ describe("computer_guess_rejected_intent_handler", function () {
         chai.should();
 
         sandbox = sinon.createSandbox();
-        stubSNSPublish = sandbox.stub();
+        stubSNSPublish = sandbox.stub().returns({promise: sandbox.stub()});
         sandbox.stub(AWS, 'SNS').returns({
             publish: stubSNSPublish
         });
@@ -33,7 +33,7 @@ describe("computer_guess_rejected_intent_handler", function () {
     });
 
     it("should send notification to SNS topic", () => {
-        handler(agent, 'animal', 'snsTopicArn');
+        handler(agent, 'animal', 'sessionId', 'snsTopicArn');
 
         stubSNSPublish.should.have.been.calledWith({
             "Message": sinon.match.string,
@@ -42,8 +42,8 @@ describe("computer_guess_rejected_intent_handler", function () {
         });
     });
 
-    it("should response to user properly", () => {
-        handler(agent, 'animal', 'snsTopicArn');
+    it("should response to user properly", async () => {
+        await handler(agent, 'animal', 'sessionId', 'snsTopicArn');
 
         WebhookClient.prototype.add.should.have.been.calledOnceWith(`I need to learn more about animal. Do you want to play again?`);
     });

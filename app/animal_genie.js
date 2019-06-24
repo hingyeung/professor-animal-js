@@ -17,12 +17,17 @@ function AnimalGenie(fullAnimalList) {
 }
 
 AnimalGenie.prototype.playByIntent = function(request, response, options) {
+    logger.info('NODE_ENV: %s', process.env.NODE_ENV);
+
     // winston console transport does not log to aws lambda output without this hack
     // https://github.com/winstonjs/winston/issues/1594#issue-408239025
-    delete console['_stdout'];
-    delete console['_stderr'];
+    // Need original console for unit test in dev mode
+    if (process.env.NODE_ENV !== 'dev') {
+        delete console['_stdout'];
+        delete console['_stderr'];
+    }
 
-    logger.info('%o', options);
+    logger.info('options: %o', options);
     const agent = new WebhookClient({request: request, response: response}),
         intentMap = new Map();
     if (agent.agentVersion === 1) {
