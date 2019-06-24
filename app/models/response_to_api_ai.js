@@ -2,7 +2,10 @@
 
 const Question = require("./question"),
     _ = require("lodash"),
+    {getLogger} = require('../services/logger_utils'),
     Context = require("./context");
+
+const logger = getLogger();
 
 const DEFAULT_WELCOME_INTENT_PREFIX = "DefaultWelcomeIntent",
     FIELD_PREFIX = "question-field--",
@@ -82,7 +85,7 @@ function buildSimpleSpeechApiAiResponse(speech, contextsIn) {
 }
 
 function buildApiAiResponse(speech, displayText) {
-    console.log(`Speech to user: ${speech}`);
+    logger.info(`Speech to user: ${speech}`);
     return {
         speech: speech,
         displayText: displayText,

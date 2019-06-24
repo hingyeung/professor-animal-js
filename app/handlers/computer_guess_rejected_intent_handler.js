@@ -1,20 +1,23 @@
 "use strict";
 
-const AWS = require("aws-sdk");
+const AWS = require("aws-sdk"),
+    {getLogger} = require('../services/logger_utils');
 
-const computerGuessRejectedIntentHandler = (agent, animal, snsTopicArn) => {
+const logger = getLogger();
+
+const computerGuessRejectedIntentHandler = async (agent, animal, sessionId, snsTopicArn) => {
     let sns = new AWS.SNS(),
         params = {
-            Message: "Professor Animal has made an incorrect guess. The answer was " + animal,
+            Message: `Professor Animal has made an incorrect guess. The answer was ${animal}. Session ID: ${sessionId}`,
             Subject: "Professor Animal has just lost a game.",
             TopicArn: snsTopicArn
         };
 
-    sns.publish(params, function (err, data) {
-        if (err) console.log(err, err.stack); // an error occurred
-        else console.log(data);           // successful response
-    });
-    agent.add(`I need to learn more about ${animal}. Do you want to play again?`)
+    await sns.publish(params, function (err, data) {
+        if (err) logger.error('SNS publish error', err); // an error occurred
+        else logger.info('SNS message published: %o', data);           // successful response
+    }).promise();
+    agent.add(`I need to learn more about ${animal}. Do you want to play again?`);
 };
 
 module.exports = computerGuessRejectedIntentHandler;

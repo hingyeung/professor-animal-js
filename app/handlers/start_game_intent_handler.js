@@ -3,14 +3,17 @@ const AnimalListUtils = require("../services/animal_list_utils"),
     UserSession = require("../models/UserSession"),
     DbService = require("../services/DbService"),
     errorHandler = require("./error_handler"),
-    QuestionSelector = require("../services/question_selector");
+    QuestionSelector = require("../services/question_selector"),
+    {getLogger} = require('../services/logger_utils');
+
+const logger = getLogger();
 
 const startGameHandler = async (agent, fullAnimalList) => {
     let nextQuestion, userSession;
     const dbService = new DbService(),
         fullAnimalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(fullAnimalList);
     // this is a new game, get the next question using animals from data file.
-    console.log(fullAnimalNameList, fullAnimalNameList.length);
+    logger.info('%o', fullAnimalNameList);
     nextQuestion = QuestionSelector.nextQuestion(fullAnimalList, []);
     let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion, agent.contexts);
     userSession = new UserSession(agent.session,

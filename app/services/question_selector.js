@@ -2,7 +2,10 @@
 
 const Question = require('../models/question'),
     random = require('./random'),
+    { getLogger } = require('./logger_utils'),
     _ = require('lodash');
+
+const logger = getLogger();
 
 let QuestionSelector = {
     nextQuestion: nextQuestion
@@ -52,7 +55,7 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
         // return attributeListSortedByFreq[0].freq === attribute.freq || attributeListSortedByFreq[0].freq - 1 === attribute.freq;
         return _.indexOf(middlePopularAttrubuteValues, attribute.freq) !== -1;
     }).map(function (o) {
-        console.log(o);
+        logger.info('attribute with high[est] frequency: %o', o);
         return {field: o.field, attr: o.attr, freq: o.freq};
     });
 

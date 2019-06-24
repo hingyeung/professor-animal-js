@@ -539,6 +539,7 @@
     "physical": [
       "fins",
       "flippers",
+      "tail",
       "big tail fin",
       "blowhole on top of its head",
       "black and white colour on its body",
@@ -552,6 +553,7 @@
     "behaviours": [
       "only eat meat",
       "hunt in a group",
+      "live in the sea",
       "swim"
     ],
     "diet": [
@@ -568,6 +570,7 @@
     "physical": [
       "fins",
       "flippers",
+      "tail",
       "big tail fin",
       "no teeth",
       "blowhole on top of its head"
@@ -581,7 +584,8 @@
     ],
     "behaviours": [
       "only eat meat",
-      "swim"
+      "swim",
+      "live in the sea"
     ],
     "diet": [
       "krill"
@@ -861,6 +865,7 @@
     "name": "Dolphin",
     "physical": [
       "fins",
+      "tail",
       "flippers",
       "blowhole on top of its head"
     ],
@@ -872,6 +877,7 @@
       "only eat meat",
       "swim",
       "live in a group",
+      "live in the sea",
       "use echolocation for finding food",
       "communicate with each other by clicking and whistling"
     ],

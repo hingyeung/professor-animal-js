@@ -1,11 +1,14 @@
 'use strict';
 
-const USER_SESSION_TABLE = process.env.USER_SESSION_TABLE,
-    AWS = require('aws-sdk'),
+const AWS = require('aws-sdk'),
+    sharedDataService = require('./shared_data_service'),
+    { getLogger } = require('./logger_utils'),
     Q = require('q');
 
-const SECONDS_IN_A_DAY = 24 * 60 * 60,
-    MILLISECONDS_IN_A_SECOND = 1000;
+const USER_SESSION_TABLE = process.env.USER_SESSION_TABLE,
+    SECONDS_IN_A_DAY = 24 * 60 * 60,
+    MILLISECONDS_IN_A_SECOND = 1000,
+    logger = getLogger();
 
 let docClient;
 
@@ -29,10 +32,11 @@ DbService.prototype.getSession = function (id) {
             TableName: USER_SESSION_TABLE
         }, function (err, data) {
             if (err) {
-                console.log("getSession error", err);
+                logger.error("getSession error", err);
                 deferred.reject(new Error(err));
             } else {
-                console.log("getSession success", data.Item);
+                logger.info("getSession success: %o", data.Item);
+                sharedDataService.currentSessionId = data.Item.id;
                 deferred.resolve(data.Item);
             }
         });
@@ -58,10 +62,11 @@ DbService.prototype.saveSession = function (userSession) {
         Item: userSession
     }, function (err, data) {
         if (err) {
-            console.log("saveSession error", err);
+            logger.error("saveSession error", err);
             deferred.reject(new Error(err));
         } else {
-            console.log("saveSession success", data);
+            logger.info("saveSession success %o", data);
+            sharedDataService.currentSessionId = userSession.id;
             deferred.resolve(data);
         }
     });

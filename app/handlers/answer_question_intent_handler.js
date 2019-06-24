@@ -5,14 +5,17 @@ const DbService = require("../services/DbService"),
     QuestionSelector = require("../services/question_selector"),
     Question = require("../models/question"),
     AnimalFilter = require("../services/animal_filter"),
+    {getLogger} = require('../services/logger_utils'),
     AnimalListUtils = require("../services/animal_list_utils");
+
+const logger = getLogger();
 
 const answerQuestionHandler = async (agent, fullAnimalList) => {
     try {
         const userSession = await loadSession(agent.session);
         const answer = agent.parameters.answer;
         const contextForNextRound = getNextQuestion2(userSession, answer, fullAnimalList);
-        console.log("answer: ", answer);
+        logger.info("answer to prev. question: %s", answer);
 
         await updateSession(contextForNextRound);
         const response = ResponseToApiAi.fromQuestion(contextForNextRound.nextQuestion);
@@ -61,7 +64,7 @@ const getNextQuestion2 = function(userSession, answer, fullAnimalList) {
         animalsToPlayWith = AnimalFilter.filter(animalsToPlayWith, answer === "yes", userSession.field, userSession.chosenValue);
     }
     let animalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(animalsToPlayWith);
-    console.log("animals remaining: ", animalNameList.sort(), animalNameList.length);
+    logger.info("animals remaining: %o", animalNameList.sort());
 
     if (animalsToPlayWith.length === 1) {
         fieldAndAttributeValuesToIgnore = [];
@@ -82,7 +85,7 @@ const getNextQuestion2 = function(userSession, answer, fullAnimalList) {
 
         nextQuestion = QuestionSelector.nextQuestion(animalsToPlayWith, fieldAndAttributeValuesToIgnore);
         userSession.speech = nextQuestion.toText();
-        console.log("Next question to ask: ", nextQuestion.toText());
+        logger.info("Next question to ask: %s", nextQuestion.toText());
     }
     return {
         nextQuestion: nextQuestion,

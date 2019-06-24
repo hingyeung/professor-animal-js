@@ -1,20 +1,28 @@
 "use strict";
 
-const _ = require("lodash"),
-    {WebhookClient} = require("dialogflow-fulfillment"),
+const {WebhookClient} = require("dialogflow-fulfillment"),
     startGameIntentHandler = require("./handlers/start_game_intent_handler"),
     answerQuestionHandler = require("./handlers/answer_question_intent_handler"),
     repeatQuestionIntentHandler = require('./handlers/repeat_question_intent_handler'),
     enquireGlossaryIntentHandler = require('./handlers/enquire_glossary_intent_handler'),
     enquireGlossaryForTermInContextIntentHandler = require('./handlers/enquire_glossary_for_term_in_context_intent_handler'),
+    sharedDataService = require('./services/shared_data_service'),
+    {getLogger} = require('./services/logger_utils'),
     computerGuessRejectedIntentHandler = require('./handlers/computer_guess_rejected_intent_handler');
+
+const logger = getLogger();
 
 function AnimalGenie(fullAnimalList) {
     this.fullAnimalList = fullAnimalList;
 }
 
 AnimalGenie.prototype.playByIntent = function(request, response, options) {
-    console.log(options);
+    // winston console transport does not log to aws lambda output without this hack
+    // https://github.com/winstonjs/winston/issues/1594#issue-408239025
+    delete console['_stdout'];
+    delete console['_stderr'];
+
+    logger.info('%o', options);
     const agent = new WebhookClient({request: request, response: response}),
         intentMap = new Map();
     if (agent.agentVersion === 1) {
@@ -63,7 +71,7 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
     intentMap.set("Response.To.ComputerGuess.Reject", async () => {
         const correctAnimal = agent.parameters.animal;
         // that.notifyIncorrectGuess(correctAnimal, options.notificationTopicArn);
-        await computerGuessRejectedIntentHandler(agent, correctAnimal, options.notificationTopicArn);
+        await computerGuessRejectedIntentHandler(agent, correctAnimal, sharedDataService.currentSessionId, options.notificationTopicArn);
     });
 
     // default fallback

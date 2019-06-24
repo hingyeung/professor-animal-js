@@ -1,10 +1,10 @@
 'use strict';
 
 const AWS = require('aws-sdk'),
-    fs = require('fs'),
-    path = require('path'),
     Q = require('q'),
-    _ = require('lodash');
+    {getLogger} = require('./logger_utils');
+
+const logger = getLogger();
 
 function AnimalRepo(datafile) {
     let options = {
@@ -15,7 +15,7 @@ function AnimalRepo(datafile) {
 
     if (process.env.AWS_SAM_LOCAL) {
         const configFile = "../configs/local/config.json";
-        console.log(`Loading ${configFile}...`);
+        logger.info(`Loading ${configFile}...`);
         const config = require(configFile);
         options.endpoint = config.s3Endpoint;
     }
