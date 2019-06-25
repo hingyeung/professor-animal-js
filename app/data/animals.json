@@ -135,7 +135,8 @@
     "possible_behaviours": [
       "be kept as pet",
       "be found at your house",
-      "be bought"
+      "be bought",
+      "guard the house at night"
     ],
     "considerations": [
       "to be friendly to humans"
@@ -721,14 +722,23 @@
   {
     "id": "1609ce8a-7c5b-32e9-556b-6fc277c8ab30",
     "name": "Orca",
+    "adjectives": [
+      "big",
+      "black and white",
+      "taller than a man"
+    ],
     "physical": [
+      "2 colours",
       "fins",
       "flippers",
       "tail",
       "big tail fin",
       "blowhole on top of its head",
       "black and white colour on its body",
-      "large dorsal fin on its back which sticks out of the water"
+      "large dorsal fin on its back which sticks out of the water",
+      "2 eyes",
+      "ears",
+      "sharp teeth"
     ],
     "types": [
       "vertebrate",
@@ -738,6 +748,7 @@
     "behaviours": [
       "eat other animals",
       "hunt in a group",
+      "live in a group",
       "live in the sea",
       "swim"
     ],
@@ -746,19 +757,29 @@
       "sharks, squid and other fish",
       "penguins and sea turtles"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "be used in shows"
+    ],
     "considerations": []
   },
   {
     "id": "be903051-f4d3-a4bd-8f5b-884a0da1ad3d",
     "name": "Blue Whale",
+    "adjectives": [
+      "taller than a man",
+      "longer than a bus",
+      "huge",
+      "blue"
+    ],
     "physical": [
       "fins",
       "flippers",
       "tail",
       "big tail fin",
       "no teeth",
-      "blowhole on top of its head"
+      "blowhole on top of its head",
+      "2 eyes",
+      "ears"
     ],
     "types": [
       "vertebrate",
@@ -770,7 +791,9 @@
     "behaviours": [
       "eat other animals",
       "swim",
-      "live in the sea"
+      "live in the sea",
+      "sing",
+      "eject water"
     ],
     "diet": [
       "krill"
@@ -781,17 +804,23 @@
   {
     "id": "92101007-8aa5-9ce4-a6ab-696bb2edd632",
     "name": "Butterfly",
+    "adjectives": [
+      "small"
+    ],
     "physical": [
       "bright and colourful wings",
-      "six legs",
-      "two antenna"
+      "6 legs",
+      "antennae",
+      "many, many eyes",
+      "wings",
+      "multiple colours"
     ],
     "types": [
       "invertebrate",
       "insect"
     ],
     "behaviours": [
-      "live as caterpillar when it is young",
+      "live as a caterpillar when it is young",
       "fly",
       "only eat plants"
     ],
@@ -804,8 +833,17 @@
   {
     "id": "53a0d4ed-5cbe-79ce-41ae-4d45768298eb",
     "name": "Clownfish",
+    "adjectives": [
+      "orange and white",
+      "small"
+    ],
     "physical": [
-      "orange and white stripes on its body"
+      "orange and white stripes on its body",
+      "fins",
+      "2 eyes",
+      "2 colours",
+      "ears",
+      "stripes"
     ],
     "types": [
       "vertebrate",
@@ -820,17 +858,31 @@
     "diet": [
       "algae"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "be kept as pet",
+      "be bought",
+      "be found at your house"
+    ],
     "considerations": []
   },
   {
     "id": "18b088bb-c947-02ce-20ea-9e45d8731b80",
     "name": "Rhinoceros",
+    "adjectives": [
+      "big",
+      "grey",
+      "hunted for its horns"
+    ],
     "physical": [
       "giant horns on its nose",
       "thick, armour-like skin",
       "has a body that weights up to 2500 kilogram",
-      "legs"
+      "4 legs",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "hooves",
+      "horns"
     ],
     "types": [
       "mammal",
@@ -840,7 +892,8 @@
     "behaviours": [
       "only eat plants",
       "stay in muddy pools",
-      "charge directly at whatever frightens it"
+      "charge directly at whatever frightens it",
+      "live in Africa"
     ],
     "diet": [
       "grass"
