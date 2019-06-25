@@ -1098,11 +1098,22 @@
   {
     "id": "27bed12a-bdb3-9020-68c4-4c3b4ec137f2",
     "name": "Gorilla",
+    "adjectives": [
+      "big",
+      "black"
+    ],
     "physical": [
       "dark hair",
       "long arms",
       "thumbs like humans",
-      "legs"
+      "2 legs",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "hair",
+      "sharp teeth",
+      "fingers",
+      "thumbs"
     ],
     "types": [
       "mammal",
@@ -1113,26 +1124,35 @@
     "behaviours": [
       "only eat plants",
       "live in Africa",
-      "live in forests and swamps",
+      "live in forests",
       "climb tree"
     ],
     "diet": [
-      "leaves, bamboo and fruits"
     ],
     "possible_behaviours": [
-      "use tools"
+      "use tools",
+      "stand on two legs"
     ],
     "considerations": []
   },
   {
     "id": "5176aac5-d55e-80f3-4084-f5535e225742",
     "name": "Hippopotamus",
+    "adjectives": [
+      "big",
+      "grey"
+    ],
     "physical": [
       "tail",
       "short legs",
       "huge mouth",
       "live in a group",
-      "legs"
+      "4 legs",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "tusks",
+      "hooves"
     ],
     "types": [
       "mammal",
@@ -1146,7 +1166,6 @@
       "swim"
     ],
     "diet": [
-      "grass"
     ],
     "possible_behaviours": [],
     "considerations": [
@@ -1156,11 +1175,17 @@
   {
     "id": "77168193-1ef8-3cff-5c70-490be7000ab2",
     "name": "Dolphin",
+    "adjectives": [
+      "grey"
+    ],
     "physical": [
       "fins",
       "tail",
       "flippers",
-      "blowhole on top of its head"
+      "blowhole on top of its head",
+      "2 eyes",
+      "sharp teeth",
+      "ears"
     ],
     "types": [
       "mammal",
@@ -1175,12 +1200,10 @@
       "communicate with each other by clicking and whistling"
     ],
     "diet": [
-      "fish",
-      "squid",
-      "krill"
     ],
     "possible_behaviours": [
-      "jump out of the water"
+      "jump out of the water",
+      "be used in shows"
     ],
     "considerations": [
       "to be very intelligent",
@@ -1190,29 +1213,36 @@
   {
     "id": "c084615f-cad7-d84e-b074-32512c71cca8",
     "name": "Leopard",
+    "adjectives": [
+      "generally yellow"
+    ],
     "physical": [
-      "legs",
-      "rose-like markings patterns called rosettes on their fur"
+      "4 legs",
+      "rose-like markings patterns called rosettes on their fur",
+      "spots",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "hair",
+      "sharp teeth",
+      "claws"
     ],
     "types": [
       "mammal",
-      "big cat",
+      "feline",
       "nocturnal animal",
       "vertebrate"
     ],
     "behaviours": [
       "eat other animals",
       "live in Africa",
+      "live in Asia",
+      "live in jungles",
       "climb tree",
       "spend a lot of time in trees",
       "swim"
     ],
     "diet": [
-      "deers",
-      "impalas",
-      "gazelles",
-      "fish",
-      "bird"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -1800,7 +1830,7 @@
     "name": "Orangutan",
     "physical": [
       "legs",
-      "thumbs like humans",
+      "thumbs",
       "pads on the sides of their cheeks"
     ],
     "types": [
