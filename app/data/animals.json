@@ -467,14 +467,20 @@
   {
     "id": "3beb2cb1-8032-17ac-7944-5166cc8066bc",
     "name": "Hummingbird",
+    "adjectives": [
+      "small",
+      "made of different colours"
+    ],
     "physical": [
       "wings",
-      "legs"
+      "2 legs",
+      "2 eyes",
+      "feather",
+      "ears"
     ],
     "types": [
       "vertebrate",
-      "bird",
-      "small animal"
+      "bird"
     ],
     "behaviours": [
       "eat both plants and animals",
@@ -484,12 +490,18 @@
     "diet": [
       "nectar from flowers and insects"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "be held in your hands",
+      "be green"
+    ],
     "considerations": []
   },
   {
     "id": "ff3fca60-c290-5799-d41d-e66616cf0439",
     "name": "Jellyfish",
+    "adjectives": [
+      "a bit transparent"
+    ],
     "physical": [
       "tentacles"
     ],
@@ -500,26 +512,38 @@
       "eat other animals",
       "sting",
       "swim",
-      "look like an umbrellas"
+      "look like an umbrellas",
+      "live in the sea"
     ],
     "diet": [
       "plankton",
       "tiny fish and fish eggs"
     ],
     "possible_behaviours": [
-      "be poisonous"
+      "hurt people",
+      "be poisonous",
+      "be very small to very large in size",
+      "be eaten as food by human sometimes"
     ],
     "considerations": []
   },
   {
     "id": "67f4280e-bc3e-ebe2-3a6f-5f0e80db23ca",
     "name": "Horse",
+    "adjectives": [
+      "taller than a man",
+      "big"
+    ],
     "physical": [
       "long legs",
       "mane",
       "tail",
       "hooves",
-      "legs"
+      "4 legs",
+      "2 eyes",
+      "hair",
+      "ears",
+      "visible ears"
     ],
     "types": [
       "vertebrate",
@@ -529,13 +553,19 @@
       "only eat plants",
       "run very fast",
       "let people ride on it",
-      "live in a group"
+      "live in a group",
+      "live in farms",
+      "have to do with horseback riding",
+      "love to be stroked"
     ],
     "diet": [
       "grass"
     ],
     "possible_behaviours": [
-      "be domesticated"
+      "be domesticated",
+      "be bought",
+      "be used in sport",
+      "be found in different breeds"
     ],
     "considerations": [
       "as helpful or useful to humans"
@@ -544,14 +574,27 @@
   {
     "id": "3f281e2f-3705-d131-19c4-bfec672e714e",
     "name": "Zebra",
+    "adjectives": [
+      "taller than a man",
+      "zebra-striped",
+      "big"
+    ],
     "physical": [
       "long legs",
       "mane",
       "tail",
+      "a tuft on its tail",
+      "stripes on its tail",
       "hooves",
       "black stripes on its body",
-      "legs",
-      "teeth that grow constantly"
+      "teeth that grow constantly",
+      "4 legs",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "hair",
+      "stripes",
+      "2 colours"
     ],
     "types": [
       "vertebrate",
@@ -572,10 +615,15 @@
   {
     "id": "4a7f43a6-6c3a-9cdb-a9bd-9151103fc386",
     "name": "Sea turtle",
+    "adjectives": [
+      "slow",
+      "flat"
+    ],
     "physical": [
       "a hard shell",
-      "legs",
-      "flippers"
+      "flippers",
+      "2 eyes",
+      "ears"
     ],
     "types": [
       "vertebrate",
@@ -586,22 +634,38 @@
       "eat both plants and animals",
       "swim",
       "lay eggs",
-      "lay eggs on beach"
+      "lay eggs on beach",
+      "live in the sea",
+      "live in the sea sometimes"
     ],
     "diet": [
       "jellyfish",
       "crabs and shrimp",
       "sea grass and seaweed"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "be brown",
+      "be green",
+      "be found on beaches"
+    ],
     "considerations": []
   },
   {
     "id": "3836d976-b10d-65cb-03a5-e04885c9d47d",
     "name": "Polar bear",
+    "adjectives": [
+      "white",
+      "big"
+    ],
     "physical": [
       "white fur",
-      "legs"
+      "4 legs",
+      "2 eyes",
+      "claws",
+      "hair",
+      "ears",
+      "visible ears",
+      "sharp teeth"
     ],
     "types": [
       "vertebrate",
@@ -611,10 +675,10 @@
     "behaviours": [
       "eat other animals",
       "swim",
-      "live in the Arctic Circle"
+      "live in the Arctic Circle",
+      "live on ice"
     ],
     "diet": [
-      "seals"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -622,12 +686,19 @@
   {
     "id": "fc76a960-da0b-dd12-f097-5f8c51d1a144",
     "name": "Flamingo",
+    "adjectives": [
+      "pink"
+    ],
     "physical": [
       "long legs",
       "pink bill",
       "feather",
       "pink feather",
-      "legs"
+      "2 legs",
+      "2 eyes",
+      "ears",
+      "feather",
+      "long neck"
     ],
     "types": [
       "vertebrate",
@@ -638,7 +709,8 @@
       "live in a large group",
       "fly",
       "lay eggs",
-      "stand on one leg"
+      "stand on one leg",
+      "often live by the water"
     ],
     "diet": [
       "insects and shrimp"
