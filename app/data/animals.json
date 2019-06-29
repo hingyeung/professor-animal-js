@@ -160,7 +160,7 @@
     ],
     "behaviours": [
       "eat other animals",
-      "climb tree",
+      "climb trees",
       "meow",
       "purr"
     ],
@@ -237,7 +237,7 @@
     ],
     "behaviours": [
       "only eat plants",
-      "climb tree"
+      "climb trees"
     ],
     "diet": [
       "bamboo"
@@ -306,7 +306,7 @@
     ],
     "behaviours": [
       "eat other animals",
-      "climb tree",
+      "climb trees",
       "change colour to blend in",
       "lay eggs"
     ],
@@ -337,7 +337,7 @@
     ],
     "behaviours": [
       "eat other animals",
-      "climb tree",
+      "climb trees",
       "hibernate in winter",
       "lay eggs",
       "slither across flat surfaces without legs",
@@ -969,7 +969,7 @@
       "spend most of its time on trees",
       "sleep up to 18 hours a day",
       "stay in its mother's pouch for about six months when it is a baby",
-      "climb tree",
+      "climb trees",
       "live in Australia"
     ],
     "diet": [
@@ -1089,10 +1089,10 @@
     ],
     "possible_behaviours": [
       "jump very high",
-      "stand on two legs"
+      "stand on two legs",
+      "be eaten"
     ],
     "considerations": [
-      "to be food for humans"
     ]
   },
   {
@@ -1125,7 +1125,7 @@
       "only eat plants",
       "live in Africa",
       "live in forests",
-      "climb tree"
+      "climb trees"
     ],
     "diet": [
     ],
@@ -1238,7 +1238,7 @@
       "live in Africa",
       "live in Asia",
       "live in jungles",
-      "climb tree",
+      "climb trees",
       "spend a lot of time in trees",
       "swim"
     ],
@@ -1282,8 +1282,10 @@
     "physical": [
       "scales",
       "blue tongue",
-      "legs",
-      "tail"
+      "4 legs",
+      "tail",
+      "2 eyes",
+      "ears"
     ],
     "types": [
       "reptile",
@@ -1296,16 +1298,23 @@
       "lay eggs"
     ],
     "diet": [
-      "insects, snails and fruits"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "be kept as pet",
+      "be bought"
+    ],
     "considerations": []
   },
   {
     "id": "caab75ef-8815-eaa0-a739-97435d605615",
     "name": "Puffer Fish",
+    "adjectives": [
+      "spiky"
+    ],
     "physical": [
-      "fins"
+      "fins",
+      "2 eyes",
+      "the shape of a ball"
     ],
     "types": [
       "vertebrate",
@@ -1317,7 +1326,6 @@
       "lay eggs"
     ],
     "diet": [
-      "algae, clams, mussels, and shellfish"
     ],
     "possible_behaviours": [
       "be poisonous",
@@ -1328,11 +1336,18 @@
   {
     "id": "70d9bda1-2ebd-59ac-25b2-7f4c35414390",
     "name": "Tawny Frogmouth",
+    "adjectives": [
+      "always hidden",
+      "hard to see"
+    ],
     "physical": [
       "yellow eyes",
       "wide beak",
-      "legs",
-      "wings"
+      "2 legs",
+      "wings",
+      "2 eyes",
+      "ears",
+      "feather"
     ],
     "types": [
       "bird",
@@ -1341,15 +1356,17 @@
     ],
     "behaviours": [
       "live in Australia",
+      "live in trees",
+      "live in forests",
       "fly",
       "lay eggs",
       "camouflage by staying very still and upright on low perch",
       "excellent eyesight",
       "excellent hearing",
-      "eat other animals"
+      "eat other animals",
+      "create nests"
     ],
     "diet": [
-      "insects, frogs and small animals"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -1357,10 +1374,18 @@
   {
     "id": "e1af7d80-8de8-cf71-9825-024ed6f0f535",
     "name": "Sloth",
+    "adjectives": [
+      "hairy",
+      "really slow",
+      "brown"
+    ],
     "physical": [
-      "legs",
-      "long, thick fur",
-      "long, sharp claws to hold on to tree branches"
+      "4 legs",
+      "2 eyes",
+      "ears",
+      "hair",
+      "visible ears",
+      "claws"
     ],
     "types": [
       "vertebrate",
@@ -1369,12 +1394,10 @@
     "behaviours": [
       "live in South America",
       "only eat plants",
-      "climb tree",
-      "move very slowly",
+      "climb trees",
       "live in jungles"
     ],
     "diet": [
-      "leaves"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -1382,10 +1405,23 @@
   {
     "id": "8aff3c01-1133-b8f6-edbf-19c88871fa83",
     "name": "Sugar Glider",
+    "adjectives": [
+      "grey",
+      "fluffy",
+      "small"
+    ],
     "physical": [
       "tail",
-      "legs",
-      "pouch on its tummy"
+      "long tail",
+      "4 legs",
+      "2 eyes",
+      "pouch on its tummy",
+      "ears",
+      "visible ears",
+      "big ears",
+      "hair",
+      "claws",
+      "thumbs"
     ],
     "types": [
       "vertebrate",
@@ -1395,9 +1431,11 @@
     ],
     "behaviours": [
       "eat both plants and animals",
-      "climb tree",
+      "climb trees",
       "live in a group",
+      "live in trees",
       "live in forests",
+      "live in Australia",
       "glide from tree to tree",
       "carry its baby in its pouch"
     ],
@@ -1405,31 +1443,45 @@
       "insects",
       "nectar"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "be bought"
+    ],
     "considerations": []
   },
   {
     "id": "c245c48b-2471-17f3-a6ae-42d017b1f0f1",
     "name": "Cockroach",
+    "adjectives": [
+      "small",
+      "always hidden",
+      "brown"
+    ],
     "physical": [
-      "six legs",
-      "two antenna"
+      "6 legs",
+      "2 eyes",
+      "antennae",
+      "wings",
+      "an oval shape"
     ],
     "types": [
       "invertebrate",
-      "insect"
+      "insect",
+      "cold-blooded animal"
     ],
     "behaviours": [
       "eat both plants and animals",
       "lay eggs",
       "like to live in the dark",
-      "pick up lots of germs and can spread disease to people"
+      "pick up lots of germs and can spread disease to people",
+      "fly",
+      "run fast"
     ],
     "diet": [
       "almost anything"
     ],
     "possible_behaviours": [
-      "have wings"
+      "be found in houses",
+      "be found in the kitchen sometimes"
     ],
     "considerations": [
       "as dangerous to humans"
@@ -1438,10 +1490,20 @@
   {
     "id": "eb3916fe-305a-d8b2-2f6c-6dcc42e0e1ff",
     "name": "Skunk",
+    "adjectives": [
+      "hairy",
+      "black and white"
+    ],
     "physical": [
       "tail",
-      "legs",
-      "black body with two white stripes down their backs"
+      "4 legs",
+      "black body with two white stripes down their backs",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "claws",
+      "hair",
+      "a particular smell"
     ],
     "types": [
       "vertebrate",
@@ -1452,23 +1514,31 @@
     "behaviours": [
       "eat both plants and animals",
       "live in burrows",
+      "live in North & South America",
       "spray stinky smell from its bottom"
     ],
     "diet": [
-      "insects",
-      "garbage left by humans"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "have a bad smell"
+    ],
     "considerations": []
   },
   {
     "id": "e47d8b0e-9ee3-a5ff-a5fd-4af09460b64f",
     "name": "Wallaby",
+    "adjectives": [
+      "brown"
+    ],
     "physical": [
       "tail",
-      "legs",
+      "4 legs",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "big ears",
       "pouch on its tummy",
-      "large ears"
+      "claws"
     ],
     "types": [
       "vertebrate",
@@ -1478,13 +1548,15 @@
     ],
     "behaviours": [
       "only eat plants",
-      "only live in Australia",
-      "hop and jump"
+      "live in Australia",
+      "hop and jump",
+      "bounce"
     ],
     "diet": [
-      "grass"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "stand on two legs"
+    ],
     "considerations": []
   },
   {
@@ -1525,7 +1597,7 @@
     ],
     "behaviours": [
       "eat other animals",
-      "only live in Australia",
+      "live in Australia",
       "let out a shrieking sound and show their teeth when they feel like they are in danger"
     ],
     "diet": [
@@ -1556,11 +1628,11 @@
     ],
     "possible_behaviours": [
       "be poisonous",
-      "eject a thick, blackish ink in a large cloud to distract the predator"
+      "eject a thick, blackish ink in a large cloud to distract the predator",
+      "be eaten"
     ],
     "considerations": [
       "to be very intelligent",
-      "to be food for humans"
     ]
   },
   {
@@ -1687,7 +1759,7 @@
     ],
     "behaviours": [
       "only eat plants",
-      "climb tree",
+      "climb trees",
       "live in a group",
       "produce milk for humans to drink"
     ],
@@ -1697,10 +1769,10 @@
     "possible_behaviours": [
       "be domesticated",
       "be kept as pet",
-      "be bought"
+      "be bought",
+      "be eaten"
     ],
     "considerations": [
-      "to be food for humans"
     ]
   },
   {
@@ -1840,7 +1912,7 @@
     ],
     "behaviours": [
       "eat both plants and animals",
-      "climb tree",
+      "climb trees",
       "live in a group"
     ],
     "diet": [
@@ -1871,7 +1943,7 @@
     ],
     "behaviours": [
       "eat other animals",
-      "climb tree",
+      "climb trees",
       "live in burrows"
     ],
     "diet": [
@@ -1907,11 +1979,11 @@
     ],
     "possible_behaviours": [
       "be domesticated",
-      "be kept as pet"
+      "be kept as pet",
+      "be eaten"
     ],
     "considerations": [
-      "as helpful or useful to humans",
-      "to be food for humans"
+      "as helpful or useful to humans"
     ]
   },
   {
@@ -1998,10 +2070,10 @@
     ],
     "possible_behaviours": [
       "be domesticated",
-      "be kept as pet"
+      "be kept as pet",
+      "be eaten"
     ],
     "considerations": [
-      "to be food for humans"
     ]
   },
   {
@@ -2078,7 +2150,7 @@
     ],
     "behaviours": [
       "eat both plants and animals",
-      "climb tree",
+      "climb trees",
       "live in trees or in burrows"
     ],
     "diet": [
@@ -2111,11 +2183,11 @@
       "grass"
     ],
     "possible_behaviours": [
-      "be domesticated"
+      "be domesticated",
+      "be eaten"
     ],
     "considerations": [
       "as helpful or useful to humans",
-      "to be food for humans",
       "to be sacred in India"
     ]
   },
@@ -2168,10 +2240,10 @@
       "grass"
     ],
     "possible_behaviours": [
-      "run very fast to escape from predators"
+      "run very fast to escape from predators",
+      "be eaten"
     ],
     "considerations": [
-      "to be food for humans"
     ]
   },
   {
@@ -2193,7 +2265,7 @@
       "eat other animals",
       "live in burrows",
       "swim",
-      "climb tree"
+      "climb trees"
     ],
     "diet": [
       "insects",
@@ -2278,11 +2350,11 @@
     ],
     "possible_behaviours": [
       "be domesticated",
-      "be kept as pet"
+      "be kept as pet",
+      "be eaten"
     ],
     "considerations": [
-      "as helpful or useful to humans",
-      "to be food for humans"
+      "as helpful or useful to humans"
     ]
   },
   {
