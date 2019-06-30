@@ -1250,11 +1250,17 @@
   {
     "id": "d4e91c04-643e-ae01-8a4f-2a50f154d4eb",
     "name": "Narwhal",
+    "adjectives": [
+      "big"
+    ],
     "physical": [
       "fins",
       "flippers",
       "blowhole on top of its head",
-      "long, hornlike tooth sticking out of its head"
+      "long, hornlike tooth sticking out of its head",
+      "2 eyes",
+      "ears",
+      "horns"
     ],
     "types": [
       "mammal",
@@ -1264,12 +1270,11 @@
       "eat other animals",
       "live in a group",
       "live in the Arctic Circle",
+      "live in the sea",
       "swim",
       "communicate with each other by clicking and whistling"
     ],
     "diet": [
-      "fish",
-      "squid"
     ],
     "possible_behaviours": [
       "be referred to as the unicorn of the sea"
@@ -1562,8 +1567,13 @@
   {
     "id": "68715572-409d-a74a-b9eb-37aedd28fc2f",
     "name": "Tapeworm",
+    "adjectives": [
+      "small",
+      "white"
+    ],
     "physical": [
-      "a body up to 12 meters long"
+      "a body up to 12 meters long",
+      "an elongated shape"
     ],
     "types": [
       "invertebrate",
@@ -1572,7 +1582,8 @@
     "behaviours": [
       "lay eggs",
       "absorb nutrients directly across their skin",
-      "live inside someone's body"
+      "live in the human body",
+      "live in a group"
     ],
     "diet": [],
     "possible_behaviours": [],
@@ -1583,10 +1594,19 @@
   {
     "id": "66714625-b409-5231-00d3-c91a8cbdffd9",
     "name": "Tasmanian Devil",
+    "adjectives": [
+      "black"
+    ],
     "physical": [
       "tail",
-      "legs",
-      "pouch on its tummy"
+      "4 legs",
+      "pouch on its tummy",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "sharp teeth",
+      "claws",
+      "hair"
     ],
     "types": [
       "vertebrate",
@@ -1601,7 +1621,6 @@
       "let out a shrieking sound and show their teeth when they feel like they are in danger"
     ],
     "diet": [
-      "animals that are already dead"
     ],
     "possible_behaviours": [],
     "considerations": []
