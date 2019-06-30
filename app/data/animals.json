@@ -469,8 +469,7 @@
     "id": "3beb2cb1-8032-17ac-7944-5166cc8066bc",
     "name": "Hummingbird",
     "adjectives": [
-      "small",
-      "made of different colours"
+      "small"
     ],
     "physical": [
       "wings",
@@ -493,7 +492,8 @@
     ],
     "possible_behaviours": [
       "be held in your hands",
-      "be green"
+      "be green",
+      "be found in different colours"
     ],
     "considerations": []
   },
@@ -1630,7 +1630,9 @@
     "name": "Octopus",
     "physical": [
       "tentacles",
-      "three hearts"
+      "3 hearts",
+      "8 legs",
+      "2 eyes"
     ],
     "types": [
       "solitary animal",
@@ -1643,24 +1645,32 @@
       "swim"
     ],
     "diet": [
-      "fish"
     ],
     "possible_behaviours": [
       "be poisonous",
       "eject a thick, blackish ink in a large cloud to distract the predator",
-      "be eaten"
+      "be eaten",
+      "be dangerous"
     ],
     "considerations": [
-      "to be very intelligent",
+      "to be very intelligent"
     ]
   },
   {
     "id": "893332ac-cb45-4c2d-52fe-3913708ce6ea",
     "name": "Giant Squid",
+    "adjectives": [
+      "big",
+      "taller than a man",
+      "longer than a bus",
+      "rare"
+    ],
     "physical": [
       "tentacles",
       "eight arms and two feeding tentacles",
-      "eyes the size of beach balls"
+      "eyes the size of beach balls",
+      "2 eyes",
+      "8 legs"
     ],
     "types": [
       "invertebrate"
@@ -1671,8 +1681,6 @@
       "swim"
     ],
     "diet": [
-      "fish",
-      "shrimp"
     ],
     "possible_behaviours": [
       "grow up to more than 5 meters long"
@@ -1683,10 +1691,13 @@
     "id": "3721edcd-f697-f5a7-6607-ff1ec6044001",
     "name": "Owl",
     "physical": [
-      "legs",
+      "2 legs",
       "wings",
       "strong talon",
-      "large eyes"
+      "big eyes",
+      "ears",
+      "visible ears",
+      "feather"
     ],
     "types": [
       "vertebrate",
@@ -1696,27 +1707,33 @@
       "nocturnal animal"
     ],
     "behaviours": [
+      "live in forests",
       "eat other animals",
       "lay eggs",
       "fly",
       "fly very quietly"
     ],
     "diet": [
-      "insects",
-      "small mammals"
     ],
     "possible_behaviours": [
-      "turn their heads as much as 270 degrees"
+      "turn their heads as much as 270 degrees",
+      "be found in different colours"
     ],
     "considerations": []
   },
   {
     "id": "3b8ab0a6-b6ea-5f5b-fbdd-882cbe414a32",
     "name": "Hermit Crab",
+    "adjectives": [
+      "small"
+    ],
     "physical": [
-      "legs",
+      "10 legs",
       "a hard shell",
-      "claws"
+      "claws",
+      "antennae",
+      "pincers",
+      "2 eyes"
     ],
     "types": [
       "invertebrate"
@@ -1728,21 +1745,28 @@
       "live inside seashells that are often scavenged shells of dead animals"
     ],
     "diet": [
-      "fish",
-      "plankton"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "be found on beaches"
+    ],
     "considerations": []
   },
   {
     "id": "9acd17a6-01ea-652d-d183-0d5e55ce2ec9",
     "name": "Cassowary",
+    "adjectives": [
+      "black"
+    ],
     "physical": [
       "legs",
       "wings",
+      "feather",
       "claws",
       "horn-like structure that grows from the top of its head",
-      "colourful wattles hanging from its throat"
+      "colourful wattles hanging from its throat",
+      "2 colours",
+      "long neck",
+      "long legs"
     ],
     "types": [
       "vertebrate",
@@ -1752,11 +1776,10 @@
     ],
     "behaviours": [
       "eat both plants and animals",
-      "lay eggs"
+      "lay eggs",
+      "live in Australia"
     ],
     "diet": [
-      "fruit",
-      "small animals"
     ],
     "possible_behaviours": [
       "jump very high",
