@@ -11,7 +11,7 @@
       "tail",
       "4 legs",
       "hair",
-      "sharp teeth",
+      "big teeth",
       "ears",
       "visible ears",
       "2 eyes",
@@ -48,7 +48,7 @@
       "long, black lines which run from the inside of each eye to the mouth",
       "4 legs",
       "hair",
-      "sharp teeth",
+      "big teeth",
       "ears",
       "visible ears",
       "2 eyes",
@@ -146,6 +146,8 @@
   {
     "id": "b0da8c8b-a1c1-9d34-ad9d-7caf3a8352c9",
     "name": "Cat",
+    "adjectives": [
+    ],
     "physical": [
       "tail",
       "4 legs",
@@ -157,7 +159,8 @@
     ],
     "types": [
       "vertebrate",
-      "mammal"
+      "mammal",
+      "solitary animal"
     ],
     "behaviours": [
       "eat other animals",
@@ -195,7 +198,7 @@
       "visible ears",
       "claws",
       "hair",
-      "sharp teeth"
+      "big teeth"
     ],
     "types": [
       "vertebrate",
@@ -230,7 +233,7 @@
       "2 colours",
       "claws",
       "hair",
-      "sharp teeth"
+      "big teeth"
     ],
     "types": [
       "vertebrate",
@@ -264,7 +267,7 @@
       "visible ears",
       "2 colours",
       "hair",
-      "sharp teeth",
+      "big teeth",
       "claws"
     ],
     "types": [
@@ -328,8 +331,7 @@
     "physical": [
       "scales",
       "long body",
-      "2 eyes",
-      "sharp teeth"
+      "2 eyes"
     ],
     "types": [
       "vertebrate",
@@ -371,10 +373,9 @@
       "very rough skin",
       "a body that weights up to 1800 kilogram",
       "a body that is up to 6 metres long",
-      "sharp teeth up to 6 cm long",
       "large dorsal fin on its back which sticks out of the water",
       "2 eyes",
-      "sharp teeth",
+      "big teeth",
       "2 colours"
     ],
     "types": [
@@ -629,7 +630,8 @@
       "a hard shell",
       "flippers",
       "2 eyes",
-      "ears"
+      "ears",
+      "tail"
     ],
     "types": [
       "vertebrate",
@@ -671,7 +673,7 @@
       "hair",
       "ears",
       "visible ears",
-      "sharp teeth"
+      "big teeth"
     ],
     "types": [
       "vertebrate",
@@ -738,26 +740,26 @@
       "2 colours",
       "fins",
       "flippers",
-      "tail",
-      "big tail fin",
+      "tail fins",
       "blowhole on top of its head",
       "black and white colour on its body",
       "large dorsal fin on its back which sticks out of the water",
       "2 eyes",
       "ears",
-      "sharp teeth"
+      "big teeth"
     ],
     "types": [
       "vertebrate",
-      "mammal",
-      "good diver"
+      "mammal"
     ],
     "behaviours": [
       "eat other animals",
       "hunt in groups",
       "live in groups",
       "live in the sea",
-      "swim"
+      "swim",
+      "use echolocation for finding food",
+      "communicate with each other by clicking and whistling"
     ],
     "diet": [
       "seals and sea lions",
@@ -781,8 +783,7 @@
     "physical": [
       "fins",
       "flippers",
-      "tail",
-      "big tail fin",
+      "tail fins",
       "no teeth",
       "blowhole on top of its head",
       "2 eyes",
@@ -791,7 +792,6 @@
     "types": [
       "vertebrate",
       "mammal",
-      "good diver",
       "largest animal on Earth",
       "loudest animal on Earth"
     ],
@@ -921,7 +921,6 @@
       "claws",
       "2 eyes",
       "hair",
-      "sharp teeth",
       "ears",
       "visible ears"
     ],
@@ -1030,11 +1029,10 @@
     "physical": [
       "tail",
       "large jaw",
-      "large sharp teeth",
       "4 legs",
       "2 eyes",
       "ears",
-      "sharp teeth",
+      "big teeth",
       "claws",
       "scales"
     ],
@@ -1118,7 +1116,7 @@
       "ears",
       "visible ears",
       "hair",
-      "sharp teeth",
+      "big teeth",
       "fingers",
       "thumbs"
     ],
@@ -1187,11 +1185,10 @@
     ],
     "physical": [
       "fins",
-      "tail",
+      "tail fins",
       "flippers",
       "blowhole on top of its head",
       "2 eyes",
-      "sharp teeth",
       "ears"
     ],
     "types": [
@@ -1231,7 +1228,7 @@
       "ears",
       "visible ears",
       "hair",
-      "sharp teeth",
+      "big teeth",
       "claws"
     ],
     "types": [
@@ -1267,7 +1264,8 @@
       "long, hornlike tooth sticking out of its head",
       "2 eyes",
       "ears",
-      "horns"
+      "horns",
+      "tail fins"
     ],
     "types": [
       "mammal",
@@ -1279,6 +1277,7 @@
       "live in the Arctic Circle",
       "live in the sea",
       "swim",
+      "use echolocation for finding food",
       "communicate with each other by clicking and whistling"
     ],
     "diet": [
@@ -1613,7 +1612,7 @@
       "2 eyes",
       "ears",
       "visible ears",
-      "sharp teeth",
+      "big teeth",
       "claws",
       "hair"
     ],
@@ -2404,7 +2403,7 @@
       "ears",
       "visible ears",
       "hair",
-      "sharp teeth"
+      "big teeth"
     ],
     "types": [
       "vertebrate",
