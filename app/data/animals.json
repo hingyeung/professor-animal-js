@@ -25,7 +25,7 @@
     ],
     "behaviours": [
       "eat other animals",
-      "hunt in a group",
+      "hunt in groups",
       "live in groups called pride",
       "live in Africa",
       "rest for around 20 hours a day"
@@ -430,7 +430,9 @@
     "diet": [
       
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "stand on two legs"
+    ],
     "considerations": []
   },
   {
@@ -462,7 +464,9 @@
     ],
     "diet": [
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "stand on two legs"
+    ],
     "considerations": []
   },
   {
@@ -493,7 +497,8 @@
     "possible_behaviours": [
       "be held in your hands",
       "be green",
-      "be found in different colours"
+      "be found in different colours",
+      "stand on two legs"
     ],
     "considerations": []
   },
@@ -715,7 +720,9 @@
     "diet": [
       "insects and shrimp"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "stand on two legs"
+    ],
     "considerations": []
   },
   {
@@ -746,7 +753,7 @@
     ],
     "behaviours": [
       "eat other animals",
-      "hunt in a group",
+      "hunt in groups",
       "live in groups",
       "live in the sea",
       "swim"
@@ -1372,7 +1379,9 @@
     ],
     "diet": [
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "stand on two legs"
+    ],
     "considerations": []
   },
   {
@@ -1716,7 +1725,8 @@
     ],
     "possible_behaviours": [
       "turn their heads as much as 270 degrees",
-      "be found in different colours"
+      "be found in different colours",
+      "stand on two legs"
     ],
     "considerations": []
   },
@@ -1784,7 +1794,8 @@
     ],
     "possible_behaviours": [
       "jump very high",
-      "run very fast"
+      "run very fast",
+      "stand on two legs"
     ],
     "considerations": []
   },
@@ -1879,7 +1890,9 @@
       "a body smaller than a goose's",
       "feather",
       "2 eyes",
-      "ears"
+      "ears",
+      "webbed feet",
+      "long neck"
     ],
     "types": [
       "vertebrate",
@@ -1899,7 +1912,8 @@
     ],
     "possible_behaviours": [
       "be kept as pet",
-      "be eaten as food by human sometimes"
+      "be eaten as food by human sometimes",
+      "stand on two legs"
     ],
     "considerations": [
       "as helpful or useful to humans"
@@ -2079,7 +2093,8 @@
     "possible_behaviours": [
       "be kept as pet",
       "be eaten as food by human sometimes",
-      "be found in different colours"
+      "be found in different colours",
+      "stand on two legs"
     ],
     "considerations": [
       "as helpful or useful to humans"
@@ -2170,10 +2185,19 @@
   {
     "id": "1c17b5aa-b45c-f56c-4dc0-ac4aaab70e65",
     "name": "Goose",
+    "adjectives": [
+      "brown",
+      "white"
+    ],
     "physical": [
-      "legs",
+      "2 legs",
       "wings",
-      "a body larger than a duck's"
+      "a body larger than a duck's",
+      "feather",
+      "2 eyes",
+      "ears",
+      "webbed feet",
+      "long neck"
     ],
     "types": [
       "vertebrate",
@@ -2195,7 +2219,9 @@
     ],
     "possible_behaviours": [
       "be kept as pet",
-      "be eaten as food by human sometimes"
+      "be eaten as food by human sometimes",
+      "be bought",
+      "stand on two legs"
     ],
     "considerations": [
     ]
@@ -2203,20 +2229,28 @@
   {
     "id": "62f6ed84-139c-edc6-f699-6d688acf3984",
     "name": "Pelican",
+    "adjectives": [
+      "black and white",
+      "big"
+    ],
     "physical": [
-      "legs",
+      "2 legs",
       "wings",
       "the largest bill of all birds",
-      "a big pouch under its bill"
+      "a big pouch under its bill",
+      "ears",
+      "2 eyes",
+      "feather",
+      "webbed feet",
+      "long neck"
     ],
     "types": [
       "vertebrate",
-      "bird",
-      "large bird"
+      "bird"
     ],
     "behaviours": [
       "eat other animals",
-      "hunt in a group",
+      "hunt in groups",
       "swim",
       "lay eggs",
       "fly",
@@ -2224,64 +2258,93 @@
       "often live by the water"
     ],
     "diet": [
-      "fish"
     ],
-    "possible_behaviours": [],
+    "possible_behaviours": [
+      "stand on two legs"
+    ],
     "considerations": []
   },
   {
     "id": "1f16ef67-7588-b30f-c23f-2927e6a152de",
     "name": "Parrot",
+    "adjectives": [
+    ],
     "physical": [
-      "legs",
+      "2 legs",
       "wings",
       "feather",
       "colourful feather",
-      "a curved bill"
+      "a curved bill",
+      "a curved beak",
+      "2 eyes",
+      "ears",
+      "claws"
     ],
     "types": [
       "vertebrate",
       "bird"
     ],
     "behaviours": [
+      "sing",
       "lay eggs",
+      "only eat plants",
       "fly",
-      "live in groups"
+      "live in groups",
+      "live in trees",
+      "live in Africa",
+      "live in Australia",
+      "live in South America",
+      "live in Asia",
+      "live in forests",
+      "speak",
+      "create nests",
+      "live in a cage sometimes"
     ],
     "diet": [
-      "fruits",
-      "seeds"
     ],
     "possible_behaviours": [
       "be kept as pet",
-      "say simple words "
+      "say simple words",
+      "be found in different colours",
+      "be bought",
+      "be green",
+      "be red"
     ],
     "considerations": []
   },
   {
     "id": "235c835a-2530-b3dc-4a81-0aabe38f9ec8",
-    "name": "Squirrel",
+    "name": "Tree Squirrel",
+    "adjectives": [
+      "small",
+      "grey"
+    ],
     "physical": [
       "tail",
-      "legs",
-      "a bushy tail",
-      "big eyes"
+      "4 legs",
+      "bushy tail",
+      "big eyes",
+      "2 eyes",
+      "ears",
+      "visible ears"
     ],
     "types": [
       "vertebrate",
       "mammal",
+      "rodent",
       "territorial animal"
     ],
     "behaviours": [
-      "eat both plants and animals",
+      "only eat plants",
       "climb trees",
-      "live in trees or in burrows"
+      "live in trees",
+      "live in forests",
+      "live in Australia",
+      "live in Africa",
+      "live in North & South America",
+      "run fast"
     ],
     "diet": [
-      "insects",
-      "nuts",
-      "fruits",
-      "seeds"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -2289,10 +2352,21 @@
   {
     "id": "4e9a220a-893c-ff58-94af-91b881dc406b",
     "name": "Cow",
+    "adjectives": [
+      "big",
+      "black and white"
+    ],
     "physical": [
       "tail",
-      "legs",
-      "hooves"
+      "a tuft on its tail",
+      "4 legs",
+      "hooves",
+      "horns",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "hair",
+      "spots"
     ],
     "types": [
       "vertebrate",
@@ -2302,10 +2376,10 @@
       "only eat plants",
       "live in groups",
       "live in farms",
-      "moo"
+      "moo",
+      "produce milk for humans to drink"
     ],
     "diet": [
-      "grass"
     ],
     "possible_behaviours": [
       "be eaten as food by human sometimes"
@@ -2318,9 +2392,18 @@
   {
     "id": "aea5253b-5db5-fab9-c3ee-047542be90ee",
     "name": "Wolf",
+    "adjectives": [
+      "grey"
+    ],
     "physical": [
       "tail",
-      "legs"
+      "4 legs",
+      "claws",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "hair",
+      "sharp teeth"
     ],
     "types": [
       "vertebrate",
@@ -2328,8 +2411,11 @@
     ],
     "behaviours": [
       "eat other animals",
-      "hunt in a group",
+      "hunt in groups",
       "live in groups",
+      "live in Asia",
+      "live in North America",
+      "live in forests",
       "howl"
     ],
     "diet": [
@@ -2486,7 +2572,7 @@
     "name": "Fox",
     "physical": [
       "tail",
-      "legs",
+      "4 legs",
       "triangular face",
       "pointed ears",
       "bushy tail",
