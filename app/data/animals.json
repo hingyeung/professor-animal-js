@@ -99,7 +99,8 @@
       "eject water",
       "only eat plants",
       "live in groups",
-      "live in Africa and Asia",
+      "live in Africa",
+      "live in Asia",
       "swim"
     ],
     "diet": [
@@ -557,7 +558,7 @@
     ],
     "behaviours": [
       "only eat plants",
-      "run very fast",
+      "run fast",
       "let people ride on it",
       "live in groups",
       "live in farms",
@@ -609,7 +610,7 @@
       "only eat plants",
       "live in Africa",
       "live in groups",
-      "run very fast"
+      "run fast"
     ],
     "diet": [
       "grass"
@@ -1094,7 +1095,7 @@
       "grass"
     ],
     "possible_behaviours": [
-      "jump very high",
+      "jump",
       "stand on two legs",
       "be eaten as food by human sometimes"
     ],
@@ -1562,7 +1563,7 @@
     "behaviours": [
       "only eat plants",
       "live in Australia",
-      "hop and jump",
+      "jump",
       "bounce"
     ],
     "diet": [
@@ -1793,8 +1794,8 @@
     "diet": [
     ],
     "possible_behaviours": [
-      "jump very high",
-      "run very fast",
+      "jump",
+      "run fast",
       "stand on two legs"
     ],
     "considerations": []
@@ -1984,7 +1985,7 @@
     "diet": [
     ],
     "possible_behaviours": [
-      "jump very high",
+      "jump",
       "be kept as pet"
     ],
     "considerations": []
@@ -2419,9 +2420,6 @@
       "howl"
     ],
     "diet": [
-      "deer",
-      "sheep",
-      "bison"
     ],
     "possible_behaviours": [],
     "considerations": [
@@ -2431,11 +2429,20 @@
   {
     "id": "0ed0ee14-ff02-c4c3-cb1e-9a1b2abb3459",
     "name": "Deer",
+    "adjectives": [
+      "brown",
+      "big"
+    ],
     "physical": [
       "tail",
-      "legs",
+      "4 legs",
       "hooves",
-      "antlers on its head"
+      "antlers on its head",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "hair",
+      "antlers"
     ],
     "types": [
       "vertebrate",
@@ -2444,13 +2451,15 @@
     "behaviours": [
       "only eat plants",
       "live in groups",
+      "live in North & South America",
+      "live in Asia",
+      "live in Europe",
       "swim"
     ],
     "diet": [
-      "grass"
     ],
     "possible_behaviours": [
-      "run very fast to escape from predators",
+      "run fast",
       "be eaten as food by human sometimes"
     ],
     "considerations": [
@@ -2459,11 +2468,20 @@
   {
     "id": "2bc915a1-716d-243c-57a4-da266a363051",
     "name": "Hedgehog",
+    "adjectives": [
+      "spiky",
+      "brown"
+    ],
     "physical": [
       "tail",
-      "legs",
-      "quills on its back",
-      "long snout"
+      "4 legs",
+      "spines on its back",
+      "long snout",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "hair",
+      "the shape of a ball"
     ],
     "types": [
       "vertebrate",
@@ -2475,24 +2493,37 @@
       "eat other animals",
       "live in burrows",
       "swim",
-      "climb trees"
+      "climb trees",
+      "live in Asia",
+      "live in Europe",
+      "live in Africa"
     ],
     "diet": [
-      "insects",
-      "snails"
     ],
     "possible_behaviours": [
-      "be kept as pet"
+      "be kept as pet",
+      "be bought",
+      "be found in different colours"
     ],
     "considerations": []
   },
   {
     "id": "03b3d026-a2b7-22de-a7b7-1813c15bd98d",
     "name": "Bat",
+    "adjectives": [
+      "black",
+      "brown",
+      "small"
+    ],
     "physical": [
-      "legs",
-      "sharp claws",
-      "wings"
+      "4 legs",
+      "claws",
+      "wings",
+      "2 eyes",
+      "ears",
+      "visible ears",
+      "big ears",
+      "hair"
     ],
     "types": [
       "vertebrate",
@@ -2503,12 +2534,16 @@
       "eat both plants and animals",
       "fly",
       "live in groups",
-      "use echo-location to hunt"
+      "use echo-location to hunt",
+      "live in Africa",
+      "live in Asia",
+      "live in Australia",
+      "live in Europe",
+      "live in North & South America",
+      "live in trees",
+      "drink blood"
     ],
     "diet": [
-      "insects",
-      "fruits",
-      "small animals"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -2516,10 +2551,16 @@
   {
     "id": "5d1c7592-1b68-ecea-c5a0-3c87ed4e36f2",
     "name": "Walrus",
+    "adjectives": [
+      "big",
+      "taller than a man",
+      "brown"
+    ],
     "physical": [
       "flippers",
-      "large animal",
-      "tusks"
+      "tusks",
+      "2 eyes",
+      "hair"
     ],
     "types": [
       "vertebrate",
@@ -2529,10 +2570,12 @@
     "behaviours": [
       "eat other animals",
       "swim",
-      "often live by the water"
+      "often live by the water",
+      "live on the ice",
+      "live in North Pole",
+      "live in the Arctic Circle"
     ],
     "diet": [
-      "shellfish"
     ],
     "possible_behaviours": [],
     "considerations": []
@@ -2540,9 +2583,23 @@
   {
     "id": "2d820704-13d8-51c6-4324-459de6ee5fff",
     "name": "Pig",
+    "adjectives": [
+      "pink",
+      "white",
+      "big",
+      "fat"
+    ],
     "physical": [
       "tail",
-      "legs"
+      "curly tail",
+      "4 legs",
+      "ears",
+      "visible ears",
+      "big ears",
+      "hair",
+      "2 eyes",
+      "hooves",
+      "long snout"
     ],
     "types": [
       "vertebrate",
@@ -2551,13 +2608,13 @@
     "behaviours": [
       "eat both plants and animals",
       "live in groups",
-      "live in farms"
+      "live in farms",
+      "live in Africa",
+      "live in Asia",
+      "live in Europe",
+      "live in North & South America"
     ],
     "diet": [
-      "insects",
-      "leaves",
-      "fruits",
-      "soybean"
     ],
     "possible_behaviours": [
       "be kept as pet",
@@ -2569,14 +2626,21 @@
   },
   {
     "id": "535bda74-a3ed-37f3-6731-651cebe8c199",
-    "name": "Fox",
+    "name": "Red Fox",
+    "adjectives": [
+      "orange"
+    ],
     "physical": [
       "tail",
       "4 legs",
+      "ears",
+      "visible ears",
       "triangular face",
       "pointed ears",
       "bushy tail",
-      "long snout"
+      "long snout",
+      "hair",
+      "claws"
     ],
     "types": [
       "vertebrate",
@@ -2584,12 +2648,14 @@
       "solitary animal"
     ],
     "behaviours": [
-      "eat both plants and animals"
+      "eat both plants and animals",
+      "live in Australia",
+      "live in North & South America",
+      "live in Europe",
+      "live in Asia",
+      "live in forests"
     ],
     "diet": [
-      "insects",
-      "bird",
-      "small reptiles"
     ],
     "possible_behaviours": [],
     "considerations": []
