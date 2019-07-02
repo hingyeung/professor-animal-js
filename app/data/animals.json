@@ -563,7 +563,6 @@
       "grass"
     ],
     "possible_behaviours": [
-      "be domesticated",
       "be bought",
       "be used in sport",
       "be found in different breeds"
@@ -1334,7 +1333,7 @@
     ],
     "possible_behaviours": [
       "be poisonous",
-      "enlarge its body by swallowing huge amount of water to scare off predators"
+      "puff itself"
     ],
     "considerations": []
   },
@@ -1820,7 +1819,6 @@
     "diet": [
     ],
     "possible_behaviours": [
-      "be domesticated",
       "be kept as pet",
       "be bought",
       "be eaten as food by human sometimes"
@@ -1863,7 +1861,6 @@
     "diet": [
     ],
     "possible_behaviours": [
-      "be domesticated",
       "be bought"
     ],
     "considerations": [
@@ -1901,7 +1898,6 @@
     "diet": [
     ],
     "possible_behaviours": [
-      "be domesticated",
       "be kept as pet",
       "be eaten as food by human sometimes"
     ],
@@ -1982,10 +1978,20 @@
   {
     "id": "01efe1a2-7db7-929b-78c8-406b385d00d4",
     "name": "Orangutan",
+    "adjectives": [
+      "hairy",
+      "orange",
+      "big"
+    ],
     "physical": [
-      "legs",
+      "2 legs",
+      "2 hands",
       "thumbs",
-      "pads on the sides of their cheeks"
+      "pads on the sides of their cheeks",
+      "ears",
+      "visible ears",
+      "hair",
+      "2 eyes"
     ],
     "types": [
       "vertebrate",
@@ -1995,15 +2001,15 @@
     "behaviours": [
       "eat both plants and animals",
       "climb trees",
-      "live in groups"
+      "live in groups",
+      "live in forests",
+      "live in trees"
     ],
     "diet": [
-      "insects",
-      "fruits",
-      "leaves"
     ],
     "possible_behaviours": [
-      "use tools"
+      "use tools",
+      "stand on two legs"
     ],
     "considerations": [
       "to be very intelligent"
@@ -2012,12 +2018,19 @@
   {
     "id": "d6df69a0-11b7-d674-4ff3-f671174aa3e3",
     "name": "Pangolin",
+    "adjectives": [
+      "brown"
+    ],
     "physical": [
       "tail",
-      "legs",
+      "4 legs",
       "sharp claws",
+      "claws",
       "scales",
-      "long tongue "
+      "long tongue",
+      "2 eyes",
+      "hard body",
+      "the shape of a ball"
     ],
     "types": [
       "vertebrate",
@@ -2026,7 +2039,8 @@
     "behaviours": [
       "eat other animals",
       "climb trees",
-      "live in burrows"
+      "live in burrows",
+      "curl up into a ball when threatened"
     ],
     "diet": [
       "insects",
@@ -2038,12 +2052,17 @@
   {
     "id": "25dc3b6d-7206-bf0d-0733-e9e8b47d3ce5",
     "name": "Chicken",
+    "adjectives": [
+    ],
     "physical": [
-      "legs",
-      "sharp claws",
+      "2 legs",
+      "claws",
       "wings",
+      "feather",
       "a comb above its head",
-      "a wattle under its beak"
+      "a wattle under its beak",
+      "2 eyes",
+      "ears"
     ],
     "types": [
       "vertebrate",
@@ -2052,17 +2071,15 @@
     "behaviours": [
       "eat both plants and animals",
       "lay eggs",
+      "live in farms",
       "live in groups"
     ],
     "diet": [
-      "insects",
-      "grain",
-      "chicken feed"
     ],
     "possible_behaviours": [
-      "be domesticated",
       "be kept as pet",
-      "be eaten as food by human sometimes"
+      "be eaten as food by human sometimes",
+      "be found in different colours"
     ],
     "considerations": [
       "as helpful or useful to humans"
@@ -2071,11 +2088,22 @@
   {
     "id": "3279dc07-b562-db6f-585d-9db78ea95fdc",
     "name": "Rabbit",
+    "adjectives": [
+      "fluffy",
+      "hairy",
+      "small",
+      "white"
+    ],
     "physical": [
       "tail",
-      "legs",
-      "long ears",
-      "teeth that grow constantly"
+      "short tail",
+      "4 legs",
+      "ears",
+      "big ears",
+      "visible ears",
+      "teeth that grow constantly",
+      "2 eyes",
+      "hair"
     ],
     "types": [
       "vertebrate",
@@ -2083,14 +2111,18 @@
     ],
     "behaviours": [
       "only eat plants",
-      "live in groups"
+      "live in groups",
+      "jump",
+      "live underground",
+      "live in burrows",
+      "live in a cage sometimes"
     ],
     "diet": [
-      "grass",
-      "carrots"
     ],
     "possible_behaviours": [
-      "be kept as pet"
+      "be kept as pet",
+      "be found in different colours",
+      "be used in magic show"
     ],
     "considerations": [
       "to be friendly to humans"
@@ -2099,29 +2131,39 @@
   {
     "id": "3390b678-888e-54fe-ab8f-457c281e3d15",
     "name": "Hamster",
+    "adjectives": [
+      "hairy",
+      "fluffy",
+      "small"
+    ],
     "physical": [
       "tail",
-      "legs",
-      "teeth that grow constantly"
+      "short tail",
+      "4 legs",
+      "ears",
+      "visible ears",
+      "teeth that grow constantly",
+      "2 eyes",
+      "hair"
     ],
     "types": [
       "vertebrate",
-      "mammal"
+      "mammal",
+      "rodent"
     ],
     "behaviours": [
       "eat both plants and animals",
       "live in burrows",
+      "live underground",
       "carry food in its spacious cheek pouches",
-      "like to play in a hamster wheel"
+      "like to play in a hamster wheel",
+      "live in a cage sometimes"
     ],
     "diet": [
-      "pet food",
-      "vegetables",
-      "fruits",
-      "nuts"
     ],
     "possible_behaviours": [
-      "be kept as pet"
+      "be kept as pet",
+      "be held in your hands"
     ],
     "considerations": []
   },
@@ -2144,14 +2186,14 @@
       "fly",
       "live in groups",
       "often live by the water",
-      "migrate to warmer places in the winter"
+      "migrate to warmer places in the winter",
+      "live in farms"
     ],
     "diet": [
       "grass",
       "grain"
     ],
     "possible_behaviours": [
-      "be domesticated",
       "be kept as pet",
       "be eaten as food by human sometimes"
     ],
@@ -2259,13 +2301,13 @@
     "behaviours": [
       "only eat plants",
       "live in groups",
+      "live in farms",
       "moo"
     ],
     "diet": [
       "grass"
     ],
     "possible_behaviours": [
-      "be domesticated",
       "be eaten as food by human sometimes"
     ],
     "considerations": [
@@ -2422,7 +2464,8 @@
     ],
     "behaviours": [
       "eat both plants and animals",
-      "live in groups"
+      "live in groups",
+      "live in farms"
     ],
     "diet": [
       "insects",
@@ -2431,7 +2474,6 @@
       "soybean"
     ],
     "possible_behaviours": [
-      "be domesticated",
       "be kept as pet",
       "be eaten as food by human sometimes"
     ],
