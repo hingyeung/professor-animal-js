@@ -26,7 +26,7 @@
     "behaviours": [
       "eat other animals",
       "hunt in groups",
-      "live in groups called pride",
+      "live in groups",
       "rest for around 20 hours a day"
     ],
     "diet": [],
@@ -38,7 +38,8 @@
     "name": "Cheetah",
     "adjectives": [
       "generally yellow",
-      "big"
+      "big",
+      "only naturally found in Africa"
     ],
     "physical": [
       "tail",
@@ -58,7 +59,8 @@
       "fastest running animal in the world"
     ],
     "behaviours": [
-      "eat other animals"
+      "eat other animals",
+      "run fast"
     ],
     "diet": [],
     "possible_behaviours": [
@@ -81,7 +83,7 @@
       "a trunk",
       "4 legs",
       "visible ears",
-      "big ears",
+      "big ears for its head",
       "2 eyes"
     ],
     "types": [
@@ -754,7 +756,7 @@
       "tail fins",
       "no teeth",
       "blowhole on top of its head",
-      "2 eyes",
+      "2 eyes"
     ],
     "types": [
       "vertebrate",
@@ -911,7 +913,7 @@
     "id": "088088a8-b566-77a7-a948-43af25249b67",
     "name": "Koala",
     "adjectives": [
-      "only naturally found in Australia"
+      "only naturally found in Australia",
       "slow",
       "grey",
       "brown"
@@ -924,7 +926,7 @@
       "big nose",
       "2 eyes",
       "visible ears",
-      "big ears",
+      "big ears for its head",
       "hair",
       "claws"
     ],
@@ -967,7 +969,7 @@
       "hair",
       "2 eyes",
       "visible ears",
-      "big ears",
+      "big ears for its head",
       "horns",
       "spots"
     ],
@@ -1028,7 +1030,7 @@
       "tail",
       "pouch on its tummy",
       "2 legs",
-      "big ears",
+      "big ears for its head",
       "visible ears",
       "2 eyes",
       "hair",
@@ -1140,7 +1142,7 @@
       "tail fins",
       "flippers",
       "blowhole on top of its head",
-      "2 eyes",
+      "2 eyes"
     ],
     "types": [
       "mammal",
@@ -1242,7 +1244,7 @@
       "blue tongue",
       "4 legs",
       "tail",
-      "2 eyes",
+      "2 eyes"
     ],
     "types": [
       "reptile",
@@ -1370,7 +1372,7 @@
       "2 eyes",
       "pouch on its tummy",
       "visible ears",
-      "big ears",
+      "big ears for its head",
       "hair",
       "claws",
       "thumbs"
@@ -1485,7 +1487,7 @@
       "4 legs",
       "2 eyes",
       "visible ears",
-      "big ears",
+      "big ears for its head",
       "pouch on its tummy",
       "claws"
     ],
@@ -1774,7 +1776,7 @@
       "hooves",
       "long ears",
       "visible ears",
-      "big ears",
+      "big ears for its head",
       "hair",
       "2 eyes",
       "long neck"
@@ -1878,7 +1880,7 @@
     ],
     "physical": [
       "4 legs",
-      "2 eyes",
+      "2 eyes"
     ],
     "types": [
       "vertebrate",
@@ -1986,7 +1988,7 @@
       "feather",
       "a comb above its head",
       "a wattle under its beak",
-      "2 eyes",
+      "2 eyes"
     ],
     "types": [
       "vertebrate",
@@ -2022,7 +2024,7 @@
       "tail",
       "short tail",
       "4 legs",
-      "big ears",
+      "big ears for its head",
       "visible ears",
       "teeth that grow constantly",
       "2 eyes",
@@ -2392,7 +2394,7 @@
       "wings",
       "2 eyes",
       "visible ears",
-      "big ears",
+      "big ears for its head",
       "hair"
     ],
     "types": [
@@ -2418,7 +2420,8 @@
     "adjectives": [
       "big",
       "taller than a man",
-      "brown"
+      "brown",
+      "only naturally found in North Pole"
     ],
     "physical": [
       "flippers",
@@ -2435,8 +2438,7 @@
       "eat other animals",
       "swim",
       "often live by the water",
-      "live on the ice",
-      "live in North Pole"
+      "live on the ice"
     ],
     "diet": [],
     "possible_behaviours": [],
@@ -2456,7 +2458,7 @@
       "curly tail",
       "4 legs",
       "visible ears",
-      "big ears",
+      "big ears for its head",
       "hair",
       "2 eyes",
       "hooves",
