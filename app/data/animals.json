@@ -99,8 +99,6 @@
       "eject water",
       "only eat plants",
       "live in groups",
-      "live in Africa",
-      "live in Asia",
       "swim"
     ],
     "diet": [
@@ -1239,8 +1237,6 @@
     ],
     "behaviours": [
       "eat other animals",
-      "live in Africa",
-      "live in Asia",
       "live in jungles",
       "climb trees",
       "spend a lot of time in trees",
@@ -2291,10 +2287,6 @@
       "fly",
       "live in groups",
       "live in trees",
-      "live in Africa",
-      "live in Australia",
-      "live in South America",
-      "live in Asia",
       "live in forests",
       "speak",
       "create nests",
@@ -2339,9 +2331,6 @@
       "climb trees",
       "live in trees",
       "live in forests",
-      "live in Australia",
-      "live in Africa",
-      "live in North & South America",
       "run fast"
     ],
     "diet": [
@@ -2413,8 +2402,6 @@
       "eat other animals",
       "hunt in groups",
       "live in groups",
-      "live in Asia",
-      "live in North America",
       "live in forests",
       "howl"
     ],
@@ -2450,9 +2437,6 @@
     "behaviours": [
       "only eat plants",
       "live in groups",
-      "live in North & South America",
-      "live in Asia",
-      "live in Europe",
       "swim"
     ],
     "diet": [
@@ -2492,10 +2476,7 @@
       "eat other animals",
       "live in burrows",
       "swim",
-      "climb trees",
-      "live in Asia",
-      "live in Europe",
-      "live in Africa"
+      "climb trees"
     ],
     "diet": [
     ],
@@ -2534,11 +2515,6 @@
       "fly",
       "live in groups",
       "use echo-location to hunt",
-      "live in Africa",
-      "live in Asia",
-      "live in Australia",
-      "live in Europe",
-      "live in North & South America",
       "live in trees",
       "drink blood"
     ],
@@ -2571,8 +2547,7 @@
       "swim",
       "often live by the water",
       "live on the ice",
-      "live in North Pole",
-      "live in the Arctic Circle"
+      "live in North Pole"
     ],
     "diet": [
     ],
@@ -2607,11 +2582,7 @@
     "behaviours": [
       "eat both plants and animals",
       "live in groups",
-      "live in farms",
-      "live in Africa",
-      "live in Asia",
-      "live in Europe",
-      "live in North & South America"
+      "live in farms"
     ],
     "diet": [
     ],
@@ -2648,10 +2619,6 @@
     ],
     "behaviours": [
       "eat both plants and animals",
-      "live in Australia",
-      "live in North & South America",
-      "live in Europe",
-      "live in Asia",
       "live in forests"
     ],
     "diet": [
