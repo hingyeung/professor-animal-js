@@ -13,7 +13,6 @@
       "4 legs",
       "hair",
       "big teeth",
-      "ears",
       "visible ears",
       "2 eyes",
       "claws",
@@ -30,9 +29,7 @@
       "live in groups called pride",
       "rest for around 20 hours a day"
     ],
-    "diet": [
-      
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   },
@@ -49,7 +46,6 @@
       "4 legs",
       "hair",
       "big teeth",
-      "ears",
       "visible ears",
       "2 eyes",
       "2 colours",
@@ -64,8 +60,7 @@
     "behaviours": [
       "eat other animals"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "run at top speed of 113 km per hour"
     ],
@@ -85,7 +80,6 @@
       "a tuft on its tail",
       "a trunk",
       "4 legs",
-      "ears",
       "visible ears",
       "big ears",
       "2 eyes"
@@ -101,8 +95,7 @@
       "live in groups",
       "swim"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   },
@@ -112,7 +105,6 @@
     "physical": [
       "tail",
       "4 legs",
-      "ears",
       "visible ears",
       "2 eyes",
       "claws",
@@ -144,12 +136,10 @@
   {
     "id": "b0da8c8b-a1c1-9d34-ad9d-7caf3a8352c9",
     "name": "Cat",
-    "adjectives": [
-    ],
+    "adjectives": [],
     "physical": [
       "tail",
       "4 legs",
-      "ears",
       "visible ears",
       "2 eyes",
       "claws",
@@ -192,7 +182,6 @@
       "4 legs",
       "tail",
       "2 eyes",
-      "ears",
       "visible ears",
       "claws",
       "hair",
@@ -207,8 +196,7 @@
       "hibernate in winter",
       "live in caves"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "stand on two legs"
     ],
@@ -225,7 +213,6 @@
     "physical": [
       "black and white fur",
       "4 legs",
-      "ears",
       "visible ears",
       "tail",
       "2 eyes",
@@ -263,7 +250,6 @@
       "unique pattern of stripes on each animal",
       "4 legs",
       "2 eyes",
-      "ears",
       "visible ears",
       "2 colours",
       "hair",
@@ -280,8 +266,7 @@
       "eat other animals",
       "swim"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   },
@@ -345,8 +330,7 @@
       "slither across flat surfaces without legs",
       "live in a cage sometimes"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be kept as pet",
       "be bought",
@@ -389,9 +373,7 @@
       "lay eggs",
       "live in the sea"
     ],
-    "diet": [
-      
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": [
       "as dangerous to humans"
@@ -410,7 +392,6 @@
       "2 legs",
       "feather",
       "2 eyes",
-      "ears",
       "pale-yellow feather on its breast"
     ],
     "types": [
@@ -427,9 +408,7 @@
       "swim",
       "often live by the water"
     ],
-    "diet": [
-      
-    ],
+    "diet": [],
     "possible_behaviours": [
       "stand on two legs"
     ],
@@ -448,7 +427,6 @@
       "excellent eyesight",
       "2 legs",
       "2 eyes",
-      "ears",
       "a yellow, hooked beak"
     ],
     "types": [
@@ -462,8 +440,7 @@
       "fly",
       "lay eggs"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "stand on two legs"
     ],
@@ -479,8 +456,7 @@
       "wings",
       "2 legs",
       "2 eyes",
-      "feather",
-      "ears"
+      "feather"
     ],
     "types": [
       "vertebrate",
@@ -548,7 +524,6 @@
       "4 legs",
       "2 eyes",
       "hair",
-      "ears",
       "visible ears"
     ],
     "types": [
@@ -597,7 +572,6 @@
       "teeth that grow constantly",
       "4 legs",
       "2 eyes",
-      "ears",
       "visible ears",
       "hair",
       "stripes",
@@ -629,7 +603,6 @@
       "a hard shell",
       "flippers",
       "2 eyes",
-      "ears",
       "tail"
     ],
     "types": [
@@ -671,7 +644,6 @@
       "2 eyes",
       "claws",
       "hair",
-      "ears",
       "visible ears",
       "big teeth"
     ],
@@ -685,8 +657,7 @@
       "swim",
       "live on ice"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   },
@@ -703,7 +674,6 @@
       "pink feather",
       "2 legs",
       "2 eyes",
-      "ears",
       "feather",
       "long neck"
     ],
@@ -744,7 +714,6 @@
       "black and white colour on its body",
       "large dorsal fin on its back which sticks out of the water",
       "2 eyes",
-      "ears",
       "big teeth"
     ],
     "types": [
@@ -786,7 +755,6 @@
       "no teeth",
       "blowhole on top of its head",
       "2 eyes",
-      "ears"
     ],
     "types": [
       "vertebrate",
@@ -848,7 +816,6 @@
       "fins",
       "2 eyes",
       "2 colours",
-      "ears",
       "stripes"
     ],
     "types": [
@@ -886,7 +853,6 @@
       "has a body that weights up to 2500 kilogram",
       "4 legs",
       "2 eyes",
-      "ears",
       "visible ears",
       "hooves",
       "horns"
@@ -921,7 +887,6 @@
       "claws",
       "2 eyes",
       "hair",
-      "ears",
       "visible ears"
     ],
     "types": [
@@ -936,8 +901,7 @@
       "live underground",
       "live in desert"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "stand on two legs"
     ],
@@ -959,7 +923,6 @@
       "4 legs",
       "big nose",
       "2 eyes",
-      "ears",
       "visible ears",
       "big ears",
       "hair",
@@ -1003,7 +966,6 @@
       "long legs",
       "hair",
       "2 eyes",
-      "ears",
       "visible ears",
       "big ears",
       "horns",
@@ -1017,22 +979,19 @@
       "only eat plants",
       "live in groups"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   },
   {
     "id": "9c386ffa-d296-03cb-ce8a-af5f378b9263",
     "name": "Saltwater Crocodile",
-    "adjectives": [
-    ],
+    "adjectives": [],
     "physical": [
       "tail",
       "large jaw",
       "4 legs",
       "2 eyes",
-      "ears",
       "big teeth",
       "claws",
       "scales"
@@ -1048,8 +1007,7 @@
       "lay eggs",
       "live in swamps and rivers"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "grow up to 6 metres long",
       "live in freshwater as well as salt water"
@@ -1071,7 +1029,6 @@
       "pouch on its tummy",
       "2 legs",
       "big ears",
-      "ears",
       "visible ears",
       "2 eyes",
       "hair",
@@ -1097,8 +1054,7 @@
       "stand on two legs",
       "be eaten as food by human sometimes"
     ],
-    "considerations": [
-    ]
+    "considerations": []
   },
   {
     "id": "27bed12a-bdb3-9020-68c4-4c3b4ec137f2",
@@ -1114,7 +1070,6 @@
       "thumbs like humans",
       "2 legs",
       "2 eyes",
-      "ears",
       "visible ears",
       "hair",
       "big teeth",
@@ -1132,8 +1087,7 @@
       "live in forests",
       "climb trees"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "use tools",
       "stand on two legs"
@@ -1155,7 +1109,6 @@
       "live in groups",
       "4 legs",
       "2 eyes",
-      "ears",
       "visible ears",
       "tusks",
       "hooves"
@@ -1170,8 +1123,7 @@
       "spend most of their day in rivers and lakes to stay cool",
       "swim"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": [
       "as most dangerous animals in Africa"
@@ -1189,7 +1141,6 @@
       "flippers",
       "blowhole on top of its head",
       "2 eyes",
-      "ears"
     ],
     "types": [
       "mammal",
@@ -1203,8 +1154,7 @@
       "use echolocation for finding food",
       "communicate with each other by clicking and whistling"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "jump out of the water",
       "be used in shows"
@@ -1225,7 +1175,6 @@
       "rose-like markings patterns called rosettes on their fur",
       "spots",
       "2 eyes",
-      "ears",
       "visible ears",
       "hair",
       "big teeth",
@@ -1244,8 +1193,7 @@
       "spend a lot of time in trees",
       "swim"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   },
@@ -1262,7 +1210,6 @@
       "blowhole on top of its head",
       "long, hornlike tooth sticking out of its head",
       "2 eyes",
-      "ears",
       "horns",
       "tail fins"
     ],
@@ -1278,8 +1225,7 @@
       "use echolocation for finding food",
       "communicate with each other by clicking and whistling"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be referred to as the unicorn of the sea"
     ],
@@ -1297,7 +1243,6 @@
       "4 legs",
       "tail",
       "2 eyes",
-      "ears"
     ],
     "types": [
       "reptile",
@@ -1308,8 +1253,7 @@
       "eat both plants and animals",
       "lay eggs"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be kept as pet",
       "be bought"
@@ -1336,8 +1280,7 @@
       "swim",
       "lay eggs"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be poisonous",
       "puff itself"
@@ -1358,7 +1301,6 @@
       "2 legs",
       "wings",
       "2 eyes",
-      "ears",
       "feather"
     ],
     "types": [
@@ -1377,8 +1319,7 @@
       "eat other animals",
       "create nests"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "stand on two legs"
     ],
@@ -1396,7 +1337,6 @@
     "physical": [
       "4 legs",
       "2 eyes",
-      "ears",
       "hair",
       "visible ears",
       "claws"
@@ -1410,8 +1350,7 @@
       "climb trees",
       "live in jungles"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   },
@@ -1430,7 +1369,6 @@
       "4 legs",
       "2 eyes",
       "pouch on its tummy",
-      "ears",
       "visible ears",
       "big ears",
       "hair",
@@ -1513,7 +1451,6 @@
       "4 legs",
       "black body with two white stripes down their backs",
       "2 eyes",
-      "ears",
       "visible ears",
       "claws",
       "hair",
@@ -1530,8 +1467,7 @@
       "live in burrows",
       "spray stinky smell from its bottom"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "have a bad smell"
     ],
@@ -1548,7 +1484,6 @@
       "tail",
       "4 legs",
       "2 eyes",
-      "ears",
       "visible ears",
       "big ears",
       "pouch on its tummy",
@@ -1565,8 +1500,7 @@
       "jump",
       "bounce"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "stand on two legs"
     ],
@@ -1611,7 +1545,6 @@
       "4 legs",
       "pouch on its tummy",
       "2 eyes",
-      "ears",
       "visible ears",
       "big teeth",
       "claws",
@@ -1628,8 +1561,7 @@
       "eat other animals",
       "let out a shrieking sound and show their teeth when they feel like they are in danger"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   },
@@ -1652,8 +1584,7 @@
       "live in the sea",
       "swim"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be poisonous",
       "eject a thick, blackish ink in a large cloud to distract the predator",
@@ -1688,8 +1619,7 @@
       "live in the sea",
       "swim"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "grow up to more than 5 meters long"
     ],
@@ -1703,7 +1633,6 @@
       "wings",
       "strong talon",
       "big eyes",
-      "ears",
       "visible ears",
       "feather"
     ],
@@ -1721,8 +1650,7 @@
       "fly",
       "fly very quietly"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "turn their heads as much as 270 degrees",
       "be found in different colours",
@@ -1753,8 +1681,7 @@
       "live in the sea",
       "live inside seashells that are often scavenged shells of dead animals"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be found on beaches"
     ],
@@ -1770,7 +1697,6 @@
     "physical": [
       "2 legs",
       "2 eyes",
-      "ears",
       "wings",
       "feather",
       "claws",
@@ -1790,8 +1716,7 @@
       "eat both plants and animals",
       "lay eggs"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "jump",
       "run fast",
@@ -1802,8 +1727,7 @@
   {
     "id": "27a76ee5-9fd7-a700-531d-95c1897d521e",
     "name": "Goat",
-    "adjectives": [
-    ],
+    "adjectives": [],
     "physical": [
       "tail",
       "4 legs",
@@ -1812,7 +1736,6 @@
       "hooves",
       "hair",
       "horns",
-      "ears",
       "visible ears"
     ],
     "types": [
@@ -1827,8 +1750,7 @@
       "produce milk for humans to drink",
       "jump"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be kept as pet",
       "be bought",
@@ -1851,7 +1773,6 @@
       "4 legs",
       "hooves",
       "long ears",
-      "ears",
       "visible ears",
       "big ears",
       "hair",
@@ -1869,8 +1790,7 @@
       "produce wool for us to make clothes ",
       "spit when it feels threatened"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be bought"
     ],
@@ -1890,7 +1810,6 @@
       "a body smaller than a goose's",
       "feather",
       "2 eyes",
-      "ears",
       "webbed feet",
       "long neck"
     ],
@@ -1908,8 +1827,7 @@
       "quack",
       "often live by the water"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be kept as pet",
       "be eaten as food by human sometimes",
@@ -1929,7 +1847,6 @@
       "short legs",
       "2 eyes",
       "claws",
-      "ears",
       "scales",
       "a hard shell"
     ],
@@ -1945,8 +1862,7 @@
       "lay eggs",
       "often live by the water"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be kept as pet"
     ],
@@ -1963,7 +1879,6 @@
     "physical": [
       "4 legs",
       "2 eyes",
-      "ears"
     ],
     "types": [
       "vertebrate",
@@ -1981,8 +1896,7 @@
       "live in jungles",
       "climb trees"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "jump",
       "be kept as pet"
@@ -2002,7 +1916,6 @@
       "2 hands",
       "thumbs",
       "pads on the sides of their cheeks",
-      "ears",
       "visible ears",
       "hair",
       "2 eyes"
@@ -2019,8 +1932,7 @@
       "live in forests",
       "live in trees"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "use tools",
       "stand on two legs"
@@ -2066,8 +1978,7 @@
   {
     "id": "25dc3b6d-7206-bf0d-0733-e9e8b47d3ce5",
     "name": "Chicken",
-    "adjectives": [
-    ],
+    "adjectives": [],
     "physical": [
       "2 legs",
       "claws",
@@ -2076,7 +1987,6 @@
       "a comb above its head",
       "a wattle under its beak",
       "2 eyes",
-      "ears"
     ],
     "types": [
       "vertebrate",
@@ -2088,8 +1998,7 @@
       "live in farms",
       "live in groups"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be kept as pet",
       "be eaten as food by human sometimes",
@@ -2113,7 +2022,6 @@
       "tail",
       "short tail",
       "4 legs",
-      "ears",
       "big ears",
       "visible ears",
       "teeth that grow constantly",
@@ -2132,8 +2040,7 @@
       "live in burrows",
       "live in a cage sometimes"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be kept as pet",
       "be found in different colours",
@@ -2155,7 +2062,6 @@
       "tail",
       "short tail",
       "4 legs",
-      "ears",
       "visible ears",
       "teeth that grow constantly",
       "2 eyes",
@@ -2174,8 +2080,7 @@
       "like to play in a hamster wheel",
       "live in a cage sometimes"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be kept as pet",
       "be held in your hands"
@@ -2195,7 +2100,6 @@
       "a body larger than a duck's",
       "feather",
       "2 eyes",
-      "ears",
       "webbed feet",
       "long neck"
     ],
@@ -2223,8 +2127,7 @@
       "be bought",
       "stand on two legs"
     ],
-    "considerations": [
-    ]
+    "considerations": []
   },
   {
     "id": "62f6ed84-139c-edc6-f699-6d688acf3984",
@@ -2238,7 +2141,6 @@
       "wings",
       "the largest bill of all birds",
       "a big pouch under its bill",
-      "ears",
       "2 eyes",
       "feather",
       "webbed feet",
@@ -2257,8 +2159,7 @@
       "live in groups",
       "often live by the water"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "stand on two legs"
     ],
@@ -2267,8 +2168,7 @@
   {
     "id": "1f16ef67-7588-b30f-c23f-2927e6a152de",
     "name": "Parrot",
-    "adjectives": [
-    ],
+    "adjectives": [],
     "physical": [
       "2 legs",
       "wings",
@@ -2277,7 +2177,6 @@
       "a curved bill",
       "a curved beak",
       "2 eyes",
-      "ears",
       "claws"
     ],
     "types": [
@@ -2296,8 +2195,7 @@
       "create nests",
       "live in a cage sometimes"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be kept as pet",
       "say simple words",
@@ -2321,7 +2219,6 @@
       "bushy tail",
       "big eyes",
       "2 eyes",
-      "ears",
       "visible ears"
     ],
     "types": [
@@ -2337,8 +2234,7 @@
       "live in forests",
       "run fast"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   },
@@ -2356,7 +2252,6 @@
       "hooves",
       "horns",
       "2 eyes",
-      "ears",
       "visible ears",
       "hair",
       "spots"
@@ -2372,8 +2267,7 @@
       "moo",
       "produce milk for humans to drink"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be eaten as food by human sometimes"
     ],
@@ -2393,7 +2287,6 @@
       "4 legs",
       "claws",
       "2 eyes",
-      "ears",
       "visible ears",
       "hair",
       "big teeth"
@@ -2409,8 +2302,7 @@
       "live in forests",
       "howl"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": [
       "as the ancestor of all breeds of domestic dogs"
@@ -2429,7 +2321,6 @@
       "hooves",
       "antlers on its head",
       "2 eyes",
-      "ears",
       "visible ears",
       "hair",
       "antlers"
@@ -2443,14 +2334,12 @@
       "live in groups",
       "swim"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "run fast",
       "be eaten as food by human sometimes"
     ],
-    "considerations": [
-    ]
+    "considerations": []
   },
   {
     "id": "2bc915a1-716d-243c-57a4-da266a363051",
@@ -2465,7 +2354,6 @@
       "spines on its back",
       "long snout",
       "2 eyes",
-      "ears",
       "visible ears",
       "hair",
       "the shape of a ball"
@@ -2482,8 +2370,7 @@
       "swim",
       "climb trees"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be kept as pet",
       "be bought",
@@ -2504,7 +2391,6 @@
       "claws",
       "wings",
       "2 eyes",
-      "ears",
       "visible ears",
       "big ears",
       "hair"
@@ -2522,8 +2408,7 @@
       "live in trees",
       "drink blood"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   },
@@ -2553,8 +2438,7 @@
       "live on the ice",
       "live in North Pole"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   },
@@ -2571,7 +2455,6 @@
       "tail",
       "curly tail",
       "4 legs",
-      "ears",
       "visible ears",
       "big ears",
       "hair",
@@ -2588,8 +2471,7 @@
       "live in groups",
       "live in farms"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [
       "be kept as pet",
       "be eaten as food by human sometimes"
@@ -2607,7 +2489,6 @@
     "physical": [
       "tail",
       "4 legs",
-      "ears",
       "visible ears",
       "triangular face",
       "pointed ears",
@@ -2625,8 +2506,7 @@
       "eat both plants and animals",
       "live in forests"
     ],
-    "diet": [
-    ],
+    "diet": [],
     "possible_behaviours": [],
     "considerations": []
   }
