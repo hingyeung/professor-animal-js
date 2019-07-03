@@ -3,6 +3,7 @@
     "id": "30fe0728-0a50-c06e-4f6f-874a845b423a",
     "name": "Lion",
     "adjectives": [
+      "only naturally found in Africa",
       "generally yellow",
       "big"
     ],
@@ -27,7 +28,6 @@
       "eat other animals",
       "hunt in groups",
       "live in groups called pride",
-      "live in Africa",
       "rest for around 20 hours a day"
     ],
     "diet": [
@@ -218,6 +218,7 @@
     "id": "46c75867-654e-a1f6-1d7f-925dfb2c371d",
     "name": "Panda",
     "adjectives": [
+      "only naturally found in China",
       "black and white",
       "big"
     ],
@@ -251,6 +252,7 @@
     "id": "9cc82ebc-21fd-94f6-290e-ab402c903086",
     "name": "Tiger",
     "adjectives": [
+      "only naturally found in Asia",
       "generally yellow",
       "big"
     ],
@@ -276,8 +278,7 @@
     ],
     "behaviours": [
       "eat other animals",
-      "swim",
-      "live in Asia"
+      "swim"
     ],
     "diet": [
     ],
@@ -400,8 +401,8 @@
     "id": "b3962ab0-4c44-f493-e0af-01fe74b76535",
     "name": "Emperor Penguin",
     "adjectives": [
-      "black",
-      "white"
+      "black and white",
+      "only naturally found in Antarctica"
     ],
     "physical": [
       "wings",
@@ -421,7 +422,6 @@
       "eat other animals",
       "walk in a funny way",
       "lay eggs",
-      "live in Antarctica",
       "live in groups",
       "live on the ice",
       "swim",
@@ -581,8 +581,10 @@
     "name": "Zebra",
     "adjectives": [
       "taller than a man",
+      "only naturally found in Africa",
       "zebra-striped",
-      "big"
+      "big",
+      "black and white"
     ],
     "physical": [
       "long legs",
@@ -607,7 +609,6 @@
     ],
     "behaviours": [
       "only eat plants",
-      "live in Africa",
       "live in groups",
       "run fast"
     ],
@@ -660,6 +661,7 @@
     "id": "3836d976-b10d-65cb-03a5-e04885c9d47d",
     "name": "Polar bear",
     "adjectives": [
+      "only naturally found in Arctic Circle",
       "white",
       "big"
     ],
@@ -681,7 +683,6 @@
     "behaviours": [
       "eat other animals",
       "swim",
-      "live in the Arctic Circle",
       "live on ice"
     ],
     "diet": [
@@ -875,6 +876,7 @@
     "name": "Rhinoceros",
     "adjectives": [
       "big",
+      "only naturally found in Africa",
       "grey",
       "hunted for its horns"
     ],
@@ -897,8 +899,7 @@
     "behaviours": [
       "only eat plants",
       "stay in muddy pools",
-      "charge directly at whatever frightens it",
-      "live in Africa"
+      "charge directly at whatever frightens it"
     ],
     "diet": [
       "grass"
@@ -910,6 +911,7 @@
     "id": "fe59030d-55e8-e186-7904-8d1f7cf15579",
     "name": "Meerkat",
     "adjectives": [
+      "only naturally found in Africa",
       "small"
     ],
     "physical": [
@@ -932,7 +934,6 @@
       "live in burrows",
       "live in groups",
       "live underground",
-      "live in Africa",
       "live in desert"
     ],
     "diet": [
@@ -946,6 +947,7 @@
     "id": "088088a8-b566-77a7-a948-43af25249b67",
     "name": "Koala",
     "adjectives": [
+      "only naturally found in Australia"
       "slow",
       "grey",
       "brown"
@@ -973,8 +975,7 @@
       "spend most of its time on trees",
       "sleep up to 18 hours a day",
       "stay in its mother's pouch for about six months when it is a baby",
-      "climb trees",
-      "live in Australia"
+      "climb trees"
     ],
     "diet": [
       "eucalyptus leaves"
@@ -987,6 +988,7 @@
     "name": "Giraffe",
     "adjectives": [
       "yellow and brown",
+      "only naturally found in Africa",
       "taller than a man",
       "generally yellow"
     ],
@@ -1013,7 +1015,6 @@
     ],
     "behaviours": [
       "only eat plants",
-      "live in Africa",
       "live in groups"
     ],
     "diet": [
@@ -1024,6 +1025,8 @@
   {
     "id": "9c386ffa-d296-03cb-ce8a-af5f378b9263",
     "name": "Saltwater Crocodile",
+    "adjectives": [
+    ],
     "physical": [
       "tail",
       "large jaw",
@@ -1043,8 +1046,7 @@
       "eat other animals",
       "swim",
       "lay eggs",
-      "live in swamps and rivers",
-      "live in Australia"
+      "live in swamps and rivers"
     ],
     "diet": [
     ],
@@ -1060,6 +1062,7 @@
     "id": "c182e123-ef24-832b-7ed4-0ecde7f94f74",
     "name": "Kangaroo",
     "adjectives": [
+      "only naturally found in Australia",
       "big",
       "grey"
     ],
@@ -1084,7 +1087,6 @@
       "hop around using two legs",
       "keep its baby in its pouch",
       "live in groups",
-      "live in Australia",
       "bounce"
     ],
     "diet": [
@@ -1102,6 +1104,7 @@
     "id": "27bed12a-bdb3-9020-68c4-4c3b4ec137f2",
     "name": "Gorilla",
     "adjectives": [
+      "only naturally found in Africa",
       "big",
       "black"
     ],
@@ -1126,7 +1129,6 @@
     ],
     "behaviours": [
       "only eat plants",
-      "live in Africa",
       "live in forests",
       "climb trees"
     ],
@@ -1143,6 +1145,7 @@
     "name": "Hippopotamus",
     "adjectives": [
       "big",
+      "only naturally found in Africa",
       "grey"
     ],
     "physical": [
@@ -1163,7 +1166,6 @@
     ],
     "behaviours": [
       "only eat plants",
-      "live in Africa",
       "live in rivers, lakes and swamps",
       "spend most of their day in rivers and lakes to stay cool",
       "swim"
@@ -1251,6 +1253,7 @@
     "id": "d4e91c04-643e-ae01-8a4f-2a50f154d4eb",
     "name": "Narwhal",
     "adjectives": [
+      "only naturally found in Arctic Circle",
       "big"
     ],
     "physical": [
@@ -1270,7 +1273,6 @@
     "behaviours": [
       "eat other animals",
       "live in groups",
-      "live in the Arctic Circle",
       "live in the sea",
       "swim",
       "use echolocation for finding food",
@@ -1286,6 +1288,9 @@
   {
     "id": "7ae7a60f-a42f-0da2-f6da-a02c90e6574b",
     "name": "Blue-tongued Lizard",
+    "adjectives": [
+      "only naturally found in Australia"
+    ],
     "physical": [
       "scales",
       "blue tongue",
@@ -1301,7 +1306,6 @@
     ],
     "behaviours": [
       "eat both plants and animals",
-      "live in Australia",
       "lay eggs"
     ],
     "diet": [
@@ -1344,6 +1348,7 @@
     "id": "70d9bda1-2ebd-59ac-25b2-7f4c35414390",
     "name": "Tawny Frogmouth",
     "adjectives": [
+      "only naturally found in Australia",
       "always hidden",
       "hard to see"
     ],
@@ -1362,7 +1367,6 @@
       "nocturnal animal"
     ],
     "behaviours": [
-      "live in Australia",
       "live in trees",
       "live in forests",
       "fly",
@@ -1384,6 +1388,7 @@
     "id": "e1af7d80-8de8-cf71-9825-024ed6f0f535",
     "name": "Sloth",
     "adjectives": [
+      "only naturally found in South America",
       "hairy",
       "really slow",
       "brown"
@@ -1401,7 +1406,6 @@
       "mammal"
     ],
     "behaviours": [
-      "live in South America",
       "only eat plants",
       "climb trees",
       "live in jungles"
@@ -1417,6 +1421,7 @@
     "adjectives": [
       "grey",
       "fluffy",
+      "only naturally found in Australia",
       "small"
     ],
     "physical": [
@@ -1444,7 +1449,6 @@
       "live in groups",
       "live in trees",
       "live in forests",
-      "live in Australia",
       "glide from tree to tree",
       "carry its baby in its pouch"
     ],
@@ -1500,6 +1504,7 @@
     "id": "eb3916fe-305a-d8b2-2f6c-6dcc42e0e1ff",
     "name": "Skunk",
     "adjectives": [
+      "only naturally found in North & South America",
       "hairy",
       "black and white"
     ],
@@ -1523,7 +1528,6 @@
     "behaviours": [
       "eat both plants and animals",
       "live in burrows",
-      "live in North & South America",
       "spray stinky smell from its bottom"
     ],
     "diet": [
@@ -1537,6 +1541,7 @@
     "id": "e47d8b0e-9ee3-a5ff-a5fd-4af09460b64f",
     "name": "Wallaby",
     "adjectives": [
+      "only naturally found in Australia",
       "brown"
     ],
     "physical": [
@@ -1557,7 +1562,6 @@
     ],
     "behaviours": [
       "only eat plants",
-      "live in Australia",
       "jump",
       "bounce"
     ],
@@ -1599,6 +1603,7 @@
     "id": "66714625-b409-5231-00d3-c91a8cbdffd9",
     "name": "Tasmanian Devil",
     "adjectives": [
+      "only naturally found in Australia",
       "black"
     ],
     "physical": [
@@ -1621,7 +1626,6 @@
     ],
     "behaviours": [
       "eat other animals",
-      "live in Australia",
       "let out a shrieking sound and show their teeth when they feel like they are in danger"
     ],
     "diet": [
@@ -1760,6 +1764,7 @@
     "id": "9acd17a6-01ea-652d-d183-0d5e55ce2ec9",
     "name": "Cassowary",
     "adjectives": [
+      "only naturally found in Australia",
       "black"
     ],
     "physical": [
@@ -1783,8 +1788,7 @@
     ],
     "behaviours": [
       "eat both plants and animals",
-      "lay eggs",
-      "live in Australia"
+      "lay eggs"
     ],
     "diet": [
     ],
@@ -1838,6 +1842,7 @@
     "id": "39570522-dcc2-f4c1-d5a0-a8a0c2fc807d",
     "name": "Llama",
     "adjectives": [
+      "only naturally found in South America",
       "big",
       "fluffy"
     ],
@@ -1860,7 +1865,6 @@
     "behaviours": [
       "only eat plants",
       "live in groups",
-      "live in South America",
       "live in farms",
       "produce wool for us to make clothes ",
       "spit when it feels threatened"
