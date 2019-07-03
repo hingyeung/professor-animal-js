@@ -27,7 +27,7 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
         delete console['_stderr'];
     }
 
-    logger.info('options: %o', options);
+    logger.info('options: %j', options);
     const agent = new WebhookClient({request: request, response: response}),
         intentMap = new Map();
     if (agent.agentVersion === 1) {

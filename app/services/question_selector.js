@@ -55,7 +55,7 @@ function nextQuestion(animals, fieldAndAttributeValuesToIgnore) {
         // return attributeListSortedByFreq[0].freq === attribute.freq || attributeListSortedByFreq[0].freq - 1 === attribute.freq;
         return _.indexOf(middlePopularAttrubuteValues, attribute.freq) !== -1;
     }).map(function (o) {
-        logger.info('attribute with high[est] frequency: %o', o);
+        logger.info('attribute with high[est] frequency: %j', o);
         return {field: o.field, attr: o.attr, freq: o.freq};
     });
 
