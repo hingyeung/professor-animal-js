@@ -1170,7 +1170,9 @@
     "id": "c084615f-cad7-d84e-b074-32512c71cca8",
     "name": "Leopard",
     "adjectives": [
-      "generally yellow"
+      "generally yellow",
+      "big",
+      "2 colours"
     ],
     "physical": [
       "4 legs",
@@ -1180,7 +1182,8 @@
       "visible ears",
       "hair",
       "big teeth",
-      "claws"
+      "claws",
+      "tail"
     ],
     "types": [
       "mammal",
