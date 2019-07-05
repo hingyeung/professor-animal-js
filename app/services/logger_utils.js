@@ -23,7 +23,7 @@ const TRUNCATED_LENGTH = 4;
 
 const getLogger = () => {
     return createLogger({
-        level: 'debug',
+        level: 'info',
         format: format.combine(
             format.splat(),
             // label({ label: truncateSessionId(sharedDataService.currentSessionId) }),
