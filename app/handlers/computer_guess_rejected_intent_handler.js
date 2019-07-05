@@ -15,7 +15,7 @@ const computerGuessRejectedIntentHandler = async (agent, animal, sessionId, snsT
 
     try {
         await sns.publish(params).promise();
-        logger.info('SNS message published');
+        logger.info(`SNS message published for incorrect guess. Expected answer: ${animal}`);
         agent.add(`I need to learn more about ${animal}. Do you want to play again?`);
     } catch (err) {
         logger.error('SNS publish error', err); // an error occurred
