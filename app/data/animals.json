@@ -49,8 +49,9 @@
       "big teeth",
       "visible ears",
       "2 eyes",
-      "2 colours",
-      "claws"
+      "generally 2 colours",
+      "claws",
+      "spots"
     ],
     "types": [
       "vertebrate",
@@ -150,7 +151,8 @@
     "types": [
       "vertebrate",
       "mammal",
-      "solitary animal"
+      "solitary animal",
+      "feline"
     ],
     "behaviours": [
       "eat other animals",
@@ -218,7 +220,7 @@
       "visible ears",
       "tail",
       "2 eyes",
-      "2 colours",
+      "generally 2 colours",
       "claws",
       "hair",
       "big teeth"
@@ -253,7 +255,7 @@
       "4 legs",
       "2 eyes",
       "visible ears",
-      "2 colours",
+      "generally 2 colours",
       "hair",
       "big teeth",
       "claws"
@@ -361,7 +363,7 @@
       "large dorsal fin on its back which sticks out of the water",
       "2 eyes",
       "big teeth",
-      "2 colours"
+      "generally 2 colours"
     ],
     "types": [
       "vertebrate",
@@ -577,7 +579,7 @@
       "visible ears",
       "hair",
       "stripes",
-      "2 colours"
+      "generally 2 colours"
     ],
     "types": [
       "vertebrate",
@@ -708,7 +710,7 @@
       "taller than a man"
     ],
     "physical": [
-      "2 colours",
+      "generally 2 colours",
       "fins",
       "flippers",
       "tail fins",
@@ -817,7 +819,7 @@
       "orange and white stripes on its body",
       "fins",
       "2 eyes",
-      "2 colours",
+      "generally 2 colours",
       "stripes"
     ],
     "types": [
@@ -1171,8 +1173,7 @@
     "name": "Leopard",
     "adjectives": [
       "generally yellow",
-      "big",
-      "2 colours"
+      "big"
     ],
     "physical": [
       "4 legs",
@@ -1183,7 +1184,8 @@
       "hair",
       "big teeth",
       "claws",
-      "tail"
+      "tail",
+      "generally 2 colours"
     ],
     "types": [
       "mammal",
@@ -1706,7 +1708,7 @@
       "claws",
       "horn-like structure that grows from the top of its head",
       "colourful wattles hanging from its throat",
-      "2 colours",
+      "generally 2 colours",
       "long neck",
       "long legs"
     ],
