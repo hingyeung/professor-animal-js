@@ -13,7 +13,7 @@ const startGameHandler = async (agent, fullAnimalList) => {
     const dbService = new DbService(),
         fullAnimalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(fullAnimalList);
     // this is a new game, get the next question using animals from data file.
-    logger.info('full animal name list: %j', fullAnimalNameList);
+    logger.info('New game. full animal name list: %j', fullAnimalNameList);
     nextQuestion = QuestionSelector.nextQuestion(fullAnimalList, []);
     let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion, agent.contexts);
     userSession = new UserSession(agent.session,

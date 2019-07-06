@@ -15,7 +15,7 @@ const answerQuestionHandler = async (agent, fullAnimalList) => {
         const userSession = await loadSession(agent.session);
         const answer = agent.parameters.answer;
         const contextForNextRound = getNextQuestion2(userSession, answer, fullAnimalList);
-        logger.info("answer to prev. question: %s", answer);
+        logger.info("loaded session: %j", Object.assign({}, userSession, {answerToPrevQuestion: answer}));
 
         await updateSession(contextForNextRound);
         const response = ResponseToApiAi.fromQuestion(contextForNextRound.nextQuestion);
