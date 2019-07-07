@@ -5,10 +5,10 @@ const AWS = require("aws-sdk"),
 
 const logger = getLogger();
 
-const computerGuessRejectedIntentHandler = async (agent, animal, sessionId, snsTopicArn) => {
+const computerGuessRejectedIntentHandler = async (agent, animal, gameId, snsTopicArn) => {
     const sns = new AWS.SNS(),
         params = {
-            Message: `Professor Animal has made an incorrect guess. The answer was ${animal}. Session ID: ${sessionId}`,
+            Message: `Professor Animal has made an incorrect guess. The answer was ${animal}. Game ID: ${gameId}`,
             Subject: "Professor Animal has just lost a game.",
             TopicArn: snsTopicArn
         };
