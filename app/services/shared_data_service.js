@@ -1,16 +1,16 @@
 class SharedDataService {
     constructor() {
         this.repo = {
-            currentSessionId: undefined
+            currentGameId: undefined
         };
     }
 
-    get currentSessionId() {
-        return this.repo.currentSessionId;
+    get currentGameId() {
+        return this.repo.currentGameId;
     }
     
-    set currentSessionId(sessionId) {
-        this.repo.currentSessionId = sessionId;
+    set currentGameId(gameId) {
+        this.repo.currentGameId = gameId;
     }
 }
 

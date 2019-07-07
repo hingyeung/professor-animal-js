@@ -4,6 +4,8 @@ const AnimalListUtils = require("../services/animal_list_utils"),
     DbService = require("../services/DbService"),
     errorHandler = require("./error_handler"),
     QuestionSelector = require("../services/question_selector"),
+    sharedDataService = require('../services/shared_data_service'),
+    uuid = require('../services/uuid'),
     {getLogger} = require('../services/logger_utils');
 
 const logger = getLogger();
@@ -12,12 +14,18 @@ const startGameHandler = async (agent, fullAnimalList) => {
     let nextQuestion, userSession;
     const dbService = new DbService(),
         fullAnimalNameList = AnimalListUtils.convertAnimalListToAnimalNameList(fullAnimalList);
-    // this is a new game, get the next question using animals from data file.
-    logger.info('New game. full animal name list: %j', fullAnimalNameList);
+    
+    // this is a new game. set new gameId
+    const gameId = uuid();
+    sharedDataService.currentGameId = gameId;
+
     nextQuestion = QuestionSelector.nextQuestion(fullAnimalList, []);
     let responseToApiAi = ResponseToApiAi.fromQuestion(nextQuestion, agent.contexts);
     userSession = new UserSession(agent.session,
-        fullAnimalNameList, nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech);
+        fullAnimalNameList, nextQuestion.field, nextQuestion.chosenValue, [], responseToApiAi.speech, gameId);
+    sharedDataService.currentGameId = userSession.gameId;
+
+    logger.info('New game. full animal name list: %j', fullAnimalNameList);
     try {
         await dbService.saveSession(userSession);
     } catch (err) {

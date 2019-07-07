@@ -14,7 +14,7 @@ const injectSessionId = format((info, opts) => {
         info.message = `${info.message} ${info.meta.stack}`;
     }
 
-    info.message = `${truncateSessionId(sharedDataService.currentSessionId)} ${info.message}`;
+    info.message = `${truncateSessionId(sharedDataService.currentGameId)} ${info.message}`;
     return info;
 })();
 
@@ -26,7 +26,7 @@ const getLogger = () => {
         level: 'info',
         format: format.combine(
             format.splat(),
-            // label({ label: truncateSessionId(sharedDataService.currentSessionId) }),
+            // label({ label: truncateSessionId(sharedDataService.currentGameId) }),
             // myFormat
             injectSessionId,
             format.simple()

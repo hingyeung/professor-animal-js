@@ -35,11 +35,12 @@ describe("start_game_intent_handler", () => {
             response: {}
         });
 
-        mockDbService = createMockDbService(new UserSession(USER_SESSION_ID, ["Lion", "Eagle", "Elephant"], "types", "A"));
+        mockDbService = createMockDbService(new UserSession(USER_SESSION_ID, ["Lion", "Eagle", "Elephant"], "types", "A", undefined, undefined, "gameId"));
         createMockQuestionSelector();
         startGameIntentHandler = proxyquire("./start_game_intent_handler", {
             "../services/question_selector": QuestionSelector,
-            "../services/DbService": mockDbService
+            "../services/DbService": mockDbService,
+            "../services/uuid": sandbox.stub().returns("gameId")
         });
     });
 
@@ -59,7 +60,7 @@ describe("start_game_intent_handler", () => {
         mockDbService.prototype.saveSession.should.have.been.calledWith(
             new UserSession(USER_SESSION_ID,
                 ["Lion", "Elephant", "Chameleon", "Shark", "Penguin", "Eagle"],
-                "diet", "A", [], "Does your animal eat A?"));
+                "diet", "A", [], "Does your animal eat A?", "gameId"));
 
         mockDbService.prototype.getSession.should.not.have.been.called;
     });

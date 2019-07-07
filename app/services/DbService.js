@@ -36,7 +36,7 @@ DbService.prototype.getSession = function (id) {
                 deferred.reject(new Error(err));
             } else {
                 logger.debug("getSession success: %j", data.Item);
-                sharedDataService.currentSessionId = data.Item.id;
+                sharedDataService.currentGameId = data.Item.gameId;
                 deferred.resolve(data.Item);
             }
         });
@@ -66,7 +66,6 @@ DbService.prototype.saveSession = function (userSession) {
             deferred.reject(new Error(err));
         } else {
             logger.info("saveSession success %j", data);
-            sharedDataService.currentSessionId = userSession.id;
             deferred.resolve(data);
         }
     });

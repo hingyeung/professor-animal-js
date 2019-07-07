@@ -76,7 +76,7 @@ AnimalGenie.prototype.playByIntent = function(request, response, options) {
     intentMap.set("Response.To.ComputerGuess.Reject", async () => {
         const correctAnimal = agent.parameters.animal;
         // that.notifyIncorrectGuess(correctAnimal, options.notificationTopicArn);
-        await computerGuessRejectedIntentHandler(agent, correctAnimal, sharedDataService.currentSessionId, options.notificationTopicArn);
+        await computerGuessRejectedIntentHandler(agent, correctAnimal, sharedDataService.currentGameId, options.notificationTopicArn);
     });
 
     // default fallback
