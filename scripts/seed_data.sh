@@ -36,3 +36,8 @@ echo
 echo Bucket ${S3_BUCKET} created
 echo
 aws --endpoint-url=http://localhost:4572 --region=ap-southeast-2 s3 ls s3://${S3_BUCKET}/professor-animal/data
+
+echo
+echo Create SNS topic for rejected computer guess
+echo
+aws --endpoint-url=http://localhost:4575 sns create-topic --name computer_guess_rejected_topic

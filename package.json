@@ -49,6 +49,7 @@
     "invoke-lambda-with-glossary-enquiry-with-term-from-context": "scripts/invoke_lambda.sh app/data/followup_glossary_enquiry_on_term_from_context-v2.json",
     "invoke-lambda-with-glossary-enquiry-with-unknown-term-from-context": "scripts/invoke_lambda.sh app/data/followup_glossary_enquiry_on_unknown_term_from_context-v2.json",
     "invoke-lambda-with-glossary-enquiry-without-term-from-context": "scripts/invoke_lambda.sh app/data/followup_glossary_enquiry_without_term_from_context-v2.json",
+    "invoke-lambda-with-reject-computer-guess": "scripts/invoke_lambda.sh app/data/response_to_computer_guess_reject-v2.json",
     "start-localstack": "scripts/start_localstack.sh",
     "seed-data": "scripts/seed_data.sh",
     "deploy-to-aws-with-custom-domain-name": "scripts/deploy_to_aws_with_custom_domain_name.sh"

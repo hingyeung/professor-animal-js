@@ -3,6 +3,7 @@
     "NODE_ENV": "local",
     "DATA_S3_BUCKET": "test-data",
     "ANIMAL_DEFINITION_S3_KEY": "professor-animal/data/animals.json",
-    "USER_SESSION_TABLE": "AnimalGenieUserSession"
+    "USER_SESSION_TABLE": "AnimalGenieUserSession",
+    "NOTIFICATION_TOPIC_ARN": "arn:aws:sns:ap-southeast-2:123456789012:computer_guess_rejected_topic"
   }
 }

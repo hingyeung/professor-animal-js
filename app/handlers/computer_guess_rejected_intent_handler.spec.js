@@ -7,10 +7,11 @@ const proxyquire = require("proxyquire").noPreserveCache(),
     sinonChai = require("sinon-chai"),
     WebhookRequestBuilder = require("./WebhookRequestBuilder"),
     {WebhookClient} = require("dialogflow-fulfillment"),
-    AWS = require("aws-sdk");
+    AWS = require("aws-sdk"),
+    UserSession = require('../models/UserSession');
 
 describe("computer_guess_rejected_intent_handler", function () {
-    let stubSNSPublish, sandbox, handler, agent;
+    let stubSNSPublish, sandbox, handler, agent, mockDbService;
 
     beforeEach(() => {
         sinonPromise(sinon);
@@ -19,12 +20,14 @@ describe("computer_guess_rejected_intent_handler", function () {
 
         sandbox = sinon.createSandbox();
         stubSNSPublish = sandbox.stub().returns({promise: sandbox.stub()});
+        mockDbService = createMockDbService(new UserSession("123", ["Lion", "Eagle"], "types", "A"));
         sandbox.stub(AWS, 'SNS').returns({
             publish: stubSNSPublish
         });
         agent = createAgent(WebhookRequestBuilder.createStartGameWebhookRequest());
         handler = proxyquire("./computer_guess_rejected_intent_handler", {
-            "aws-sdk": AWS
+            "aws-sdk": AWS,
+            "../services/DbService": mockDbService
         });
     });
 
@@ -32,8 +35,8 @@ describe("computer_guess_rejected_intent_handler", function () {
         sandbox.restore();
     });
 
-    it("should send notification to SNS topic", () => {
-        handler(agent, 'animal', 'sessionId', 'snsTopicArn');
+    it("should send notification to SNS topic", async () => {
+        await handler(agent, 'animal', 'sessionId', 'snsTopicArn');
 
         stubSNSPublish.should.have.been.calledWith({
             "Message": sinon.match.string,
@@ -54,5 +57,12 @@ describe("computer_guess_rejected_intent_handler", function () {
             request: request,
             response: {}
         });
+    };
+
+    const createMockDbService = (userSession) => {
+        let mockDbService = sandbox.stub();
+        mockDbService.prototype.getSession = sinon.promise().resolves(userSession);
+        mockDbService.prototype.saveSession = sinon.promise().resolves();
+        return mockDbService;
     };
 });
