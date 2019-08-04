@@ -363,7 +363,8 @@
       "large dorsal fin on its back which sticks out of the water",
       "2 eyes",
       "big teeth",
-      "generally 2 colours"
+      "generally 2 colours",
+      "vertical tail fins"
     ],
     "types": [
       "vertebrate",
@@ -713,7 +714,7 @@
       "generally 2 colours",
       "fins",
       "flippers",
-      "tail fins",
+      "flat tail fins",
       "blowhole on top of its head",
       "black and white colour on its body",
       "large dorsal fin on its back which sticks out of the water",
@@ -755,7 +756,7 @@
     "physical": [
       "fins",
       "flippers",
-      "tail fins",
+      "flat tail fins",
       "no teeth",
       "blowhole on top of its head",
       "2 eyes"
@@ -1141,7 +1142,7 @@
     ],
     "physical": [
       "fins",
-      "tail fins",
+      "flat tail fins",
       "flippers",
       "blowhole on top of its head",
       "2 eyes"
@@ -1218,7 +1219,7 @@
       "long, hornlike tooth sticking out of its head",
       "2 eyes",
       "horns",
-      "tail fins"
+      "flat tail fins"
     ],
     "types": [
       "mammal",
