@@ -18,7 +18,7 @@ const FULL_ANIMAL_LIST_FROM_FILE = JSON.parse(fs.readFileSync('app/data/test-ani
     USER_SESSION_ID = "projects/animalgenie20180906/agent/sessions/4f3a8260-5868-f5c1-f4dd-73215b1f0f56";
 
 describe("start_game_intent_handler", () => {
-    let startGameIntentHandler, agent, mockDbService, sandbox;
+    let startGameIntentHandler, agent, mockDbService, sandbox, mockMetricService;
 
     beforeEach(() => {
         sinonPromise(sinon);
@@ -36,11 +36,13 @@ describe("start_game_intent_handler", () => {
         });
 
         mockDbService = createMockDbService(new UserSession(USER_SESSION_ID, ["Lion", "Eagle", "Elephant"], "types", "A", undefined, undefined, "gameId"));
+        mockMetricService = createMockMetricService();
         createMockQuestionSelector();
         startGameIntentHandler = proxyquire("./start_game_intent_handler", {
             "../services/question_selector": QuestionSelector,
             "../services/DbService": mockDbService,
-            "../services/uuid": sandbox.stub().returns("gameId")
+            "../services/uuid": sandbox.stub().returns("gameId"),
+            "../services/metric_service": mockMetricService
         });
     });
 
@@ -77,11 +79,23 @@ describe("start_game_intent_handler", () => {
         WebhookClient.prototype.clearContext.should.have.been.calledWith("clearme");
     });
 
+    it("should use MetricService to register the game-started event", async () => {
+        await startGameIntentHandler(agent, FULL_ANIMAL_LIST_FROM_FILE);
+
+        mockMetricService.prototype.newGameStarted.should.have.been.calledOnce;
+    });
+
     const createMockDbService = (userSession) => {
         let mockDbService = sandbox.stub();
         mockDbService.prototype.getSession = sandbox.stub().resolves(userSession);
         mockDbService.prototype.saveSession = sandbox.stub().resolves();
         return mockDbService;
+    };
+
+    const createMockMetricService = () => {
+        const mockMetricService = sandbox.stub();
+        mockMetricService.prototype.newGameStarted = sandbox.stub();
+        return mockMetricService;
     };
 
     const createMockQuestionSelector = () => {

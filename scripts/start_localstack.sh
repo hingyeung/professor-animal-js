@@ -11,7 +11,7 @@ fi
 export DATA_DIR=
 
 # enable the following services
-export SERVICES=s3,dynamodb,sns
+export SERVICES=s3,dynamodb,sns,cloudwatch
 
 # start localstack Docker container
 docker-compose \
