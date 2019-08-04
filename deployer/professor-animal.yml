@@ -49,6 +49,7 @@ Resources:
             TopicName: prof_animal_lost_game
         - S3ReadPolicy:
             BucketName: !Ref dataBucket
+        - CloudWatchPutMetricPolicy: {}
       Events:
         ApiAiWebHook:
           Type: Api
