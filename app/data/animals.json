@@ -5,7 +5,7 @@
     "adjectives": [
       "only naturally found in Africa",
       "generally yellow",
-      "big"
+      "taller or longer than an average human"
     ],
     "physical": [
       "mane",
@@ -24,7 +24,7 @@
       "feline"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "hunt in groups",
       "live in groups",
       "rest for around 20 hours a day"
@@ -38,7 +38,6 @@
     "name": "Cheetah",
     "adjectives": [
       "generally yellow",
-      "big",
       "only naturally found in Africa"
     ],
     "physical": [
@@ -60,7 +59,7 @@
       "fastest running animal in the world"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "run fast"
     ],
     "diet": [],
@@ -73,9 +72,8 @@
     "id": "36275bd7-4784-c460-c578-a132f808c2c0",
     "name": "Elephant",
     "adjectives": [
-      "taller than a man",
       "grey",
-      "big"
+      "taller or longer than an average human"
     ],
     "physical": [
       "tusks",
@@ -118,7 +116,7 @@
       "mammal"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "bark",
       "live in groups",
       "swim"
@@ -155,7 +153,7 @@
       "feline"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "climb trees",
       "meow",
       "purr"
@@ -176,9 +174,8 @@
     "id": "ea460a4b-224b-51fb-7789-973698fda55b",
     "name": "Brown Bear",
     "adjectives": [
-      "taller than a man",
       "brown",
-      "big"
+      "taller or longer than an average human"
     ],
     "physical": [
       "long fur",
@@ -211,8 +208,7 @@
     "name": "Panda",
     "adjectives": [
       "only naturally found in China",
-      "black and white",
-      "big"
+      "black and white"
     ],
     "physical": [
       "black and white fur",
@@ -245,7 +241,7 @@
     "adjectives": [
       "only naturally found in Asia",
       "generally yellow",
-      "big"
+      "taller or longer than an average human"
     ],
     "physical": [
       "tail",
@@ -267,7 +263,7 @@
       "solitary animal"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "swim"
     ],
     "diet": [],
@@ -297,7 +293,7 @@
       "cold-blooded animal"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "climb trees",
       "change colour to blend in",
       "lay eggs"
@@ -314,7 +310,7 @@
     "id": "10a498ad-7370-1a4b-0674-c839b4b2d63f",
     "name": "Python",
     "adjectives": [
-      "taller than a man"
+      "taller or longer than an average human"
     ],
     "physical": [
       "scales",
@@ -327,7 +323,7 @@
       "cold-blooded animal"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "climb trees",
       "hibernate in winter",
       "lay eggs",
@@ -346,8 +342,7 @@
     "id": "54e5470c-f527-3cb7-172a-f58c00104acc",
     "name": "Great White Shark",
     "adjectives": [
-      "big",
-      "taller than a man",
+      "taller or longer than an average human",
       "grey",
       "white"
     ],
@@ -371,7 +366,7 @@
       "fish"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "smell blood in water",
       "swim very fast",
       "swim",
@@ -405,7 +400,7 @@
       "good swimmer"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "walk in a funny way",
       "lay eggs",
       "live in groups",
@@ -441,7 +436,7 @@
       "large bird"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "fly",
       "lay eggs"
     ],
@@ -496,7 +491,7 @@
       "invertebrate"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "sting",
       "swim",
       "look like an umbrellas",
@@ -518,8 +513,7 @@
     "id": "67f4280e-bc3e-ebe2-3a6f-5f0e80db23ca",
     "name": "Horse",
     "adjectives": [
-      "taller than a man",
-      "big"
+      "taller or longer than an average human"
     ],
     "physical": [
       "long legs",
@@ -560,10 +554,9 @@
     "id": "3f281e2f-3705-d131-19c4-bfec672e714e",
     "name": "Zebra",
     "adjectives": [
-      "taller than a man",
       "only naturally found in Africa",
       "zebra-striped",
-      "big",
+      "taller or longer than an average human",
       "black and white"
     ],
     "physical": [
@@ -641,7 +634,7 @@
     "adjectives": [
       "only naturally found in Arctic Circle",
       "white",
-      "big"
+      "taller or longer than an average human"
     ],
     "physical": [
       "white fur",
@@ -658,7 +651,7 @@
       "mammal"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "swim",
       "live on ice"
     ],
@@ -687,7 +680,7 @@
       "bird"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "live in a large group",
       "fly",
       "lay eggs",
@@ -706,9 +699,8 @@
     "id": "1609ce8a-7c5b-32e9-556b-6fc277c8ab30",
     "name": "Orca",
     "adjectives": [
-      "big",
-      "black and white",
-      "taller than a man"
+      "taller or longer than an average human",
+      "black and white"
     ],
     "physical": [
       "generally 2 colours",
@@ -726,7 +718,7 @@
       "mammal"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "hunt in groups",
       "live in groups",
       "live in the sea",
@@ -748,7 +740,7 @@
     "id": "be903051-f4d3-a4bd-8f5b-884a0da1ad3d",
     "name": "Blue Whale",
     "adjectives": [
-      "taller than a man",
+      "taller or longer than an average human",
       "longer than a bus",
       "huge",
       "blue"
@@ -768,7 +760,7 @@
       "loudest animal on Earth"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "swim",
       "live in the sea",
       "sing",
@@ -847,7 +839,7 @@
     "id": "18b088bb-c947-02ce-20ea-9e45d8731b80",
     "name": "Rhinoceros",
     "adjectives": [
-      "big",
+      "taller or longer than an average human",
       "only naturally found in Africa",
       "grey",
       "hunted for its horns"
@@ -958,7 +950,7 @@
     "adjectives": [
       "yellow and brown",
       "only naturally found in Africa",
-      "taller than a man",
+      "taller or longer than an average human",
       "generally yellow"
     ],
     "physical": [
@@ -1008,7 +1000,7 @@
       "vertebrate"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "swim",
       "lay eggs",
       "live in swamps and rivers"
@@ -1027,7 +1019,7 @@
     "name": "Kangaroo",
     "adjectives": [
       "only naturally found in Australia",
-      "big",
+      "taller or longer than an average human",
       "grey"
     ],
     "physical": [
@@ -1067,7 +1059,7 @@
     "name": "Gorilla",
     "adjectives": [
       "only naturally found in Africa",
-      "big",
+      "taller or longer than an average human",
       "black"
     ],
     "physical": [
@@ -1104,7 +1096,7 @@
     "id": "5176aac5-d55e-80f3-4084-f5535e225742",
     "name": "Hippopotamus",
     "adjectives": [
-      "big",
+      "taller or longer than an average human",
       "only naturally found in Africa",
       "grey"
     ],
@@ -1153,7 +1145,7 @@
       "vertebrate"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "swim",
       "live in groups",
       "live in the sea",
@@ -1174,8 +1166,7 @@
     "id": "c084615f-cad7-d84e-b074-32512c71cca8",
     "name": "Leopard",
     "adjectives": [
-      "generally yellow",
-      "big"
+      "generally yellow"
     ],
     "physical": [
       "4 legs",
@@ -1196,7 +1187,7 @@
       "vertebrate"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "live in jungles",
       "climb trees",
       "spend a lot of time in trees",
@@ -1211,7 +1202,7 @@
     "name": "Narwhal",
     "adjectives": [
       "only naturally found in Arctic Circle",
-      "big"
+      "taller or longer than an average human"
     ],
     "physical": [
       "fins",
@@ -1227,7 +1218,7 @@
       "vertebrate"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "live in groups",
       "live in the sea",
       "swim",
@@ -1324,7 +1315,7 @@
       "lay eggs",
       "camouflage by staying very still and upright on low perch",
       "excellent eyesight",
-      "eat other animals",
+      "only eat other animals",
       "create nests"
     ],
     "diet": [],
@@ -1566,7 +1557,7 @@
       "the largest carnivorous marsupials in the world"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "let out a shrieking sound and show their teeth when they feel like they are in danger"
     ],
     "diet": [],
@@ -1587,7 +1578,7 @@
       "invertebrate"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "lay eggs",
       "live in the sea",
       "swim"
@@ -1607,8 +1598,7 @@
     "id": "893332ac-cb45-4c2d-52fe-3913708ce6ea",
     "name": "Giant Squid",
     "adjectives": [
-      "big",
-      "taller than a man",
+      "taller or longer than an average human",
       "longer than a bus",
       "rare"
     ],
@@ -1623,7 +1613,7 @@
       "invertebrate"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "live in the sea",
       "swim"
     ],
@@ -1653,7 +1643,7 @@
     ],
     "behaviours": [
       "live in forests",
-      "eat other animals",
+      "only eat other animals",
       "lay eggs",
       "fly",
       "fly very quietly"
@@ -1773,7 +1763,7 @@
     "name": "Llama",
     "adjectives": [
       "only naturally found in South America",
-      "big",
+      "taller or longer than an average human",
       "fluffy"
     ],
     "physical": [
@@ -1896,7 +1886,7 @@
       "tadpole when it is young"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "swim",
       "lay eggs",
       "breathe through its nose and its skin",
@@ -1917,7 +1907,7 @@
     "adjectives": [
       "hairy",
       "orange",
-      "big"
+      "taller or longer than an average human"
     ],
     "physical": [
       "2 legs",
@@ -1971,7 +1961,7 @@
       "mammal"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "climb trees",
       "live in burrows",
       "curl up into a ball when threatened"
@@ -2046,7 +2036,8 @@
       "jump",
       "live underground",
       "live in burrows",
-      "live in a cage sometimes"
+      "live in a cage sometimes",
+      "hop around using two legs"
     ],
     "diet": [],
     "possible_behaviours": [
@@ -2141,8 +2132,7 @@
     "id": "62f6ed84-139c-edc6-f699-6d688acf3984",
     "name": "Pelican",
     "adjectives": [
-      "black and white",
-      "big"
+      "black and white"
     ],
     "physical": [
       "2 legs",
@@ -2159,7 +2149,7 @@
       "bird"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "hunt in groups",
       "swim",
       "lay eggs",
@@ -2250,7 +2240,7 @@
     "id": "4e9a220a-893c-ff58-94af-91b881dc406b",
     "name": "Cow",
     "adjectives": [
-      "big",
+      "taller or longer than an average human",
       "black and white"
     ],
     "physical": [
@@ -2304,7 +2294,7 @@
       "mammal"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "hunt in groups",
       "live in groups",
       "live in forests",
@@ -2321,7 +2311,7 @@
     "name": "Deer",
     "adjectives": [
       "brown",
-      "big"
+      "taller or longer than an average human"
     ],
     "physical": [
       "tail",
@@ -2373,7 +2363,7 @@
       "nocturnal animal"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "live in burrows",
       "swim",
       "climb trees"
@@ -2424,8 +2414,7 @@
     "id": "5d1c7592-1b68-ecea-c5a0-3c87ed4e36f2",
     "name": "Walrus",
     "adjectives": [
-      "big",
-      "taller than a man",
+      "taller or longer than an average human",
       "brown",
       "only naturally found in North Pole"
     ],
@@ -2441,7 +2430,7 @@
       "territorial animal"
     ],
     "behaviours": [
-      "eat other animals",
+      "only eat other animals",
       "swim",
       "often live by the water",
       "live on the ice"
@@ -2456,7 +2445,6 @@
     "adjectives": [
       "pink",
       "white",
-      "big",
       "fat"
     ],
     "physical": [
