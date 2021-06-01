@@ -39,7 +39,7 @@ s3transfer==0.1.13
 scandir==1.9.0
 six==1.11.0
 tzlocal==1.5.1
-urllib3==1.23
+urllib3==1.26.5
 websocket-client==0.53.0
 Werkzeug==0.14.1
 whichcraft==0.4.1
