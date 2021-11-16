@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "actions-on-google": "^2.7.1",
-    "aws-sdk": "^2.274.1",
+    "aws-sdk": "^2.814.0",
     "body-parser": "^1.18.3",
     "dialogflow-fulfillment": "^0.5.0",
     "express": "^4.16.3",
